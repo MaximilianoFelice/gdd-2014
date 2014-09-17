@@ -6,3 +6,6 @@ data/old/*
 *.suo
 *.user
 
+# Ignoring executable generated files
+src/FrbaHotel/FrbaHotel/bin/*
+src/FrbaHotel/FrbaHotel/obj/Debug/*
