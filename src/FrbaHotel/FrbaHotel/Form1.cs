@@ -15,5 +15,12 @@ namespace FrbaHotel
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ConnectionManager.OpenConnection();
+            System.Windows.Forms.MessageBox.Show("Conectado a la db");
+            ConnectionManager.CloseConnection();
+        }
     }
 }
