@@ -120,6 +120,31 @@ SELECT DISTINCT id_person, Factura_Nro, Factura_Fecha, Factura_Total FROM #Joine
 WHERE Factura_Nro IS NOT NULL;
 
 
+
+---------------- BILLING EXTRAS ----------------
+/* Hay items que no tienen Extras asociados */
+SELECT * FROM #Joined_Master 
+WHERE Item_Factura_Monto IS NULL;
+
+
+---------------- STAY_EXTRA ----------------
+SELECT DISTINCT Reserva_Codigo, Item_Factura_Monto, Item_Factura_Cantidad, id_extra FROM #Joined_Master
+WHERE id_extra IS NOT NULL;
+
+---------------- BILL_ITEMS ----------------
+SELECT DISTINCT Factura_Nro, Item_Factura_Monto, Item_Factura_Cantidad FROM #Joined_Master
+WHERE Factura_Nro IS NOT NULL;
+
+---------------- ALL_ITEMS ----------------
+SELECT Reserva_Codigo, Factura_Nro, id_extra, Item_Factura_Monto, Item_Factura_Cantidad
+FROM #Joined_Master
+GROUP BY Reserva_Codigo, Factura_Nro, id_extra, Item_Factura_Monto, Item_Factura_Cantidad
+HAVING Factura_Nro IS NOT NULL;
+
+/* Integrity Check */ --(STAY_EXTRA HAD 207341 ROWS, BILL_ITEMS HAD 296944 ROWS.)
+SELECT DISTINCT Factura_Nro, Item_Factura_Monto, Item_Factura_Cantidad FROM #Joined_Master		-- SHOULD HAVE 89603 ROWS... OK!
+WHERE id_extra IS NULL AND Factura_Nro IS NOT NULL;
+
 DROP TABLE #Hotels;
 DROP TABLE #Clientes;
 DROP TABLE #Regimens;
