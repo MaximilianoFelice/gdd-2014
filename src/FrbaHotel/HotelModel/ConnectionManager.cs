@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 
-namespace FrbaHotel
+namespace HotelModel
 {
-    static class ConnectionManager
+    public static class ConnectionManager
     {
         public static SqlConnection sqlConn;
         public static String connectionString;
