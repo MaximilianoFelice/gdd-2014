@@ -16,7 +16,12 @@ GROUP BY Cliente_Pasaporte_Nro
 HAVING COUNT(Cliente_Pasaporte_Nro) > 1;
 
 /* Buscamos un unique ID para Personas, con 100740 filas */
-SELECT DISTINCT Cliente_Pasaporte_Nro, Cliente_Apellido, Cliente_Nombre, Cliente_Fecha_Nac FROM #Clientes;
+SELECT DISTINCT Cliente_Pasaporte_Nro, Cliente_Fecha_Nac FROM gd_esquema.Maestra;
+
+/* Buscamos una query mas performante para esto */
+SELECT Cliente_Pasaporte_Nro, Cliente_Fecha_Nac, Cliente_Apellido, Cliente_Nombre, Cliente_Mail, Cliente_Dom_Calle, Cliente_Nro_Calle, Cliente_Piso, Cliente_Depto, Cliente_Nacionalidad
+FROM #Clientes
+GROUP BY Cliente_Pasaporte_Nro, Cliente_Fecha_Nac;
 
 
 
