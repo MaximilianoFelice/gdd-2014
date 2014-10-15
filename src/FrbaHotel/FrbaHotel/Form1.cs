@@ -38,7 +38,7 @@ namespace FrbaHotel
 
         private void cmdTests_Click(object sender, EventArgs e)
         {
-            new HotelModel.DB_Conn_DSL.tests.StoredProcedureConnection_tests().RetunsValidDataReader();
+            new HotelModel.DB_Conn_DSL.tests.StoredProcedureConnection_tests().ReturnValuesWorks();
         }
     }
 }

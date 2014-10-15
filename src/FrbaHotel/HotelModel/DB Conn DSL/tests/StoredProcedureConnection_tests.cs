@@ -118,5 +118,27 @@ namespace HotelModel.DB_Conn_DSL.tests
 
             ConnectionManager.CloseConnection();
         }
+
+        [Test]
+        public void ReturnsValidDataTable()
+        {
+            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].RESULTS_TEST")
+                        .AsDataTable()
+                        .Execute();
+
+            DataTable retVals = (DataTable)results["ReturnedValues"];
+
+            Assert.True(retVals.Rows.Count > 0);
+        }
+
+        [Test]
+        public void ReturnValuesWorks()
+        {
+            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].RETURN_TEST")
+                                   .WithParam("RetVal").AsReturnValue()
+                                   .Execute();
+
+            Assert.AreEqual(results["RetVal"], -4);
+        }
     }
 }
