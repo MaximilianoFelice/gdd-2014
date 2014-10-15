@@ -35,5 +35,10 @@ namespace FrbaHotel
             if (ret) MessageBox.Show("Logged In!");
             else MessageBox.Show("Login Failed");
         }
+
+        private void cmdTests_Click(object sender, EventArgs e)
+        {
+            new HotelModel.DB_Conn_DSL.tests.StoredProcedureConnection_tests().ExecuteReturnsAllOutputParams();
+        }
     }
 }

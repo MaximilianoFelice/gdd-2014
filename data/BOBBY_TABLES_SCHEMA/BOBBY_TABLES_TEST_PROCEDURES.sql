@@ -1,0 +1,15 @@
+DROP PROCEDURE [BOBBY_TABLES].OUTPUT_TEST;
+
+------ OUTPUT TEST ------
+GO
+CREATE PROCEDURE [BOBBY_TABLES].OUTPUT_TEST
+@anOutput VARCHAR(50) = null OUTPUT,
+@aValue INTEGER,
+@anotherOutput INTEGER = null OUTPUT
+AS
+	SET @anOutput = 'a Result';
+	
+	SET @anotherOutput = 150;
+GO
+
+EXEC [BOBBY_TABLES].OUTPUT_TEST @aValue = 13;

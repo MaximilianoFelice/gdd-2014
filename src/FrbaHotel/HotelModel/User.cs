@@ -16,7 +16,7 @@ namespace FrbaHotel
 
         public static Boolean ValidateLogin(String user, String password)
         {
-            Dictionary<String, object> results = new SqlStoredProcedure("[BOBBY_TABLES].validateUserPass")
+            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].validateUserPass")
                                                 .WithParam("@User").As(SqlDbType.VarChar).Value(user.ToString())
                                                 .WithParam("@Pass").As(SqlDbType.VarChar).Value(password.ToString())
                                                 .WithParam("@RESULT").As(SqlDbType.Bit).AsOutput()

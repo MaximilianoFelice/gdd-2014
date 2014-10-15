@@ -8,6 +8,9 @@ using ExtensionMethods;
 
 namespace HotelModel.DB_Conn_DSL
 {
+    /* Used as alias */
+    public class SqlResults : System.Collections.Generic.Dictionary<System.String, object> { }
+
     public class SqlStoredProcedure : SqlCommandDSL
     {
         public SqlCommand StoredProc;
@@ -76,9 +79,16 @@ namespace HotelModel.DB_Conn_DSL
             return this;
         }
 
-        public Dictionary<String, object> Execute()
+        public SqlStoredProcedure WithMaximumSize(int size)
         {
-            Dictionary<String, object> RetValues = new Dictionary<String, object>();
+            Parameters.SetPropertyToLast("Size", size);
+
+            return this;
+        }
+
+        public SqlResults Execute()
+        {
+            SqlResults RetValues = new SqlResults();
 
             Build();
 

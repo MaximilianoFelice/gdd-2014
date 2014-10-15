@@ -30,6 +30,7 @@
         {
             this.Incorrect_Login = new System.Windows.Forms.Button();
             this.Correct_Login = new System.Windows.Forms.Button();
+            this.cmdTests = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Incorrect_Login
@@ -52,11 +53,22 @@
             this.Correct_Login.UseVisualStyleBackColor = true;
             this.Correct_Login.Click += new System.EventHandler(this.Correct_Login_Click);
             // 
+            // cmdTests
+            // 
+            this.cmdTests.Location = new System.Drawing.Point(270, 83);
+            this.cmdTests.Name = "cmdTests";
+            this.cmdTests.Size = new System.Drawing.Size(189, 100);
+            this.cmdTests.TabIndex = 2;
+            this.cmdTests.Text = "Test";
+            this.cmdTests.UseVisualStyleBackColor = true;
+            this.cmdTests.Click += new System.EventHandler(this.cmdTests_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(531, 294);
+            this.Controls.Add(this.cmdTests);
             this.Controls.Add(this.Correct_Login);
             this.Controls.Add(this.Incorrect_Login);
             this.Name = "Form1";
@@ -69,6 +81,7 @@
 
         private System.Windows.Forms.Button Incorrect_Login;
         private System.Windows.Forms.Button Correct_Login;
+        private System.Windows.Forms.Button cmdTests;
     }
 }
 
