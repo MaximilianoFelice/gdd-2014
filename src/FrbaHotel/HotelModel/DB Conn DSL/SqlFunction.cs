@@ -10,6 +10,11 @@ namespace HotelModel.DB_Conn_DSL
 {
     public class SqlFunction : SqlWithParams
     {
+        public SqlFunction(String FunctName)
+        {
+            this.StoredCommand = new SqlCommand(FunctName, ConnectionManager.sqlConn);
+            this.StoredCommand.CommandType = CommandType.StoredProcedure;
+        }
 
     }
 }

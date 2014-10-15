@@ -12,6 +12,8 @@ namespace HotelModel.DB_Conn_DSL
     {
         public Stack<SqlParameter> Parameters = new Stack<SqlParameter>();
 
+        public Stack<SqlParameter> OutputParameters = new Stack<SqlParameter>();
+
         /* Private Internal methods */
         override public void Build()
         {
@@ -25,6 +27,18 @@ namespace HotelModel.DB_Conn_DSL
         }
 
         virtual public void AnalyzeParam(SqlParameter Param) { }
+
+        override public SqlResults AnalyzeResults()
+        {
+            SqlResults RetValues = new SqlResults();
+
+            foreach (SqlParameter Param in OutputParameters)
+            {
+                RetValues.Add(Param.ParameterName, Param.Value);
+            }
+
+            return RetValues;
+        }
 
     }
 
@@ -69,9 +83,13 @@ namespace HotelModel.DB_Conn_DSL
             return anSqlWithParams;
         }
 
-        public static t AsReturnValue<T>(this T anSqlWithParams) where T : SqlWithParams
+        public static T AsReturnValue<T>(this T anSqlWithParams) where T : SqlWithParams
         {
             anSqlWithParams.Parameters.SetPropertyToLast("Direction", System.Data.ParameterDirection.ReturnValue);
+
+            /* Integer is the only possible return value */
+            /* http://stackoverflow.com/questions/12096838/setting-parameterdirection-to-returnvalue-for-functions */
+            anSqlWithParams.As(SqlDbType.Int);
 
             return anSqlWithParams;
         }

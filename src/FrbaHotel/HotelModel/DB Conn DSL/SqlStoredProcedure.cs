@@ -11,7 +11,6 @@ namespace HotelModel.DB_Conn_DSL
 
     public class SqlStoredProcedure : SqlWithParams
     {
-        public Stack<SqlParameter> OutputParameters = new Stack<SqlParameter>();
 
         public SqlStoredProcedure(String ProcName)
         {
@@ -33,23 +32,12 @@ namespace HotelModel.DB_Conn_DSL
             return this;
         }
 
-
         /* Private Internal methods */
         override public void AnalyzeParam(SqlParameter Param)
         {
             if (Param.Direction == ParameterDirection.Output) OutputParameters.Push(Param);
+            else if (Param.Direction == ParameterDirection.ReturnValue) OutputParameters.Push(Param);
         }
 
-        override public SqlResults AnalyzeResults()
-        {
-            SqlResults RetValues = new SqlResults();
-
-            foreach (SqlParameter Param in OutputParameters)
-            {
-                RetValues.Add(Param.ParameterName, Param.Value);
-            }
-
-            return RetValues;
-        }
     }
 }

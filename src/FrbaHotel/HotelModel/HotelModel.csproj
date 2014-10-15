@@ -49,6 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DB Conn DSL\DataReaderRetriever.cs" />
+    <Compile Include="DB Conn DSL\DataRetrieverBuilder.cs" />
+    <Compile Include="DB Conn DSL\DataSetRetriever.cs" />
+    <Compile Include="DB Conn DSL\DataTableRetriever.cs" />
     <Compile Include="DB Conn DSL\SqlCommandDSL.cs" />
     <Compile Include="DB Conn DSL\SqlStoredProcedure.cs" />
     <Compile Include="DB Conn DSL\SqlWithParams.cs" />
