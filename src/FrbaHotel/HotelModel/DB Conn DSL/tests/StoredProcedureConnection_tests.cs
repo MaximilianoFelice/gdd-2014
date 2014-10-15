@@ -27,8 +27,8 @@ namespace HotelModel.DB_Conn_DSL.tests
         public void CreatesNewSoredProcedure()
         {
             SqlStoredProcedure someProc = new SqlStoredProcedure("aName");
-            Assert.AreEqual(someProc.StoredProc.CommandText, "aName");
-            Assert.AreEqual(someProc.StoredProc.CommandType, CommandType.StoredProcedure);
+            Assert.AreEqual(someProc.StoredCommand.CommandText, "aName");
+            Assert.AreEqual(someProc.StoredCommand.CommandType, CommandType.StoredProcedure);
         }
 
         [Test]
@@ -81,5 +81,28 @@ namespace HotelModel.DB_Conn_DSL.tests
             Assert.AreEqual(results["@anotherOutput"], 150);
         }
 
+        //[Test]
+        //public void ExecuteWithComeback()
+        //{
+        //    SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].RESULTS_TEST")
+        //                            .Execute();
+
+        //    SqlDataReader retVals = (SqlDataReader)results["ReturnedValues"];
+
+        //    Assert.True(retVals.HasRows);
+        //}
+
+        [Test]
+        [ExpectedException( typeof(KeyNotFoundException))]
+        public void HasNoComeback()
+        {
+            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].OUTPUT_TEST")
+                                    .WithParam("@anOutput").AsOutput().As(SqlDbType.VarChar).WithMaximumSize(50)
+                                    .WithParam("@aValue").As(SqlDbType.Int).Value(10)
+                                    .WithParam("@anotherOutput").AsOutput().As(SqlDbType.Int)
+                                    .Execute();
+
+            results["ReturnedValues"].GetType();
+        }
     }
 }

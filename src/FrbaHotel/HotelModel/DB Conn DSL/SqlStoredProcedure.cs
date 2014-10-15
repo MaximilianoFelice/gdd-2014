@@ -8,21 +8,15 @@ using ExtensionMethods;
 
 namespace HotelModel.DB_Conn_DSL
 {
-    /* Used as alias */
-    public class SqlResults : System.Collections.Generic.Dictionary<System.String, object> { }
 
-    public class SqlStoredProcedure : SqlCommandDSL
+    public class SqlStoredProcedure : SqlWithParams
     {
-        public SqlCommand StoredProc;
-
-        public Stack<SqlParameter> Parameters = new Stack<SqlParameter>();
-
         public Stack<SqlParameter> OutputParameters = new Stack<SqlParameter>();
 
         public SqlStoredProcedure(String ProcName)
         {
-            this.StoredProc = new SqlCommand(ProcName, ConnectionManager.sqlConn);
-            this.StoredProc.CommandType = CommandType.StoredProcedure;
+            this.StoredCommand = new SqlCommand(ProcName, ConnectionManager.sqlConn);
+            this.StoredCommand.CommandType = CommandType.StoredProcedure;
         }
 
 
@@ -33,7 +27,7 @@ namespace HotelModel.DB_Conn_DSL
             newParam.ParameterName = ParamName;
 
             Parameters.Push(newParam);
-
+            
             return this;
         }
 
@@ -86,36 +80,22 @@ namespace HotelModel.DB_Conn_DSL
             return this;
         }
 
-        public SqlResults Execute()
+        /* Private Internal methods */
+        override public void AnalyzeParam(SqlParameter Param)
+        {
+            if (Param.Direction == ParameterDirection.Output) OutputParameters.Push(Param);
+        }
+
+        override public SqlResults AnalyzeResults()
         {
             SqlResults RetValues = new SqlResults();
 
-            Build();
-
-            ConnectionManager.OpenConnection();
-
-            StoredProc.ExecuteNonQuery();
-
             foreach (SqlParameter Param in OutputParameters)
             {
-                RetValues.Add( Param.ParameterName, Param.Value );
+                RetValues.Add(Param.ParameterName, Param.Value);
             }
-
-            ConnectionManager.CloseConnection();
 
             return RetValues;
-        }
-
-        /* Private Internal methods */
-        private void Build()
-        {
-            foreach (SqlParameter Param in Parameters)
-            {
-                StoredProc.Parameters.Add(Param);
-
-                if (Param.Direction == ParameterDirection.Output) OutputParameters.Push(Param);
-            }
-
         }
     }
 }

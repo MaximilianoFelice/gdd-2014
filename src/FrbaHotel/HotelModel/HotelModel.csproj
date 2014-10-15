@@ -51,6 +51,10 @@
   <ItemGroup>
     <Compile Include="DB Conn DSL\SqlCommandDSL.cs" />
     <Compile Include="DB Conn DSL\SqlStoredProcedure.cs" />
+    <Compile Include="DB Conn DSL\SqlWithParams.cs" />
+    <Compile Include="DB Conn DSL\SqlQuery.cs" />
+    <Compile Include="DB Conn DSL\SqlFunction.cs" />
+    <Compile Include="DB Conn DSL\tests\SqlQuery_tests.cs" />
     <Compile Include="DB Conn DSL\tests\StoredProcedureConnection_tests.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="ConnectionManager.cs" />
