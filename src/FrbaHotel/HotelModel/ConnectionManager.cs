@@ -3,19 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
+using System.Data;
+using ExtensionMethods;
 
 namespace HotelModel
 {
     public static class ConnectionManager
     {
-        public static SqlConnection sqlConn;
-        public static String connectionString;
+        static SqlConnection _sqlConn;
+        public static SqlConnection sqlConn
+        {
+            get { if (_sqlConn == null) _sqlConn = new SqlConnection(connectionString); return _sqlConn; }
+        }
+
+        public static String connectionString
+        {
+            get { return generateConnString(); }
+        }
 
         public static void OpenConnection()
         {
-            connectionString = generateConnString();
-            sqlConn = new SqlConnection(connectionString);
-
             try
             {
                 sqlConn.Open();
@@ -35,12 +42,16 @@ namespace HotelModel
         public static SqlDataReader ExecuteQuery(String query)
         {
             SqlCommand newCommand = new SqlCommand(query);
-            return newCommand.ExecuteReader();
+            OpenConnection();
+            SqlDataReader retValue = newCommand.ExecuteReader();
+            CloseConnection();
+
+            return retValue;
         }
 
         static String generateConnString()
         {
-            return "user id=gd; Password=gd2014; Server=localhost/SQLSERVER2008; Trusted_Connection=yes; database=database; connection timeout=10; Database=GD2C2014";
+            return "Data Source=localhost\\SQLSERVER2008;Initial Catalog=GD2C2014;Integrated Security=False;User ID=gd;Password=gd2014;Connect Timeout=10";
         }
     }
 }

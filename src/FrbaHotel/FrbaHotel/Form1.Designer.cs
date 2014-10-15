@@ -28,21 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Incorrect_Login = new System.Windows.Forms.Button();
+            this.Correct_Login = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // Incorrect_Login
+            // 
+            this.Incorrect_Login.Location = new System.Drawing.Point(54, 148);
+            this.Incorrect_Login.Name = "Incorrect_Login";
+            this.Incorrect_Login.Size = new System.Drawing.Size(152, 73);
+            this.Incorrect_Login.TabIndex = 0;
+            this.Incorrect_Login.Text = "Incorrect Login";
+            this.Incorrect_Login.UseVisualStyleBackColor = true;
+            this.Incorrect_Login.Click += new System.EventHandler(this.Incorrect_Login_Click);
+            // 
+            // Correct_Login
+            // 
+            this.Correct_Login.Location = new System.Drawing.Point(46, 48);
+            this.Correct_Login.Name = "Correct_Login";
+            this.Correct_Login.Size = new System.Drawing.Size(159, 76);
+            this.Correct_Login.TabIndex = 1;
+            this.Correct_Login.Text = "Correct Login";
+            this.Correct_Login.UseVisualStyleBackColor = true;
+            this.Correct_Login.Click += new System.EventHandler(this.Correct_Login_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.Correct_Login);
+            this.Controls.Add(this.Incorrect_Login);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button Incorrect_Login;
+        private System.Windows.Forms.Button Correct_Login;
     }
 }
 

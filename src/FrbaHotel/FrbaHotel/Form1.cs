@@ -17,11 +17,23 @@ namespace FrbaHotel
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+
+        private void Correct_Login_Click(object sender, EventArgs e)
         {
-            ConnectionManager.OpenConnection();
-            System.Windows.Forms.MessageBox.Show("Conectado a la db");
-            ConnectionManager.CloseConnection();
+            // Correct
+            Boolean ret = User.ValidateLogin("MaximilianoFelice", "53acbedaad48d8d482fe1a9bf8cd8b8e329ff8033c5c1dc81dcccdff38dd197f");
+
+            if (ret) MessageBox.Show("Logged In!");
+            else MessageBox.Show("Login Failed");
+        }
+
+        private void Incorrect_Login_Click(object sender, EventArgs e)
+        {
+            // Incorrect
+            Boolean ret = User.ValidateLogin("MaximilianoFelice", "53acbedaad4IJUSTWANNADANCENOWc1dc81dcccdff38dd197f");
+
+            if (ret) MessageBox.Show("Logged In!");
+            else MessageBox.Show("Login Failed");
         }
     }
 }

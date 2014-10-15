@@ -1,5 +1,8 @@
 /* Creating procedure that validate user login */
-CREATE PROCEDURE [BOBBY_TABLES].validateUserPass (@User VARCHAR(50), @Pass VARCHAR(64), @RESULT BIT = 0x0 OUTPUT)
+CREATE PROCEDURE [BOBBY_TABLES].validateUserPass 
+@User VARCHAR(50), 
+@Pass VARCHAR(64),
+@RESULT BIT = 0x0 OUTPUT
 AS
 	DECLARE @Login_Attempts INTEGER;
 	DECLARE @Current_Pass VARCHAR(64);
@@ -34,9 +37,16 @@ AS
 GO
 
 
+----- PRUEBAS
 EXEC [BOBBY_TABLES].validateUserPass @User = 'MaximilianoFelice', @Pass = '53acbedaad48d8d482fe1a9bf8cd8b8e329ff8033c5c1dc81dcccdff38dd197f';
 
 EXEC [BOBBY_TABLES].validateUserPass @User = 'MaximilianoFelice', @Pass = '5dd197f';
 
 SELECT * FROM BOBBY_TABLES.USERS;
+
+UPDATE BOBBY_TABLES.USERS
+	SET login_attempts = 0;
+
 SELECT * FROM BOBBY_TABLES.PERSONS;
+
+DROP PROCEDURE [BOBBY_TABLES].validateUserPass;
