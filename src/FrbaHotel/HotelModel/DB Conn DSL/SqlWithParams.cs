@@ -24,7 +24,58 @@ namespace HotelModel.DB_Conn_DSL
 
         }
 
-        virtual public void AnalyzeParam(SqlParameter Param) {}
+        virtual public void AnalyzeParam(SqlParameter Param) { }
 
     }
+
+    public static class SqlWithParamsExtension
+    {
+        public static T WithParam<T>(this T anSqlWithParams, String ParamName) where T : SqlWithParams
+        {
+            SqlParameter newParam = new SqlParameter();
+
+            newParam.ParameterName = ParamName;
+
+            anSqlWithParams.Parameters.Push(newParam);
+
+            return anSqlWithParams;
+        }
+
+        public static T As<T>(this T anSqlWithParams, SqlDbType Type) where T : SqlWithParams
+        {
+            anSqlWithParams.Parameters.SetPropertyToLast("SqlDbType", Type);
+
+            return anSqlWithParams;
+        }
+
+        public static T Value<T, ValType>(this T anSqlWithParams, ValType value) where T : SqlWithParams
+        {
+            anSqlWithParams.Parameters.SetPropertyToLast("Value", value);
+
+            return anSqlWithParams;
+        }
+
+        public static T WithMaximumSize<T>(this T anSqlWithParams, int size) where T : SqlWithParams
+        {
+            anSqlWithParams.Parameters.SetPropertyToLast("Size", size);
+
+            return anSqlWithParams;
+        }
+
+        public static T AsInput<T>(this T anSqlWithParams) where T : SqlWithParams
+        {
+            anSqlWithParams.Parameters.SetPropertyToLast("Direction", System.Data.ParameterDirection.Input);
+
+            return anSqlWithParams;
+        }
+
+        public static t AsReturnValue<T>(this T anSqlWithParams) where T : SqlWithParams
+        {
+            anSqlWithParams.Parameters.SetPropertyToLast("Direction", System.Data.ParameterDirection.ReturnValue);
+
+            return anSqlWithParams;
+        }
+
+    }
+
 }

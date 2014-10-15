@@ -19,42 +19,9 @@ namespace HotelModel.DB_Conn_DSL
             this.StoredCommand.CommandType = CommandType.StoredProcedure;
         }
 
-
-        public SqlStoredProcedure WithParam(String ParamName)
-        {
-            SqlParameter newParam = new SqlParameter();
-
-            newParam.ParameterName = ParamName;
-
-            Parameters.Push(newParam);
-            
-            return this;
-        }
-
-        public SqlStoredProcedure As(SqlDbType Type)
-        {
-            Parameters.SetPropertyToLast("SqlDbType", Type);
-
-            return this;
-        }
-
-        public SqlStoredProcedure Value<T>(T value)
-        {
-            Parameters.SetPropertyToLast("Value", value);
-
-            return this;
-        }
-
         public SqlStoredProcedure AsOutput()
         {
             Parameters.SetPropertyToLast("Direction", System.Data.ParameterDirection.Output);
-
-            return this;
-        }
-
-        public SqlStoredProcedure AsInput()
-        {
-            Parameters.SetPropertyToLast("Direction", System.Data.ParameterDirection.Input);
 
             return this;
         }
@@ -66,19 +33,6 @@ namespace HotelModel.DB_Conn_DSL
             return this;
         }
 
-        public SqlStoredProcedure AsReturnValue()
-        {
-            Parameters.SetPropertyToLast("Direction", System.Data.ParameterDirection.ReturnValue);
-
-            return this;
-        }
-
-        public SqlStoredProcedure WithMaximumSize(int size)
-        {
-            Parameters.SetPropertyToLast("Size", size);
-
-            return this;
-        }
 
         /* Private Internal methods */
         override public void AnalyzeParam(SqlParameter Param)
