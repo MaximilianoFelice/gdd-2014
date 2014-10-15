@@ -15,7 +15,7 @@ namespace HotelModel.DB_Conn_DSL
             /* It will let user close connection when finished */
             SqlDataReader ResultantReader = Command.ExecuteReader();
 
-            if (ResultantReader.HasRows) return null;
+            if (!ResultantReader.HasRows) return null;
             else return ResultantReader;
         }
     }

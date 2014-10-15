@@ -15,7 +15,7 @@ namespace HotelModel.DB_Conn_DSL
     {
         public SqlCommand StoredCommand;
 
-        private DataRetrieverBuilder OutputMode = new DataSetRetriever();
+        public DataRetrieverBuilder OutputMode = new DataSetRetriever();
 
         public SqlResults Execute()
         {
@@ -32,20 +32,6 @@ namespace HotelModel.DB_Conn_DSL
             return RetValues;
         }
 
-        public void AsDataSet()
-        {
-            OutputMode = new DataSetRetriever();
-        }
-
-        public void AsDataReader()
-        {
-            OutputMode = new DataReaderRetriever();
-        }
-
-        public void AsDataTable()
-        {
-            OutputMode = new DataTableRetriever();
-        }
 
         /* Private methods for internal use */
         virtual public SqlResults AnalyzeResults()
@@ -55,5 +41,29 @@ namespace HotelModel.DB_Conn_DSL
 
         virtual public void Build() {}
 
+    }
+
+    public static class SqlCommandDSLExtension
+    {
+        public static T AsDataSet<T>(this T aCommand) where T : SqlCommandDSL
+        {
+            aCommand.OutputMode = new DataSetRetriever();
+
+            return aCommand;
+        }
+
+        public static T AsDataReader<T>(this T aCommand) where T : SqlCommandDSL
+        {
+            aCommand.OutputMode = new DataReaderRetriever();
+
+            return aCommand;
+        }
+
+        public static T AsDataTable<T>(this T aCommand) where T : SqlCommandDSL
+        {
+            aCommand.OutputMode = new DataTableRetriever();
+
+            return aCommand;
+        }
     }
 }

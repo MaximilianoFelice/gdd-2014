@@ -9,7 +9,7 @@ using ExtensionMethods;
 
 namespace HotelModel.DB_Conn_DSL
 {
-    interface DataRetrieverBuilder
+    public interface DataRetrieverBuilder
     {
         object Execute(SqlCommand Command);
     }

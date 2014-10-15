@@ -81,16 +81,16 @@ namespace HotelModel.DB_Conn_DSL.tests
             Assert.AreEqual(results["@anotherOutput"], 150);
         }
 
-        //[Test]
-        //public void ExecuteWithComeback()
-        //{
-        //    SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].RESULTS_TEST")
-        //                            .Execute();
+        [Test]
+        public void ExecuteWithComeback()
+        {
+            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].RESULTS_TEST")
+                                    .Execute();
 
-        //    SqlDataReader retVals = (SqlDataReader)results["ReturnedValues"];
+            DataSet retVals = (DataSet) results["ReturnedValues"];
 
-        //    Assert.True(retVals.HasRows);
-        //}
+            Assert.True(retVals.Tables[0].Rows.Count > 0);
+        }
 
         [Test]
         [ExpectedException( typeof(KeyNotFoundException))]
@@ -103,6 +103,20 @@ namespace HotelModel.DB_Conn_DSL.tests
                                     .Execute();
 
             results["ReturnedValues"].GetType();
+        }
+
+        [Test]
+        public void RetunsValidDataReader()
+        {
+            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].RESULTS_TEST")
+                        .AsDataReader()
+                        .Execute();
+
+            SqlDataReader retVals = (SqlDataReader)results["ReturnedValues"];
+
+            Assert.True(retVals.HasRows);
+
+            ConnectionManager.CloseConnection();
         }
     }
 }
