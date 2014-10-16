@@ -8,9 +8,9 @@ data/old/*
 
 # Ignoring executable generated files
 src/FrbaHotel/FrbaHotel/bin/*
-src/FrbaHotel/FrbaHotel/obj/Debug/*
+src/FrbaHotel/FrbaHotel/obj/*
 src/FrbaHotel/HotelModel/bin/*
-src/FrbaHotel/HotelModel/obj/Debug/*
+src/FrbaHotel/HotelModel/obj/*
 
 # Ignoring log files
 data/BOBBY_TABLES_SCHEMA/batch_log.txt
