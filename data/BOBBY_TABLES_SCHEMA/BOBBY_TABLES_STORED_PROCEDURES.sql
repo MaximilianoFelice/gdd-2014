@@ -9,29 +9,23 @@ AS
 	
 	/* Checking if Username Exists */
 
-	SELECT @Current_Pass = pass, @Login_Attempts = login_attempts FROM [BOBBY_TABLES].USERS WHERE username = @User
+	SELECT @Current_Pass = pass, @Login_Attempts = login_attempts FROM [BOBBY_TABLES].ACTIVE_USERS WHERE username = @User
 	
 	IF @@ROWCOUNT > 0
 	BEGIN
-		IF @Login_Attempts >= 3
-			SET @RESULT = 0x0
+		IF @Pass = @Current_Pass
+			BEGIN
+				UPDATE [BOBBY_TABLES].ACTIVE_USERS	
+				SET login_attempts = 0
+				WHERE username = @User;
+				SET @RESULT = 0x1
+			END
 		ELSE
-		BEGIN
-			IF @Pass = @Current_Pass
-				BEGIN
-					UPDATE [BOBBY_TABLES].USERS	
-					SET login_attempts = 0
-					WHERE username = @User;
-					SET @RESULT = 0x1
-				END
-			ELSE
-				BEGIN
-					UPDATE [BOBBY_TABLES].USERS	
-					SET login_attempts = @Login_Attempts + 1
-					WHERE username = @User;
-					SET @RESULT = 0x0
-				END
-		END
+			BEGIN
+				UPDATE [BOBBY_TABLES].ACTIVE_USERS	
+				SET login_attempts = @Login_Attempts + 1
+				WHERE username = @User;
+			END
 	END
 	
 GO
@@ -42,11 +36,12 @@ EXEC [BOBBY_TABLES].validateUserPass @User = 'MaximilianoFelice', @Pass = '53acb
 
 EXEC [BOBBY_TABLES].validateUserPass @User = 'MaximilianoFelice', @Pass = '5dd197f';
 
-SELECT * FROM BOBBY_TABLES.USERS;
+SELECT * FROM BOBBY_TABLES.ACTIVE_USERS;
 
 UPDATE BOBBY_TABLES.USERS
 	SET login_attempts = 0;
 
 SELECT * FROM BOBBY_TABLES.PERSONS;
+
 
 DROP PROCEDURE [BOBBY_TABLES].validateUserPass
