@@ -103,6 +103,24 @@
     <Compile Include="ABM de Regimen\UpdateRegimen.Designer.cs">
       <DependentUpon>UpdateRegimen.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM de Rol\CreateRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Rol\CreateRole.Designer.cs">
+      <DependentUpon>CreateRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Rol\DeleteRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Rol\DeleteRole.Designer.cs">
+      <DependentUpon>DeleteRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Rol\UpdateRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Rol\UpdateRole.Designer.cs">
+      <DependentUpon>UpdateRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,7 +158,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ABM de Rol\" />
     <Folder Include="ABM de Usuario\" />
     <Folder Include="Cancelar Reserva\" />
     <Folder Include="Generar Modificar Reserva\" />
