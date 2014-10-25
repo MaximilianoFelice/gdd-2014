@@ -49,64 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ABM de Cliente\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ABM de Cliente\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ABM de Habitacion\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ABM de Habitacion\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ABM de Regimen\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ABM de Regimen\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ABM de Rol\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ABM de Rol\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ABM de Usuario\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ABM de Usuario\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Cancelar Reserva\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cancelar Reserva\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generar Modificar Reserva\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Generar Modificar Reserva\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Listado Estadistico\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Listado Estadistico\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Login\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Login\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -132,24 +78,25 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Registrar Consumible\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Registrar Consumible\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Registrar Estadia\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Registrar Estadia\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HotelModel\HotelModel.csproj">
       <Project>{CEEA0801-31CA-435C-A548-BBDB10733F51}</Project>
       <Name>HotelModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ABM de Cliente\" />
+    <Folder Include="ABM de Habitacion\" />
+    <Folder Include="ABM de Regimen\" />
+    <Folder Include="ABM de Rol\" />
+    <Folder Include="ABM de Usuario\" />
+    <Folder Include="Cancelar Reserva\" />
+    <Folder Include="Generar Modificar Reserva\" />
+    <Folder Include="Listado Estadistico\" />
+    <Folder Include="Login\" />
+    <Folder Include="Registrar Consumible\" />
+    <Folder Include="Registrar Estadia\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
