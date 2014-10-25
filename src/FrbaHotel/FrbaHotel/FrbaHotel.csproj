@@ -67,6 +67,24 @@
     <Compile Include="ABM de Cliente\UpdateGuest.Designer.cs">
       <DependentUpon>UpdateGuest.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM de Habitacion\CreateRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Habitacion\CreateRoom.Designer.cs">
+      <DependentUpon>CreateRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Habitacion\DeleteRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Habitacion\DeleteRoom.Designer.cs">
+      <DependentUpon>DeleteRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Habitacion\UpdateRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Habitacion\UpdateRoom.Designer.cs">
+      <DependentUpon>UpdateRoom.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,7 +122,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ABM de Habitacion\" />
     <Folder Include="ABM de Regimen\" />
     <Folder Include="ABM de Rol\" />
     <Folder Include="ABM de Usuario\" />
