@@ -228,6 +228,9 @@
     <EmbeddedResource Include="ABM de Usuario\NewAdminOrReceptionist.resx">
       <DependentUpon>NewAdminOrReceptionist.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Usuario\UpdateUser.resx">
+      <DependentUpon>UpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
