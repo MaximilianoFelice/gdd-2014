@@ -204,6 +204,9 @@
     <EmbeddedResource Include="ABM de Regimen\CreateRegimen.resx">
       <DependentUpon>CreateRegimen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Regimen\DeleteRegimen.resx">
+      <DependentUpon>DeleteRegimen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ABM de Rol\CreateRole.resx">
       <DependentUpon>CreateRole.cs</DependentUpon>
     </EmbeddedResource>
