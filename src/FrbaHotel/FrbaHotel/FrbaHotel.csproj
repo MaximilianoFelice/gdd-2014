@@ -198,6 +198,9 @@
     <EmbeddedResource Include="ABM de Habitacion\DeleteRoom.resx">
       <DependentUpon>DeleteRoom.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Habitacion\UpdateRoom.resx">
+      <DependentUpon>UpdateRoom.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ABM de Regimen\CreateRegimen.resx">
       <DependentUpon>CreateRegimen.cs</DependentUpon>
     </EmbeddedResource>
