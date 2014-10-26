@@ -180,6 +180,9 @@
     <EmbeddedResource Include="ABM de Cliente\CreateGuest.resx">
       <DependentUpon>CreateGuest.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Habitacion\CreateRoom.resx">
+      <DependentUpon>CreateRoom.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
