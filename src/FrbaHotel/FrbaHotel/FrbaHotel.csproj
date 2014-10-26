@@ -216,6 +216,9 @@
     <EmbeddedResource Include="ABM de Rol\DeleteRole.resx">
       <DependentUpon>DeleteRole.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Rol\UpdateRole.resx">
+      <DependentUpon>UpdateRole.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ABM de Usuario\CreateUser.resx">
       <DependentUpon>CreateUser.cs</DependentUpon>
     </EmbeddedResource>
