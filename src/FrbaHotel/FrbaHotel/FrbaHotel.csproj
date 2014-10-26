@@ -222,6 +222,9 @@
     <EmbeddedResource Include="ABM de Usuario\CreateUser.resx">
       <DependentUpon>CreateUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Usuario\DeleteUser.resx">
+      <DependentUpon>DeleteUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ABM de Usuario\NewAdminOrReceptionist.resx">
       <DependentUpon>NewAdminOrReceptionist.cs</DependentUpon>
     </EmbeddedResource>
