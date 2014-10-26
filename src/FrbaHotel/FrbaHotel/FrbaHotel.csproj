@@ -237,6 +237,9 @@
     <EmbeddedResource Include="Generar Modificar Reserva\CreateBooking.resx">
       <DependentUpon>CreateBooking.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Generar Modificar Reserva\UpdateBooking.resx">
+      <DependentUpon>UpdateBooking.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
