@@ -139,11 +139,41 @@
     <Compile Include="ABM de Usuario\UpdateUser.Designer.cs">
       <DependentUpon>UpdateUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cancelar Reserva\DeleteBooking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cancelar Reserva\DeleteBooking.Designer.cs">
+      <DependentUpon>DeleteBooking.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\CreateBooking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\CreateBooking.Designer.cs">
+      <DependentUpon>CreateBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\UpdateBooking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\UpdateBooking.Designer.cs">
+      <DependentUpon>UpdateBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listado Estadistico\Statistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listado Estadistico\Statistics.Designer.cs">
+      <DependentUpon>Statistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -168,20 +198,24 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Registrar Consumible\CreateExtra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrar Consumible\CreateExtra.Designer.cs">
+      <DependentUpon>CreateExtra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registrar Estadia\RegisterStay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrar Estadia\RegisterStay.Designer.cs">
+      <DependentUpon>RegisterStay.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HotelModel\HotelModel.csproj">
       <Project>{CEEA0801-31CA-435C-A548-BBDB10733F51}</Project>
       <Name>HotelModel</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Cancelar Reserva\" />
-    <Folder Include="Generar Modificar Reserva\" />
-    <Folder Include="Listado Estadistico\" />
-    <Folder Include="Login\" />
-    <Folder Include="Registrar Consumible\" />
-    <Folder Include="Registrar Estadia\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
