@@ -150,5 +150,19 @@ namespace FrbaHotel.ABM_de_Cliente
 
         }
 
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            textBoxName.Clear();
+            textBoxLastname.Clear();
+            //comboBoxDocType.Dispose();
+            textBoxDocNumber.Clear();
+            textBoxEmail.Clear();
+            textBoxPhone.Clear();
+            textBoxBirthDate.Clear();
+            textBoxAddress.Clear();
+            textBoxNationality.Clear();
+
+        }
+
     }
 }
