@@ -29,26 +29,26 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.labelName = new System.Windows.Forms.Label();
-            this.labelLastname = new System.Windows.Forms.Label();
-            this.labelDocType = new System.Windows.Forms.Label();
-            this.labelDocNumber = new System.Windows.Forms.Label();
-            this.labelEmail = new System.Windows.Forms.Label();
-            this.labelPhone = new System.Windows.Forms.Label();
-            this.labelBirthDate = new System.Windows.Forms.Label();
-            this.labelAddress = new System.Windows.Forms.Label();
+            this.textBoxNationality = new System.Windows.Forms.TextBox();
+            this.textBoxAddress = new System.Windows.Forms.TextBox();
+            this.textBoxBirthDate = new System.Windows.Forms.TextBox();
+            this.textBoxPhone = new System.Windows.Forms.TextBox();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.comboBoxDocType = new System.Windows.Forms.ComboBox();
+            this.textBoxDocNumber = new System.Windows.Forms.TextBox();
+            this.textBoxLastname = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
             this.labelNationality = new System.Windows.Forms.Label();
+            this.labelAddress = new System.Windows.Forms.Label();
+            this.labelBirthDate = new System.Windows.Forms.Label();
+            this.labelPhone = new System.Windows.Forms.Label();
+            this.labelEmail = new System.Windows.Forms.Label();
+            this.labelDocNumber = new System.Windows.Forms.Label();
+            this.labelDocType = new System.Windows.Forms.Label();
+            this.labelLastname = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.textBoxName = new System.Windows.Forms.TextBox();
-            this.textBoxLastname = new System.Windows.Forms.TextBox();
-            this.textBoxDocNumber = new System.Windows.Forms.TextBox();
-            this.comboBoxDocType = new System.Windows.Forms.ComboBox();
-            this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.textBoxPhone = new System.Windows.Forms.TextBox();
-            this.textBoxBirthDate = new System.Windows.Forms.TextBox();
-            this.textBoxAddress = new System.Windows.Forms.TextBox();
-            this.textBoxNationality = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,68 +79,81 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Please enter the guest information";
             // 
-            // labelName
+            // textBoxNationality
             // 
-            this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(6, 30);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(35, 13);
-            this.labelName.TabIndex = 0;
-            this.labelName.Text = "Name";
+            this.textBoxNationality.Location = new System.Drawing.Point(158, 236);
+            this.textBoxNationality.Name = "textBoxNationality";
+            this.textBoxNationality.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNationality.TabIndex = 3;
             // 
-            // labelLastname
+            // textBoxAddress
             // 
-            this.labelLastname.AutoSize = true;
-            this.labelLastname.Location = new System.Drawing.Point(6, 56);
-            this.labelLastname.Name = "labelLastname";
-            this.labelLastname.Size = new System.Drawing.Size(53, 13);
-            this.labelLastname.TabIndex = 1;
-            this.labelLastname.Text = "Lastname";
+            this.textBoxAddress.Location = new System.Drawing.Point(158, 210);
+            this.textBoxAddress.Name = "textBoxAddress";
+            this.textBoxAddress.Size = new System.Drawing.Size(100, 20);
+            this.textBoxAddress.TabIndex = 16;
             // 
-            // labelDocType
+            // textBoxBirthDate
             // 
-            this.labelDocType.AutoSize = true;
-            this.labelDocType.Location = new System.Drawing.Point(6, 82);
-            this.labelDocType.Name = "labelDocType";
-            this.labelDocType.Size = new System.Drawing.Size(83, 13);
-            this.labelDocType.TabIndex = 2;
-            this.labelDocType.Text = "Document Type";
+            this.textBoxBirthDate.Location = new System.Drawing.Point(158, 184);
+            this.textBoxBirthDate.Name = "textBoxBirthDate";
+            this.textBoxBirthDate.Size = new System.Drawing.Size(100, 20);
+            this.textBoxBirthDate.TabIndex = 15;
             // 
-            // labelDocNumber
+            // textBoxPhone
             // 
-            this.labelDocNumber.AutoSize = true;
-            this.labelDocNumber.Location = new System.Drawing.Point(6, 109);
-            this.labelDocNumber.Name = "labelDocNumber";
-            this.labelDocNumber.Size = new System.Drawing.Size(96, 13);
-            this.labelDocNumber.TabIndex = 3;
-            this.labelDocNumber.Text = "Document Number";
+            this.textBoxPhone.Location = new System.Drawing.Point(158, 158);
+            this.textBoxPhone.Name = "textBoxPhone";
+            this.textBoxPhone.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPhone.TabIndex = 14;
+            this.textBoxPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPhone_KeyPress);
             // 
-            // labelEmail
+            // textBoxEmail
             // 
-            this.labelEmail.AutoSize = true;
-            this.labelEmail.Location = new System.Drawing.Point(6, 135);
-            this.labelEmail.Name = "labelEmail";
-            this.labelEmail.Size = new System.Drawing.Size(35, 13);
-            this.labelEmail.TabIndex = 4;
-            this.labelEmail.Text = "E-mail";
+            this.textBoxEmail.Location = new System.Drawing.Point(158, 132);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(100, 20);
+            this.textBoxEmail.TabIndex = 13;
             // 
-            // labelPhone
+            // comboBoxDocType
             // 
-            this.labelPhone.AutoSize = true;
-            this.labelPhone.Location = new System.Drawing.Point(6, 161);
-            this.labelPhone.Name = "labelPhone";
-            this.labelPhone.Size = new System.Drawing.Size(78, 13);
-            this.labelPhone.TabIndex = 5;
-            this.labelPhone.Text = "Phone Number";
+            this.comboBoxDocType.FormattingEnabled = true;
+            this.comboBoxDocType.Location = new System.Drawing.Point(158, 79);
+            this.comboBoxDocType.Name = "comboBoxDocType";
+            this.comboBoxDocType.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxDocType.TabIndex = 12;
+            this.comboBoxDocType.SelectedIndexChanged += new System.EventHandler(this.comboBoxDocType_SelectedIndexChanged);
             // 
-            // labelBirthDate
+            // textBoxDocNumber
             // 
-            this.labelBirthDate.AutoSize = true;
-            this.labelBirthDate.Location = new System.Drawing.Point(6, 187);
-            this.labelBirthDate.Name = "labelBirthDate";
-            this.labelBirthDate.Size = new System.Drawing.Size(54, 13);
-            this.labelBirthDate.TabIndex = 6;
-            this.labelBirthDate.Text = "Birth Date";
+            this.textBoxDocNumber.Location = new System.Drawing.Point(158, 106);
+            this.textBoxDocNumber.Name = "textBoxDocNumber";
+            this.textBoxDocNumber.Size = new System.Drawing.Size(100, 20);
+            this.textBoxDocNumber.TabIndex = 11;
+            this.textBoxDocNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDocNumber_KeyPress);
+            // 
+            // textBoxLastname
+            // 
+            this.textBoxLastname.Location = new System.Drawing.Point(158, 53);
+            this.textBoxLastname.Name = "textBoxLastname";
+            this.textBoxLastname.Size = new System.Drawing.Size(100, 20);
+            this.textBoxLastname.TabIndex = 10;
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(158, 27);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxName.TabIndex = 9;
+            // 
+            // labelNationality
+            // 
+            this.labelNationality.AutoSize = true;
+            this.labelNationality.Location = new System.Drawing.Point(6, 243);
+            this.labelNationality.Name = "labelNationality";
+            this.labelNationality.Size = new System.Drawing.Size(56, 13);
+            this.labelNationality.TabIndex = 8;
+            this.labelNationality.Text = "Nationality";
             // 
             // labelAddress
             // 
@@ -151,14 +164,68 @@
             this.labelAddress.TabIndex = 7;
             this.labelAddress.Text = "Address";
             // 
-            // labelNationality
+            // labelBirthDate
             // 
-            this.labelNationality.AutoSize = true;
-            this.labelNationality.Location = new System.Drawing.Point(6, 243);
-            this.labelNationality.Name = "labelNationality";
-            this.labelNationality.Size = new System.Drawing.Size(56, 13);
-            this.labelNationality.TabIndex = 8;
-            this.labelNationality.Text = "Nationality";
+            this.labelBirthDate.AutoSize = true;
+            this.labelBirthDate.Location = new System.Drawing.Point(6, 187);
+            this.labelBirthDate.Name = "labelBirthDate";
+            this.labelBirthDate.Size = new System.Drawing.Size(54, 13);
+            this.labelBirthDate.TabIndex = 6;
+            this.labelBirthDate.Text = "Birth Date";
+            // 
+            // labelPhone
+            // 
+            this.labelPhone.AutoSize = true;
+            this.labelPhone.Location = new System.Drawing.Point(6, 161);
+            this.labelPhone.Name = "labelPhone";
+            this.labelPhone.Size = new System.Drawing.Size(78, 13);
+            this.labelPhone.TabIndex = 5;
+            this.labelPhone.Text = "Phone Number";
+            // 
+            // labelEmail
+            // 
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.Location = new System.Drawing.Point(6, 135);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(35, 13);
+            this.labelEmail.TabIndex = 4;
+            this.labelEmail.Text = "E-mail";
+            // 
+            // labelDocNumber
+            // 
+            this.labelDocNumber.AutoSize = true;
+            this.labelDocNumber.Location = new System.Drawing.Point(6, 109);
+            this.labelDocNumber.Name = "labelDocNumber";
+            this.labelDocNumber.Size = new System.Drawing.Size(96, 13);
+            this.labelDocNumber.TabIndex = 3;
+            this.labelDocNumber.Text = "Document Number";
+            // 
+            // labelDocType
+            // 
+            this.labelDocType.AutoSize = true;
+            this.labelDocType.Location = new System.Drawing.Point(6, 82);
+            this.labelDocType.Name = "labelDocType";
+            this.labelDocType.Size = new System.Drawing.Size(83, 13);
+            this.labelDocType.TabIndex = 2;
+            this.labelDocType.Text = "Document Type";
+            // 
+            // labelLastname
+            // 
+            this.labelLastname.AutoSize = true;
+            this.labelLastname.Location = new System.Drawing.Point(6, 56);
+            this.labelLastname.Name = "labelLastname";
+            this.labelLastname.Size = new System.Drawing.Size(53, 13);
+            this.labelLastname.TabIndex = 1;
+            this.labelLastname.Text = "Lastname";
+            // 
+            // labelName
+            // 
+            this.labelName.AutoSize = true;
+            this.labelName.Location = new System.Drawing.Point(6, 30);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(35, 13);
+            this.labelName.TabIndex = 0;
+            this.labelName.Text = "Name";
             // 
             // buttonClear
             // 
@@ -177,70 +244,7 @@
             this.buttonSave.TabIndex = 2;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
-            // 
-            // textBoxName
-            // 
-            this.textBoxName.Location = new System.Drawing.Point(158, 27);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(100, 20);
-            this.textBoxName.TabIndex = 9;
-            // 
-            // textBoxLastname
-            // 
-            this.textBoxLastname.Location = new System.Drawing.Point(158, 53);
-            this.textBoxLastname.Name = "textBoxLastname";
-            this.textBoxLastname.Size = new System.Drawing.Size(100, 20);
-            this.textBoxLastname.TabIndex = 10;
-            // 
-            // textBoxDocNumber
-            // 
-            this.textBoxDocNumber.Location = new System.Drawing.Point(158, 106);
-            this.textBoxDocNumber.Name = "textBoxDocNumber";
-            this.textBoxDocNumber.Size = new System.Drawing.Size(100, 20);
-            this.textBoxDocNumber.TabIndex = 11;
-            // 
-            // comboBoxDocType
-            // 
-            this.comboBoxDocType.FormattingEnabled = true;
-            this.comboBoxDocType.Location = new System.Drawing.Point(158, 79);
-            this.comboBoxDocType.Name = "comboBoxDocType";
-            this.comboBoxDocType.Size = new System.Drawing.Size(100, 21);
-            this.comboBoxDocType.TabIndex = 12;
-            // 
-            // textBoxEmail
-            // 
-            this.textBoxEmail.Location = new System.Drawing.Point(158, 132);
-            this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(100, 20);
-            this.textBoxEmail.TabIndex = 13;
-            // 
-            // textBoxPhone
-            // 
-            this.textBoxPhone.Location = new System.Drawing.Point(158, 158);
-            this.textBoxPhone.Name = "textBoxPhone";
-            this.textBoxPhone.Size = new System.Drawing.Size(100, 20);
-            this.textBoxPhone.TabIndex = 14;
-            // 
-            // textBoxBirthDate
-            // 
-            this.textBoxBirthDate.Location = new System.Drawing.Point(158, 184);
-            this.textBoxBirthDate.Name = "textBoxBirthDate";
-            this.textBoxBirthDate.Size = new System.Drawing.Size(100, 20);
-            this.textBoxBirthDate.TabIndex = 15;
-            // 
-            // textBoxAddress
-            // 
-            this.textBoxAddress.Location = new System.Drawing.Point(158, 210);
-            this.textBoxAddress.Name = "textBoxAddress";
-            this.textBoxAddress.Size = new System.Drawing.Size(100, 20);
-            this.textBoxAddress.TabIndex = 16;
-            // 
-            // textBoxNationality
-            // 
-            this.textBoxNationality.Location = new System.Drawing.Point(158, 236);
-            this.textBoxNationality.Name = "textBoxNationality";
-            this.textBoxNationality.Size = new System.Drawing.Size(100, 20);
-            this.textBoxNationality.TabIndex = 3;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // CreateGuest
             // 

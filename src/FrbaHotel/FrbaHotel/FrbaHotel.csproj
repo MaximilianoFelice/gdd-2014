@@ -61,6 +61,7 @@
     <Compile Include="ABM de Cliente\DeleteGuest.Designer.cs">
       <DependentUpon>DeleteGuest.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM de Cliente\tests\CreateGuestQuery_Test.cs" />
     <Compile Include="ABM de Cliente\UpdateGuest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Generar Modificar Reserva\UpdateBooking.resx">
       <DependentUpon>UpdateBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listado Estadistico\Statistics.resx">
+      <DependentUpon>Statistics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
