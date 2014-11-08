@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using HotelModel;
+using HotelModel.User_Permissions.ControlManager;
 
 namespace FrbaHotel
 {
@@ -39,6 +40,11 @@ namespace FrbaHotel
         private void cmdTests_Click(object sender, EventArgs e)
         {
             new HotelModel.DB_Conn_DSL.tests.StoredProcedureConnection_tests().ReturnValuesWorks();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
