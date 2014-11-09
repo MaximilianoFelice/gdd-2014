@@ -94,7 +94,6 @@ namespace FrbaHotel.ABM_de_Cliente
         else
         {
             insertable = true;
-        
         }
         
         }
@@ -116,6 +115,7 @@ namespace FrbaHotel.ABM_de_Cliente
            //open the DB connection
             HotelModel.ConnectionManager.OpenConnection();
 
+            SqlStoredProcedure insertPerson = new SqlStoredProcedure("insertPerson");
             //query insert into table
             SqlResults query = new SqlQuery("INSERT INTO BOBBY_TABLES.Persons (name, lastname, doc_type, doc_number, mail, phone, birthdate, addr, nationality) VALUES" 
                                             + textBoxName+ textBoxLastname+ comboBoxDocType + textBoxDocNumber+ 

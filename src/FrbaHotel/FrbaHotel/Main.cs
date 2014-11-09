@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaHotel.ABM_de_Habitacion;
 
 namespace FrbaHotel
 {
@@ -101,6 +102,12 @@ namespace FrbaHotel
             {
                 childForm.Close();
             }
+        }
+
+        private void testToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateRoom room = new CreateRoom();
+            room.Show();
         }
     }
 }

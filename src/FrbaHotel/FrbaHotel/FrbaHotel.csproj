@@ -80,6 +80,7 @@
     <Compile Include="ABM de Habitacion\DeleteRoom.Designer.cs">
       <DependentUpon>DeleteRoom.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM de Habitacion\tests\CreateRoomQuery_Test.cs" />
     <Compile Include="ABM de Habitacion\UpdateRoom.cs">
       <SubType>Form</SubType>
     </Compile>
