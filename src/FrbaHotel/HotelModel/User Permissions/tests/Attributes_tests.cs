@@ -33,7 +33,7 @@ namespace HotelModel.User_Permissions.tests
             List<Control> controls = PermissionManager.ManagedObjects;
 
             Assert.IsTrue(controls.Contains(BaseForm.Controls["handledButton1"]));
-            Assert.IsFalse(controls.Contains(BaseForm.Controls["Button1"]));
+            Assert.IsFalse(controls.Contains(BaseForm.Controls["button1"]));
         }
     }
 

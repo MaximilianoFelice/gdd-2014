@@ -75,12 +75,11 @@ namespace HotelModel.User_Permissions
 
         private static void LoadHandledControls(Control ParentControl, IEnumerable<System.Type> CurrentTypes)
         {
-            _ManagedObjects.Add(ParentControl);
+            if (CurrentTypes.Contains(ParentControl.GetType())) _ManagedObjects.Add(ParentControl);
 
             List<Control> ParentControls = new List<Control>();
 
-            foreach (Control child in ParentControl.Controls)
-                if (CurrentTypes.Contains(child.GetType())) LoadHandledControls(child, CurrentTypes);
+            foreach (Control child in ParentControl.Controls) LoadHandledControls(child, CurrentTypes);
 
         }
 
