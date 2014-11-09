@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace HotelModel.User_Permissions.ControlManager
 {
-    override partial class Control{
+     partial class Control{
 
         private bool isNum = true;
 
