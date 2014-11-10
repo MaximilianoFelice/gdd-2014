@@ -43,10 +43,13 @@ namespace FrbaHotel.ABM_de_Rol
             this.validateInput();
             if (insertable) {
                 RoleHandler newRole = new RoleHandler();
-                Boolean result = newRole.insertRole(roleName, features);
+                Boolean result = newRole.insertRole(roleName);
                 if(result){
                     MessageBox.Show("Role Inserted correctly.Assigning feaures");
                     FeatureHandler fh = new FeatureHandler();
+                    foreach(String feat in features){
+                        featureOk = FeatureHandler.assignFeature(roleName, feat);
+                    }
 
                 }else{
                     MessageBox.Show("Error while inserting role.");
