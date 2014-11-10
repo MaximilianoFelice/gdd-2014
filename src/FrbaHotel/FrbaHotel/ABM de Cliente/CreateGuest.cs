@@ -81,7 +81,7 @@ namespace FrbaHotel.ABM_de_Cliente
 
             //validates mandatory field name
             name = textBoxName.Text;
-            if (!String.IsNullOrEmpty(name))
+            if (String.IsNullOrEmpty(name))
             {
                 MessageBox.Show("Please enter the name. Mandatory Field");
             }
@@ -89,7 +89,7 @@ namespace FrbaHotel.ABM_de_Cliente
 
             //validates mandatory field lastname
             lastname = textBoxLastname.Text;
-            if (!String.IsNullOrEmpty(lastname))
+            if (String.IsNullOrEmpty(lastname))
             {
                 insertable = false;
                 MessageBox.Show("Please enter the lastname. Mandatory Field");
@@ -98,7 +98,7 @@ namespace FrbaHotel.ABM_de_Cliente
 
             //validates mandatory field doctype
             docType = comboBoxDocType.Text;
-            if (!String.IsNullOrEmpty(docType))
+            if (String.IsNullOrEmpty(docType))
             {
                 insertable = false;
                 MessageBox.Show("Please enter the document type. Mandatory Field");
