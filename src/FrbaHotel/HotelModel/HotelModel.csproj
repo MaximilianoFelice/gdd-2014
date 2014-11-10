@@ -63,6 +63,7 @@
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="ConnectionManager.cs" />
     <Compile Include="Home\GuestHandler.cs" />
+    <Compile Include="Home\RegimenHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
