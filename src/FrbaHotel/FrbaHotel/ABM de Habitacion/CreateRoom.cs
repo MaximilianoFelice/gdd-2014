@@ -134,29 +134,34 @@ namespace FrbaHotel.ABM_de_Habitacion
 
         private void CreateRoom_Load(object sender, EventArgs e)
         {
-            DataTable hotels = getHotels();
-            comboBoxHotel.DataSource = hotels.Columns;
+            DataTable dat = new DataTable();
+            string sql = null;
+            sql = "SELECT name,id_hotel FROM [BOBBY_TABLES].Hotels";
+            HotelModel.ConnectionManager.OpenConnection();
+            SqlQuery query = new SqlQuery(sql).AsDataTable<SqlQuery>();
+            SqlResults res = query.Execute();
+            Dictionary<string, object>.ValueCollection valueColl =
+            res.Values;
+                comboBoxHotel.DataSource = valueColl.First();
+                comboBoxHotel.ValueMember = "id_hotel";
+                comboBoxHotel.DisplayMember = "name";
+                HotelModel.ConnectionManager.CloseConnection();
         }
 
-        public DataTable getHotels()
+        public void bindHotels(ComboBox combo)
         {
-            DataTable dataTable = new DataTable();
+            DataSet dataSet = new DataSet();
 
             //open the DB connection
             HotelModel.ConnectionManager.OpenConnection();
 
             //SqlStoredProcedure insertPerson = new SqlStoredProcedure("insertPerson");
             //query insert into table
-            SqlCommand cmd = new SqlCommand("SELECT * FROM BOBBY_TABLES.Hotels");
-            //SqlResults query = new SqlQuery("SELECT * FROM BOBBY_TABLES.Hotels").Execute();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            // this will query your database and return the result to your datatable
-            da.Fill(dataTable);
+            combo.DataSource = dataSet.Tables["Hotels"];
+            combo.DisplayMember = "name";
 
             //close DB connection
             HotelModel.ConnectionManager.CloseConnection();
-
-            return dataTable;
         }
     }
 }
