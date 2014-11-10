@@ -62,8 +62,10 @@
     <Compile Include="DB Conn DSL\tests\StoredProcedureConnection_tests.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="ConnectionManager.cs" />
+    <Compile Include="Home\FeatureHandler.cs" />
     <Compile Include="Home\GuestHandler.cs" />
     <Compile Include="Home\RegimenHandler.cs" />
+    <Compile Include="Home\RoleHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
