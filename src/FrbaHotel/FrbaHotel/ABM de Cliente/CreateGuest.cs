@@ -27,7 +27,7 @@ namespace FrbaHotel.ABM_de_Cliente
         Int32 floor { get; set; }
         String dept { get; set; }
         String nationality { get; set; }
-        bool insertable = false;
+        bool insertable = true;
 
 
         public CreateGuest()
@@ -77,7 +77,7 @@ namespace FrbaHotel.ABM_de_Cliente
 
         public bool validateInput()
         {
-            var insertable = true;
+           
 
             //validates mandatory field name
             name = textBoxName.Text;
