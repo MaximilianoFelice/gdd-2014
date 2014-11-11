@@ -81,7 +81,7 @@
     </Compile>
     <Compile Include="User Permissions\ActiveUser.cs" />
     <Compile Include="User Permissions\Attributes.cs" />
-    <Compile Include="User Permissions\ControlManager\AccessPorperties.cs" />
+    <Compile Include="User Permissions\ControlExtensions.cs" />
     <Compile Include="User Permissions\Exceptions\Login_Exceptions.cs" />
     <Compile Include="User Permissions\HandledControls\HandledButton.cs">
       <SubType>Component</SubType>

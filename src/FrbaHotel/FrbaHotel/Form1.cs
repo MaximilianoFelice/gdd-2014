@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using HotelModel;
-using HotelModel.User_Permissions.ControlManager;
 
 namespace FrbaHotel
 {
