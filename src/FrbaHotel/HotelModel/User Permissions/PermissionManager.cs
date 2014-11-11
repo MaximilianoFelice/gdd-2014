@@ -19,6 +19,8 @@ namespace HotelModel.User_Permissions
 
         private static HashSet<Control> _ManagedAccessibleObjects = null;
 
+        #region Accessors
+
         public static HashSet<Control> ManagedVisibleObjects
         {
             get
@@ -45,6 +47,12 @@ namespace HotelModel.User_Permissions
                 else return _ManagedVisibleObjects.IUnionWith(_ManagedAccessibleObjects);
             }
         }
+
+    #endregion
+
+        public static void addVisibleControl(Control ctrl) { _ManagedVisibleObjects.Add(ctrl); }
+
+        public static void addAccessibleControl(Control ctrl) { _ManagedAccessibleObjects.Add(ctrl); }
 
         private static Control _BaseControl;
 
@@ -99,8 +107,8 @@ namespace HotelModel.User_Permissions
         /* Getting all Handled Controls recursively and then setting its handling */
         private static void LoadHandledControls(Control ParentControl, IEnumerable<System.Type> CurrentTypes)
         {
-            if (ParentControl.getPropertyValueOrDefault<Boolean>("HandlesVisibility") == true) _ManagedVisibleObjects.Add(ParentControl);
-            if (ParentControl.getPropertyValueOrDefault<Boolean>("HandlesAccess") == true) _ManagedAccessibleObjects.Add(ParentControl);
+            if (ParentControl.getPropertyValueOrDefault<Boolean>("HandlesVisibility") == true) addVisibleControl(ParentControl);
+            if (ParentControl.getPropertyValueOrDefault<Boolean>("HandlesAccess") == true) addAccessibleControl(ParentControl);
 
             foreach (Control child in ParentControl.Controls) LoadHandledControls(child, CurrentTypes);
 
