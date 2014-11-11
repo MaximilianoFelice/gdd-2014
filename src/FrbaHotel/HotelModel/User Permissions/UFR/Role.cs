@@ -31,6 +31,7 @@ namespace HotelModel.User_Permissions.UFR
             role_id = (int)RoleRow["id_role"];
             role_name = (String)RoleRow["name"];
             features = new List<Feature>();
+            _LoadedRoles.Add(role_name, this);
 
             getRoleFeatures();
 
