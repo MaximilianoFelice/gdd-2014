@@ -45,3 +45,16 @@ SELECT * FROM BOBBY_TABLES.PERSONS;
 
 
 DROP PROCEDURE [BOBBY_TABLES].validateUserPass
+
+
+/* Creating Procedure to get features by roles */
+GO
+CREATE PROCEDURE [BOBBY_TABLES].GetRoleFeatures(
+@Role INT
+)
+AS
+	SELECT * FROM [BOBBY_TABLES].FEATURES feat 
+			INNER JOIN [BOBBY_TABLES].FEATURES_ROLES fr ON (feat.id_feature = fr.id_feature)
+			INNER JOIN [BOBBY_TABLES].ROLES roles ON (roles.id_role = fr.id_role)
+	WHERE roles.id_role = @Role;
+GO

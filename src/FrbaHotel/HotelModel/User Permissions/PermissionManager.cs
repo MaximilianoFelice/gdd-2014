@@ -9,19 +9,40 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
 using System.Reflection;
+using ExtensionMethods;
 
 namespace HotelModel.User_Permissions
 {
     public static class PermissionManager
     {
-        private static List<Control> _ManagedObjects = null;
+        private static HashSet<Control> _ManagedVisibleObjects = null;
 
-        public static List<Control> ManagedObjects
+        private static HashSet<Control> _ManagedAccessibleObjects = null;
+
+        public static HashSet<Control> ManagedVisibleObjects
         {
             get
             {
-                if (_ManagedObjects != null) return getManagedObjects();
-                else return _ManagedObjects;
+                if (_ManagedVisibleObjects == null || _ManagedAccessibleObjects == null) return getManagedObjects();
+                else return _ManagedVisibleObjects;
+            }
+        }
+
+        public static HashSet<Control> ManagedAccessibleObjects
+        {
+            get
+            {
+                if (_ManagedVisibleObjects == null || _ManagedAccessibleObjects == null) return getManagedObjects();
+                else return _ManagedAccessibleObjects;
+            }
+        }
+
+        public static HashSet<Control> ManagedObjects
+        {
+            get
+            {
+                if (_ManagedVisibleObjects == null || _ManagedAccessibleObjects == null) return getManagedObjects();
+                else return _ManagedVisibleObjects.IUnionWith(_ManagedAccessibleObjects);
             }
         }
 
@@ -60,9 +81,11 @@ namespace HotelModel.User_Permissions
             getManagedObjects();
         }
 
-        private static List<Control> getManagedObjects()
+        private static HashSet<Control> getManagedObjects()
         {
-            _ManagedObjects = new List<Control>();
+            _ManagedVisibleObjects = new HashSet<Control>();
+
+            _ManagedAccessibleObjects = new HashSet<Control>();
 
             IEnumerable<System.Type> CurrentTypes = from c in Assembly.GetExecutingAssembly().GetTypes()
                                                       where c.IsClass && c.Namespace == typeof(PermissionManager).Namespace + ".HandledControls"
@@ -70,14 +93,14 @@ namespace HotelModel.User_Permissions
 
             LoadHandledControls(BaseControl, CurrentTypes);
 
-            return _ManagedObjects;
+            return _ManagedVisibleObjects;
         }
 
+        /* Getting all Handled Controls recursively and then setting its handling */
         private static void LoadHandledControls(Control ParentControl, IEnumerable<System.Type> CurrentTypes)
         {
-            if (CurrentTypes.Contains(ParentControl.GetType())) _ManagedObjects.Add(ParentControl);
-
-            List<Control> ParentControls = new List<Control>();
+            if (ParentControl.getPropertyValueOrDefault<Boolean>("HandlesVisibility") == true) _ManagedVisibleObjects.Add(ParentControl);
+            if (ParentControl.getPropertyValueOrDefault<Boolean>("HandlesAccess") == true) _ManagedAccessibleObjects.Add(ParentControl);
 
             foreach (Control child in ParentControl.Controls) LoadHandledControls(child, CurrentTypes);
 
@@ -85,5 +108,15 @@ namespace HotelModel.User_Permissions
 
 
 
+    }
+
+    public static class ExtenionControl
+    {
+        public static T getPropertyValueOrDefault<T>(this Object obj, String prop)
+        {
+            var res = obj.GetType().GetProperty(prop);
+            if (res != null) return (T) res.GetValue(obj, null);
+            else return default(T);
+        }
     }
 }

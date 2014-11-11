@@ -30,6 +30,8 @@
         {
             this.handledButton1 = new HotelModel.User_Permissions.HandledControls.HandledButton();
             this.button1 = new System.Windows.Forms.Button();
+            this.onlyAccessButton = new HotelModel.User_Permissions.HandledControls.HandledButton();
+            this.onlyVisibleButton = new HotelModel.User_Permissions.HandledControls.HandledButton();
             this.SuspendLayout();
             // 
             // handledButton1
@@ -52,11 +54,35 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // onlyAccessButton
+            // 
+            this.onlyAccessButton.HandlesAccess = true;
+            this.onlyAccessButton.HandlesVisibility = false;
+            this.onlyAccessButton.Location = new System.Drawing.Point(239, 12);
+            this.onlyAccessButton.Name = "onlyAccessButton";
+            this.onlyAccessButton.Size = new System.Drawing.Size(104, 61);
+            this.onlyAccessButton.TabIndex = 2;
+            this.onlyAccessButton.Text = "handledButton2";
+            this.onlyAccessButton.UseVisualStyleBackColor = true;
+            // 
+            // onlyVisibleButton
+            // 
+            this.onlyVisibleButton.HandlesAccess = false;
+            this.onlyVisibleButton.HandlesVisibility = true;
+            this.onlyVisibleButton.Location = new System.Drawing.Point(267, 121);
+            this.onlyVisibleButton.Name = "onlyVisibleButton";
+            this.onlyVisibleButton.Size = new System.Drawing.Size(118, 58);
+            this.onlyVisibleButton.TabIndex = 3;
+            this.onlyVisibleButton.Text = "handledButton2";
+            this.onlyVisibleButton.UseVisualStyleBackColor = true;
+            // 
             // Attribute_tests_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(775, 489);
+            this.Controls.Add(this.onlyVisibleButton);
+            this.Controls.Add(this.onlyAccessButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.handledButton1);
             this.Name = "Attribute_tests_form";
@@ -70,5 +96,7 @@
 
         private HotelModel.User_Permissions.HandledControls.HandledButton handledButton1;
         private System.Windows.Forms.Button button1;
+        private HotelModel.User_Permissions.HandledControls.HandledButton onlyAccessButton;
+        private HotelModel.User_Permissions.HandledControls.HandledButton onlyVisibleButton;
     }
 }

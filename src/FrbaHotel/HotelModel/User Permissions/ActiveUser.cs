@@ -14,7 +14,7 @@ namespace HotelModel.User_Permissions
 {
     public static class ActiveUser
     {
-        private static String User;
+        public static String User;
 
         private static List<Role> User_Roles = new List<Role>();
 
@@ -24,7 +24,7 @@ namespace HotelModel.User_Permissions
 
             for (int i = 0; Roles.Tables[0].Rows.Count < i; i++)
             {
-                User_Roles.Add(new Role(Roles.Tables[0].Rows[i]));
+                User_Roles.Add( Role.getRoles[Roles.Tables[0].Rows[i].ToString()] );
             }
         }
 

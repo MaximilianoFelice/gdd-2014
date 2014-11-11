@@ -92,6 +92,7 @@
     <Compile Include="User Permissions\PermissionManager.cs" />
     <Compile Include="User Permissions\tests\Attributes_tests.cs">
     </Compile>
+    <Compile Include="User Permissions\tests\Features_test.cs" />
     <Compile Include="User Permissions\tests\Properties_tests.cs" />
     <Compile Include="User Permissions\tests\Object_Oclussion_tests.cs" />
     <Compile Include="User Permissions\tests\ResourceForms\Attribute_tests_form.cs">
@@ -100,7 +101,8 @@
     <Compile Include="User Permissions\tests\ResourceForms\Attribute_tests_form.Designer.cs">
       <DependentUpon>Attribute_tests_form.cs</DependentUpon>
     </Compile>
-    <Compile Include="User Permissions\UFR\Features.cs" />
+    <Compile Include="User Permissions\tests\Roles_test.cs" />
+    <Compile Include="User Permissions\UFR\Feature.cs" />
     <Compile Include="User Permissions\UFR\Role.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>

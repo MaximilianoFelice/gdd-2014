@@ -51,4 +51,17 @@ namespace ExtensionMethods
             return tuple;
         }
     }
+
+    public static class ImmutableCollection_Ext
+    {
+        public static HashSet<T> IUnionWith<T>(this HashSet<T> aHashSet, HashSet<T> anotherHashSet)
+        {
+            HashSet<T> newHashSet = new HashSet<T>(aHashSet);
+
+            newHashSet.UnionWith(anotherHashSet);
+
+            return newHashSet;
+
+        }
+    }
 }

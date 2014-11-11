@@ -30,10 +30,18 @@ namespace HotelModel.User_Permissions.tests
         [Test]
         public void GetHandledControls()
         { 
-            List<Control> controls = PermissionManager.ManagedObjects;
+            HashSet<Control> controls = PermissionManager.ManagedObjects;
+            HashSet<Control> visible = PermissionManager.ManagedVisibleObjects;
+            HashSet<Control> accessible = PermissionManager.ManagedAccessibleObjects;
 
             Assert.IsTrue(controls.Contains(BaseForm.Controls["handledButton1"]));
             Assert.IsFalse(controls.Contains(BaseForm.Controls["button1"]));
+            Assert.IsTrue(visible.Contains(BaseForm.Controls["handledButton1"]));
+            Assert.IsTrue(accessible.Contains(BaseForm.Controls["handledButton1"]));
+            Assert.IsTrue(visible.Contains(BaseForm.Controls["onlyVisibleButton"]));
+            Assert.IsFalse(accessible.Contains(BaseForm.Controls["onlyVisibleButton"]));
+            Assert.IsTrue(accessible.Contains(BaseForm.Controls["onlyAccessButton"]));
+            Assert.IsFalse(visible.Contains(BaseForm.Controls["onlyAccessButton"]));
         }
     }
 

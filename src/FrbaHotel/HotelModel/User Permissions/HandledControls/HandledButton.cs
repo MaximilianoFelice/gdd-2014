@@ -28,5 +28,6 @@ namespace HotelModel.User_Permissions.HandledControls
             get { return _HandlesAccess; }
             set { _HandlesAccess = value; }
         }
+
     }
 }
