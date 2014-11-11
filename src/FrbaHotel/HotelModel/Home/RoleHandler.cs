@@ -11,7 +11,7 @@ namespace HotelModel.Home
     {
         public Boolean insertRole(String roleName) {
 
-            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].insertRole")
+            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_INSERT_ROLE")
                                             .WithParam("@RoleName").As(SqlDbType.VarChar).Value(roleName)
                                             .WithParam("@RoleCreated").As(SqlDbType.Int).AsOutput()
                                             .Execute();

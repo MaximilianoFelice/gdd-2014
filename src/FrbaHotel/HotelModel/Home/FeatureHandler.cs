@@ -11,17 +11,17 @@ namespace HotelModel.Home
     
     public class FeatureHandler
     {
-        DataSet returnedValues;
         
-        public DataSet getFeatures() { 
+        
+        public DataTable getFeatures() { 
              SqlResults results = new SqlQuery("SELECT feature_key FROM BOBBY_TABLES.FEATURES").Execute();
-             returnedValues= (DataSet) results["ReturnedValues"];
-             return returnedValues;
+             return (DataTable) results["ReturnedValues"];
+            
              
         }
 
         public Boolean assignFeature(String roleName, String featureKey) {
-            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].insertRole")
+            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_INSERT_FEATURE_TO_ROLE")
                                            .WithParam("@RoleName").As(SqlDbType.VarChar).Value(roleName)
                                            .WithParam("@FeatureKey").As(SqlDbType.VarChar).Value(featureKey)
                                            .WithParam("@FeatureAssigned").As(SqlDbType.Int).AsOutput()

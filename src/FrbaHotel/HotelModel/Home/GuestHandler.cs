@@ -16,7 +16,7 @@ namespace HotelModel.Home
         {
 
 
-            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].PersonExists")
+            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_PERSON_EXISTS")
                                         .WithParam("@Name").As(SqlDbType.VarChar).Value(name)
                                         .WithParam("@Lastname").As(SqlDbType.VarChar).Value(lastname)
                                         .WithParam("@DocType").As(SqlDbType.VarChar).Value(docType)
@@ -34,7 +34,7 @@ namespace HotelModel.Home
         {
 
 
-            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].insertPerson")
+            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_INSERT_PERSON")
                                         .WithParam("@Name").As(SqlDbType.VarChar).Value(name)
                                         .WithParam("@Lastname").As(SqlDbType.VarChar).Value(lastname)
                                         .WithParam("@DocType").As(SqlDbType.VarChar).Value(docType)
@@ -63,7 +63,7 @@ namespace HotelModel.Home
                                 String street, Int32 streetNum,Int32 floor, String dept, String nationality,Int32 state)
         {
 
-            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].UpdatePerson")
+            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_UPDATE_PERSON")
                                      .WithParam("@Name").As(SqlDbType.VarChar).Value(name)
                                      .WithParam("@Lastname").As(SqlDbType.VarChar).Value(lastname)
                                      .WithParam("@DocType").As(SqlDbType.VarChar).Value(docType)
@@ -88,7 +88,7 @@ namespace HotelModel.Home
                                 String street, Int32 streetNum, Int32 floor, String dept, String nationality, Int32 state) {
 
 
-                                    SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].filteredPerson")
+                                    SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_FILTER_PERSONS")
                                                              .WithParam("@Name").As(SqlDbType.VarChar).Value(name)
                                                              .WithParam("@Lastname").As(SqlDbType.VarChar).Value(lastname)
                                                              .WithParam("@DocType").As(SqlDbType.VarChar).Value(docType)
@@ -114,7 +114,7 @@ namespace HotelModel.Home
                                 String street, Int32 streetNum, Int32 floor, String dept, String nationality)
         {
 
-            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].updatePerson")
+            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_DELETE_PERSON")
                                      .WithParam("@Name").As(SqlDbType.VarChar).Value(name)
                                      .WithParam("@Lastname").As(SqlDbType.VarChar).Value(lastname)
                                      .WithParam("@DocType").As(SqlDbType.VarChar).Value(docType)

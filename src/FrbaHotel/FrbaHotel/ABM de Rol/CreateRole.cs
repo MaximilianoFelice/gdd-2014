@@ -74,10 +74,9 @@ namespace FrbaHotel.ABM_de_Rol
         private void CreateRole_Load(object sender, EventArgs e)
         {
             FeatureHandler role = new FeatureHandler();
-            DataSet returnedValues = FeatureHandler.getFeatures();
-            checkedListBoxFeatures.DataSource = returnedValues;
+           checkedListBoxFeatures.DataSource = FeatureHandler.getFeatures();
                
-            }
+        }
 
             
         }
