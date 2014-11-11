@@ -48,7 +48,7 @@ namespace HotelModel.User_Permissions.UFR
             feature_visible_controls.Add(ctrl);
         }
 
-        private static Dictionary<String, Feature> _LoadedFeatures = new Dictionary<String, Feature>();
+        private static Dictionary<String, Feature> _LoadedFeatures = null;
 
         public static List<Feature> getFeatures{
             get { return _LoadedFeatures.Values.ToList(); }
@@ -66,6 +66,7 @@ namespace HotelModel.User_Permissions.UFR
 
         public static void LoadFeatures()
         {
+            _LoadedFeatures = new Dictionary<String, Feature>();
 
             /* Loading Features from database */
             DataSet res = (DataSet) new SqlQuery("SELECT * FROM [BOBBY_TABLES].ACTIVE_FEATURES").AsDataSet().Execute()["ReturnedValues"];
@@ -74,6 +75,10 @@ namespace HotelModel.User_Permissions.UFR
             
             
         }
+
+        public Boolean HasAccess(Control ctrl) { return feature_accesible_controls.Contains(ctrl); }
+
+        public Boolean HasVisibility(Control ctrl) { return feature_visible_controls.Contains(ctrl); }
 
     }
 }

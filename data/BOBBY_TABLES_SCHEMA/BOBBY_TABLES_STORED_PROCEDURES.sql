@@ -49,6 +49,8 @@ DROP PROCEDURE [BOBBY_TABLES].validateUserPass
 
 /* Creating Procedure to get features by roles */
 GO
+DROP PROCEDURE [BOBBY_TABLES].GetRoleFeatures;
+GO
 CREATE PROCEDURE [BOBBY_TABLES].GetRoleFeatures(
 @Role INT
 )

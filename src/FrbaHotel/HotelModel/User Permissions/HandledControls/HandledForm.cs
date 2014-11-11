@@ -28,5 +28,23 @@ namespace HotelModel.User_Permissions.HandledControls
             get { return _HandlesAccess; }
             set { _HandlesAccess = value; }
         }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // HandledForm
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Name = "HandledForm";
+            this.Load += new System.EventHandler(this.HandledForm_Load);
+            this.ResumeLayout(false);
+
+        }
+
+        private void HandledForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

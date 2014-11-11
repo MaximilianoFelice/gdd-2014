@@ -10,6 +10,7 @@ using System.Data;
 using System.Windows.Forms;
 using System.Reflection;
 using ExtensionMethods;
+using HotelModel.User_Permissions.UFR;
 
 namespace HotelModel.User_Permissions
 {
@@ -50,9 +51,21 @@ namespace HotelModel.User_Permissions
 
     #endregion
 
-        public static void addVisibleControl(Control ctrl) { _ManagedVisibleObjects.Add(ctrl); }
+        public static void addVisibleControl(Control ctrl) { 
+            /* Sets default Not Visible permission */
+            ctrl.Visible = false;
+            /* Hook to change visibility event */
+            ctrl.VisibleChanged += new EventHandler(ControlEvents.VisibilityChanged);
+            _ManagedVisibleObjects.Add(ctrl); 
+        }
 
-        public static void addAccessibleControl(Control ctrl) { _ManagedAccessibleObjects.Add(ctrl); }
+        public static void addAccessibleControl(Control ctrl) { 
+            /* Sets default Not Accessible permission */
+            ctrl.Enabled = false;
+            /* TODO: Hook to change accessibility event */
+            ctrl.EnabledChanged += new EventHandler(ControlEvents.AccessibilityChanged);
+            _ManagedAccessibleObjects.Add(ctrl); 
+        }
 
         private static Control _BaseControl;
 
@@ -85,6 +98,9 @@ namespace HotelModel.User_Permissions
         public static void StartPoint(Control BaseForm)
         {
             _BaseControl = BaseForm;
+
+            Feature.LoadFeatures();
+            Role.LoadRoles();
 
             getManagedObjects();
         }

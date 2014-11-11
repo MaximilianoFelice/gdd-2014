@@ -2,18 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using NUnit.Framework;
-using HotelModel.User_Permissions.UFR;
 
 namespace HotelModel.User_Permissions.tests
 {
     [TestFixture]
-    public class Roles_test
+    public class Roles_tests
     {
-        [Test]
-        public void LoadRoles()
-        {
-            
+        [SetUp]
+        public void Init()
+        { 
+
         }
+        [Test]
+        public void HasRolesUP()
+        {
+
+        }
+
     }
 }

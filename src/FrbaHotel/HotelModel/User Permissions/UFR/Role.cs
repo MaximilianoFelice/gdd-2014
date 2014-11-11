@@ -14,7 +14,7 @@ namespace HotelModel.User_Permissions.UFR
 
     public class Role
     {
-        private static Dictionary<String, Role> _LoadedRoles = new Dictionary<String,Role>();
+        private static Dictionary<String, Role> _LoadedRoles = null;
 
         public static Dictionary<String, Role> getRoles{
             get { return _LoadedRoles; }
@@ -39,7 +39,7 @@ namespace HotelModel.User_Permissions.UFR
         private void getRoleFeatures()
         {
             /* QUERY HERE */
-            DataSet res = (DataSet) new SqlStoredProcedure("GetRoleFeatures").WithParam("@Role").Value(role_id).Execute()["ReturnedValues"];
+            DataSet res = (DataSet)new SqlStoredProcedure("[BOBBY_TABLES].GetRoleFeatures").WithParam("@Role").Value(role_id).Execute()["ReturnedValues"];
 
             /* Mapped to corresponding objects */
             features = res.Tables[0].AsEnumerable().Select(x => x["descr"]).ToList().Select(feat => Feature.getFeaturesDictionary[(String) feat]).ToList();
@@ -47,11 +47,16 @@ namespace HotelModel.User_Permissions.UFR
 
         public static void LoadRoles() 
         {
+            _LoadedRoles = new Dictionary<String, Role>();
             DataSet res = (DataSet)new SqlQuery("SELECT * FROM [BOBBY_TABLES].ACTIVE_ROLES;").AsDataSet().Execute()["ReturnedValues"];
 
             foreach (DataRow row in res.Tables[0].AsEnumerable()) new Role(row);
             
         }
+
+        public Boolean HasAccess(Control ctrl) { return features.Any(feat => feat.HasAccess(ctrl)); }
+
+        public Boolean HasVisibility(Control ctrl) { return features.Any(feat => feat.HasVisibility(ctrl)); }
 
     }
 }
