@@ -55,8 +55,8 @@ CREATE PROCEDURE [BOBBY_TABLES].GetRoleFeatures(
 @Role INT
 )
 AS
-	SELECT * FROM [BOBBY_TABLES].FEATURES feat 
+	SELECT * FROM [BOBBY_TABLES].ACTIVE_FEATURES feat 
 			INNER JOIN [BOBBY_TABLES].FEATURES_ROLES fr ON (feat.id_feature = fr.id_feature)
-			INNER JOIN [BOBBY_TABLES].ROLES roles ON (roles.id_role = fr.id_role)
+			INNER JOIN [BOBBY_TABLES].ACTIVE_ROLES roles ON (roles.id_role = fr.id_role)
 	WHERE roles.id_role = @Role;
 GO
