@@ -28,7 +28,22 @@ namespace HotelModel.Home
             return (bool)results["GuestExist"];
 
         }
+
+        public bool PersonExistance(String docType, Decimal docNumber)
+        {
+
+
+            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_PERSON_EXISTS")
+                                 .WithParam("@DocType").As(SqlDbType.VarChar).Value(docType)
+                                 .WithParam("@DocNumber").As(SqlDbType.Decimal).Value(docNumber)
+                                 .WithParam("@GuestExist").As(SqlDbType.Int).AsOutput()
+                                 .Execute();
+
+            return (bool)results["GuestExist"];
+
+        }
         
+
         public Int32 insertPerson(String name, String lastname, String docType, Decimal docNumber, String mail, Decimal phone, DateTime birthDate,
                                 String street, Int32 streetNum, Int32 floor, String dept, String nationality)
         {

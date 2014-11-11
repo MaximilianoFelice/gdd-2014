@@ -13,7 +13,7 @@ namespace HotelModel.Home
     {
 
         public Boolean regimenExistance(Int32 regCode){
-             SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].regimenExists")
+             SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_REGIMEN_EXISTS")
                                     .WithParam("@IdRegimen").As(SqlDbType.Int).Value(regCode)
                                     .WithParam("@RESULT").As(SqlDbType.Bit).AsOutput()
                                     .Execute();
@@ -23,7 +23,7 @@ namespace HotelModel.Home
         }
 
         public Boolean createRegimen(int regCode, String description, float price){
-            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].createRegimen")
+            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_CREATE_REGIMEN")
                                        .WithParam("@IdRegimen").As(SqlDbType.Int).Value(regCode)
                                        .WithParam("@Description").As(SqlDbType.VarChar).Value(description)
                                        .WithParam("@Price").As(SqlDbType.Float).Value(price)
@@ -31,6 +31,17 @@ namespace HotelModel.Home
                                        .Execute();
 
             return (Boolean)results["@RESULT"];
+        }
+
+
+        public DataTable getRegimensForHotel(String hotelName)
+        {
+            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_REGIMENS_FOR_HOTELS")
+                                .WithParam("@Hotel").As(SqlDbType.VarChar).Value(hotelName)
+                                .WithParam("@ReturnedValues").AsDataTable().AsOutput()
+                                .Execute();
+            return (DataTable)results["ReturnedValues"];
+
         }
 
     }
