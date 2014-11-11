@@ -56,10 +56,10 @@
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonSearchAll = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.DeleteCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewResults = new System.Windows.Forms.DataGridView();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResults)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -318,28 +318,31 @@
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
-            // dataGridView1
+            // dataGridViewResults
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.DeleteCheck});
-            this.dataGridView1.Location = new System.Drawing.Point(13, 216);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(857, 150);
-            this.dataGridView1.TabIndex = 4;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridViewResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewResults.Location = new System.Drawing.Point(13, 216);
+            this.dataGridViewResults.Name = "dataGridViewResults";
+            this.dataGridViewResults.Size = new System.Drawing.Size(857, 150);
+            this.dataGridViewResults.TabIndex = 4;
             // 
-            // DeleteCheck
+            // buttonDelete
             // 
-            this.DeleteCheck.HeaderText = "Select to Delete";
-            this.DeleteCheck.Name = "DeleteCheck";
+            this.buttonDelete.Location = new System.Drawing.Point(756, 374);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(114, 23);
+            this.buttonDelete.TabIndex = 5;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // DeleteGuest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(892, 378);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(892, 409);
+            this.Controls.Add(this.buttonDelete);
+            this.Controls.Add(this.dataGridViewResults);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.buttonSearchAll);
             this.Controls.Add(this.buttonClear);
@@ -348,7 +351,7 @@
             this.Text = "DeleteGuest";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResults)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -375,7 +378,7 @@
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Button buttonSearchAll;
         private System.Windows.Forms.Button buttonSearch;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewResults;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -384,6 +387,6 @@
         private System.Windows.Forms.TextBox textBoxFloor;
         private System.Windows.Forms.TextBox textBoxStreetNum;
         private System.Windows.Forms.TextBox textBoxStreet;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn DeleteCheck;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }

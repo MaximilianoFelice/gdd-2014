@@ -59,7 +59,7 @@ namespace FrbaHotel.ABM_de_Cliente
 
             DataTable ReturnedTable = (DataTable)results["ReturnedValues"];
 
-            dataGridView1.DataSource = ReturnedTable;
+            dataGridViewResults.DataSource = ReturnedTable;
 
 
         }
@@ -69,16 +69,24 @@ namespace FrbaHotel.ABM_de_Cliente
 
             this.validateInput();
             GuestHandler searchGuests = new GuestHandler();
-
-            dataGridView1.DataSource = searchGuests.filteredSearch(name, lastname, docType,
+            DataTable dt = searchGuests.filteredSearch(name, lastname, docType,
                                           docNumber, mail, phone, birthDate, street,
                                           streetNum, floor, dept, nationality, state);
+            dataGridViewResults.DataSource = dt; 
+            dataGridViewResults.AutoGenerateColumns = true;
+            DataGridViewCheckBoxColumn chk = new DataGridViewCheckBoxColumn
+            {
+                Name = "Delete",
+                HeaderText = "Select to Delete",
+                FalseValue = 0,
+                TrueValue = 1,
+                Visible = true
+            };
+            dataGridViewResults.Columns.Add(chk);
+            
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+     
 
 
 
@@ -167,5 +175,34 @@ namespace FrbaHotel.ABM_de_Cliente
             return true;
 
     }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+
+            //https://social.msdn.microsoft.com/Forums/en-US/4aca22b9-4453-40d9-a76d-a69ed4399783/how-to-remove-selected-checkbox-item-of-datagridview-as-well-as-database-item?forum=csharplanguage
+            List<int> rowsToDelete = new List<int>();
+ 
+
+            foreach (DataGridViewRow row in dataGridViewResults.Rows)
+                    {
+                        DataGridViewCheckBoxCell checkBox = dataGridViewResults[0, row.Index] as DataGridViewCheckBoxCell;
+                            
+                        if (Convert.ToBoolean(checkBox.Value) == true)//checking if tick is added
+                            {
+                                //deleting from DB:
+                                GuestHandler gh = new GuestHandler();
+                                int idDeleted = gh.deletePerson(name,lastname,docType,docNumber,mail,phone,birthDate,
+                                     street,streetNum,floor,dept,nationality);
+
+                               
+                                //deleting from DGV (now adding into a list, and deleting it afterwards):
+                                rowsToDelete.Add(row.Index);
+                            }
+                        }
+             //deleting rows from DGV:
+            foreach (int row in rowsToDelete)
+                dataGridViewResults.Rows.RemoveAt(row);
+         }
     }
+           
 }

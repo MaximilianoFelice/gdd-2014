@@ -99,7 +99,7 @@ namespace HotelModel.Home
         }
 
 
-        public DataSet filteredSearch(String name, String lastname, String docType, Decimal docNumber, String mail, Decimal phone, DateTime birthDate,
+        public DataTable filteredSearch(String name, String lastname, String docType, Decimal docNumber, String mail, Decimal phone, DateTime birthDate,
                                 String street, Int32 streetNum, Int32 floor, String dept, String nationality, Int32 state) {
 
 
@@ -116,11 +116,11 @@ namespace HotelModel.Home
                                                              .WithParam("@Floor").As(SqlDbType.Int).Value(floor)
                                                              .WithParam("@Dept").As(SqlDbType.VarChar).Value(dept)
                                                              .WithParam("@Nationality").As(SqlDbType.VarChar).Value(nationality)
-                                                             .WithParam("@ReturnedValues").AsDataSet().AsOutput()
+                                                             .WithParam("@ReturnedValues").AsDataTable().AsOutput()
                                                                                      .Execute();
 
 
-            return (DataSet) results["ReturnedValues"];
+            return (DataTable) results["ReturnedValues"];
         
         }
 
