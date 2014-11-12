@@ -16,7 +16,7 @@ namespace HotelModel.User_Permissions.UFR
 
         private int id_feature;
 
-        private String feature_desc = null;
+        public String feature_desc = null;
 
         private HashSet<Control> feature_visible_controls = null;
 
@@ -41,14 +41,14 @@ namespace HotelModel.User_Permissions.UFR
 
         public void CanAcess(Control ctrl)
         {
-            PermissionManager.ManagedObjects.Add(ctrl);
+            PermissionManager.ManagedAccessibleObjects.Add(ctrl);
             feature_accessible_controls.Add(ctrl);
             ActiveUser.RefreshPermissions();
         }
 
         public void CanView(Control ctrl)
         {
-            PermissionManager.ManagedObjects.Add(ctrl);
+            PermissionManager.ManagedVisibleObjects.Add(ctrl);
             feature_visible_controls.Add(ctrl);
             ActiveUser.RefreshPermissions();
         }

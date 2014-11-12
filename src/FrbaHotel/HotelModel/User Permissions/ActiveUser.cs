@@ -17,7 +17,7 @@ namespace HotelModel.User_Permissions
     {
         public static String User;
 
-        private static List<Role> User_Roles = new List<Role>();
+        public static List<Role> User_Roles = new List<Role>();
 
         private static Role _Active_Role = null;
 
@@ -60,9 +60,9 @@ namespace HotelModel.User_Permissions
 
             if (!User_Roles.Contains(aRole)) throw new UserHasNoRoleException("User " + User + " has not role " + RoleName);
 
-            aRole.Activate();
-
             _Active_Role = aRole;
+
+            aRole.Activate();
         }
 
         public static Boolean HasAccess(Control control) { return Active_Role.HasAccess(control); }

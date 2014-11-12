@@ -63,5 +63,14 @@ namespace ExtensionMethods
             return newHashSet;
 
         }
+
+        public static IEnumerable<F> IMap<T,F>(this IEnumerable<T> IEnum, Func<T, F> lambda)
+        {
+            List<F> newEnum = new List<F>();
+
+            foreach(T elem in IEnum) newEnum.Add(lambda.Invoke(elem));
+
+            return newEnum.AsEnumerable();
+        }
     }
 }

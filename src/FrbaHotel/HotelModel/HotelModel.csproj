@@ -102,6 +102,12 @@
     <Compile Include="User Permissions\tests\ResourceForms\Attribute_tests_form.Designer.cs">
       <DependentUpon>Attribute_tests_form.cs</DependentUpon>
     </Compile>
+    <Compile Include="User Permissions\tests\ResourceForms\Integration_Form_Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Permissions\tests\ResourceForms\Integration_Form_Test.Designer.cs">
+      <DependentUpon>Integration_Form_Test.cs</DependentUpon>
+    </Compile>
     <Compile Include="User Permissions\tests\Roles_tests.cs" />
     <Compile Include="User Permissions\UFR\Feature.cs" />
     <Compile Include="User Permissions\UFR\Role.cs" />
@@ -117,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User Permissions\tests\ResourceForms\Attribute_tests_form.resx">
       <DependentUpon>Attribute_tests_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Permissions\tests\ResourceForms\Integration_Form_Test.resx">
+      <DependentUpon>Integration_Form_Test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

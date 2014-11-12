@@ -38,9 +38,12 @@ namespace FrbaHotel
 
         private void cmdTests_Click(object sender, EventArgs e)
         {
-            HotelModel.User_Permissions.tests.Hooks_tests obj = new HotelModel.User_Permissions.tests.Hooks_tests();
+            /* HotelModel.User_Permissions.tests.Hooks_tests obj = new HotelModel.User_Permissions.tests.Hooks_tests();
             obj.Init();
-            obj.controlCanHandleVisibility();
+            obj.controlCanHandleVisibility(); */
+            HotelModel.User_Permissions.tests.ResourceForms.Integration_Form_Test obj = new HotelModel.User_Permissions.tests.ResourceForms.Integration_Form_Test();
+
+            obj.Show();
         }
 
         private void Form1_Load(object sender, EventArgs e)

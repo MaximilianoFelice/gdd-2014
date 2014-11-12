@@ -10,6 +10,16 @@ namespace HotelModel.User_Permissions
 {
     public static class ControlExtensions
     {
+        public static void HandleVisibility(this Control ctrl, String[] features)
+        {
+            ctrl.HandleVisibility();
+            foreach (String feat in features) ctrl.VisibleBy(feat);
+        }
+        public static void HandleAccess(this Control ctrl, String[] features)
+        {
+            ctrl.HandleAccess();
+            foreach (String feat in features) ctrl.AccesedBy(feat);
+        }
         public static void HandleVisibility(this Control ctrl)
         {
             PermissionManager.addVisibleControl(ctrl);
@@ -19,6 +29,9 @@ namespace HotelModel.User_Permissions
         {
             PermissionManager.addAccessibleControl(ctrl);
         }
+
+        public static void VisibleBy(this Control ctrl, String[] features) { foreach (String feat in features) ctrl.VisibleBy(feat); }
+        public static void AccesedBy(this Control ctrl, String[] features) { foreach (String feat in features) ctrl.AccesedBy(feat); }
 
         public static void VisibleBy(this Control ctrl, String feature)
         {
@@ -34,7 +47,7 @@ namespace HotelModel.User_Permissions
         {
             try
             {
-                Feature.getFeaturesDictionary[feature].CanView(ctrl);
+                Feature.getFeaturesDictionary[feature].CanAcess(ctrl);
             } catch{
                 throw new FeatureNotFoundException("Feature " + feature + " was not found");
             }
