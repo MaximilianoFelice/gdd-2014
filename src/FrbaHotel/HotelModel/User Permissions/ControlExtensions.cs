@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using HotelModel.User_Permissions.UFR;
+using HotelModel.User_Permissions.Exceptions;
 
 namespace HotelModel.User_Permissions
 {
@@ -21,12 +22,22 @@ namespace HotelModel.User_Permissions
 
         public static void VisibleBy(this Control ctrl, String feature)
         {
-            Feature.getFeaturesDictionary[feature].CanView(ctrl);
+            try
+            {
+                Feature.getFeaturesDictionary[feature].CanView(ctrl);
+            } catch{
+                throw new FeatureNotFoundException("Feature " + feature + " was not found");
+            }
         }
 
         public static void AccesedBy(this Control ctrl, String feature)
         {
-            Feature.getFeaturesDictionary[feature].CanView(ctrl);
+            try
+            {
+                Feature.getFeaturesDictionary[feature].CanView(ctrl);
+            } catch{
+                throw new FeatureNotFoundException("Feature " + feature + " was not found");
+            }
         }
 
         public static void VisibleBy(this Control ctrl, Feature feat)

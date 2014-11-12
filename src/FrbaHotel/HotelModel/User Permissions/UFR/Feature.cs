@@ -43,12 +43,14 @@ namespace HotelModel.User_Permissions.UFR
         {
             PermissionManager.ManagedObjects.Add(ctrl);
             feature_accessible_controls.Add(ctrl);
+            ActiveUser.RefreshPermissions();
         }
 
         public void CanView(Control ctrl)
         {
             PermissionManager.ManagedObjects.Add(ctrl);
             feature_visible_controls.Add(ctrl);
+            ActiveUser.RefreshPermissions();
         }
 
         private static Dictionary<String, Feature> _LoadedFeatures = null;

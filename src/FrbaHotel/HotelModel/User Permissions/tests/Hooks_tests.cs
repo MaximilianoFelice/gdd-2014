@@ -44,5 +44,16 @@ namespace HotelModel.User_Permissions.tests
             Assert.IsFalse(aGenericControl.Visible);
 
         }
+
+        [Test]
+        public void controlCanHandleVisibility()
+        {
+            aGenericControl.VisibleBy("Admin");
+
+            aGenericControl.Visible = true;
+
+            Assert.IsTrue(aGenericControl.Visible);
+
+        }
     }
 }

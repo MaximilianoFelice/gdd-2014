@@ -31,4 +31,13 @@ namespace HotelModel.User_Permissions.Exceptions
 
         public UserHasNoRoleException(String mess, Exception inner) : base(mess, inner) { }
     }
+
+    public class FeatureNotFoundException : Exception
+    {
+        public FeatureNotFoundException() { }
+
+        public FeatureNotFoundException(String mess) : base(mess) { }
+
+        public FeatureNotFoundException(String mess, Exception inner) : base(mess, inner) { }
+    }
 }

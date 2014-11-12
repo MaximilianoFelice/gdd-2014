@@ -40,7 +40,7 @@ namespace FrbaHotel
         {
             HotelModel.User_Permissions.tests.Hooks_tests obj = new HotelModel.User_Permissions.tests.Hooks_tests();
             obj.Init();
-            obj.HasFeaturesUP();
+            obj.controlCanHandleVisibility();
         }
 
         private void Form1_Load(object sender, EventArgs e)
