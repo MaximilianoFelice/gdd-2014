@@ -20,6 +20,9 @@ namespace HotelModel.User_Permissions.tests
         {
             BaseForm = new HotelModel.User_Permissions.tests.ResourceForms.Attribute_tests_form();
             PermissionManager.StartPoint(BaseForm);
+
+            ActiveUser.LoadUser("Test_User", new String[] {"admin"});
+
             ActiveUser.ActivateRole("admin");
 
             aGenericControl = new Control();

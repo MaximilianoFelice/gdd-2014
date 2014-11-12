@@ -39,9 +39,30 @@ namespace HotelModel.User_Permissions
             }
         }
 
+        public static void LoadUser(String Username, String[] Roles)
+        {
+            User = Username;
+
+            foreach (String r in Roles)
+            {
+                User_Roles.Add(Role.getRoles[r]);
+            }
+        }
+
         public static void ActivateRole(String RoleName)
         {
-            _Active_Role = Role.getRoles[RoleName];
+            Role aRole;
+            try{
+                aRole = Role.getRoles[RoleName];
+            } catch (KeyNotFoundException e){
+                throw new RoleNotFoundException("Role " + RoleName + " doesn't exist in current context");
+            }
+
+            if (!User_Roles.Contains(aRole)) throw new UserHasNoRoleException("User " + User + " has not role " + RoleName);
+
+            aRole.Activate();
+
+            _Active_Role = aRole;
         }
 
         public static Boolean HasAccess(Control control) { return Active_Role.HasAccess(control); }

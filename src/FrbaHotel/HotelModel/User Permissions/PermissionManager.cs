@@ -130,6 +130,11 @@ namespace HotelModel.User_Permissions
 
         }
 
+        /* Reset control permissions */
+        public static void ResetVisibilityPermissions() { foreach (Control c in _ManagedVisibleObjects) c.Visible = false; }
+        public static void ResetAccessPermissions() { foreach (Control c in _ManagedAccessibleObjects) c.Enabled = false; }
+
+        public static void ResetPermissions() { ResetVisibilityPermissions(); ResetAccessPermissions(); }
 
 
     }

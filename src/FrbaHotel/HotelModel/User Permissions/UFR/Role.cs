@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
+using HotelModel.User_Permissions.Exceptions;
 
 namespace HotelModel.User_Permissions.UFR
 {
@@ -59,5 +60,21 @@ namespace HotelModel.User_Permissions.UFR
 
         public Boolean HasVisibility(Control ctrl) { return features.Any(feat => feat.HasVisibility(ctrl)); }
 
+        /* A new role activates */
+        public void Activate()
+        {
+            /* Clean Permissions */
+            PermissionManager.ResetPermissions();
+
+            /* Sets visible objects */
+            HashSet<Control> VisibleControls = new HashSet<Control>();
+            foreach (Feature feat in features) VisibleControls.UnionWith(feat.Visible_Controls);
+            foreach (Control c in VisibleControls) c.Visible = true;
+
+            /* Sets accessible objects */
+            HashSet<Control> AccessibleControls = new HashSet<Control>();
+            foreach (Feature feat in features) AccessibleControls.UnionWith(feat.Accessible_Controls);
+            foreach (Control c in VisibleControls) c.Enabled = true;
+        }
     }
 }

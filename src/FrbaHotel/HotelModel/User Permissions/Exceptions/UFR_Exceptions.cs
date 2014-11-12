@@ -13,4 +13,22 @@ namespace HotelModel.User_Permissions.Exceptions
 
         public ActiveRoleNotSetException(String mess, Exception inner) : base(mess, inner) { }
     }
+
+    public class RoleNotFoundException : Exception
+    {
+        public RoleNotFoundException() { }
+
+        public RoleNotFoundException(String mess) : base(mess) { }
+
+        public RoleNotFoundException(String mess, Exception inner) : base(mess, inner) { }
+    }
+
+    public class UserHasNoRoleException : Exception
+    {
+        public UserHasNoRoleException() { }
+
+        public UserHasNoRoleException(String mess) : base(mess) { }
+
+        public UserHasNoRoleException(String mess, Exception inner) : base(mess, inner) { }
+    }
 }

@@ -18,9 +18,12 @@ namespace HotelModel.User_Permissions.UFR
 
         private String feature_desc = null;
 
-        private List<Control> feature_visible_controls = null;
+        private HashSet<Control> feature_visible_controls = null;
 
-        private List<Control> feature_accesible_controls = null;
+        private HashSet<Control> feature_accessible_controls = null;
+
+        public HashSet<Control> Visible_Controls { get { return feature_visible_controls; } }
+        public HashSet<Control> Accessible_Controls { get { return feature_accessible_controls; } }
 
         public Feature(DataRow Feature)
         {
@@ -28,9 +31,9 @@ namespace HotelModel.User_Permissions.UFR
 
             feature_desc = (String) Feature["descr"];
 
-            feature_accesible_controls = new List<Control>();
+            feature_accessible_controls = new HashSet<Control>();
 
-            feature_visible_controls = new List<Control>();
+            feature_visible_controls = new HashSet<Control>();
 
             _LoadedFeatures.Add(feature_desc, this);
 
@@ -39,7 +42,7 @@ namespace HotelModel.User_Permissions.UFR
         public void CanAcess(Control ctrl)
         {
             PermissionManager.ManagedObjects.Add(ctrl);
-            feature_accesible_controls.Add(ctrl);
+            feature_accessible_controls.Add(ctrl);
         }
 
         public void CanView(Control ctrl)
@@ -76,7 +79,7 @@ namespace HotelModel.User_Permissions.UFR
             
         }
 
-        public Boolean HasAccess(Control ctrl) { return feature_accesible_controls.Contains(ctrl); }
+        public Boolean HasAccess(Control ctrl) { return feature_accessible_controls.Contains(ctrl); }
 
         public Boolean HasVisibility(Control ctrl) { return feature_visible_controls.Contains(ctrl); }
 
