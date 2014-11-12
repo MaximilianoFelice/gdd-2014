@@ -15,7 +15,7 @@ namespace HotelModel.User_Permissions.tests
 
         Control aGenericControl;
 
-        [SetUp]
+        [TestFixtureSetUp]
         public void Init()
         {
             BaseForm = new HotelModel.User_Permissions.tests.ResourceForms.Attribute_tests_form();
@@ -24,7 +24,11 @@ namespace HotelModel.User_Permissions.tests
             ActiveUser.LoadUser("Test_User", new String[] {"admin"});
 
             ActiveUser.ActivateRole("admin");
+        }
 
+        [SetUp]
+        public void Before()
+        {
             aGenericControl = new Control();
         }
 
@@ -48,12 +52,20 @@ namespace HotelModel.User_Permissions.tests
         [Test]
         public void controlCanHandleVisibility()
         {
+            aGenericControl.HandleVisibility();
+
             aGenericControl.VisibleBy("Admin");
 
             aGenericControl.Visible = true;
 
             Assert.IsTrue(aGenericControl.Visible);
 
+        }
+
+        [TearDown]
+        public void DisposingControl()
+        {
+            aGenericControl.UnmanagePermissions();
         }
     }
 }

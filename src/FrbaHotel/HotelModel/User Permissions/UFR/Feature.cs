@@ -85,5 +85,11 @@ namespace HotelModel.User_Permissions.UFR
 
         public Boolean HasVisibility(Control ctrl) { return feature_visible_controls.Contains(ctrl); }
 
+        public void Unmanage(Control ctrl)
+        {
+            feature_visible_controls.Remove(ctrl);
+            feature_accessible_controls.Remove(ctrl);
+        }
+
     }
 }

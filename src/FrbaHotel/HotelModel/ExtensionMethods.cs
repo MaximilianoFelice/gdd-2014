@@ -72,5 +72,10 @@ namespace ExtensionMethods
 
             return newEnum.AsEnumerable();
         }
+
+        public static void IMap<T>(this IEnumerable<T> IEnum, Action<T> lambda)
+        {
+            foreach (T elem in IEnum) lambda.Invoke(elem);
+        }
     }
 }

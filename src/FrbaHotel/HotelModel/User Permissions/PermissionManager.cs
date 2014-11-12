@@ -137,6 +137,14 @@ namespace HotelModel.User_Permissions
         public static void ResetPermissions() { ResetVisibilityPermissions(); ResetAccessPermissions(); }
 
 
+        /* Unmanaging objects */
+        public static void Unmanage(Control ctrl)
+        {
+            _ManagedAccessibleObjects.Remove(ctrl);
+            _ManagedVisibleObjects.Remove(ctrl);
+            Feature.getFeatures.IMap(x => x.Unmanage(ctrl));
+        }
+
     }
 
     public static class ExtenionControl

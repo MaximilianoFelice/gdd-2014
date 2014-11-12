@@ -62,5 +62,10 @@ namespace HotelModel.User_Permissions
         {
             feat.CanView(ctrl);
         }
+
+        public static void UnmanagePermissions(this Control ctrl)
+        {
+            PermissionManager.Unmanage(ctrl);
+        }
     }
 }
