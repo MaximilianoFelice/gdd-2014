@@ -52,11 +52,11 @@ GO
 DROP PROCEDURE [BOBBY_TABLES].GetRoleFeatures;
 GO
 CREATE PROCEDURE [BOBBY_TABLES].GetRoleFeatures(
-@Role INT
+@Role INT = NULL, @RoleName VARCHAR(100) = NULL
 )
 AS
 	SELECT * FROM [BOBBY_TABLES].ACTIVE_FEATURES feat 
 			INNER JOIN [BOBBY_TABLES].FEATURES_ROLES fr ON (feat.id_feature = fr.id_feature)
 			INNER JOIN [BOBBY_TABLES].ACTIVE_ROLES roles ON (roles.id_role = fr.id_role)
-	WHERE roles.id_role = @Role;
+	WHERE (@Role IS NULL OR roles.id_role = @Role) AND (@RoleName IS NULL OR roles.name = @RoleName);
 GO

@@ -65,5 +65,12 @@ namespace HotelModel.DB_Conn_DSL
 
             return aCommand;
         }
+
+        public static T AsDataAdapter<T>(this T aCommand) where T : SqlCommandDSL
+        {
+            aCommand.OutputMode = new DataAdapterRetriever();
+
+            return aCommand;
+        }
     }
 }

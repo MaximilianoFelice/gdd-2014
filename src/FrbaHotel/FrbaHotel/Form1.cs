@@ -41,8 +41,8 @@ namespace FrbaHotel
             /* HotelModel.User_Permissions.tests.Hooks_tests obj = new HotelModel.User_Permissions.tests.Hooks_tests();
             obj.Init();
             obj.controlCanHandleVisibility(); */
-            HotelModel.User_Permissions.tests.ResourceForms.Integration_Form_Test obj = new HotelModel.User_Permissions.tests.ResourceForms.Integration_Form_Test();
-
+            //HotelModel.User_Permissions.tests.ResourceForms.Integration_Form_Test obj = new HotelModel.User_Permissions.tests.ResourceForms.Integration_Form_Test();
+            HotelModel.User_Permissions.UI.frmRoles obj = new HotelModel.User_Permissions.UI.frmRoles();
             obj.Show();
         }
 

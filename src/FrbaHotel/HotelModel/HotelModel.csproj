@@ -69,6 +69,7 @@
     <Compile Include="DB Conn DSL\SqlWithParams.cs" />
     <Compile Include="DB Conn DSL\SqlQuery.cs" />
     <Compile Include="DB Conn DSL\SqlFunction.cs" />
+    <Compile Include="DB Conn DSL\DataAdapterRetriever.cs" />
     <Compile Include="DB Conn DSL\tests\SqlQuery_tests.cs" />
     <Compile Include="DB Conn DSL\tests\StoredProcedureConnection_tests.cs" />
     <Compile Include="ExtensionMethods.cs" />
@@ -111,6 +112,12 @@
     <Compile Include="User Permissions\tests\Roles_tests.cs" />
     <Compile Include="User Permissions\UFR\Feature.cs" />
     <Compile Include="User Permissions\UFR\Role.cs" />
+    <Compile Include="User Permissions\UI\Roles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Permissions\UI\Roles.Designer.cs">
+      <DependentUpon>Roles.cs</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +134,12 @@
     <EmbeddedResource Include="User Permissions\tests\ResourceForms\Integration_Form_Test.resx">
       <DependentUpon>Integration_Form_Test.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="User Permissions\UI\Roles.resx">
+      <DependentUpon>Roles.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DB Conn DSL\Snippets\Adapter_DataSet_Accessor.snippet" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
