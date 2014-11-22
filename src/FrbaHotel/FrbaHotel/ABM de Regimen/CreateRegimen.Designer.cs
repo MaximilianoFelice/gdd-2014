@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labelPrice = new System.Windows.Forms.Label();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
@@ -35,22 +36,20 @@
             this.labelDescription = new System.Windows.Forms.Label();
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxRegCode = new System.Windows.Forms.TextBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBoxRegCode);
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.labelPrice);
             this.groupBox1.Controls.Add(this.textBoxPrice);
             this.groupBox1.Controls.Add(this.textBoxDescription);
             this.groupBox1.Controls.Add(this.labelDescription);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(237, 151);
+            this.groupBox1.Size = new System.Drawing.Size(256, 113);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Please enter the regimen information";
@@ -58,7 +57,7 @@
             // labelPrice
             // 
             this.labelPrice.AutoSize = true;
-            this.labelPrice.Location = new System.Drawing.Point(7, 114);
+            this.labelPrice.Location = new System.Drawing.Point(7, 68);
             this.labelPrice.Name = "labelPrice";
             this.labelPrice.Size = new System.Drawing.Size(76, 13);
             this.labelPrice.TabIndex = 3;
@@ -66,23 +65,25 @@
             // 
             // textBoxPrice
             // 
-            this.textBoxPrice.Location = new System.Drawing.Point(131, 111);
+            this.textBoxPrice.Location = new System.Drawing.Point(131, 65);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(100, 20);
             this.textBoxPrice.TabIndex = 2;
             this.textBoxPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPrice_KeyPress);
+            this.textBoxPrice.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPrice_Validating);
             // 
             // textBoxDescription
             // 
-            this.textBoxDescription.Location = new System.Drawing.Point(131, 70);
+            this.textBoxDescription.Location = new System.Drawing.Point(131, 26);
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.Size = new System.Drawing.Size(100, 20);
             this.textBoxDescription.TabIndex = 1;
+            this.textBoxDescription.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxDescription_Validating);
             // 
             // labelDescription
             // 
             this.labelDescription.AutoSize = true;
-            this.labelDescription.Location = new System.Drawing.Point(7, 73);
+            this.labelDescription.Location = new System.Drawing.Point(7, 26);
             this.labelDescription.Name = "labelDescription";
             this.labelDescription.Size = new System.Drawing.Size(105, 13);
             this.labelDescription.TabIndex = 0;
@@ -90,7 +91,7 @@
             // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(12, 177);
+            this.buttonClear.Location = new System.Drawing.Point(12, 132);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(75, 23);
             this.buttonClear.TabIndex = 1;
@@ -100,7 +101,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(169, 186);
+            this.buttonSave.Location = new System.Drawing.Point(188, 132);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 2;
@@ -108,27 +109,15 @@
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // label1
+            // errorProvider
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Regimen Code";
-            // 
-            // textBoxRegCode
-            // 
-            this.textBoxRegCode.Location = new System.Drawing.Point(131, 30);
-            this.textBoxRegCode.Name = "textBoxRegCode";
-            this.textBoxRegCode.Size = new System.Drawing.Size(100, 20);
-            this.textBoxRegCode.TabIndex = 5;
+            this.errorProvider.ContainerControl = this;
             // 
             // CreateRegimen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(262, 212);
+            this.ClientSize = new System.Drawing.Size(275, 173);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.groupBox1);
@@ -136,6 +125,7 @@
             this.Text = "Create Regimen";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -149,7 +139,6 @@
         private System.Windows.Forms.Label labelDescription;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.TextBox textBoxRegCode;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

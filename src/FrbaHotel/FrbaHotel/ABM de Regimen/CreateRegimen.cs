@@ -15,12 +15,87 @@ namespace FrbaHotel.ABM_de_Regimen
         Int32 idRegimen;
         String description;
         float price;
-        bool insertable =true;
+        ValidationsHandler vh;
+        RegimenHandler rh;
         
         public CreateRegimen()
         {
             InitializeComponent();
         }
+
+        
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+
+            textBoxDescription.Clear();
+            textBoxPrice.Clear();
+        }
+
+        public void buttonSave_Click(object sender, EventArgs e)
+        {
+            if(this.ValidateChildren()){
+                Boolean regimenExists = rh.regimenExistance(description, price);
+                if (!regimenExists)
+                {
+                    Boolean created =rh.createRegimen(description, price);
+                    if (created)
+                    {
+                        MessageBox.Show("Regimen Created");
+                    }
+                    else {
+                        MessageBox.Show("Unable to create regimen");
+                    }
+
+                }else {
+                    MessageBox.Show("Regimen already exists");
+                }
+            
+            }else{
+                MessageBox.Show("Invalid Input Data");
+            }
+            
+
+
+                
+            }
+
+
+
+        private void textBoxDescription_Validating(object sender, CancelEventArgs e)
+        {
+            if(vh.validateNullString(textBoxDescription.Text)){
+                errorProvider.SetError(textBoxDescription, "Please enter the regimen description.");
+                e.Cancel = true;
+            }else{
+                errorProvider.SetError(textBoxDescription, "");
+                description=textBoxDescription.Text;
+                e.Cancel=false;
+            }
+
+        
+        }
+
+        private void textBoxPrice_Validating(object sender, CancelEventArgs e)
+        {
+            if(vh.validateNullString(textBoxPrice.Text)){
+                errorProvider.SetError(textBoxPrice, "Please enter the regimen price.");
+                e.Cancel = true;
+            }else{
+                if(vh.validateFloat(textBoxPrice.Text)){
+                    errorProvider.SetError(textBoxPrice, "Invalid type");
+                    e.Cancel = true;
+                }else{
+                    errorProvider.SetError(textBoxPrice, "");
+                    price=float.Parse(textBoxPrice.Text);
+                    e.Cancel=false;
+                }
+            }
+        
+        }
+
+
+
 
         private void textBoxPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -34,77 +109,10 @@ namespace FrbaHotel.ABM_de_Regimen
             }
         }
 
-        private void buttonClear_Click(object sender, EventArgs e)
-        {
-
-            textBoxDescription.Clear();
-            textBoxPrice.Clear();
-        }
-
-        public void buttonSave_Click(object sender, EventArgs e)
-        {
-            this.validateInput();
-            if (insertable) {
-                RegimenHandler newRegimen = new RegimenHandler();
-                Boolean regimenExists = newRegimen.regimenExistance(idRegimen);
-                if (!regimenExists)
-                {
-                    Boolean created =newRegimen.createRegimen(idRegimen, description, price);
-                    if (created)
-                    {
-                        MessageBox.Show("Regimen Created");
-                    }
-                    else {
-                        MessageBox.Show("Unable to create regimen");
-                    }
-
-                }
-                else {
-                    MessageBox.Show("Regimen already exists");
-                };
-
-
-                
-            }
-        }
-
-
-        private void validateInput(){
-
-            try {
-                idRegimen = Int32.Parse(textBoxRegCode.Text);
-            }
-            catch(FormatException) {
-                MessageBox.Show("Regimen Code has an invalid type");    
-            }
-            
-            
-            if (String.IsNullOrEmpty(textBoxDescription.Text))
-            {
-                MessageBox.Show("Please enter a Regimen description");
-                insertable = false;
-            }
-            else {
-                description = textBoxDescription.Text;
-                
-            }
-
-            try 
-            {
-                price = float.Parse(textBoxPrice.Text);
-            }catch(FormatException) {
-                insertable = false;
-                MessageBox.Show("Invalid type at Price");
-                
-            }
-
-
-
-
-        
-        
-        }
-
        
-    }
+
+  }     
+        
 }
+
+        

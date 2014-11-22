@@ -44,11 +44,11 @@ namespace HotelModel.Home
         }
         
 
-        public Int32 insertPerson(String name, String lastname, String docType, Decimal docNumber, String mail, Decimal phone, DateTime birthDate,
-                                String street, Int32 streetNum, Int32 floor, String dept, String nationality)
+        public Boolean insertPerson(String name, String lastname, String docType, Decimal docNumber, String mail, Decimal phone, DateTime birthDate,
+                                String street, Int32 streetNum, Int32 floor, String dept, String nationality, Int32 state)
         {
 
-
+            //remember values -1 must not be inserted, designated to show void textboxs
             SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_INSERT_PERSON")
                                         .WithParam("@Name").As(SqlDbType.VarChar).Value(name)
                                         .WithParam("@Lastname").As(SqlDbType.VarChar).Value(lastname)
@@ -62,10 +62,11 @@ namespace HotelModel.Home
                                         .WithParam("@Floor").As(SqlDbType.Int).Value(floor)
                                         .WithParam("@Dept").As(SqlDbType.VarChar).Value(dept)
                                         .WithParam("@Nationality").As(SqlDbType.VarChar).Value(nationality)
-                                        .WithParam("@IdPersonInserted").As(SqlDbType.Int).AsOutput()
+                                        .WithParam("@State").As(SqlDbType.Int).Value(state)
+                                        .WithParam("@Results").As(SqlDbType.Bit).AsOutput()
                                         .Execute();
 
-            return (Int32)results["IdPersonInserted"];
+            return (Boolean)results["@Results"];
 
         }
 

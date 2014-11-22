@@ -104,24 +104,6 @@
     <Compile Include="ABM de Regimen\UpdateRegimen.Designer.cs">
       <DependentUpon>UpdateRegimen.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM de Rol\CreateRole.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ABM de Rol\CreateRole.Designer.cs">
-      <DependentUpon>CreateRole.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ABM de Rol\DeleteRole.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ABM de Rol\DeleteRole.Designer.cs">
-      <DependentUpon>DeleteRole.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ABM de Rol\UpdateRole.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ABM de Rol\UpdateRole.Designer.cs">
-      <DependentUpon>UpdateRole.cs</DependentUpon>
-    </Compile>
     <Compile Include="ABM de Usuario\CreateUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,15 +199,6 @@
     <EmbeddedResource Include="ABM de Regimen\UpdateRegimen.resx">
       <DependentUpon>UpdateRegimen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM de Rol\CreateRole.resx">
-      <DependentUpon>CreateRole.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ABM de Rol\DeleteRole.resx">
-      <DependentUpon>DeleteRole.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ABM de Rol\UpdateRole.resx">
-      <DependentUpon>UpdateRole.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ABM de Usuario\CreateUser.resx">
       <DependentUpon>CreateUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,6 +268,9 @@
       <Project>{CEEA0801-31CA-435C-A548-BBDB10733F51}</Project>
       <Name>HotelModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ABM de Rol\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
