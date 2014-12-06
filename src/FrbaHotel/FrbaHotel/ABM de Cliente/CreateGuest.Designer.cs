@@ -29,17 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxGuest = new System.Windows.Forms.GroupBox();
+            this.checkBoxEnabled = new System.Windows.Forms.CheckBox();
+            this.labelEnabled = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dtPickerBirhtDate = new System.Windows.Forms.DateTimePicker();
-            this.textBoxDept = new System.Windows.Forms.TextBox();
             this.textBoxStreet = new System.Windows.Forms.TextBox();
+            this.textBoxDept = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.textBoxFloor = new System.Windows.Forms.TextBox();
             this.textBoxStreetNum = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.dtPickerBirhtDate = new System.Windows.Forms.DateTimePicker();
             this.textBoxNationality = new System.Windows.Forms.TextBox();
             this.textBoxPhone = new System.Windows.Forms.TextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
@@ -58,40 +60,56 @@
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.labelEnabled = new System.Windows.Forms.Label();
-            this.checkBoxEnabled = new System.Windows.Forms.CheckBox();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxGuest.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // groupBoxGuest
             // 
-            this.groupBox1.Controls.Add(this.checkBoxEnabled);
-            this.groupBox1.Controls.Add(this.labelEnabled);
-            this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.dtPickerBirhtDate);
-            this.groupBox1.Controls.Add(this.textBoxNationality);
-            this.groupBox1.Controls.Add(this.textBoxPhone);
-            this.groupBox1.Controls.Add(this.textBoxEmail);
-            this.groupBox1.Controls.Add(this.comboBoxDocType);
-            this.groupBox1.Controls.Add(this.textBoxDocNumber);
-            this.groupBox1.Controls.Add(this.textBoxLastname);
-            this.groupBox1.Controls.Add(this.textBoxName);
-            this.groupBox1.Controls.Add(this.labelNationality);
-            this.groupBox1.Controls.Add(this.labelBirthDate);
-            this.groupBox1.Controls.Add(this.labelPhone);
-            this.groupBox1.Controls.Add(this.labelEmail);
-            this.groupBox1.Controls.Add(this.labelDocNumber);
-            this.groupBox1.Controls.Add(this.labelDocType);
-            this.groupBox1.Controls.Add(this.labelLastname);
-            this.groupBox1.Controls.Add(this.labelName);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(612, 248);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Please insert the new guest information";
+            this.groupBoxGuest.Controls.Add(this.checkBoxEnabled);
+            this.groupBoxGuest.Controls.Add(this.labelEnabled);
+            this.groupBoxGuest.Controls.Add(this.groupBox2);
+            this.groupBoxGuest.Controls.Add(this.dtPickerBirhtDate);
+            this.groupBoxGuest.Controls.Add(this.textBoxNationality);
+            this.groupBoxGuest.Controls.Add(this.textBoxPhone);
+            this.groupBoxGuest.Controls.Add(this.textBoxEmail);
+            this.groupBoxGuest.Controls.Add(this.comboBoxDocType);
+            this.groupBoxGuest.Controls.Add(this.textBoxDocNumber);
+            this.groupBoxGuest.Controls.Add(this.textBoxLastname);
+            this.groupBoxGuest.Controls.Add(this.textBoxName);
+            this.groupBoxGuest.Controls.Add(this.labelNationality);
+            this.groupBoxGuest.Controls.Add(this.labelBirthDate);
+            this.groupBoxGuest.Controls.Add(this.labelPhone);
+            this.groupBoxGuest.Controls.Add(this.labelEmail);
+            this.groupBoxGuest.Controls.Add(this.labelDocNumber);
+            this.groupBoxGuest.Controls.Add(this.labelDocType);
+            this.groupBoxGuest.Controls.Add(this.labelLastname);
+            this.groupBoxGuest.Controls.Add(this.labelName);
+            this.groupBoxGuest.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxGuest.Name = "groupBoxGuest";
+            this.groupBoxGuest.Size = new System.Drawing.Size(612, 248);
+            this.groupBoxGuest.TabIndex = 1;
+            this.groupBoxGuest.TabStop = false;
+            this.groupBoxGuest.Text = "Please insert the new guest information";
+            // 
+            // checkBoxEnabled
+            // 
+            this.checkBoxEnabled.AutoSize = true;
+            this.checkBoxEnabled.Location = new System.Drawing.Point(143, 185);
+            this.checkBoxEnabled.Name = "checkBoxEnabled";
+            this.checkBoxEnabled.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxEnabled.TabIndex = 45;
+            this.checkBoxEnabled.UseVisualStyleBackColor = true;
+            // 
+            // labelEnabled
+            // 
+            this.labelEnabled.AutoSize = true;
+            this.labelEnabled.Location = new System.Drawing.Point(21, 188);
+            this.labelEnabled.Name = "labelEnabled";
+            this.labelEnabled.Size = new System.Drawing.Size(46, 13);
+            this.labelEnabled.TabIndex = 44;
+            this.labelEnabled.Text = "Enabled";
             // 
             // groupBox2
             // 
@@ -119,12 +137,13 @@
             this.label1.TabIndex = 34;
             this.label1.Text = "Street";
             // 
-            // dtPickerBirhtDate
+            // textBoxStreet
             // 
-            this.dtPickerBirhtDate.Location = new System.Drawing.Point(143, 158);
-            this.dtPickerBirhtDate.Name = "dtPickerBirhtDate";
-            this.dtPickerBirhtDate.Size = new System.Drawing.Size(137, 20);
-            this.dtPickerBirhtDate.TabIndex = 42;
+            this.textBoxStreet.Location = new System.Drawing.Point(125, 24);
+            this.textBoxStreet.Name = "textBoxStreet";
+            this.textBoxStreet.Size = new System.Drawing.Size(137, 20);
+            this.textBoxStreet.TabIndex = 38;
+            this.textBoxStreet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStreet_KeyPress);
             // 
             // textBoxDept
             // 
@@ -133,13 +152,23 @@
             this.textBoxDept.Size = new System.Drawing.Size(137, 20);
             this.textBoxDept.TabIndex = 41;
             // 
-            // textBoxStreet
+            // label2
             // 
-            this.textBoxStreet.Location = new System.Drawing.Point(125, 24);
-            this.textBoxStreet.Name = "textBoxStreet";
-            this.textBoxStreet.Size = new System.Drawing.Size(137, 20);
-            this.textBoxStreet.TabIndex = 38;
-            this.textBoxStreet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStreet_KeyPress);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 53);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 13);
+            this.label2.TabIndex = 35;
+            this.label2.Text = "Street Number";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 105);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 13);
+            this.label4.TabIndex = 37;
+            this.label4.Text = "Department";
             // 
             // textBoxFloor
             // 
@@ -158,15 +187,6 @@
             this.textBoxStreetNum.TabIndex = 39;
             this.textBoxStreetNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStreetNum_KeyPress);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 105);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 13);
-            this.label4.TabIndex = 37;
-            this.label4.Text = "Department";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -176,14 +196,12 @@
             this.label3.TabIndex = 36;
             this.label3.Text = "Floor";
             // 
-            // label2
+            // dtPickerBirhtDate
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 53);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 13);
-            this.label2.TabIndex = 35;
-            this.label2.Text = "Street Number";
+            this.dtPickerBirhtDate.Location = new System.Drawing.Point(143, 158);
+            this.dtPickerBirhtDate.Name = "dtPickerBirhtDate";
+            this.dtPickerBirhtDate.Size = new System.Drawing.Size(137, 20);
+            this.dtPickerBirhtDate.TabIndex = 42;
             // 
             // textBoxNationality
             // 
@@ -199,6 +217,7 @@
             this.textBoxPhone.Name = "textBoxPhone";
             this.textBoxPhone.Size = new System.Drawing.Size(137, 20);
             this.textBoxPhone.TabIndex = 32;
+            this.textBoxPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPhone_KeyPress_1);
             // 
             // textBoxEmail
             // 
@@ -206,10 +225,16 @@
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(137, 20);
             this.textBoxEmail.TabIndex = 31;
+            this.textBoxEmail.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxEmail_Validating);
             // 
             // comboBoxDocType
             // 
             this.comboBoxDocType.FormattingEnabled = true;
+            this.comboBoxDocType.Items.AddRange(new object[] {
+            "ID - Identity Document",
+            "Passport",
+            "IC-Identity Card",
+            "Driving License"});
             this.comboBoxDocType.Location = new System.Drawing.Point(143, 80);
             this.comboBoxDocType.Name = "comboBoxDocType";
             this.comboBoxDocType.Size = new System.Drawing.Size(137, 21);
@@ -222,6 +247,7 @@
             this.textBoxDocNumber.Name = "textBoxDocNumber";
             this.textBoxDocNumber.Size = new System.Drawing.Size(137, 20);
             this.textBoxDocNumber.TabIndex = 29;
+            this.textBoxDocNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDocNumber_KeyPress_1);
             // 
             // textBoxLastname
             // 
@@ -229,6 +255,7 @@
             this.textBoxLastname.Name = "textBoxLastname";
             this.textBoxLastname.Size = new System.Drawing.Size(137, 20);
             this.textBoxLastname.TabIndex = 28;
+            this.textBoxLastname.Validated += new System.EventHandler(this.textBoxLastname_Validated);
             this.textBoxLastname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxLastname_KeyPress);
             // 
             // textBoxName
@@ -238,6 +265,7 @@
             this.textBoxName.Size = new System.Drawing.Size(137, 20);
             this.textBoxName.TabIndex = 27;
             this.textBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxName_KeyPress);
+            this.textBoxName.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxName_Validating);
             // 
             // labelNationality
             // 
@@ -334,24 +362,6 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // labelEnabled
-            // 
-            this.labelEnabled.AutoSize = true;
-            this.labelEnabled.Location = new System.Drawing.Point(21, 188);
-            this.labelEnabled.Name = "labelEnabled";
-            this.labelEnabled.Size = new System.Drawing.Size(46, 13);
-            this.labelEnabled.TabIndex = 44;
-            this.labelEnabled.Text = "Enabled";
-            // 
-            // checkBoxEnabled
-            // 
-            this.checkBoxEnabled.AutoSize = true;
-            this.checkBoxEnabled.Location = new System.Drawing.Point(143, 185);
-            this.checkBoxEnabled.Name = "checkBoxEnabled";
-            this.checkBoxEnabled.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxEnabled.TabIndex = 45;
-            this.checkBoxEnabled.UseVisualStyleBackColor = true;
-            // 
             // CreateGuest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -359,11 +369,11 @@
             this.ClientSize = new System.Drawing.Size(637, 294);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxGuest);
             this.Name = "CreateGuest";
             this.Text = "Create Guest";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxGuest.ResumeLayout(false);
+            this.groupBoxGuest.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
@@ -373,7 +383,7 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxGuest;
         private System.Windows.Forms.TextBox textBoxDept;
         private System.Windows.Forms.TextBox textBoxFloor;
         private System.Windows.Forms.TextBox textBoxStreetNum;

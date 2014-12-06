@@ -28,8 +28,8 @@ namespace FrbaHotel.ABM_de_Cliente
         String dept { get; set; }
         String nationality { get; set; }
         Int32 state { get; set; }
-        ValidationsHandler vh;
-        GuestHandler gh;
+        ValidationsHandler vh = new ValidationsHandler();
+        GuestHandler gh = new GuestHandler();
        
 
 
@@ -46,63 +46,57 @@ namespace FrbaHotel.ABM_de_Cliente
         {
             if (this.ValidateChildren())
             {
-                mail = textBoxEmail.Text;
-                street = textBoxStreet.Text;
-                dept = textBoxDept.Text;
-                nationality = textBoxNationality.Text;
+                this.setOtherVarCharParams();
                 this.assignState();
 
-
-                bool guestExists = gh.PersonExistance(name, lastname, docType,
-                                         docNumber, birthDate);
-                if (!guestExists)
+                if (this.validEmail())
                 {
-                    Boolean inserted = gh.insertPerson(name, lastname, docType,
-                                           docNumber, mail, phone, birthDate, street,
-                                           streetNum, floor, dept, nationality, state);
-
-                    if (inserted)
+                    if (!this.guestsExists())
                     {
+                        Int32 inserted = gh.insertPerson(name, lastname, docType,
+                                               docNumber, mail, phone, birthDate, street,
+                                               streetNum, floor, dept, nationality, state);
+
                         MessageBox.Show("Guest added");
                     }
-                    else
-                    {
-                        MessageBox.Show("Error while inserting");
-
+                    else { 
+                        MessageBox.Show("Guest already exists");
                     }
-
+                }else{
+                    MessageBox.Show("Mail already exists. Change it.");
                 }
 
-
-
-
-            }
-            else {
+            }else {
                 MessageBox.Show("Invalid Input Data");
             }
                 
                 
-                
-            }
+            }     
+            
 
 
         //clears all fields
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            textBoxName.Clear();
-            textBoxLastname.Clear();
-            comboBoxDocType.Text = "";
-            textBoxDocNumber.Clear();
-            textBoxEmail.Clear();
-            textBoxPhone.Clear();
-            //textBoxBirthDate.Clear();
-            textBoxStreet.Clear();
-            textBoxDept.Clear();
-            textBoxFloor.Clear();
-            textBoxStreetNum.Clear();
-            textBoxDept.Clear();
-            textBoxNationality.Clear();
-            
+            foreach (var c in Controls)
+            {
+
+                if (c is TextBox)
+                {
+                    ((TextBox)c).Clear();
+                }
+
+                else if (c is ComboBox)
+                {
+                    ((ComboBox)c).SelectedItem = null;
+                }
+
+                else if (c is CheckBox)
+                {
+                    ((CheckBox)c).Checked = false;
+                }
+            }
+            FormHandler.groupBoxCleaner(groupBoxGuest);
 
         }
 
@@ -117,53 +111,68 @@ namespace FrbaHotel.ABM_de_Cliente
         
         }
 
+        private void setOtherVarCharParams() {
+            street = textBoxStreet.Text;
+            dept = textBoxDept.Text;
+            nationality = textBoxNationality.Text;
+        }
+
+        private Boolean validEmail() {
+            return vh.validateEmailExistance(mail);
+        }
+
+        private Boolean guestsExists() {
+            return gh.PersonExistance(name, lastname, docType,docNumber, birthDate);
+        }
         private void textBoxName_Validating(object sender, CancelEventArgs e)
         {
-            ValidationsHandler vh = new ValidationsHandler();
-            if (vh.validateNullString(textBoxName.Text))
+            if (textBoxName.Text == "")
             {
-                errorProvider.SetError(textBoxName, "Please enter the name of the customer.");
-                e.Cancel = true;
+                errorProvider.SetError(textBoxName, "Please enter the guest name");
+                buttonSave.Enabled = false;
             }
             else
             {
                 errorProvider.SetError(textBoxName, "");
                 name = textBoxName.Text;
-                e.Cancel = false;
+                buttonSave.Enabled = true;
             }
-
         }
 
-        private void textBoxLastname_Validating(object sender, CancelEventArgs e)
+        private void textBoxLastname_Validated(object sender, EventArgs e)
         {
-            ValidationsHandler vh = new ValidationsHandler();
-            if (vh.validateNullString(textBoxLastname.Text))
-            {
-                errorProvider.SetError(textBoxLastname, "Please enter the lastname of the customer.");
-                e.Cancel = true;
+            if (textBoxLastname.Text=="") {
+                errorProvider.SetError(textBoxLastname, "Please enter the lastname");
+                buttonSave.Enabled = false;
             }
             else
             {
-                errorProvider.SetError(textBoxLastname, "");
-                lastname = textBoxLastname.Text;
-                e.Cancel = false;
+                errorProvider.SetError(textBoxName, "");
+                lastname=textBoxLastname.Text;
+                buttonSave.Enabled = true;
             }
 
+
         }
+        
+
+        
 
         private void comboBoxDocType_Validating(object sender, CancelEventArgs e)
         {
-            ValidationsHandler vh = new ValidationsHandler();
-            if (vh.validateNullString(comboBoxDocType.Text))
+            
+            if (comboBoxDocType.SelectedItem == null)
             {
-                errorProvider.SetError(textBoxLastname, "Please enter the document type of the customer.");
-                e.Cancel = true;
+                errorProvider.SetError(comboBoxDocType, "Please enter the document type of the customer.");
+                buttonSave.Enabled = false;
+              
             }
             else
             {
-                errorProvider.SetError(textBoxLastname, "");
+                errorProvider.SetError(comboBoxDocType, "");
+                buttonSave.Enabled = true;
                 docType = comboBoxDocType.Text;
-                e.Cancel = false;
+                
             }
 
         }
@@ -171,96 +180,86 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void textBoxDocNumber_Validating(object sender, CancelEventArgs e)
         {
-            ValidationsHandler vh = new ValidationsHandler();
-            if (vh.validateDecimal(textBoxDocNumber.Text))
-            {
-                errorProvider.SetError(textBoxDocNumber, "Invalid type");
-                e.Cancel = true;
+            if(textBoxDocNumber.Text ==""){
+                errorProvider.SetError(textBoxDocNumber, "Please enter the document number");
+                buttonSave.Enabled = false;
+              
             }
             else
             {
-                errorProvider.SetError(textBoxDocNumber, "");
-                 if(vh.validateNullString(textBoxPhone.Text))
+                try
                 {
-                    docNumber=-1;
-                }else{
                     docNumber = Decimal.Parse(textBoxDocNumber.Text);
+                    errorProvider.SetError(textBoxDocNumber, "");
+                    buttonSave.Enabled = true;
                 }
+                catch (FormatException)
+                {
+                    errorProvider.SetError(textBoxDocNumber, "Invalid type");
+                    buttonSave.Enabled = false;
+                } 
                 
-                e.Cancel = false;
             }
+            
         }
+          
+           
+        
 
         private void textBoxPhone_Validating(object sender, CancelEventArgs e)
         {
-            ValidationsHandler vh = new ValidationsHandler();
-            if (vh.validateDecimal(textBoxPhone.Text))
-            {
-                errorProvider.SetError(textBoxPhone, "Invalid type");
-                e.Cancel = true;
-
-            }
-            else
-            {
+            try {
+                phone = Decimal.Parse(textBoxPhone.Text);
                 errorProvider.SetError(textBoxPhone, "");
-                if(vh.validateNullString(textBoxPhone.Text))
-                {
-                    phone=-1;
-                }else{
-                    phone = Decimal.Parse(textBoxPhone.Text);
-                }
-                e.Cancel = false;
+                buttonSave.Enabled = true;
             }
+            catch(FormatException) {
+                errorProvider.SetError(textBoxPhone, "Invalid type");
+            }
+          
+        }
+
+        private void textBoxEmail_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(textBoxEmail.Text)) {
+                if (!(textBoxEmail.Text.Contains('.') || textBoxEmail.Text.Contains('@')) || textBoxEmail.Text.Contains(" ")) {
+                    errorProvider.SetError(textBoxEmail, "Mail has invalid type, has spaces or does not contain '.' or '@'");
+                    buttonSave.Enabled = false;
+                } else {
+                    errorProvider.SetError(textBoxEmail, "");
+                    buttonSave.Enabled = true;
+                }
+            }
+
         }
 
 
         private void textBoxStreetNum_Validating(object sender, CancelEventArgs e)
         {
-            ValidationsHandler vh = new ValidationsHandler();
-            if (vh.validateInt32(textBoxStreetNum.Text))
-            {
-                errorProvider.SetError(textBoxStreetNum, "Invalid type");
-                e.Cancel = true;
 
+            try {
+                streetNum = Int32.Parse(textBoxStreetNum.Text);
+                errorProvider.SetError(textBoxPhone, "");
+                buttonSave.Enabled = true;
             }
-            else
-            {
-                errorProvider.SetError(textBoxStreetNum, "");
-                if (vh.validateNullString(textBoxPhone.Text))
-                {
-                    streetNum = -1;
-                }
-                else
-                {
-                    streetNum = Int32.Parse(textBoxStreetNum.Text);
-                }
-                
-                e.Cancel = false;
-            }
+            catch (FormatException) {
+                errorProvider.SetError(textBoxPhone, "Invalid type");
+                buttonSave.Enabled = false;
+            } 
         }
 
         private void textBoxFloor_Validating(object sender, CancelEventArgs e)
         {
-            ValidationsHandler vh = new ValidationsHandler();
-            if (vh.validateInt32(textBoxFloor.Text))
-            {
-                errorProvider.SetError(textBoxFloor, "Invalid type");
-                e.Cancel = true;
-
-            }
-            else
-            {
+            try {
+                floor = Int32.Parse(textBoxFloor.Text);
                 errorProvider.SetError(textBoxFloor, "");
-                if (vh.validateNullString(textBoxPhone.Text))
-                {
-                   floor = -1;
-                }
-                else
-                {
-                    floor = Int32.Parse(textBoxFloor.Text);
-                } 
-                e.Cancel = false;
+                buttonSave.Enabled = true;
             }
+            catch (FormatException) {
+                errorProvider.SetError(textBoxFloor, "Invalid type");
+                buttonSave.Enabled = false;
+            }
+            
         }
 
  
@@ -275,20 +274,6 @@ namespace FrbaHotel.ABM_de_Cliente
                {
                    e.Handled = e.KeyChar != (char)Keys.Back;
                }
-           }
-
-           //allows only numbers and - on phone numbers
-           private void textBoxPhone_KeyPress(object sender, KeyPressEventArgs e)
-           {
-               if (char.IsNumber(e.KeyChar) || e.KeyChar == '-' || e.KeyChar == '(' || e.KeyChar == ')')
-               {
-
-               }
-               else
-               {
-                   e.Handled = e.KeyChar != (char)Keys.Back;
-               }
-
            }
         
         private void textBoxStreet_KeyPress(object sender, KeyPressEventArgs e)
@@ -372,6 +357,42 @@ namespace FrbaHotel.ABM_de_Cliente
 
            }
 
+           private void textBoxDocNumber_KeyPress_1(object sender, KeyPressEventArgs e)
+           {
+               if (char.IsNumber(e.KeyChar) || e.KeyChar == '.')
+               {
+
+               }
+               else
+               {
+                   e.Handled = e.KeyChar != (char)Keys.Back;
+               }
+           }
+
+           private void textBoxPhone_KeyPress_1(object sender, KeyPressEventArgs e)
+           {
+               if (char.IsNumber(e.KeyChar) || e.KeyChar == '-' || e.KeyChar == '(' || e.KeyChar == ')')
+               {
+
+               }
+               else
+               {
+                   e.Handled = e.KeyChar != (char)Keys.Back;
+               }
+
+           }
+
+          
+
+          
+
+          
+
+
+         
+         
+
+          
           
 
            

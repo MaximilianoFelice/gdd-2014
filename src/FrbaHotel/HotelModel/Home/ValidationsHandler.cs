@@ -17,7 +17,7 @@ namespace HotelModel.Home
                 noErrors = true;
 
             }
-            catch (Exception e)
+            catch (FormatException)
             {
                 noErrors = false;
             }
@@ -32,7 +32,7 @@ namespace HotelModel.Home
                 noErrors = true;
 
             }
-            catch (Exception e)
+            catch (FormatException)
             {
                 noErrors = false;
             }
@@ -48,7 +48,7 @@ namespace HotelModel.Home
                 noErrors = true;
 
             }
-            catch (Exception e)
+            catch (FormatException)
             {
                 noErrors = false;
             }
@@ -56,10 +56,21 @@ namespace HotelModel.Home
             return noErrors;
         }
 
+        public Boolean validateEmailExistance(String aString) {
+            GuestHandler gh = new GuestHandler();
+            if (gh.emailExists(aString))
+            {
+               return noErrors = false;
+            }
+            else {
+                return noErrors = true;
+            }
 
+ 
+        }
         public Boolean validateNullString(String aString){
            
-            if(aString.Trim().Length ==0){
+            if(String.IsNullOrEmpty(aString)){
                 noErrors=false;
              }else{
                  noErrors = true;
@@ -76,7 +87,7 @@ namespace HotelModel.Home
                 noErrors = true;
 
             }
-            catch (Exception e)
+            catch (FormatException)
             {
                 noErrors = false;
             }

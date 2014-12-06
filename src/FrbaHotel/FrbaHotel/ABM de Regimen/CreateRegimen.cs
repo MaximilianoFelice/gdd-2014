@@ -15,8 +15,8 @@ namespace FrbaHotel.ABM_de_Regimen
         Int32 idRegimen;
         String description;
         float price;
-        ValidationsHandler vh;
-        RegimenHandler rh;
+        ValidationsHandler vh = new ValidationsHandler();
+        RegimenHandler rh = new RegimenHandler();
         
         public CreateRegimen()
         {
@@ -28,7 +28,7 @@ namespace FrbaHotel.ABM_de_Regimen
         private void buttonClear_Click(object sender, EventArgs e)
         {
 
-            textBoxDescription.Clear();
+
             textBoxPrice.Clear();
         }
 

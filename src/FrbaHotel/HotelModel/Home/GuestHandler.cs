@@ -25,7 +25,7 @@ namespace HotelModel.Home
                                         .WithParam("@GuestExist").As(SqlDbType.Int).AsOutput()
                                         .Execute();
 
-            return (bool)results["GuestExist"];
+            return (bool)results["@GuestExist"];
 
         }
 
@@ -36,15 +36,27 @@ namespace HotelModel.Home
             SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_PERSON_EXISTS")
                                  .WithParam("@DocType").As(SqlDbType.VarChar).Value(docType)
                                  .WithParam("@DocNumber").As(SqlDbType.Decimal).Value(docNumber)
-                                 .WithParam("@GuestExist").As(SqlDbType.Int).AsOutput()
+                                 .WithParam("@GuestExist").As(SqlDbType.Bit).AsOutput()
                                  .Execute();
 
-            return (bool)results["GuestExist"];
+            return (bool)results["@GuestExist"];
 
         }
-        
 
-        public Boolean insertPerson(String name, String lastname, String docType, Decimal docNumber, String mail, Decimal phone, DateTime birthDate,
+        public Boolean emailExists(String anEmail) {
+            if (!String.IsNullOrEmpty(anEmail))
+            {
+                SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_EMAIL_EXISTS")
+                                    .WithParam("@Email").As(SqlDbType.VarChar).Value(anEmail)
+                                    .WithParam("@EmailExist").As(SqlDbType.Bit).AsOutput()
+                                    .Execute();
+
+                return (Boolean)results["EmailExists"];
+            }
+            else return false;
+        }
+
+        public Int32 insertPerson(String name, String lastname, String docType, Decimal docNumber, String mail, Decimal phone, DateTime birthDate,
                                 String street, Int32 streetNum, Int32 floor, String dept, String nationality, Int32 state)
         {
 
@@ -63,10 +75,10 @@ namespace HotelModel.Home
                                         .WithParam("@Dept").As(SqlDbType.VarChar).Value(dept)
                                         .WithParam("@Nationality").As(SqlDbType.VarChar).Value(nationality)
                                         .WithParam("@State").As(SqlDbType.Int).Value(state)
-                                        .WithParam("@Results").As(SqlDbType.Bit).AsOutput()
+                                        .WithParam("@IdInserted").As(SqlDbType.Bit).AsOutput()
                                         .Execute();
 
-            return (Boolean)results["@Results"];
+            return (Int32)results["@IdInserted"];
 
         }
 
@@ -110,18 +122,11 @@ namespace HotelModel.Home
                                                              .WithParam("@DocType").As(SqlDbType.VarChar).Value(docType)
                                                              .WithParam("@DocNumber").As(SqlDbType.Decimal).Value(docNumber)
                                                              .WithParam("@Mail").As(SqlDbType.VarChar).Value(mail)
-                                                             .WithParam("@Phone").As(SqlDbType.Decimal).Value(phone)
-                                                             .WithParam("@BirthDate").As(SqlDbType.DateTime).Value(birthDate)
-                                                             .WithParam("@Street").As(SqlDbType.VarChar).Value(street)
-                                                             .WithParam("@StreetNum").As(SqlDbType.Int).Value(streetNum)
-                                                             .WithParam("@Floor").As(SqlDbType.Int).Value(floor)
-                                                             .WithParam("@Dept").As(SqlDbType.VarChar).Value(dept)
-                                                             .WithParam("@Nationality").As(SqlDbType.VarChar).Value(nationality)
                                                              .WithParam("@ReturnedValues").AsDataTable().AsOutput()
-                                                                                     .Execute();
+                                                             .Execute();
 
 
-            return (DataTable) results["ReturnedValues"];
+            return (DataTable) results["@ReturnedValues"];
         
         }
 

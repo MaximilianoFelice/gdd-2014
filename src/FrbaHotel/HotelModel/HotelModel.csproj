@@ -39,6 +39,8 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -65,6 +67,7 @@
     <Compile Include="Home\BookingHandler.cs" />
     <Compile Include="Home\GuestHandler.cs" />
     <Compile Include="Home\HotelHandler.cs" />
+    <Compile Include="Home\FormHandler.cs" />
     <Compile Include="Home\RegimenHandler.cs" />
     <Compile Include="Home\ValidationsHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

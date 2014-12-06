@@ -102,5 +102,26 @@ namespace FrbaHotel
                 childForm.Close();
             }
         }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ABM_de_Cliente.CreateGuest frm = new ABM_de_Cliente.CreateGuest();
+            frm.Show();
+            
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ABM_de_Regimen.CreateRegimen frm1 = new ABM_de_Regimen.CreateRegimen();
+            frm1.Show();
+        }
+
+   
     }
 }
