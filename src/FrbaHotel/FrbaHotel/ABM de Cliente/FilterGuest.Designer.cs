@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridViewResults = new System.Windows.Forms.DataGridView();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxFilters = new System.Windows.Forms.GroupBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.comboBoxDocType = new System.Windows.Forms.ComboBox();
             this.textBoxDocNumber = new System.Windows.Forms.TextBox();
@@ -42,8 +43,11 @@
             this.labelDocType = new System.Windows.Forms.Label();
             this.labelLastname = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.buttonUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResults)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxFilters.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewResults
@@ -62,6 +66,7 @@
             this.buttonSearch.TabIndex = 8;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // buttonClear
             // 
@@ -71,25 +76,26 @@
             this.buttonClear.TabIndex = 6;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
-            // groupBox1
+            // groupBoxFilters
             // 
-            this.groupBox1.Controls.Add(this.textBoxEmail);
-            this.groupBox1.Controls.Add(this.comboBoxDocType);
-            this.groupBox1.Controls.Add(this.textBoxDocNumber);
-            this.groupBox1.Controls.Add(this.textBoxLastname);
-            this.groupBox1.Controls.Add(this.textBoxName);
-            this.groupBox1.Controls.Add(this.labelEmail);
-            this.groupBox1.Controls.Add(this.labelDocNumber);
-            this.groupBox1.Controls.Add(this.labelDocType);
-            this.groupBox1.Controls.Add(this.labelLastname);
-            this.groupBox1.Controls.Add(this.labelName);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(629, 121);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Search Filters";
+            this.groupBoxFilters.Controls.Add(this.textBoxEmail);
+            this.groupBoxFilters.Controls.Add(this.comboBoxDocType);
+            this.groupBoxFilters.Controls.Add(this.textBoxDocNumber);
+            this.groupBoxFilters.Controls.Add(this.textBoxLastname);
+            this.groupBoxFilters.Controls.Add(this.textBoxName);
+            this.groupBoxFilters.Controls.Add(this.labelEmail);
+            this.groupBoxFilters.Controls.Add(this.labelDocNumber);
+            this.groupBoxFilters.Controls.Add(this.labelDocType);
+            this.groupBoxFilters.Controls.Add(this.labelLastname);
+            this.groupBoxFilters.Controls.Add(this.labelName);
+            this.groupBoxFilters.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxFilters.Name = "groupBoxFilters";
+            this.groupBoxFilters.Size = new System.Drawing.Size(629, 121);
+            this.groupBoxFilters.TabIndex = 5;
+            this.groupBoxFilters.TabStop = false;
+            this.groupBoxFilters.Text = "Search Filters";
             // 
             // textBoxEmail
             // 
@@ -97,6 +103,7 @@
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(137, 20);
             this.textBoxEmail.TabIndex = 31;
+            
             // 
             // comboBoxDocType
             // 
@@ -117,6 +124,8 @@
             this.textBoxDocNumber.Name = "textBoxDocNumber";
             this.textBoxDocNumber.Size = new System.Drawing.Size(137, 20);
             this.textBoxDocNumber.TabIndex = 29;
+            this.textBoxDocNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDocNumber_KeyPress);
+            this.textBoxDocNumber.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxDocNumber_Validating);
             // 
             // textBoxLastname
             // 
@@ -124,6 +133,7 @@
             this.textBoxLastname.Name = "textBoxLastname";
             this.textBoxLastname.Size = new System.Drawing.Size(137, 20);
             this.textBoxLastname.TabIndex = 28;
+            this.textBoxLastname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxLastname_KeyPress);
             // 
             // textBoxName
             // 
@@ -131,6 +141,7 @@
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(137, 20);
             this.textBoxName.TabIndex = 27;
+            this.textBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxName_KeyPress);
             // 
             // labelEmail
             // 
@@ -177,20 +188,36 @@
             this.labelName.TabIndex = 17;
             this.labelName.Text = "Name";
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.Location = new System.Drawing.Point(542, 370);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(108, 23);
+            this.buttonUpdate.TabIndex = 10;
+            this.buttonUpdate.Text = "Update";
+            this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+            // 
             // FilterGuest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(672, 376);
+            this.ClientSize = new System.Drawing.Size(663, 402);
+            this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.dataGridViewResults);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.buttonClear);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxFilters);
             this.Name = "FilterGuest";
             this.Text = "FilterGuest";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResults)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxFilters.ResumeLayout(false);
+            this.groupBoxFilters.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -200,7 +227,7 @@
         private System.Windows.Forms.DataGridView dataGridViewResults;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonClear;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxFilters;
         private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.ComboBox comboBoxDocType;
         private System.Windows.Forms.TextBox textBoxDocNumber;
@@ -211,5 +238,7 @@
         private System.Windows.Forms.Label labelDocType;
         private System.Windows.Forms.Label labelLastname;
         private System.Windows.Forms.Label labelName;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.Button buttonUpdate;
     }
 }

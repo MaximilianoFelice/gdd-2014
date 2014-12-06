@@ -112,8 +112,7 @@ namespace HotelModel.Home
         }
 
 
-        public DataTable filteredSearch(String name, String lastname, String docType, Decimal docNumber, String mail, Decimal phone, DateTime birthDate,
-                                String street, Int32 streetNum, Int32 floor, String dept, String nationality, Int32 state) {
+        public DataTable filteredSearch(String name, String lastname, String docType, Decimal? docNumber, String mail) {
 
 
                                     SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_FILTER_PERSONS")
