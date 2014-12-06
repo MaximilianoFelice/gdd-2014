@@ -60,6 +60,7 @@
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.labelText = new System.Windows.Forms.Label();
             this.groupBoxGuest.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -86,9 +87,9 @@
             this.groupBoxGuest.Controls.Add(this.labelDocType);
             this.groupBoxGuest.Controls.Add(this.labelLastname);
             this.groupBoxGuest.Controls.Add(this.labelName);
-            this.groupBoxGuest.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxGuest.Location = new System.Drawing.Point(12, 24);
             this.groupBoxGuest.Name = "groupBoxGuest";
-            this.groupBoxGuest.Size = new System.Drawing.Size(612, 248);
+            this.groupBoxGuest.Size = new System.Drawing.Size(612, 236);
             this.groupBoxGuest.TabIndex = 1;
             this.groupBoxGuest.TabStop = false;
             this.groupBoxGuest.Text = "Please insert the new guest information";
@@ -362,11 +363,20 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // labelText
+            // 
+            this.labelText.AutoSize = true;
+            this.labelText.Location = new System.Drawing.Point(287, 8);
+            this.labelText.Name = "labelText";
+            this.labelText.Size = new System.Drawing.Size(0, 13);
+            this.labelText.TabIndex = 5;
+            // 
             // CreateGuest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(637, 294);
+            this.Controls.Add(this.labelText);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.groupBoxGuest);
@@ -378,41 +388,43 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBoxGuest;
-        private System.Windows.Forms.TextBox textBoxDept;
-        private System.Windows.Forms.TextBox textBoxFloor;
-        private System.Windows.Forms.TextBox textBoxStreetNum;
-        private System.Windows.Forms.TextBox textBoxStreet;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxNationality;
-        private System.Windows.Forms.TextBox textBoxPhone;
-        private System.Windows.Forms.TextBox textBoxEmail;
-        private System.Windows.Forms.ComboBox comboBoxDocType;
-        private System.Windows.Forms.TextBox textBoxDocNumber;
-        private System.Windows.Forms.TextBox textBoxLastname;
-        private System.Windows.Forms.TextBox textBoxName;
-        private System.Windows.Forms.Label labelNationality;
-        private System.Windows.Forms.Label labelBirthDate;
-        private System.Windows.Forms.Label labelPhone;
-        private System.Windows.Forms.Label labelEmail;
-        private System.Windows.Forms.Label labelDocNumber;
-        private System.Windows.Forms.Label labelDocType;
-        private System.Windows.Forms.Label labelLastname;
-        private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.Windows.Forms.DateTimePicker dtPickerBirhtDate;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox checkBoxEnabled;
-        private System.Windows.Forms.Label labelEnabled;
+        public System.Windows.Forms.GroupBox groupBoxGuest;
+        public System.Windows.Forms.TextBox textBoxDept;
+        public System.Windows.Forms.TextBox textBoxFloor;
+        public System.Windows.Forms.TextBox textBoxStreetNum;
+        public System.Windows.Forms.TextBox textBoxStreet;
+        public System.Windows.Forms.TextBox textBoxNationality;
+        public System.Windows.Forms.TextBox textBoxPhone;
+        public System.Windows.Forms.TextBox textBoxEmail;
+        public System.Windows.Forms.ComboBox comboBoxDocType;
+        public System.Windows.Forms.TextBox textBoxDocNumber;
+        public System.Windows.Forms.TextBox textBoxLastname;
+        public System.Windows.Forms.TextBox textBoxName;
+        public System.Windows.Forms.Label labelNationality;
+        public System.Windows.Forms.Label labelBirthDate;
+        public System.Windows.Forms.Label labelPhone;
+        public System.Windows.Forms.Label labelEmail;
+        public System.Windows.Forms.Label labelDocNumber;
+        public System.Windows.Forms.Label labelDocType;
+        public System.Windows.Forms.Label labelLastname;
+        public System.Windows.Forms.Label labelName;
+        public System.Windows.Forms.DateTimePicker dtPickerBirhtDate;
+        public System.Windows.Forms.GroupBox groupBox2;
+        public System.Windows.Forms.CheckBox checkBoxEnabled;
+        public System.Windows.Forms.Label labelEnabled;
+        public System.Windows.Forms.Label labelText;
     }
 }

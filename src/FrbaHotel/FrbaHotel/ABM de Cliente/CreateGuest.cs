@@ -78,24 +78,9 @@ namespace FrbaHotel.ABM_de_Cliente
         //clears all fields
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            foreach (var c in Controls)
-            {
-
-                if (c is TextBox)
-                {
-                    ((TextBox)c).Clear();
-                }
-
-                else if (c is ComboBox)
-                {
-                    ((ComboBox)c).SelectedItem = null;
-                }
-
-                else if (c is CheckBox)
-                {
-                    ((CheckBox)c).Checked = false;
-                }
-            }
+            
+ 
+     
             FormHandler.groupBoxCleaner(groupBoxGuest);
 
         }
@@ -359,7 +344,7 @@ namespace FrbaHotel.ABM_de_Cliente
 
            private void textBoxDocNumber_KeyPress_1(object sender, KeyPressEventArgs e)
            {
-               if (char.IsNumber(e.KeyChar) || e.KeyChar == '.')
+               if (char.IsNumber(e.KeyChar))
                {
 
                }
@@ -371,7 +356,7 @@ namespace FrbaHotel.ABM_de_Cliente
 
            private void textBoxPhone_KeyPress_1(object sender, KeyPressEventArgs e)
            {
-               if (char.IsNumber(e.KeyChar) || e.KeyChar == '-' || e.KeyChar == '(' || e.KeyChar == ')')
+               if (char.IsNumber(e.KeyChar))
                {
 
                }
