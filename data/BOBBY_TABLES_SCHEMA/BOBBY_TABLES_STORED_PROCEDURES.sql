@@ -34,17 +34,24 @@ GO
 --=======================================
 --PERSON_EXISTS
 --=======================================
-CREATE PROCEDURE [BOBBY_TABLES].PERSON_EXISTS
-@Name VARCHAR,
-@Lastname VARCHAR,
-@DocType VARCHAR,
-@DocNumber DECIMAL,
-@BirthDate DATETIME,
+CREATE PROCEDURE [BOBBY_TABLES].SP_PERSON_EXISTS
+@Name VARCHAR(50) = NULL,
+@Lastname VARCHAR(50) = NULL,
+@DocType VARCHAR(10),
+@DocNumber DECIMAL(10,0),
+@BirthDate DATETIME = NULL,
 @GuestExist INT OUTPUT
-AS
+AS 
 
-	SELECT id_person FROM [BOBBY_TABLES].PERSONS WHERE name = @Name AND lastname = @Lastname AND doc_type = @DocType
-	AND doc_number = @DocNumber AND birthdate = @BirthDate
+	IF @Name = NULL
+	BEGIN
+		SELECT id_person FROM [BOBBY_TABLES].PERSONS WHERE name = @Name AND lastname = @Lastname AND doc_type = @DocType
+		AND doc_number = @DocNumber AND birthdate = @BirthDate
+	END
+	ELSE
+	BEGIN
+		SELECT id_person FROM [BOBBY_TABLES].PERSONS WHERE doc_type = @DocType AND doc_number = @DocNumber
+	END
 	
 	IF @@ROWCOUNT > 0
 	BEGIN
@@ -55,6 +62,33 @@ AS
 		SET @GuestExist = 0
 	END
 GO
+
+
+--=======================================
+--INSERT PERSON
+--=======================================
+CREATE PROCEDURE SP_INSERT_PERSON
+@Name VARCHAR(50),
+@Lastname VARCHAR(50),
+@DocType VARCHAR(10),
+@DocNumber DECIMAL(10,0),
+@Mail VARCHAR(50),
+@Phone DECIMAL(20,0),
+@BirthDate DATETIME,
+@Street VARCHAR(100),
+@StreetNum INTEGER,
+@Floor INTEGER,
+@Dept VARCHAR(5),
+@Nationality VARCHAR(50),
+@State INTEGER,
+@IdInserted BIT OUTPUT
+AS
+
+	INSERT INTO [BOBBY_TABLES].PERSONS (name, lastname, doc_type, doc_number, mail, phone, birthdate, street, street_num, dir_floor,
+	dir_dpt, nationality, stat) 
+	VALUES (@Name, @Lastname, @DocType, @DocNumber, @Mail, @Phone, @BirthDate, @Street, @StreetNum, @Floor, @Dept, @Nationality, @State)
+	
+	SET @IdInserted = @@IDENTITY
 
 
 
