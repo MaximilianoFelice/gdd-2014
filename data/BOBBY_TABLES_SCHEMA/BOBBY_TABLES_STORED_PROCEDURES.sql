@@ -40,7 +40,7 @@ CREATE PROCEDURE [BOBBY_TABLES].SP_PERSON_EXISTS
 @DocType VARCHAR(10),
 @DocNumber DECIMAL(10,0),
 @BirthDate DATETIME = NULL,
-@GuestExist INT OUTPUT
+@GuestExist BIT OUTPUT
 AS 
 
 	IF @Name = NULL
@@ -81,7 +81,7 @@ CREATE PROCEDURE SP_INSERT_PERSON
 @Dept VARCHAR(5),
 @Nationality VARCHAR(50),
 @State INTEGER,
-@IdInserted BIT OUTPUT
+@IdInserted INTEGER OUTPUT
 AS
 
 	INSERT INTO [BOBBY_TABLES].PERSONS (name, lastname, doc_type, doc_number, mail, phone, birthdate, street, street_num, dir_floor,
@@ -90,7 +90,28 @@ AS
 	
 	SET @IdInserted = @@IDENTITY
 
+GO
 
+
+--=======================================
+--EMAIL_EXISTS
+--=======================================
+CREATE PROCEDURE [BOBBY_TABLES].SP_EMAIL_EXISTS
+@Email VARCHAR(50),
+@EmailExist BIT OUTPUT
+AS 
+
+	SELECT id_person FROM [BOBBY_TABLES].PERSONS WHERE mail = @Email 
+	
+	IF @@ROWCOUNT > 0
+	BEGIN
+		SET @EmailExist = 1
+	END
+	ELSE
+	BEGIN
+		SET @EmailExist = 0
+	END
+GO
 
 ----- PRUEBAS
 EXEC [BOBBY_TABLES].validateUserPass @User = 'MaximilianoFelice', @Pass = '53acbedaad48d8d482fe1a9bf8cd8b8e329ff8033c5c1dc81dcccdff38dd197f';
