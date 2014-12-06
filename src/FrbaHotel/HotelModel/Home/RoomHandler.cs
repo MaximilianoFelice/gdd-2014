@@ -77,7 +77,7 @@ namespace HotelModel.Home
                                                              .WithParam("@Location").As(SqlDbType.Int).Value(location)
                                                              .WithParam("@Description").As(SqlDbType.VarChar).Value(description)
                                                              .WithParam("@ReturnedValues").AsDataSet().AsOutput()
-                                                                                     .Execute();
+                                                             .Execute();
 
 
             return (DataSet) results["ReturnedValues"];
@@ -99,6 +99,20 @@ namespace HotelModel.Home
                                                              .Execute();
 
             return (Int32)results["@IdRoomDeleted"];
+        }
+
+
+        public DataSet getHotels()
+        {
+
+
+            SqlResults results = new SqlFunction("[BOBBY_TABLES].getHotels")
+                                    .AsReturnValue().AsDataSet()
+                                     .Execute();
+
+
+            return (DataSet)results["ReturnedValues"];
+
         }
 
 

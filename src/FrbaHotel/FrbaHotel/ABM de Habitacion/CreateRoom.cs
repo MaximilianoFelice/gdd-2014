@@ -28,6 +28,23 @@ namespace FrbaHotel.ABM_de_Habitacion
             InitializeComponent();
         }
 
+        private void CreateRoom_Load(object sender, EventArgs e)
+        {
+            DataTable dat = new DataTable();
+            string sql = null;
+            sql = "SELECT name,id_hotel FROM [BOBBY_TABLES].Hotels";
+            HotelModel.ConnectionManager.OpenConnection();
+            SqlQuery query = new SqlQuery(sql).AsDataTable<SqlQuery>();
+            SqlResults res = query.Execute();
+            Dictionary<string, object>.ValueCollection valueColl =
+            res.Values;
+            comboBoxHotel.DataSource = valueColl.First();
+            comboBoxHotel.ValueMember = "id_hotel";
+            comboBoxHotel.DisplayMember = "name";
+            HotelModel.ConnectionManager.CloseConnection();
+        }
+        
+
         private void buttonSave_Click(object sender, EventArgs e)
         {
 
