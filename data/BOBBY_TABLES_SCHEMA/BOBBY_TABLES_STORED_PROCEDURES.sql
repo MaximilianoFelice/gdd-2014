@@ -31,6 +31,33 @@ AS
 GO
 
 
+--=======================================
+--PERSON_EXISTS
+--=======================================
+CREATE PROCEDURE [BOBBY_TABLES].PERSON_EXISTS
+@Name VARCHAR,
+@Lastname VARCHAR,
+@DocType VARCHAR,
+@DocNumber DECIMAL,
+@BirthDate DATETIME,
+@GuestExist INT OUTPUT
+AS
+
+	SELECT id_person FROM [BOBBY_TABLES].PERSONS WHERE name = @Name AND lastname = @Lastname AND doc_type = @DocType
+	AND doc_number = @DocNumber AND birthdate = @BirthDate
+	
+	IF @@ROWCOUNT > 0
+	BEGIN
+		SET @GuestExist = 1
+	END
+	ELSE
+	BEGIN
+		SET @GuestExist = 0
+	END
+GO
+
+
+
 ----- PRUEBAS
 EXEC [BOBBY_TABLES].validateUserPass @User = 'MaximilianoFelice', @Pass = '53acbedaad48d8d482fe1a9bf8cd8b8e329ff8033c5c1dc81dcccdff38dd197f';
 
