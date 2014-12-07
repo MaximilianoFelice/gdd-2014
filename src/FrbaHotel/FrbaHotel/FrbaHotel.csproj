@@ -128,18 +128,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generar Modificar Reserva\CreateBooking.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Generar Modificar Reserva\CreateBooking.Designer.cs">
-      <DependentUpon>CreateBooking.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generar Modificar Reserva\UpdateBooking.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Generar Modificar Reserva\UpdateBooking.Designer.cs">
-      <DependentUpon>UpdateBooking.cs</DependentUpon>
-    </Compile>
     <Compile Include="Listado Estadistico\Statistics.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,12 +184,6 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Generar Modificar Reserva\CreateBooking.resx">
-      <DependentUpon>CreateBooking.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generar Modificar Reserva\UpdateBooking.resx">
-      <DependentUpon>UpdateBooking.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Listado Estadistico\Statistics.resx">
       <DependentUpon>Statistics.cs</DependentUpon>
     </EmbeddedResource>
@@ -251,6 +233,7 @@
   <ItemGroup>
     <Folder Include="ABM de Regimen\" />
     <Folder Include="ABM de Rol\" />
+    <Folder Include="Generar Modificar Reserva\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -116,11 +116,7 @@ namespace FrbaHotel
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            ABM_de_Regimen.CreateRegimen frm1 = new ABM_de_Regimen.CreateRegimen();
-            frm1.Show();
-        }
+       
 
    
     }
