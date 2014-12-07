@@ -68,11 +68,11 @@
     <Compile Include="ABM de Habitacion\CreateRoom.Designer.cs">
       <DependentUpon>CreateRoom.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM de Habitacion\DeleteRoom.cs">
+    <Compile Include="ABM de Habitacion\FilterRoom.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM de Habitacion\DeleteRoom.Designer.cs">
-      <DependentUpon>DeleteRoom.cs</DependentUpon>
+    <Compile Include="ABM de Habitacion\FilterRoom.Designer.cs">
+      <DependentUpon>FilterRoom.cs</DependentUpon>
     </Compile>
     <Compile Include="ABM de Habitacion\UpdateRoom.cs">
       <SubType>Form</SubType>
@@ -169,8 +169,8 @@
     <EmbeddedResource Include="ABM de Habitacion\CreateRoom.resx">
       <DependentUpon>CreateRoom.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM de Habitacion\DeleteRoom.resx">
-      <DependentUpon>DeleteRoom.cs</DependentUpon>
+    <EmbeddedResource Include="ABM de Habitacion\FilterRoom.resx">
+      <DependentUpon>FilterRoom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM de Habitacion\UpdateRoom.resx">
       <DependentUpon>UpdateRoom.cs</DependentUpon>

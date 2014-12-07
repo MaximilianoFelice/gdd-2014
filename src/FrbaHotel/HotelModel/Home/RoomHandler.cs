@@ -71,7 +71,7 @@ namespace HotelModel.Home
         
 
 
-        public DataTable filteredSearch(Int32 idHotel,Int32 roomNum,Int32 floor, String location,String type,String descrip)
+        public DataTable filteredSearch(Int32 idHotel,Int32? roomNum,Int32? floor, String location,String type,String descrip)
         {
         
             SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_FILTER_ROOM")

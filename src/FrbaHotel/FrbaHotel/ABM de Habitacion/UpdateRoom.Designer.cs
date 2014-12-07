@@ -28,126 +28,120 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.buttonSearchAll = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
             this.buttonClear = new System.Windows.Forms.Button();
-            this.buttonSearch = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBoxDescription = new System.Windows.Forms.TextBox();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.groupBoxData = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxType = new System.Windows.Forms.ComboBox();
+            this.comboBoxLoc = new System.Windows.Forms.ComboBox();
             this.labelDescription = new System.Windows.Forms.Label();
-            this.textBoxLocation = new System.Windows.Forms.TextBox();
             this.labelLocation = new System.Windows.Forms.Label();
-            this.textBoxType = new System.Windows.Forms.TextBox();
+            this.textBoxDescr = new System.Windows.Forms.TextBox();
             this.labelTpye = new System.Windows.Forms.Label();
             this.textBoxFloor = new System.Windows.Forms.TextBox();
             this.labelFloor = new System.Windows.Forms.Label();
             this.textBoxNumber = new System.Windows.Forms.TextBox();
             this.labelNumber = new System.Windows.Forms.Label();
-            this.textBoxHotel = new System.Windows.Forms.TextBox();
-            this.labelHotel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.textBoxState = new System.Windows.Forms.TextBox();
+            this.groupBoxData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 145);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(509, 150);
-            this.dataGridView1.TabIndex = 12;
-            // 
-            // buttonSearchAll
-            // 
-            this.buttonSearchAll.Location = new System.Drawing.Point(219, 115);
-            this.buttonSearchAll.Name = "buttonSearchAll";
-            this.buttonSearchAll.Size = new System.Drawing.Size(75, 23);
-            this.buttonSearchAll.TabIndex = 11;
-            this.buttonSearchAll.Text = "Search All";
-            this.buttonSearchAll.UseVisualStyleBackColor = true;
             // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(12, 115);
+            this.buttonClear.Location = new System.Drawing.Point(12, 206);
             this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(75, 24);
-            this.buttonClear.TabIndex = 10;
+            this.buttonClear.Size = new System.Drawing.Size(75, 23);
+            this.buttonClear.TabIndex = 13;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = true;
             // 
-            // buttonSearch
+            // buttonSave
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(447, 114);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(75, 24);
-            this.buttonSearch.TabIndex = 9;
-            this.buttonSearch.Text = "Search";
-            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSave.Location = new System.Drawing.Point(205, 206);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.TabIndex = 12;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // groupBoxData
             // 
-            this.groupBox1.Controls.Add(this.textBoxDescription);
-            this.groupBox1.Controls.Add(this.labelDescription);
-            this.groupBox1.Controls.Add(this.textBoxLocation);
-            this.groupBox1.Controls.Add(this.labelLocation);
-            this.groupBox1.Controls.Add(this.textBoxType);
-            this.groupBox1.Controls.Add(this.labelTpye);
-            this.groupBox1.Controls.Add(this.textBoxFloor);
-            this.groupBox1.Controls.Add(this.labelFloor);
-            this.groupBox1.Controls.Add(this.textBoxNumber);
-            this.groupBox1.Controls.Add(this.labelNumber);
-            this.groupBox1.Controls.Add(this.textBoxHotel);
-            this.groupBox1.Controls.Add(this.labelHotel);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(510, 97);
-            this.groupBox1.TabIndex = 8;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Search Filters";
+            this.groupBoxData.Controls.Add(this.textBoxState);
+            this.groupBoxData.Controls.Add(this.label1);
+            this.groupBoxData.Controls.Add(this.comboBoxType);
+            this.groupBoxData.Controls.Add(this.comboBoxLoc);
+            this.groupBoxData.Controls.Add(this.labelDescription);
+            this.groupBoxData.Controls.Add(this.labelLocation);
+            this.groupBoxData.Controls.Add(this.textBoxDescr);
+            this.groupBoxData.Controls.Add(this.labelTpye);
+            this.groupBoxData.Controls.Add(this.textBoxFloor);
+            this.groupBoxData.Controls.Add(this.labelFloor);
+            this.groupBoxData.Controls.Add(this.textBoxNumber);
+            this.groupBoxData.Controls.Add(this.labelNumber);
+            this.groupBoxData.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxData.Name = "groupBoxData";
+            this.groupBoxData.Size = new System.Drawing.Size(268, 188);
+            this.groupBoxData.TabIndex = 11;
+            this.groupBoxData.TabStop = false;
+            this.groupBoxData.Text = "Please enter the room information";
             // 
-            // textBoxDescription
+            // label1
             // 
-            this.textBoxDescription.Location = new System.Drawing.Point(106, 185);
-            this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.Size = new System.Drawing.Size(100, 20);
-            this.textBoxDescription.TabIndex = 11;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 161);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "State";
+            // 
+            // comboBoxType
+            // 
+            this.comboBoxType.FormattingEnabled = true;
+            this.comboBoxType.Location = new System.Drawing.Point(106, 79);
+            this.comboBoxType.Name = "comboBoxType";
+            this.comboBoxType.Size = new System.Drawing.Size(141, 21);
+            this.comboBoxType.TabIndex = 12;
+            // 
+            // comboBoxLoc
+            // 
+            this.comboBoxLoc.FormattingEnabled = true;
+            this.comboBoxLoc.Location = new System.Drawing.Point(106, 106);
+            this.comboBoxLoc.Name = "comboBoxLoc";
+            this.comboBoxLoc.Size = new System.Drawing.Size(141, 21);
+            this.comboBoxLoc.TabIndex = 11;
             // 
             // labelDescription
             // 
             this.labelDescription.AutoSize = true;
-            this.labelDescription.Location = new System.Drawing.Point(9, 185);
+            this.labelDescription.Location = new System.Drawing.Point(9, 137);
             this.labelDescription.Name = "labelDescription";
             this.labelDescription.Size = new System.Drawing.Size(60, 13);
             this.labelDescription.TabIndex = 10;
             this.labelDescription.Text = "Description";
             // 
-            // textBoxLocation
-            // 
-            this.textBoxLocation.Location = new System.Drawing.Point(106, 156);
-            this.textBoxLocation.Name = "textBoxLocation";
-            this.textBoxLocation.Size = new System.Drawing.Size(100, 20);
-            this.textBoxLocation.TabIndex = 9;
-            // 
             // labelLocation
             // 
             this.labelLocation.AutoSize = true;
-            this.labelLocation.Location = new System.Drawing.Point(9, 156);
+            this.labelLocation.Location = new System.Drawing.Point(9, 109);
             this.labelLocation.Name = "labelLocation";
             this.labelLocation.Size = new System.Drawing.Size(48, 13);
             this.labelLocation.TabIndex = 8;
             this.labelLocation.Text = "Location";
             // 
-            // textBoxType
+            // textBoxDescr
             // 
-            this.textBoxType.Location = new System.Drawing.Point(362, 62);
-            this.textBoxType.Name = "textBoxType";
-            this.textBoxType.Size = new System.Drawing.Size(100, 20);
-            this.textBoxType.TabIndex = 7;
+            this.textBoxDescr.Location = new System.Drawing.Point(106, 134);
+            this.textBoxDescr.Name = "textBoxDescr";
+            this.textBoxDescr.Size = new System.Drawing.Size(141, 20);
+            this.textBoxDescr.TabIndex = 7;
             // 
             // labelTpye
             // 
             this.labelTpye.AutoSize = true;
-            this.labelTpye.Location = new System.Drawing.Point(270, 65);
+            this.labelTpye.Location = new System.Drawing.Point(9, 82);
             this.labelTpye.Name = "labelTpye";
             this.labelTpye.Size = new System.Drawing.Size(62, 13);
             this.labelTpye.TabIndex = 6;
@@ -155,15 +149,15 @@
             // 
             // textBoxFloor
             // 
-            this.textBoxFloor.Location = new System.Drawing.Point(362, 33);
+            this.textBoxFloor.Location = new System.Drawing.Point(106, 53);
             this.textBoxFloor.Name = "textBoxFloor";
-            this.textBoxFloor.Size = new System.Drawing.Size(100, 20);
+            this.textBoxFloor.Size = new System.Drawing.Size(141, 20);
             this.textBoxFloor.TabIndex = 5;
             // 
             // labelFloor
             // 
             this.labelFloor.AutoSize = true;
-            this.labelFloor.Location = new System.Drawing.Point(270, 36);
+            this.labelFloor.Location = new System.Drawing.Point(9, 57);
             this.labelFloor.Name = "labelFloor";
             this.labelFloor.Size = new System.Drawing.Size(61, 13);
             this.labelFloor.TabIndex = 4;
@@ -171,73 +165,66 @@
             // 
             // textBoxNumber
             // 
-            this.textBoxNumber.Location = new System.Drawing.Point(106, 62);
+            this.textBoxNumber.Location = new System.Drawing.Point(106, 27);
             this.textBoxNumber.Name = "textBoxNumber";
-            this.textBoxNumber.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNumber.Size = new System.Drawing.Size(141, 20);
             this.textBoxNumber.TabIndex = 3;
             // 
             // labelNumber
             // 
             this.labelNumber.AutoSize = true;
-            this.labelNumber.Location = new System.Drawing.Point(9, 65);
+            this.labelNumber.Location = new System.Drawing.Point(9, 30);
             this.labelNumber.Name = "labelNumber";
             this.labelNumber.Size = new System.Drawing.Size(75, 13);
             this.labelNumber.TabIndex = 2;
             this.labelNumber.Text = "Room Number";
             // 
-            // textBoxHotel
+            // errorProvider
             // 
-            this.textBoxHotel.Location = new System.Drawing.Point(106, 33);
-            this.textBoxHotel.Name = "textBoxHotel";
-            this.textBoxHotel.Size = new System.Drawing.Size(100, 20);
-            this.textBoxHotel.TabIndex = 1;
+            this.errorProvider.ContainerControl = this;
             // 
-            // labelHotel
+            // textBoxState
             // 
-            this.labelHotel.AutoSize = true;
-            this.labelHotel.Location = new System.Drawing.Point(9, 36);
-            this.labelHotel.Name = "labelHotel";
-            this.labelHotel.Size = new System.Drawing.Size(32, 13);
-            this.labelHotel.TabIndex = 0;
-            this.labelHotel.Text = "Hotel";
+            this.textBoxState.Location = new System.Drawing.Point(106, 161);
+            this.textBoxState.Name = "textBoxState";
+            this.textBoxState.Size = new System.Drawing.Size(141, 20);
+            this.textBoxState.TabIndex = 14;
             // 
             // UpdateRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(532, 306);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.buttonSearchAll);
+            this.ClientSize = new System.Drawing.Size(293, 243);
             this.Controls.Add(this.buttonClear);
-            this.Controls.Add(this.buttonSearch);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.buttonSave);
+            this.Controls.Add(this.groupBoxData);
             this.Name = "UpdateRoom";
             this.Text = "UpdateRoom";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxData.ResumeLayout(false);
+            this.groupBoxData.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button buttonSearchAll;
         private System.Windows.Forms.Button buttonClear;
-        private System.Windows.Forms.Button buttonSearch;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBoxDescription;
-        private System.Windows.Forms.Label labelDescription;
-        private System.Windows.Forms.TextBox textBoxLocation;
-        private System.Windows.Forms.Label labelLocation;
-        private System.Windows.Forms.TextBox textBoxType;
-        private System.Windows.Forms.Label labelTpye;
-        private System.Windows.Forms.TextBox textBoxFloor;
-        private System.Windows.Forms.Label labelFloor;
-        private System.Windows.Forms.TextBox textBoxNumber;
-        private System.Windows.Forms.Label labelNumber;
-        private System.Windows.Forms.TextBox textBoxHotel;
-        private System.Windows.Forms.Label labelHotel;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.GroupBox groupBoxData;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.ComboBox comboBoxType;
+        public System.Windows.Forms.ComboBox comboBoxLoc;
+        public System.Windows.Forms.Label labelDescription;
+        public System.Windows.Forms.Label labelLocation;
+        public System.Windows.Forms.TextBox textBoxDescr;
+        public System.Windows.Forms.Label labelTpye;
+        public System.Windows.Forms.TextBox textBoxFloor;
+        public System.Windows.Forms.Label labelFloor;
+        public System.Windows.Forms.TextBox textBoxNumber;
+        public System.Windows.Forms.Label labelNumber;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        public System.Windows.Forms.TextBox textBoxState;
+
     }
 }
