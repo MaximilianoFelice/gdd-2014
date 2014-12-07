@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace FrbaHotel.ABM_de_Regimen
+namespace FrbaHotel.ABM_de_Hotel
 {
-    public partial class UpdateRegimen : Form
+    public partial class CreateHotel : Form
     {
-        public UpdateRegimen()
+        public CreateHotel()
         {
             InitializeComponent();
         }

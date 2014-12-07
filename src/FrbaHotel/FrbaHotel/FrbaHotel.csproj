@@ -80,23 +80,17 @@
     <Compile Include="ABM de Habitacion\UpdateRoom.Designer.cs">
       <DependentUpon>UpdateRoom.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM de Regimen\CreateRegimen.cs">
+    <Compile Include="ABM de Hotel\CreateHotel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM de Regimen\CreateRegimen.Designer.cs">
-      <DependentUpon>CreateRegimen.cs</DependentUpon>
+    <Compile Include="ABM de Hotel\CreateHotel.Designer.cs">
+      <DependentUpon>CreateHotel.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM de Regimen\DeleteRegimen.cs">
+    <Compile Include="ABM de Hotel\FilterHotel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM de Regimen\DeleteRegimen.Designer.cs">
-      <DependentUpon>DeleteRegimen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ABM de Regimen\UpdateRegimen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ABM de Regimen\UpdateRegimen.Designer.cs">
-      <DependentUpon>UpdateRegimen.cs</DependentUpon>
+    <Compile Include="ABM de Hotel\FilterHotel.Designer.cs">
+      <DependentUpon>FilterHotel.cs</DependentUpon>
     </Compile>
     <Compile Include="ABM de Usuario\CreateUser.cs">
       <SubType>Form</SubType>
@@ -181,14 +175,8 @@
     <EmbeddedResource Include="ABM de Habitacion\UpdateRoom.resx">
       <DependentUpon>UpdateRoom.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM de Regimen\CreateRegimen.resx">
-      <DependentUpon>CreateRegimen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ABM de Regimen\DeleteRegimen.resx">
-      <DependentUpon>DeleteRegimen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ABM de Regimen\UpdateRegimen.resx">
-      <DependentUpon>UpdateRegimen.cs</DependentUpon>
+    <EmbeddedResource Include="ABM de Hotel\CreateHotel.resx">
+      <DependentUpon>CreateHotel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM de Usuario\CreateUser.resx">
       <DependentUpon>CreateUser.cs</DependentUpon>
@@ -261,6 +249,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ABM de Regimen\" />
     <Folder Include="ABM de Rol\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
