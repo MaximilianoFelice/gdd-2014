@@ -13,8 +13,15 @@ namespace HotelModel.Home
 
         public DataTable getHotels()
         {
-            SqlResults results = new SqlQuery("SELECT name FROM BOBBY_TABLES.HOTELS WHERE stat=1").Execute();
+            SqlResults results = new SqlQuery("SELECT name FROM BOBBY_TABLES.HOTELS WHERE stat=401").Execute();
             return (DataTable)results["ReturnedValues"];
+        
+        }
+
+        public DataSet getRegimensForHotels() {
+            SqlResults results = new SqlQuery("SELECT DISTINCT * FROM BOBBY_TABLES.REGIMENS ").Execute();
+            return (DataSet)results["ReturnedValues"];
+        
         
         }
 

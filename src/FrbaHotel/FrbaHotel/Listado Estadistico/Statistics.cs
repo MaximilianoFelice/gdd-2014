@@ -56,7 +56,7 @@ namespace FrbaHotel.Listado_Estadistico
             }
         }
 
-        private void criterios_ItemCheck(object sender, ItemCheckEventArgs e)
+        private void filters_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             for (int i = 0; i < checkBoxLFilter.Items.Count; i++)
             {
