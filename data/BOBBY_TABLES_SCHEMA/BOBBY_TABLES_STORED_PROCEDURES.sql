@@ -40,7 +40,7 @@ CREATE PROCEDURE [BOBBY_TABLES].SP_PERSON_EXISTS
 @DocType VARCHAR(10),
 @DocNumber DECIMAL(10,0),
 @BirthDate DATETIME = NULL,
-@GuestExist BIT OUTPUT
+@GuestExist BIT = 0x0 OUTPUT
 AS 
 
 	IF @Name = NULL
@@ -55,12 +55,9 @@ AS
 	
 	IF @@ROWCOUNT > 0
 	BEGIN
-		SET @GuestExist = 1
+		SET @GuestExist = 0x1
 	END
-	ELSE
-	BEGIN
-		SET @GuestExist = 0
-	END
+	
 GO
 
 
@@ -98,20 +95,54 @@ GO
 --=======================================
 CREATE PROCEDURE [BOBBY_TABLES].SP_EMAIL_EXISTS
 @Email VARCHAR(50),
-@EmailExist BIT OUTPUT
+@EmailExist BIT = 0x0 OUTPUT
 AS 
 
 	SELECT id_person FROM [BOBBY_TABLES].PERSONS WHERE mail = @Email 
 	
 	IF @@ROWCOUNT > 0
 	BEGIN
-		SET @EmailExist = 1
+		SET @EmailExist = 0x1
 	END
-	ELSE
-	BEGIN
-		SET @EmailExist = 0
-	END
+	
 GO
+
+
+--=======================================
+--UPDATE PERSON
+--=======================================
+CREATE PROCEDURE [BOBBY_TABLES].SP_UPDATE_PERSON
+@Name VARCHAR(50),
+@Lastname VARCHAR(50),
+@DocType VARCHAR(10),
+@DocNumber DECIMAL(10,0),
+@Mail VARCHAR(50),
+@Phone DECIMAL(20,0),
+@BirthDate DATETIME,
+@Street VARCHAR(100),
+@StreetNum INTEGER,
+@Floor INTEGER,
+@Dept VARCHAR(5),
+@Nationality VARCHAR(50),
+@State INTEGER,
+@IdPersonUpdated INTEGER OUTPUT
+AS
+GO
+
+
+--=======================================
+--DELETE PERSON
+--=======================================
+CREATE PROCEDURE [BOBBY_TABLES].SP_DELETE_PERSON
+@IdPersonToDelete INTEGER,
+@IdPersonDeleted INTEGER OUTPUT
+AS
+	
+	UPDATE PERSONS SET stat = 0 WHERE id_person = @IdPersonToDelete
+	
+GO
+
+
 
 ----- PRUEBAS
 EXEC [BOBBY_TABLES].validateUserPass @User = 'MaximilianoFelice', @Pass = '53acbedaad48d8d482fe1a9bf8cd8b8e329ff8033c5c1dc81dcccdff38dd197f';
