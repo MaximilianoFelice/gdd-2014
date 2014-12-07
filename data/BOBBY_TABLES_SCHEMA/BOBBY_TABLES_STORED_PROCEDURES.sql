@@ -143,6 +143,33 @@ AS
 GO
 
 
+--=======================================
+--STATISTICS TOP 5 HOTELS WITH CANCELLED BOOKINGS
+--=======================================
+CREATE PROCEDURE [BOBBY_TABLES].SP_STATISTICS_CANCEL_BOOKINGS 
+	@desde datetime ,
+	@hasta datetime 
+AS
+BEGIN
+	SET NOCOUNT ON;
+	select top 5
+		h.name,
+		h.street,
+		h.street_num,
+		h.city
+		count(b.id_booking) as 'Amount of Cancel Bookings'
+	from  [BOBBY_TABLES].BOOKINGS b
+	inner join [BOBBY_TABLES].HOTELS h on h.id_hotel =  r.id_hotel		
+	where
+		b.id_booking  in (select id_stat from [BOBBY_TABLES].STAT 
+							where descr like '%Cancel%')
+	     AND b.fecha between @desde and @hasta
+	group by 	
+		h.name,h.street,h.street_num,h.city
+	order by 
+		'Amount of Cancel Bookings' desc
+END
+GO
 
 ----- PRUEBAS
 EXEC [BOBBY_TABLES].validateUserPass @User = 'MaximilianoFelice', @Pass = '53acbedaad48d8d482fe1a9bf8cd8b8e329ff8033c5c1dc81dcccdff38dd197f';
