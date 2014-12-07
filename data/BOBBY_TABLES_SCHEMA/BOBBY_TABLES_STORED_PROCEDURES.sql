@@ -202,6 +202,33 @@ BEGIN
 END
 GO
 
+--=======================================
+--STATISTICS TOP 5 HOTELS WITH MOST OUT SERVICE DAYS
+--=======================================
+
+CREATE PROCEDURE [BOBBY_TABLES].SP_STATISTICS_OUT_SERVICE
+	@desde datetime ,
+	@hasta datetime 
+AS
+BEGIN
+	select top 5
+		h.street, h.street_num, h.city,
+		sum(datediff(DD, mant_start,mant_end)) as 'Days Out of Service'
+	from 
+		[BOBBY_TABLES].MANT_HISTORY m
+			inner join [BOBBY_TABLES].HOTELS h on h.id_hotel  = m.id_hotel
+	where
+		(@desde between mant_start and mant_end) AND
+		(@hasta between mant_start and mant_end) 
+	group by
+		h.city, h.street, h.street_num
+	order by
+		'Days Out of Service' desc		
+END
+GO
+
+
+
 
 
 ----- PRUEBAS
