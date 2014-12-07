@@ -171,6 +171,39 @@ BEGIN
 END
 GO
 
+
+
+--=======================================
+--STATISTICS TOP 5 HOTELS WITH EXTRAS BILLED
+--=======================================
+
+
+CREATE PROCEDURE[BOBBY_TABLES].SP_STATISTICS_EXTRA_BILLED 
+	@desde datetime ,
+	@hasta datetime 
+AS
+BEGIN
+	select top 5
+		h.street + ' ' +  convert(nvarchar(255),h.street_num) as 'Direccion Hotel',
+		h.city,
+		sum(bi.quantity) as 'Amount of Items Billed'
+		from [BOBBY_TABLES].BILLS b
+		
+			inner join [BOBBY_TABLES].BILLS_ITEMS bi on bi.id_bill = b.id_bill
+			inner join [BOBBY_TABLES].STAYS s on s.id_stay = b.id_stay		
+			inner join [BOBBY_TABLES].ROOMS r on r.id_room= s.id_room
+			inner join [BOBBY_TABLES].HOTELS h on h.id_hotel  = r.id_hotel
+	where
+		b.payment_date between @desde and @hasta
+	group by 	
+		h.street, h.street_num,h.city, bi.quantity
+	order by 'Amount of Items Billed' desc
+	
+END
+GO
+
+
+
 ----- PRUEBAS
 EXEC [BOBBY_TABLES].validateUserPass @User = 'MaximilianoFelice', @Pass = '53acbedaad48d8d482fe1a9bf8cd8b8e329ff8033c5c1dc81dcccdff38dd197f';
 
