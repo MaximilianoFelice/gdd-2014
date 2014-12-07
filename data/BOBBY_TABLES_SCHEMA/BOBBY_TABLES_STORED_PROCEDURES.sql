@@ -147,8 +147,8 @@ GO
 --STATISTICS TOP 5 HOTELS WITH CANCELLED BOOKINGS
 --=======================================
 CREATE PROCEDURE [BOBBY_TABLES].SP_STATISTICS_CANCEL_BOOKINGS 
-	@desde datetime ,
-	@hasta datetime 
+	@from datetime ,
+	@to datetime 
 AS
 BEGIN
 	SET NOCOUNT ON;
@@ -163,7 +163,7 @@ BEGIN
 	where
 		b.id_booking  in (select id_stat from [BOBBY_TABLES].STAT 
 							where descr like '%Cancel%')
-	     AND b.fecha between @desde and @hasta
+	     AND b.fecha between @from and @to
 	group by 	
 		h.name,h.street,h.street_num,h.city
 	order by 
@@ -179,8 +179,8 @@ GO
 
 
 CREATE PROCEDURE[BOBBY_TABLES].SP_STATISTICS_EXTRA_BILLED 
-	@desde datetime ,
-	@hasta datetime 
+	@from datetime ,
+	@to datetime 
 AS
 BEGIN
 	select top 5
@@ -194,7 +194,7 @@ BEGIN
 			inner join [BOBBY_TABLES].ROOMS r on r.id_room= s.id_room
 			inner join [BOBBY_TABLES].HOTELS h on h.id_hotel  = r.id_hotel
 	where
-		b.payment_date between @desde and @hasta
+		b.payment_date between @from and @to
 	group by 	
 		h.street, h.street_num,h.city, bi.quantity
 	order by 'Amount of Items Billed' desc
@@ -207,8 +207,8 @@ GO
 --=======================================
 
 CREATE PROCEDURE [BOBBY_TABLES].SP_STATISTICS_OUT_SERVICE
-	@desde datetime ,
-	@hasta datetime 
+	@from datetime ,
+	@to datetime 
 AS
 BEGIN
 	select top 5
@@ -218,14 +218,49 @@ BEGIN
 		[BOBBY_TABLES].MANT_HISTORY m
 			inner join [BOBBY_TABLES].HOTELS h on h.id_hotel  = m.id_hotel
 	where
-		(@desde between mant_start and mant_end) AND
-		(@hasta between mant_start and mant_end) 
+		(@from between mant_start and mant_end) AND
+		(@to between mant_start and mant_end) 
 	group by
 		h.city, h.street, h.street_num
 	order by
 		'Days Out of Service' desc		
 END
 GO
+
+--=======================================
+--STATISTICS TOP 5 GUEST WITH MOST POINTS
+--=======================================
+CREATE PROCEDURE [BOBBY_TABLES].SP_STATISTICS_GUESTS_POINTS
+
+	@from datetime ,
+	@to datetime 
+AS
+BEGIN
+	select top 5
+		r.number as 'Room Number',
+		r.room_floor as 'Room Floor',
+		h.street, 
+		h.street_num,
+		h.city,
+		sum(s.nights) as 'Amount of Nights',
+		sum(1) as 'Amount of Time Occupied'
+	from [BOBBY_TABLES].STAYS s 
+		inner join [BOBBY_TABLES].ROOMS r
+			on r.id_room = s.id_room
+		inner join [BOBBY_TABLES].HOTELS h
+			on h.id_hotel = r.id_hotel
+	Where
+		s.stay_start between @from and @to
+	group by 
+		h.city, h.street, h.street_num, r.number, r.room_floor
+	order by 
+		'Amount of Nights' desc,
+		'Amount of Time Occupied' desc
+END
+GO
+
+
+
 
 
 
