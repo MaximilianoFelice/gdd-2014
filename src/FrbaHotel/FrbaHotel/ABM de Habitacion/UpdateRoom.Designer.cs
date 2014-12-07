@@ -32,6 +32,7 @@
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.groupBoxData = new System.Windows.Forms.GroupBox();
+            this.textBoxState = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.comboBoxLoc = new System.Windows.Forms.ComboBox();
@@ -44,7 +45,6 @@
             this.textBoxNumber = new System.Windows.Forms.TextBox();
             this.labelNumber = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.textBoxState = new System.Windows.Forms.TextBox();
             this.groupBoxData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -87,6 +87,13 @@
             this.groupBoxData.TabIndex = 11;
             this.groupBoxData.TabStop = false;
             this.groupBoxData.Text = "Please enter the room information";
+            // 
+            // textBoxState
+            // 
+            this.textBoxState.Location = new System.Drawing.Point(106, 161);
+            this.textBoxState.Name = "textBoxState";
+            this.textBoxState.Size = new System.Drawing.Size(141, 20);
+            this.textBoxState.TabIndex = 14;
             // 
             // label1
             // 
@@ -183,13 +190,6 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // textBoxState
-            // 
-            this.textBoxState.Location = new System.Drawing.Point(106, 161);
-            this.textBoxState.Name = "textBoxState";
-            this.textBoxState.Size = new System.Drawing.Size(141, 20);
-            this.textBoxState.TabIndex = 14;
-            // 
             // UpdateRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -209,9 +209,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button buttonClear;
-        private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.GroupBox groupBoxData;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.ComboBox comboBoxType;
         public System.Windows.Forms.ComboBox comboBoxLoc;
@@ -223,8 +220,11 @@
         public System.Windows.Forms.Label labelFloor;
         public System.Windows.Forms.TextBox textBoxNumber;
         public System.Windows.Forms.Label labelNumber;
-        private System.Windows.Forms.ErrorProvider errorProvider;
         public System.Windows.Forms.TextBox textBoxState;
+        public System.Windows.Forms.Button buttonClear;
+        public System.Windows.Forms.Button buttonSave;
+        public System.Windows.Forms.GroupBox groupBoxData;
+        public System.Windows.Forms.ErrorProvider errorProvider;
 
     }
 }

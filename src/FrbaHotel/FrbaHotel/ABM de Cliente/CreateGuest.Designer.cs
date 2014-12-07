@@ -398,9 +398,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button buttonClear;
-        private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.ErrorProvider errorProvider;
         public System.Windows.Forms.GroupBox groupBoxGuest;
         public System.Windows.Forms.TextBox textBoxDept;
         public System.Windows.Forms.TextBox textBoxFloor;
@@ -426,5 +423,8 @@
         public System.Windows.Forms.CheckBox checkBoxEnabled;
         public System.Windows.Forms.Label labelEnabled;
         public System.Windows.Forms.Label labelText;
+        public System.Windows.Forms.Button buttonClear;
+        public System.Windows.Forms.Button buttonSave;
+        public System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

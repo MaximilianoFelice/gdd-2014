@@ -46,6 +46,7 @@ namespace FrbaHotel.ABM_de_Habitacion
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            this.assignParams();
             if (!rh.roomExists(roomNum, 45)) { // donde va 45 debe ir el id del hotel del administrador, no se como encontrarlo 
                 Boolean inserted = rh.insertRoom(45, roomNum, floor, location, type, descrip);
 
@@ -61,7 +62,11 @@ namespace FrbaHotel.ABM_de_Habitacion
         }
 
 
-
+        public void assignParams() {
+            roomNum=Int32.Parse(textBoxNumber.Text);
+            floor=Int32.Parse(textBoxFloor.Text);
+            descrip=textBoxDescr.Text;
+        }
 
 
         private void textBoxNumber_KeyPress(object sender, KeyPressEventArgs e)
@@ -90,47 +95,14 @@ namespace FrbaHotel.ABM_de_Habitacion
 
         private void textBoxNumber_Validating(object sender, CancelEventArgs e)
         {
-            if (vh.validateNullString(textBoxNumber.Text)) {
-                errorProvider.SetError(textBoxNumber, "Enter a room number");
-                buttonSave.Enabled = false;
-            } else {
-                try {
-                    roomNum = Int32.Parse(textBoxNumber.Text);
-                    errorProvider.SetError(textBoxNumber, "");
-                    buttonSave.Enabled = true;
-                
-                }
-                catch (FormatException) {
-                    errorProvider.SetError(textBoxNumber, "Invalid type");
-                    buttonSave.Enabled = false;
-                    
-                }
-            }
+            this.validateEmptyTextBoxOnHandler(textBoxNumber);
+            this.validateIntTextBoxOnHandler(textBoxNumber);
         }
 
         private void textBoxFloor_Validating(object sender, CancelEventArgs e)
         {
-            if (vh.validateNullString(textBoxFloor.Text))
-            {
-                errorProvider.SetError(textBoxFloor, "Enter a room floor");
-                buttonSave.Enabled = false;
-            }
-            else
-            {
-                try
-                {
-                    floor = Int32.Parse(textBoxFloor.Text);
-                    errorProvider.SetError(textBoxFloor, "");
-                    buttonSave.Enabled = true;
-
-                }
-                catch (FormatException)
-                {
-                    errorProvider.SetError(textBoxFloor, "Invalid type");
-                    buttonSave.Enabled = false;
-
-                }
-            }
+            this.validateEmptyTextBoxOnHandler(textBoxFloor);
+            this.validateIntTextBoxOnHandler(textBoxFloor);
         }
 
         private void comboBoxType_Validating(object sender, CancelEventArgs e)
@@ -169,16 +141,22 @@ namespace FrbaHotel.ABM_de_Habitacion
 
         private void textBoxDescr_Validating(object sender, CancelEventArgs e)
         {
-            if (vh.validateNullString(textBoxDescr.Text))
-            {
-                errorProvider.SetError(textBoxDescr, "Enter a room description");
-                buttonSave.Enabled = false;
-            }
-            else {
-                errorProvider.SetError(textBoxDescr, "");
-                buttonSave.Enabled = true;
-                descrip = textBoxDescr.Text;
-            }
+            this.validateEmptyTextBoxOnHandler(textBoxDescr);
+        }
+
+        public void validateEmptyTextBoxOnHandler(TextBox txtb)
+        {
+            FormHandler.validateEmptyTextBox(txtb, errorProvider, buttonSave);
+        }
+
+        public void validateIntTextBoxOnHandler(TextBox txtb)
+        {
+            FormHandler.validateIntTextBox(txtb, errorProvider, buttonSave);
+        }
+
+        public void validateDecTextBoxOnHandler(TextBox txtb)
+        {
+            FormHandler.validateDecimalTextBox(txtb, errorProvider, buttonSave);
         }
 
     }

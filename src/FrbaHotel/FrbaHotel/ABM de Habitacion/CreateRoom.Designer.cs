@@ -198,9 +198,6 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBoxData;
-        private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.Button buttonClear;
         public System.Windows.Forms.TextBox textBoxFloor;
         public System.Windows.Forms.Label labelFloor;
         public System.Windows.Forms.TextBox textBoxNumber;
@@ -211,6 +208,9 @@
         public System.Windows.Forms.Label labelTpye;
         public System.Windows.Forms.ComboBox comboBoxType;
         public System.Windows.Forms.ComboBox comboBoxLoc;
-        private System.Windows.Forms.ErrorProvider errorProvider;
+        public System.Windows.Forms.GroupBox groupBoxData;
+        public System.Windows.Forms.Button buttonSave;
+        public System.Windows.Forms.Button buttonClear;
+        public System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

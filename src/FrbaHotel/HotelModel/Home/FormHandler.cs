@@ -91,6 +91,43 @@ namespace HotelModel.Home
             }
             return 0;
         }
+
+        public static void validateEmptyTextBox(TextBox txtb, ErrorProvider errorP, Button button) {
+            if (String.IsNullOrEmpty(txtb.Text)) {
+                errorP.SetError(txtb, "Enter value to textbox");
+                button.Enabled = false;
+            } else {
+                errorP.SetError(txtb, "");
+                button.Enabled = true;
+            }
+        
+        }
+
+        public static void validateIntTextBox(TextBox txtb, ErrorProvider errorP, Button button) {
+            try {
+                Int32 unInt = Int32.Parse(txtb.Text);
+                errorP.SetError(txtb, "");
+                button.Enabled = true;
+            }
+            catch (FormatException) {
+                errorP.SetError(txtb, "Invalid type");
+                button.Enabled = false;
+            }
+        
+        }
+
+       public static void validateDecimalTextBox(TextBox txtb, ErrorProvider errorP, Button button) {
+            try {
+                Decimal unDec = Decimal.Parse(txtb.Text);
+                errorP.SetError(txtb, "");
+                button.Enabled = true;
+            }
+            catch (FormatException) {
+                errorP.SetError(txtb, "Invalid type");
+                button.Enabled = false;
+            }
+        
+        }
     }
 }
 

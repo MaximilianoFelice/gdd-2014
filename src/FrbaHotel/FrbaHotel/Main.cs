@@ -122,6 +122,12 @@ namespace FrbaHotel
             frm.Show();
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ABM_de_Hotel.CreateHotel frm = new FrbaHotel.ABM_de_Hotel.CreateHotel();
+            frm.Show();
+        }
+
        
 
    

@@ -117,7 +117,7 @@ namespace FrbaHotel.Listado_Estadistico
             }
            
             
-            //Cursor.Current = Cursors.Default;
+           
 
        
 

@@ -46,7 +46,7 @@ namespace FrbaHotel.ABM_de_Cliente
         {
             if (this.ValidateChildren())
             {
-                this.setOtherVarCharParams();
+                this.setParams();
                 this.assignState();
 
                 if (this.validEmail())
@@ -96,10 +96,19 @@ namespace FrbaHotel.ABM_de_Cliente
         
         }
 
-        private void setOtherVarCharParams() {
-            street = textBoxStreet.Text;
-            dept = textBoxDept.Text;
+        private void setParams() {
+            name = textBoxName.Text;
+            lastname = textBoxLastname.Text;
+            docNumber = Decimal.Parse(textBoxDocNumber.Text);
+            phone=Decimal.Parse(textBoxPhone.Text);
+            mail=textBoxEmail.Text;
+            birthDate=dtPickerBirhtDate.Value;
             nationality = textBoxNationality.Text;
+            street = textBoxStreet.Text;
+            streetNum=Int32.Parse(textBoxStreetNum.Text);
+            floor=Int32.Parse(textBoxFloor.Text);
+            dept = textBoxDept.Text;
+           
         }
 
         private Boolean validEmail() {
@@ -111,37 +120,18 @@ namespace FrbaHotel.ABM_de_Cliente
         }
         private void textBoxName_Validating(object sender, CancelEventArgs e)
         {
-            if (textBoxName.Text == "")
-            {
-                errorProvider.SetError(textBoxName, "Please enter the guest name");
-                buttonSave.Enabled = false;
-            }
-            else
-            {
-                errorProvider.SetError(textBoxName, "");
-                name = textBoxName.Text;
-                buttonSave.Enabled = true;
-            }
+            this.validateEmptyTextBoxOnHandler(textBoxName);
         }
+       
+        
 
         private void textBoxLastname_Validated(object sender, EventArgs e)
         {
-            if (textBoxLastname.Text=="") {
-                errorProvider.SetError(textBoxLastname, "Please enter the lastname");
-                buttonSave.Enabled = false;
-            }
-            else
-            {
-                errorProvider.SetError(textBoxName, "");
-                lastname=textBoxLastname.Text;
-                buttonSave.Enabled = true;
-            }
-
+            this.validateEmptyTextBoxOnHandler(textBoxLastname);
 
         }
         
 
-        
 
         private void comboBoxDocType_Validating(object sender, CancelEventArgs e)
         {
@@ -165,42 +155,16 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void textBoxDocNumber_Validating(object sender, CancelEventArgs e)
         {
-            if(textBoxDocNumber.Text ==""){
-                errorProvider.SetError(textBoxDocNumber, "Please enter the document number");
-                buttonSave.Enabled = false;
-              
-            }
-            else
-            {
-                try
-                {
-                    docNumber = Decimal.Parse(textBoxDocNumber.Text);
-                    errorProvider.SetError(textBoxDocNumber, "");
-                    buttonSave.Enabled = true;
-                }
-                catch (FormatException)
-                {
-                    errorProvider.SetError(textBoxDocNumber, "Invalid type");
-                    buttonSave.Enabled = false;
-                } 
-                
-            }
+
+            this.validateEmptyTextBoxOnHandler(textBoxDocNumber);
+            this.validateDecTextBoxOnHandler(textBoxDocNumber);
             
-        }
-          
-           
+        } 
         
 
         private void textBoxPhone_Validating(object sender, CancelEventArgs e)
         {
-            try {
-                phone = Decimal.Parse(textBoxPhone.Text);
-                errorProvider.SetError(textBoxPhone, "");
-                buttonSave.Enabled = true;
-            }
-            catch(FormatException) {
-                errorProvider.SetError(textBoxPhone, "Invalid type");
-            }
+            this.validateDecTextBoxOnHandler(textBoxPhone);
           
         }
 
@@ -222,31 +186,28 @@ namespace FrbaHotel.ABM_de_Cliente
         private void textBoxStreetNum_Validating(object sender, CancelEventArgs e)
         {
 
-            try {
-                streetNum = Int32.Parse(textBoxStreetNum.Text);
-                errorProvider.SetError(textBoxPhone, "");
-                buttonSave.Enabled = true;
-            }
-            catch (FormatException) {
-                errorProvider.SetError(textBoxPhone, "Invalid type");
-                buttonSave.Enabled = false;
-            } 
+            this.validateIntTextBoxOnHandler(textBoxStreetNum);
         }
 
         private void textBoxFloor_Validating(object sender, CancelEventArgs e)
         {
-            try {
-                floor = Int32.Parse(textBoxFloor.Text);
-                errorProvider.SetError(textBoxFloor, "");
-                buttonSave.Enabled = true;
-            }
-            catch (FormatException) {
-                errorProvider.SetError(textBoxFloor, "Invalid type");
-                buttonSave.Enabled = false;
-            }
+            this.validateIntTextBoxOnHandler(textBoxFloor);
             
         }
 
+        public void validateEmptyTextBoxOnHandler(TextBox txtb)
+        {
+            FormHandler.validateEmptyTextBox(txtb, errorProvider, buttonSave);
+        }
+
+        public void validateIntTextBoxOnHandler(TextBox txtb) {
+            FormHandler.validateIntTextBox(txtb, errorProvider, buttonSave);
+        }
+
+        public void validateDecTextBoxOnHandler(TextBox txtb) {
+            FormHandler.validateDecimalTextBox(txtb, errorProvider, buttonSave);
+        }
+       
  
            //allows only numbers and . in docnumber field
            private void textBoxDocNumber_KeyPress(object sender, KeyPressEventArgs e)
