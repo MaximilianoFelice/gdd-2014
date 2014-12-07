@@ -228,9 +228,9 @@ END
 GO
 
 --=======================================
---STATISTICS TOP 5 GUEST WITH MOST POINTS
+--STATISTICS TOP 5 ROOMS MOST OCCUPIED
 --=======================================
-CREATE PROCEDURE [BOBBY_TABLES].SP_STATISTICS_GUESTS_POINTS
+CREATE PROCEDURE [BOBBY_TABLES].SP_STATISTICS_OCCUPIED_ROOMS
 
 	@from datetime ,
 	@to datetime 
@@ -258,6 +258,11 @@ BEGIN
 		'Amount of Time Occupied' desc
 END
 GO
+
+
+--=======================================
+--STATISTICS TOP 5 GUEST WITH MOST POINTS
+--=======================================
 
 
 
