@@ -69,6 +69,7 @@
     <Compile Include="Home\HotelHandler.cs" />
     <Compile Include="Home\FormHandler.cs" />
     <Compile Include="Home\RoomHandler.cs" />
+    <Compile Include="Home\StatisticsHandler.cs" />
     <Compile Include="Home\ValidationsHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />

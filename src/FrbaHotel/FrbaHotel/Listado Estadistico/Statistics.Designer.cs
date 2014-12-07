@@ -28,122 +28,175 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.buttonTopCanceled = new System.Windows.Forms.Button();
-            this.buttonTopExtra = new System.Windows.Forms.Button();
-            this.buttonOutService = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.buttonTopScore = new System.Windows.Forms.Button();
+            this.checkBoxLFilter = new System.Windows.Forms.CheckedListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxCriteria = new System.Windows.Forms.ComboBox();
+            this.comboBoxQuarter = new System.Windows.Forms.ComboBox();
+            this.labelQuarter = new System.Windows.Forms.Label();
+            this.labelYear = new System.Windows.Forms.Label();
+            this.buttonShow = new System.Windows.Forms.Button();
+            this.dataGridViewResults = new System.Windows.Forms.DataGridView();
+            this.numericUpDownYear = new System.Windows.Forms.NumericUpDown();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResults)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYear)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.buttonOutService);
-            this.groupBox1.Controls.Add(this.buttonTopExtra);
-            this.groupBox1.Controls.Add(this.buttonTopCanceled);
-            this.groupBox1.Location = new System.Drawing.Point(13, 13);
+            this.groupBox1.Controls.Add(this.checkBoxLFilter);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.comboBoxCriteria);
+            this.groupBox1.Location = new System.Drawing.Point(272, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(217, 133);
+            this.groupBox1.Size = new System.Drawing.Size(297, 176);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Hotel Statistics";
+            this.groupBox1.Text = "Statistics Filters";
             // 
-            // buttonTopCanceled
+            // checkBoxLFilter
             // 
-            this.buttonTopCanceled.Location = new System.Drawing.Point(21, 30);
-            this.buttonTopCanceled.Name = "buttonTopCanceled";
-            this.buttonTopCanceled.Size = new System.Drawing.Size(159, 23);
-            this.buttonTopCanceled.TabIndex = 0;
-            this.buttonTopCanceled.Text = "Top Canceled Bookings";
-            this.buttonTopCanceled.UseVisualStyleBackColor = true;
+            this.checkBoxLFilter.FormattingEnabled = true;
+            this.checkBoxLFilter.Location = new System.Drawing.Point(20, 57);
+            this.checkBoxLFilter.Name = "checkBoxLFilter";
+            this.checkBoxLFilter.Size = new System.Drawing.Size(245, 94);
+            this.checkBoxLFilter.TabIndex = 2;
+            this.checkBoxLFilter.Validating += new System.ComponentModel.CancelEventHandler(this.checkBoxLFilter_Validating);
             // 
-            // buttonTopExtra
+            // label1
             // 
-            this.buttonTopExtra.Location = new System.Drawing.Point(21, 60);
-            this.buttonTopExtra.Name = "buttonTopExtra";
-            this.buttonTopExtra.Size = new System.Drawing.Size(159, 23);
-            this.buttonTopExtra.TabIndex = 1;
-            this.buttonTopExtra.Text = "Top Extra Billed";
-            this.buttonTopExtra.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Select Filter Top 5";
             // 
-            // buttonOutService
+            // comboBoxCriteria
             // 
-            this.buttonOutService.Location = new System.Drawing.Point(21, 90);
-            this.buttonOutService.Name = "buttonOutService";
-            this.buttonOutService.Size = new System.Drawing.Size(159, 23);
-            this.buttonOutService.TabIndex = 2;
-            this.buttonOutService.Text = "Top Out of Service";
-            this.buttonOutService.UseVisualStyleBackColor = true;
+            this.comboBoxCriteria.FormattingEnabled = true;
+            this.comboBoxCriteria.Items.AddRange(new object[] {
+            "Hotels",
+            "Rooms",
+            "Guests"});
+            this.comboBoxCriteria.Location = new System.Drawing.Point(113, 30);
+            this.comboBoxCriteria.Name = "comboBoxCriteria";
+            this.comboBoxCriteria.Size = new System.Drawing.Size(152, 21);
+            this.comboBoxCriteria.TabIndex = 0;
+            this.comboBoxCriteria.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxCriteria_Validating);
+            this.comboBoxCriteria.SelectedIndexChanged += new System.EventHandler(this.comboBoxCriteria_SelectedIndexChanged);
             // 
-            // groupBox2
+            // comboBoxQuarter
             // 
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Location = new System.Drawing.Point(13, 164);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(217, 77);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Room Statistics";
+            this.comboBoxQuarter.FormattingEnabled = true;
+            this.comboBoxQuarter.Location = new System.Drawing.Point(76, 42);
+            this.comboBoxQuarter.Name = "comboBoxQuarter";
+            this.comboBoxQuarter.Size = new System.Drawing.Size(181, 21);
+            this.comboBoxQuarter.TabIndex = 1;
             // 
-            // button1
+            // labelQuarter
             // 
-            this.button1.Location = new System.Drawing.Point(21, 29);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(159, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Top Occupied";
-            this.button1.UseVisualStyleBackColor = true;
+            this.labelQuarter.AutoSize = true;
+            this.labelQuarter.Location = new System.Drawing.Point(12, 45);
+            this.labelQuarter.Name = "labelQuarter";
+            this.labelQuarter.Size = new System.Drawing.Size(42, 13);
+            this.labelQuarter.TabIndex = 2;
+            this.labelQuarter.Text = "Quarter";
             // 
-            // groupBox3
+            // labelYear
             // 
-            this.groupBox3.Controls.Add(this.buttonTopScore);
-            this.groupBox3.Location = new System.Drawing.Point(13, 263);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(217, 89);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Guest Statistics";
+            this.labelYear.AutoSize = true;
+            this.labelYear.Location = new System.Drawing.Point(15, 78);
+            this.labelYear.Name = "labelYear";
+            this.labelYear.Size = new System.Drawing.Size(29, 13);
+            this.labelYear.TabIndex = 3;
+            this.labelYear.Text = "Year";
             // 
-            // buttonTopScore
+            // buttonShow
             // 
-            this.buttonTopScore.Location = new System.Drawing.Point(21, 37);
-            this.buttonTopScore.Name = "buttonTopScore";
-            this.buttonTopScore.Size = new System.Drawing.Size(159, 23);
-            this.buttonTopScore.TabIndex = 0;
-            this.buttonTopScore.Text = "Top Score";
-            this.buttonTopScore.UseVisualStyleBackColor = true;
+            this.buttonShow.Location = new System.Drawing.Point(167, 210);
+            this.buttonShow.Name = "buttonShow";
+            this.buttonShow.Size = new System.Drawing.Size(148, 23);
+            this.buttonShow.TabIndex = 5;
+            this.buttonShow.Text = "Show Top 5";
+            this.buttonShow.UseVisualStyleBackColor = true;
+            this.buttonShow.Click += new System.EventHandler(this.buttonShow_Click);
+            // 
+            // dataGridViewResults
+            // 
+            this.dataGridViewResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewResults.Location = new System.Drawing.Point(15, 260);
+            this.dataGridViewResults.Name = "dataGridViewResults";
+            this.dataGridViewResults.Size = new System.Drawing.Size(554, 150);
+            this.dataGridViewResults.TabIndex = 6;
+            // 
+            // numericUpDownYear
+            // 
+            this.numericUpDownYear.Location = new System.Drawing.Point(76, 76);
+            this.numericUpDownYear.Maximum = new decimal(new int[] {
+            2030,
+            0,
+            0,
+            0});
+            this.numericUpDownYear.Minimum = new decimal(new int[] {
+            1970,
+            0,
+            0,
+            0});
+            this.numericUpDownYear.Name = "numericUpDownYear";
+            this.numericUpDownYear.Size = new System.Drawing.Size(181, 20);
+            this.numericUpDownYear.TabIndex = 7;
+            this.numericUpDownYear.Value = new decimal(new int[] {
+            2014,
+            0,
+            0,
+            0});
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // Statistics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(246, 371);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(590, 424);
+            this.Controls.Add(this.numericUpDownYear);
+            this.Controls.Add(this.dataGridViewResults);
+            this.Controls.Add(this.buttonShow);
+            this.Controls.Add(this.labelYear);
+            this.Controls.Add(this.labelQuarter);
+            this.Controls.Add(this.comboBoxQuarter);
             this.Controls.Add(this.groupBox1);
             this.Name = "Statistics";
             this.Text = "Statistics";
             this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResults)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYear)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button buttonTopExtra;
-        private System.Windows.Forms.Button buttonTopCanceled;
-        private System.Windows.Forms.Button buttonOutService;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button buttonTopScore;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBoxCriteria;
+        private System.Windows.Forms.CheckedListBox checkBoxLFilter;
+        private System.Windows.Forms.ComboBox comboBoxQuarter;
+        private System.Windows.Forms.Label labelQuarter;
+        private System.Windows.Forms.Label labelYear;
+        private System.Windows.Forms.Button buttonShow;
+        private System.Windows.Forms.DataGridView dataGridViewResults;
+        private System.Windows.Forms.NumericUpDown numericUpDownYear;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+
     }
 }

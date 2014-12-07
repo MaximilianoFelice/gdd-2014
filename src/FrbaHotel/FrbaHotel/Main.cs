@@ -116,6 +116,12 @@ namespace FrbaHotel
 
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Listado_Estadistico.Statistics frm = new FrbaHotel.Listado_Estadistico.Statistics();
+            frm.Show();
+        }
+
        
 
    

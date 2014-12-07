@@ -71,6 +71,26 @@ namespace HotelModel.Home
             DataTable tabla = new DataTable();
             dgv.DataSource = tabla;
         }
+
+        public static Boolean checkBoxListEmpty(CheckedListBox cbl)
+        {
+            for (int i = 0; i < cbl.Items.Count; i++)
+            {
+                if (cbl.GetItemChecked(i) == true) return false;
+            }
+            return true;
+
+        }
+
+        public static int selectItemIndex(CheckedListBox clb)
+        {
+            for (int i = 0; i < clb.Items.Count; i++)
+            {
+                if (clb.GetItemChecked(i)) return i;
+
+            }
+            return 0;
+        }
     }
 }
 
