@@ -68,6 +68,7 @@
     <Compile Include="Home\GuestHandler.cs" />
     <Compile Include="Home\HotelHandler.cs" />
     <Compile Include="Home\FormHandler.cs" />
+    <Compile Include="Home\RegimenHandler.cs" />
     <Compile Include="Home\RoomHandler.cs" />
     <Compile Include="Home\StatisticsHandler.cs" />
     <Compile Include="Home\ValidationsHandler.cs" />

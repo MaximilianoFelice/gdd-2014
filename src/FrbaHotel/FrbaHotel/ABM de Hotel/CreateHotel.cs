@@ -13,6 +13,7 @@ namespace FrbaHotel.ABM_de_Hotel
     public partial class CreateHotel : Form
     {
         HotelHandler hh = new HotelHandler();
+        RegimenHandler rh = new RegimenHandler();
         String name;
         String mail;
         Decimal phone;
@@ -20,19 +21,19 @@ namespace FrbaHotel.ABM_de_Hotel
         Int32 streetNum;
         String city;
         String country;
-        Int32  starts;
-        //CheckListReg.CheckItemColletion regimens;
+        Int32  stars;
         DateTime creationDate;
 
         public CreateHotel()
         {
             InitializeComponent();
             this.loadRegimens();
+            dateTimePicker.MaxDate = DateTime.Now;
         }
 
         private void loadRegimens() 
         {
-            DataTable dt = hh.getRegimensForHotels().Tables[0];
+            DataTable dt = rh.getRegimensForHotels().Tables[0];
             for (int i = 0; i < dt.Rows.Count; i++)
                 checkedListBoxReg.Items.Add(Convert.ToString(dt.Rows[i].ItemArray[1]));
         
@@ -85,13 +86,44 @@ namespace FrbaHotel.ABM_de_Hotel
         private void buttonClear_Click(object sender, EventArgs e)
         {
             FormHandler.groupBoxCleaner(groupBox);
+            FormHandler.clearItemCheckList(checkedListBoxReg);
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
             this.assignParams();
+            
+            Boolean inserted = hh.insertHotel(name, mail, phone, street, streetNum, city, country, stars, creationDate); 
+            if (inserted)
+                {
+                    MessageBox.Show("Hotel inserted");
 
-        }
+                    Int32 id_hotel = (Int32)hh.getIdHotel(name, mail, city).Tables[0].Rows[0].ItemArray[0];
+                     
+                    foreach(object checkItem in checkedListBoxReg.CheckedItems){
+                        
+                        DataTable ids_regimen = rh.getRegimenIdFromDescr(checkItem.ToString()).Tables[0];
+                        Int32 id_regimen = (Int32)ids_regimen.Rows[0].ItemArray[0];
+
+                        Boolean addedRegimenToHotel = hh.addRegimenToHotel(id_hotel,id_regimen);
+
+                        if (!addedRegimenToHotel)
+                        {
+                            MessageBox.Show("Unable to add regimen to Hotel:" + checkItem.ToString());
+                        }
+                        
+                    }
+
+                }
+                else {
+                    MessageBox.Show("Unable to insert hotel");
+                }
+                
+            }
+           
+
+
+
 
         private void assignParams() {
             name=textBoxName.Text;
@@ -101,11 +133,9 @@ namespace FrbaHotel.ABM_de_Hotel
             streetNum=Int32.Parse(textBoxStreetNum.Text);
             city=textBoxCity.Text;
             country=textBoxCountry.Text;
-            starts= (Int32)numericUDStars.Value;
-            //regimens= checkedListBoxReg.CheckedItems;
+            stars= (Int32)numericUDStars.Value;
             creationDate=dateTimePicker.Value;
 
-        
         }
 
         private void textBoxPhone_KeyPress(object sender, KeyPressEventArgs e)
