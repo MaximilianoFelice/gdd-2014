@@ -61,7 +61,6 @@
     <Compile Include="ABM de Cliente\FilterGuest.Designer.cs">
       <DependentUpon>FilterGuest.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM de Cliente\tests\CreateGuestQuery_Test.cs" />
     <Compile Include="ABM de Cliente\UpdateGuest.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -116,7 +116,8 @@ namespace FrbaHotel.ABM_de_Cliente
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             Int32 id_guest = (Int32)this.dataGridViewResults.CurrentRow.Cells[0].Value;
-            gh.deletePerson(id_guest);
+            if (gh.deletePerson(id_guest)) MessageBox.Show("Guest Deleted");
+            else MessageBox.Show("Unable to deleted");
 
         }
 
