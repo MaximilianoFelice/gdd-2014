@@ -30,8 +30,9 @@ namespace FrbaHotel.ABM_de_Cliente
         {
            this.assignFilters();
            DataTable results = gh.filteredSearch(name, lastname,docType, docNumber, mail);
-           dataGridViewResults.DataSource = results; 
-
+           BindingSource bs = new BindingSource();
+           bs.DataSource = results; 
+           dataGridViewResults.DataSource = bs;
         }
 
 
@@ -58,11 +59,9 @@ namespace FrbaHotel.ABM_de_Cliente
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
       
-            ABM_de_Cliente.CreateGuest frm = new CreateGuest();
+            ABM_de_Cliente.UpdateGuest frm = new UpdateGuest();
 
-            frm.Text = "Update Guest";
-            frm.labelText.Text = "Updating Guest:" + this.dataGridViewResults.CurrentRow.Cells[0].Value.ToString();
-
+            frm.textBoxId.Text = this.dataGridViewResults.CurrentRow.Cells[0].Value.ToString();
             frm.textBoxName.Text = this.dataGridViewResults.CurrentRow.Cells[1].Value.ToString();
             frm.textBoxLastname.Text = this.dataGridViewResults.CurrentRow.Cells[2].Value.ToString();
 
@@ -112,6 +111,13 @@ namespace FrbaHotel.ABM_de_Cliente
         private void textBoxDocNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             FormHandler.allowOnlyNumbers(sender, e);
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            Int32 id_guest = (Int32)this.dataGridViewResults.CurrentRow.Cells[0].Value;
+            gh.deletePerson(id_guest);
+
         }
 
         

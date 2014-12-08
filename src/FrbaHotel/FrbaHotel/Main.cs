@@ -128,6 +128,12 @@ namespace FrbaHotel
             frm.Show();
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ABM_de_Hotel.Manteinance frm = new FrbaHotel.ABM_de_Hotel.Manteinance();
+            frm.Show();
+        }
+
        
 
    

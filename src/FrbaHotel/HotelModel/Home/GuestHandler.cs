@@ -56,6 +56,21 @@ namespace HotelModel.Home
             else return false;
         }
 
+        public Boolean emailExistsForUpdate(Int32 id_guest, String mail){
+            if (!String.IsNullOrEmpty(mail))
+            {
+                SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_EMAIL_EXISTS_UPDATE")
+                                    .WithParam("@Id").As(SqlDbType.Int).Value(id_guest)
+                                    .WithParam("@Email").As(SqlDbType.VarChar).Value(mail)
+                                    .WithParam("@EmailExist").As(SqlDbType.Bit).AsOutput()
+                                    .Execute();
+
+                return (Boolean)results["EmailExists"];
+            }
+            else return false;
+        
+        }
+
         public Int32 insertPerson(String name, String lastname, String docType, Decimal docNumber, String mail, Decimal phone, DateTime birthDate,
                                 String street, Int32 streetNum, Int32 floor, String dept, String nationality, Int32 state)
         {
@@ -87,7 +102,7 @@ namespace HotelModel.Home
 
 
 
-        public Int32 updatePerson(String name, String lastname, String docType, Decimal docNumber, String mail, Decimal phone, DateTime birthDate,
+        public Boolean updatePerson(String name, String lastname, String docType, Decimal docNumber, String mail, Decimal phone, DateTime birthDate,
                                 String street, Int32 streetNum,Int32 floor, String dept, String nationality,Int32 state)
         {
 
@@ -105,10 +120,10 @@ namespace HotelModel.Home
                                      .WithParam("@Dept").As(SqlDbType.VarChar).Value(dept)
                                      .WithParam("@Nationality").As(SqlDbType.VarChar).Value(nationality)
                                      .WithParam("@State").As(SqlDbType.Int).Value(state)
-                                     .WithParam("@IdPersonUpdated").As(SqlDbType.Int).AsOutput()
+                                     .WithParam("@Updated").As(SqlDbType.Bit).AsOutput()
                                                              .Execute();
 
-            return (Int32)results["@IdPersonUpdated"];
+            return (Boolean)results["@Updated"];
         }
 
 
@@ -130,27 +145,15 @@ namespace HotelModel.Home
         }
 
 
-        public int deletePerson(String name, String lastname, String docType, Decimal docNumber, String mail, Decimal phone, DateTime birthDate,
-                                String street, Int32 streetNum, Int32 floor, String dept, String nationality)
+        public int deletePerson(Int32 id_guest)
         {
 
             SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_DELETE_PERSON")
-                                     .WithParam("@Name").As(SqlDbType.VarChar).Value(name)
-                                     .WithParam("@Lastname").As(SqlDbType.VarChar).Value(lastname)
-                                     .WithParam("@DocType").As(SqlDbType.VarChar).Value(docType)
-                                     .WithParam("@DocNumber").As(SqlDbType.Decimal).Value(docNumber)
-                                     .WithParam("@Mail").As(SqlDbType.VarChar).Value(mail)
-                                     .WithParam("@Phone").As(SqlDbType.Decimal).Value(phone)
-                                     .WithParam("@BirthDate").As(SqlDbType.DateTime).Value(birthDate)
-                                     .WithParam("@Street").As(SqlDbType.VarChar).Value(street)
-                                     .WithParam("@StreetNum").As(SqlDbType.Int).Value(streetNum)
-                                     .WithParam("@Floor").As(SqlDbType.Int).Value(floor)
-                                     .WithParam("@Dept").As(SqlDbType.VarChar).Value(dept)
-                                     .WithParam("@Nationality").As(SqlDbType.VarChar).Value(nationality)
-                                     .WithParam("@IdPersonDeleted").As(SqlDbType.Int).AsOutput()
-                                                             .Execute();
+                                     .WithParam("@IdGuest").As(SqlDbType.Int).Value(id_guest)
+                                     .WithParam("@Deleted").As(SqlDbType.Bit).AsOutput()
+                                     .Execute();
 
-            return (Int32)results["@IdPersonDeleted"];
+            return (Int32)results["@Deleted"];
         }
 
 

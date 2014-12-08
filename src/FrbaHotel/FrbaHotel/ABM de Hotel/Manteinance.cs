@@ -14,6 +14,8 @@ namespace FrbaHotel.ABM_de_Hotel
         public Manteinance()
         {
             InitializeComponent();
+            dateTimePickerStart.MinDate = DateTime.Today;
+            dateTimePickerEnd.MinDate = DateTime.Today.AddDays(1);
         }
     }
 }
