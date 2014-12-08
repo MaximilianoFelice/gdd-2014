@@ -75,26 +75,12 @@ namespace FrbaHotel.ABM_de_Habitacion
 
         private void textBoxNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsNumber(e.KeyChar))
-            {
-
-            }
-            else
-            {
-                e.Handled = e.KeyChar != (char)Keys.Back;
-            }
+            FormHandler.allowOnlyNumbers(sender, e);
         }
 
         private void textBoxFloor_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsNumber(e.KeyChar))
-            {
-
-            }
-            else
-            {
-                e.Handled = e.KeyChar != (char)Keys.Back;
-            }
+            FormHandler.allowOnlyNumbers(sender, e);
         }
 
         private void textBoxNumber_Validating(object sender, CancelEventArgs e)

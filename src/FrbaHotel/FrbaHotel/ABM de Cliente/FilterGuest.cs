@@ -39,6 +39,7 @@ namespace FrbaHotel.ABM_de_Cliente
             name=textBoxName.Text;
             lastname=textBoxLastname.Text;
             docType=comboBoxDocType.Text;
+            docNumber = Decimal.Parse(textBoxDocNumber.Text);
             mail=textBoxEmail.Text;
         }
 
@@ -51,24 +52,7 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void textBoxDocNumber_Validating(object sender, CancelEventArgs e)
         {
-            if (!String.IsNullOrEmpty(textBoxDocNumber.Text))
-            {
-                try
-                {
-                    docNumber = Decimal.Parse(textBoxDocNumber.Text);
-                    errorProvider.SetError(textBoxDocNumber, "");
-                    buttonSearch.Enabled = true;
-                }
-                catch (FormatException)
-                {
-                    errorProvider.SetError(textBoxDocNumber, "Invalid document type");
-                    buttonSearch.Enabled = false;
-
-                }
-            }
-            else {
-                docNumber = null;
-            }
+            FormHandler.validateDecimalTextBox(textBoxDocNumber,errorProvider, buttonSearch);
         }
 
         private void buttonUpdate_Click(object sender, EventArgs e)
@@ -117,38 +101,17 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsLetter(e.KeyChar))
-            {
-
-            }
-            else
-            {
-                e.Handled = e.KeyChar != (char)Keys.Back;
-            }
+            FormHandler.allowOnlyChars(sender, e);
         }
 
         private void textBoxLastname_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsLetter(e.KeyChar))
-            {
-
-            }
-            else
-            {
-                e.Handled = e.KeyChar != (char)Keys.Back;
-            }
+            FormHandler.allowOnlyChars(sender, e);
         }
 
         private void textBoxDocNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsNumber(e.KeyChar))
-            {
-
-            }
-            else
-            {
-                e.Handled = e.KeyChar != (char)Keys.Back;
-            }
+            FormHandler.allowOnlyNumbers(sender, e);
         }
 
         

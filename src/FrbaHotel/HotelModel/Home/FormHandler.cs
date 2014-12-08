@@ -128,6 +128,30 @@ namespace HotelModel.Home
             }
         
         }
+
+       public static void allowOnlyChars(object sender, KeyPressEventArgs e)
+       {
+           if (char.IsLetter(e.KeyChar))
+           {
+
+           }
+           else
+           {
+               e.Handled = e.KeyChar != (char)Keys.Back;
+           }
+       }
+
+      public static void allowOnlyNumbers(object sender, KeyPressEventArgs e)
+       {
+           if (char.IsNumber(e.KeyChar))
+           {
+
+           }
+           else
+           {
+               e.Handled = e.KeyChar != (char)Keys.Back;
+           }
+       }
     }
 }
 

@@ -212,52 +212,24 @@ namespace FrbaHotel.ABM_de_Cliente
            //allows only numbers and . in docnumber field
            private void textBoxDocNumber_KeyPress(object sender, KeyPressEventArgs e)
            {
-               if (char.IsNumber(e.KeyChar) || e.KeyChar == '.')
-               {
-
-               }
-               else
-               {
-                   e.Handled = e.KeyChar != (char)Keys.Back;
-               }
+               FormHandler.allowOnlyNumbers(sender, e);
            }
         
         private void textBoxStreet_KeyPress(object sender, KeyPressEventArgs e)
            {
-               if (char.IsLetter(e.KeyChar))
-               {
-
-               }
-               else
-               {
-                   e.Handled = e.KeyChar != (char)Keys.Back;
-               }
+               FormHandler.allowOnlyChars(sender, e);
 
            }
 
            private void textBoxFloor_KeyPress(object sender, KeyPressEventArgs e)
            {
-               if (char.IsNumber(e.KeyChar) || e.KeyChar == '.')
-               {
-
-               }
-               else
-               {
-                   e.Handled = e.KeyChar != (char)Keys.Back;
-               }
+               FormHandler.allowOnlyNumbers(sender, e);
 
            }
 
            private void textBoxStreetNum_KeyPress(object sender, KeyPressEventArgs e)
            {
-               if (char.IsNumber(e.KeyChar) || e.KeyChar == '.')
-               {
-
-               }
-               else
-               {
-                   e.Handled = e.KeyChar != (char)Keys.Back;
-               }
+               FormHandler.allowOnlyChars(sender, e);
 
            }
 
@@ -266,65 +238,28 @@ namespace FrbaHotel.ABM_de_Cliente
            private void textBoxNationality_KeyPress(object sender, KeyPressEventArgs e)
            {
 
-               if (char.IsLetter(e.KeyChar))
-               {
-
-               }
-               else
-               {
-                   e.Handled = e.KeyChar != (char)Keys.Back;
-               }
+               FormHandler.allowOnlyChars(sender, e);
 
            }
 
            private void textBoxLastname_KeyPress(object sender, KeyPressEventArgs e)
            {
-               if (char.IsLetter(e.KeyChar))
-               {
-
-               }
-               else
-               {
-                   e.Handled = e.KeyChar != (char)Keys.Back;
-               }
-
+               FormHandler.allowOnlyChars(sender, e);
            }
 
            private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
            {
-               if (char.IsLetter(e.KeyChar))
-               {
-
-               }
-               else
-               {
-                   e.Handled = e.KeyChar != (char)Keys.Back;
-               }
-
+               FormHandler.allowOnlyChars(sender, e);
            }
 
            private void textBoxDocNumber_KeyPress_1(object sender, KeyPressEventArgs e)
            {
-               if (char.IsNumber(e.KeyChar))
-               {
-
-               }
-               else
-               {
-                   e.Handled = e.KeyChar != (char)Keys.Back;
-               }
+               FormHandler.allowOnlyNumbers(sender, e);
            }
 
            private void textBoxPhone_KeyPress_1(object sender, KeyPressEventArgs e)
            {
-               if (char.IsNumber(e.KeyChar))
-               {
-
-               }
-               else
-               {
-                   e.Handled = e.KeyChar != (char)Keys.Back;
-               }
+               FormHandler.allowOnlyNumbers(sender, e);
 
            }
 

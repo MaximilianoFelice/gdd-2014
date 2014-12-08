@@ -30,15 +30,14 @@ namespace FrbaHotel.ABM_de_Hotel
             this.loadRegimens();
         }
 
-        private void loadRegimens() {
-
-            //corregir, por cada item del dataset hacer checklist.items.add
-            //checkedListBoxReg.DataSource = hh.getRegimensForHotels();
+        private void loadRegimens() 
+        {
             DataTable dt = hh.getRegimensForHotels().Tables[0];
             for (int i = 0; i < dt.Rows.Count; i++)
                 checkedListBoxReg.Items.Add(Convert.ToString(dt.Rows[i].ItemArray[1]));
         
         }
+
         private void textBoxName_Validating(object sender, CancelEventArgs e)
         {
             validateEmptyTextBoxOnHandler(textBoxName);
@@ -108,5 +107,37 @@ namespace FrbaHotel.ABM_de_Hotel
 
         
         }
+
+        private void textBoxPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FormHandler.allowOnlyNumbers(sender, e);
+        }
+
+        private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FormHandler.allowOnlyChars(sender, e);
+        }
+
+        private void textBoxStreet_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FormHandler.allowOnlyChars(sender, e);
+        }
+
+        private void textBoxStreetNum_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FormHandler.allowOnlyNumbers(sender, e);
+        }
+
+        private void textBoxCity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FormHandler.allowOnlyChars(sender, e);
+        }
+
+        private void textBoxCountry_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FormHandler.allowOnlyChars( sender, e);
+        }
+
+ 
     }
 }
