@@ -131,6 +131,29 @@ GO
 
 
 --=======================================
+--FILTER PERSON
+--=======================================
+CREATE PROCEDURE [BOBBY_TABLES].SP_FILTER_PERSONS
+@Name VARCHAR(50) = NULL,
+@Lastname VARCHAR(50) = NULL,
+@DocType VARCHAR(10) = NULL,
+@DocNumber DECIMAL(10,0) = NULL,
+@Mail VARCHAR(50) = NULL
+AS
+
+	SELECT * FROM [BOBBY_TABLES].PERSONS 
+	WHERE
+		((@Name IS NULL)  OR (name LIKE '%' + @Name + '%')) AND
+        ((@Lastname IS NULL) OR (lastname LIKE '%' + @Lastname+ '%')) AND
+        ((@DocNumber IS NULL) OR (doc_number = @DocNumber )) AND
+        ((@Mail IS NULL) OR (mail LIKE '%' + @Mail + '%')) AND
+        ((@DocType IS NULL) OR (doc_type = @DocType)) 
+    ORDER BY lastname, name
+    
+GO
+
+
+--=======================================
 --DELETE PERSON
 --=======================================
 CREATE PROCEDURE [BOBBY_TABLES].SP_DELETE_PERSON
