@@ -90,7 +90,19 @@ namespace HotelModel.Home
 
             return (DataTable)results["@ReturnedValues"];
         }
-       
+
+        public Boolean hotelForManteinance(Int32 id_hotel, DateTime start, DateTime end, String descr) {
+            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_HOTEL_MANTEINANCE")
+                                 .WithParam("@IdHotel").As(SqlDbType.Int).Value(id_hotel)
+                                 .WithParam("@Start").As(SqlDbType.DateTime).Value(start)
+                                 .WithParam("@End").As(SqlDbType.DateTime).Value(end)
+                                 .WithParam("@Descr").As(SqlDbType.VarChar).Value(descr)
+                                 .WithParam("@Manteined").As(SqlDbType.Bit).AsOutput()
+                                 .Execute();
+            return (Boolean)results["@Manteined"];
+        
+        }
+
 
     }
 }

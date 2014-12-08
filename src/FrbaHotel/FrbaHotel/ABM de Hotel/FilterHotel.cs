@@ -47,7 +47,9 @@ namespace FrbaHotel.ABM_de_Hotel
         {
             this.assignFilters();
             DataTable results = hh.filteredSearch(name, stars, city, country);
-            dataGridView.DataSource = results; 
+            BindingSource bs = new BindingSource();
+            bs.DataSource = results;
+            dataGridView.DataSource = bs; 
         }
 
         private void assignFilters() {

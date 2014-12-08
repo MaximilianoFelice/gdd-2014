@@ -78,10 +78,8 @@ namespace FrbaHotel.ABM_de_Cliente
         //clears all fields
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            
- 
-     
             FormHandler.groupBoxCleaner(groupBoxGuest);
+            FormHandler.clearDatePicker(dtPickerBirhtDate);
 
         }
 

@@ -53,6 +53,10 @@ namespace HotelModel.Home
             }
         }
 
+        public static void clearDatePicker(DateTimePicker datePick) {
+            datePick.Value = datePick.MinDate;
+        }
+
         public static void clearItemCheckList(CheckedListBox check)
         {
             for (int item = 0; item < check.Items.Count; item++)

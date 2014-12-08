@@ -39,11 +39,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.labelId = new System.Windows.Forms.Label();
+            this.textBoxId = new System.Windows.Forms.TextBox();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox
             // 
+            this.groupBox.Controls.Add(this.textBoxId);
+            this.groupBox.Controls.Add(this.labelId);
             this.groupBox.Controls.Add(this.textBoxDescr);
             this.groupBox.Controls.Add(this.labelDescr);
             this.groupBox.Controls.Add(this.dateTimePickerEnd);
@@ -54,14 +58,14 @@
             this.groupBox.Controls.Add(this.label1);
             this.groupBox.Location = new System.Drawing.Point(12, 12);
             this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(470, 186);
+            this.groupBox.Size = new System.Drawing.Size(470, 236);
             this.groupBox.TabIndex = 0;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Please enter the maintenance information";
             // 
             // textBoxDescr
             // 
-            this.textBoxDescr.Location = new System.Drawing.Point(161, 143);
+            this.textBoxDescr.Location = new System.Drawing.Point(161, 176);
             this.textBoxDescr.Name = "textBoxDescr";
             this.textBoxDescr.Size = new System.Drawing.Size(273, 20);
             this.textBoxDescr.TabIndex = 7;
@@ -69,7 +73,7 @@
             // labelDescr
             // 
             this.labelDescr.AutoSize = true;
-            this.labelDescr.Location = new System.Drawing.Point(17, 146);
+            this.labelDescr.Location = new System.Drawing.Point(17, 179);
             this.labelDescr.Name = "labelDescr";
             this.labelDescr.Size = new System.Drawing.Size(60, 13);
             this.labelDescr.TabIndex = 6;
@@ -77,7 +81,7 @@
             // 
             // dateTimePickerEnd
             // 
-            this.dateTimePickerEnd.Location = new System.Drawing.Point(161, 104);
+            this.dateTimePickerEnd.Location = new System.Drawing.Point(161, 140);
             this.dateTimePickerEnd.Name = "dateTimePickerEnd";
             this.dateTimePickerEnd.Size = new System.Drawing.Size(273, 20);
             this.dateTimePickerEnd.TabIndex = 5;
@@ -85,7 +89,7 @@
             // labelEnd
             // 
             this.labelEnd.AutoSize = true;
-            this.labelEnd.Location = new System.Drawing.Point(17, 110);
+            this.labelEnd.Location = new System.Drawing.Point(17, 146);
             this.labelEnd.Name = "labelEnd";
             this.labelEnd.Size = new System.Drawing.Size(117, 13);
             this.labelEnd.TabIndex = 4;
@@ -93,7 +97,7 @@
             // 
             // dateTimePickerStart
             // 
-            this.dateTimePickerStart.Location = new System.Drawing.Point(161, 65);
+            this.dateTimePickerStart.Location = new System.Drawing.Point(161, 104);
             this.dateTimePickerStart.Name = "dateTimePickerStart";
             this.dateTimePickerStart.Size = new System.Drawing.Size(273, 20);
             this.dateTimePickerStart.TabIndex = 3;
@@ -101,7 +105,7 @@
             // labelStart
             // 
             this.labelStart.AutoSize = true;
-            this.labelStart.Location = new System.Drawing.Point(17, 71);
+            this.labelStart.Location = new System.Drawing.Point(17, 110);
             this.labelStart.Name = "labelStart";
             this.labelStart.Size = new System.Drawing.Size(120, 13);
             this.labelStart.TabIndex = 2;
@@ -109,7 +113,7 @@
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(161, 26);
+            this.textBoxName.Location = new System.Drawing.Point(161, 68);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.ReadOnly = true;
             this.textBoxName.Size = new System.Drawing.Size(273, 20);
@@ -118,7 +122,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 29);
+            this.label1.Location = new System.Drawing.Point(17, 71);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 0;
@@ -126,27 +130,46 @@
             // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(12, 204);
+            this.buttonClear.Location = new System.Drawing.Point(12, 254);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(75, 23);
             this.buttonClear.TabIndex = 1;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(407, 204);
+            this.buttonSave.Location = new System.Drawing.Point(407, 254);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 2;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // labelId
+            // 
+            this.labelId.AutoSize = true;
+            this.labelId.Location = new System.Drawing.Point(17, 35);
+            this.labelId.Name = "labelId";
+            this.labelId.Size = new System.Drawing.Size(44, 13);
+            this.labelId.TabIndex = 8;
+            this.labelId.Text = "Hotel Id";
+            // 
+            // textBoxId
+            // 
+            this.textBoxId.Location = new System.Drawing.Point(161, 32);
+            this.textBoxId.Name = "textBoxId";
+            this.textBoxId.ReadOnly = true;
+            this.textBoxId.Size = new System.Drawing.Size(273, 20);
+            this.textBoxId.TabIndex = 9;
             // 
             // Manteinance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 242);
+            this.ClientSize = new System.Drawing.Size(514, 289);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.groupBox);
@@ -171,5 +194,7 @@
         public System.Windows.Forms.DateTimePicker dateTimePickerStart;
         public System.Windows.Forms.Label labelStart;
         public System.Windows.Forms.TextBox textBoxDescr;
+        public System.Windows.Forms.TextBox textBoxId;
+        private System.Windows.Forms.Label labelId;
     }
 }
