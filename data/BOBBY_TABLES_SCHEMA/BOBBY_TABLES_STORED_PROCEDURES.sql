@@ -188,6 +188,34 @@ GO
 
 
 --=======================================
+--INSERT HOTEL
+--=======================================
+CREATE PROCEDURE SP_INSERT_HOTEL
+@Name VARCHAR(50),
+@Mail VARCHAR(50),
+@Phone DECIMAL(20,0),
+@City VARCHAR(255),
+@Country VARCHAR(255),
+@Street VARCHAR(255),
+@StreetNum INTEGER,
+@Stars INTEGER,
+@CreationDate DATETIME,
+@Inserted BIT = 0x0 OUTPUT
+AS
+
+	INSERT INTO [BOBBY_TABLES].HOTELS (name, mail, phone, city, country, street, street_num, stars, creation_date)
+	VALUES (@Name, @Mail, @Phone, @City, @Country, @Street, @StreetNum, @Stars, @CreationDate)
+	
+	IF @@ERROR = 0
+	BEGIN
+		SET @Inserted = 0x1
+	END
+
+GO
+
+
+
+--=======================================
 --STATISTICS TOP 5 HOTELS WITH CANCELLED BOOKINGS
 --=======================================
 CREATE PROCEDURE [BOBBY_TABLES].SP_STATISTICS_CANCEL_BOOKINGS 
