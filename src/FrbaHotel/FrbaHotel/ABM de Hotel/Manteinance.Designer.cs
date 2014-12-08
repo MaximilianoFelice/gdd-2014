@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.groupBox = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.labelStart = new System.Windows.Forms.Label();
-            this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
-            this.labelEnd = new System.Windows.Forms.Label();
-            this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
-            this.labelDescr = new System.Windows.Forms.Label();
             this.textBoxDescr = new System.Windows.Forms.TextBox();
+            this.labelDescr = new System.Windows.Forms.Label();
+            this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
+            this.labelEnd = new System.Windows.Forms.Label();
+            this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
+            this.labelStart = new System.Windows.Forms.Label();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.groupBox.SuspendLayout();
@@ -50,7 +50,7 @@
             this.groupBox.Controls.Add(this.labelEnd);
             this.groupBox.Controls.Add(this.dateTimePickerStart);
             this.groupBox.Controls.Add(this.labelStart);
-            this.groupBox.Controls.Add(this.textBox1);
+            this.groupBox.Controls.Add(this.textBoxName);
             this.groupBox.Controls.Add(this.label1);
             this.groupBox.Location = new System.Drawing.Point(12, 12);
             this.groupBox.Name = "groupBox";
@@ -59,54 +59,12 @@
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Please enter the maintenance information";
             // 
-            // label1
+            // textBoxDescr
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Hotel Name";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(161, 26);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(273, 20);
-            this.textBox1.TabIndex = 1;
-            // 
-            // labelStart
-            // 
-            this.labelStart.AutoSize = true;
-            this.labelStart.Location = new System.Drawing.Point(17, 71);
-            this.labelStart.Name = "labelStart";
-            this.labelStart.Size = new System.Drawing.Size(120, 13);
-            this.labelStart.TabIndex = 2;
-            this.labelStart.Text = "Manteinance Start Date";
-            // 
-            // dateTimePickerStart
-            // 
-            this.dateTimePickerStart.Location = new System.Drawing.Point(161, 65);
-            this.dateTimePickerStart.Name = "dateTimePickerStart";
-            this.dateTimePickerStart.Size = new System.Drawing.Size(273, 20);
-            this.dateTimePickerStart.TabIndex = 3;
-            // 
-            // labelEnd
-            // 
-            this.labelEnd.AutoSize = true;
-            this.labelEnd.Location = new System.Drawing.Point(17, 110);
-            this.labelEnd.Name = "labelEnd";
-            this.labelEnd.Size = new System.Drawing.Size(117, 13);
-            this.labelEnd.TabIndex = 4;
-            this.labelEnd.Text = "Manteinance End Date";
-            // 
-            // dateTimePickerEnd
-            // 
-            this.dateTimePickerEnd.Location = new System.Drawing.Point(161, 104);
-            this.dateTimePickerEnd.Name = "dateTimePickerEnd";
-            this.dateTimePickerEnd.Size = new System.Drawing.Size(273, 20);
-            this.dateTimePickerEnd.TabIndex = 5;
+            this.textBoxDescr.Location = new System.Drawing.Point(161, 143);
+            this.textBoxDescr.Name = "textBoxDescr";
+            this.textBoxDescr.Size = new System.Drawing.Size(273, 20);
+            this.textBoxDescr.TabIndex = 7;
             // 
             // labelDescr
             // 
@@ -117,12 +75,54 @@
             this.labelDescr.TabIndex = 6;
             this.labelDescr.Text = "Description";
             // 
-            // textBoxDescr
+            // dateTimePickerEnd
             // 
-            this.textBoxDescr.Location = new System.Drawing.Point(161, 143);
-            this.textBoxDescr.Name = "textBoxDescr";
-            this.textBoxDescr.Size = new System.Drawing.Size(273, 20);
-            this.textBoxDescr.TabIndex = 7;
+            this.dateTimePickerEnd.Location = new System.Drawing.Point(161, 104);
+            this.dateTimePickerEnd.Name = "dateTimePickerEnd";
+            this.dateTimePickerEnd.Size = new System.Drawing.Size(273, 20);
+            this.dateTimePickerEnd.TabIndex = 5;
+            // 
+            // labelEnd
+            // 
+            this.labelEnd.AutoSize = true;
+            this.labelEnd.Location = new System.Drawing.Point(17, 110);
+            this.labelEnd.Name = "labelEnd";
+            this.labelEnd.Size = new System.Drawing.Size(117, 13);
+            this.labelEnd.TabIndex = 4;
+            this.labelEnd.Text = "Manteinance End Date";
+            // 
+            // dateTimePickerStart
+            // 
+            this.dateTimePickerStart.Location = new System.Drawing.Point(161, 65);
+            this.dateTimePickerStart.Name = "dateTimePickerStart";
+            this.dateTimePickerStart.Size = new System.Drawing.Size(273, 20);
+            this.dateTimePickerStart.TabIndex = 3;
+            // 
+            // labelStart
+            // 
+            this.labelStart.AutoSize = true;
+            this.labelStart.Location = new System.Drawing.Point(17, 71);
+            this.labelStart.Name = "labelStart";
+            this.labelStart.Size = new System.Drawing.Size(120, 13);
+            this.labelStart.TabIndex = 2;
+            this.labelStart.Text = "Manteinance Start Date";
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(161, 26);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.ReadOnly = true;
+            this.textBoxName.Size = new System.Drawing.Size(273, 20);
+            this.textBoxName.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Hotel Name";
             // 
             // buttonClear
             // 
@@ -161,15 +161,15 @@
         #endregion
 
         public System.Windows.Forms.GroupBox groupBox;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label labelDescr;
-        private System.Windows.Forms.DateTimePicker dateTimePickerEnd;
-        private System.Windows.Forms.Label labelEnd;
-        private System.Windows.Forms.DateTimePicker dateTimePickerStart;
-        private System.Windows.Forms.Label labelStart;
-        private System.Windows.Forms.TextBox textBoxDescr;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Button buttonSave;
+        public System.Windows.Forms.TextBox textBoxName;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label labelDescr;
+        public System.Windows.Forms.DateTimePicker dateTimePickerEnd;
+        public System.Windows.Forms.Label labelEnd;
+        public System.Windows.Forms.DateTimePicker dateTimePickerStart;
+        public System.Windows.Forms.Label labelStart;
+        public System.Windows.Forms.TextBox textBoxDescr;
     }
 }
