@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -51,8 +52,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUDStars)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonSave
@@ -63,6 +66,7 @@
             this.buttonSave.TabIndex = 5;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonClear
             // 
@@ -72,6 +76,7 @@
             this.buttonClear.TabIndex = 4;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // groupBox1
             // 
@@ -123,6 +128,8 @@
             this.textBoxCountry.Name = "textBoxCountry";
             this.textBoxCountry.Size = new System.Drawing.Size(195, 20);
             this.textBoxCountry.TabIndex = 17;
+            this.textBoxCountry.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCountry_KeyPress);
+            this.textBoxCountry.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxCountry_Validating);
             // 
             // numericUDStars
             // 
@@ -152,6 +159,8 @@
             this.textBoxCity.Name = "textBoxCity";
             this.textBoxCity.Size = new System.Drawing.Size(195, 20);
             this.textBoxCity.TabIndex = 15;
+            this.textBoxCity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCity_KeyPress);
+            this.textBoxCity.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxCity_Validating);
             // 
             // textBoxStreetNum
             // 
@@ -159,6 +168,8 @@
             this.textBoxStreetNum.Name = "textBoxStreetNum";
             this.textBoxStreetNum.Size = new System.Drawing.Size(195, 20);
             this.textBoxStreetNum.TabIndex = 14;
+            this.textBoxStreetNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStreetNum_KeyPress);
+            this.textBoxStreetNum.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxStreetNum_Validating);
             // 
             // textBoxStreet
             // 
@@ -166,6 +177,8 @@
             this.textBoxStreet.Name = "textBoxStreet";
             this.textBoxStreet.Size = new System.Drawing.Size(195, 20);
             this.textBoxStreet.TabIndex = 13;
+            this.textBoxStreet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStreet_KeyPress);
+            this.textBoxStreet.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxStreet_Validating);
             // 
             // textBoxPhone
             // 
@@ -173,6 +186,8 @@
             this.textBoxPhone.Name = "textBoxPhone";
             this.textBoxPhone.Size = new System.Drawing.Size(195, 20);
             this.textBoxPhone.TabIndex = 12;
+            this.textBoxPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPhone_KeyPress);
+            this.textBoxPhone.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPhone_Validating);
             // 
             // labelCreationDate
             // 
@@ -252,6 +267,7 @@
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.Size = new System.Drawing.Size(195, 20);
             this.textBoxMail.TabIndex = 3;
+            this.textBoxMail.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxMail_Validating);
             // 
             // label1
             // 
@@ -277,6 +293,12 @@
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(195, 20);
             this.textBoxName.TabIndex = 0;
+            this.textBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxName_KeyPress);
+            this.textBoxName.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxName_Validating);
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // UpdateHotel
             // 
@@ -291,14 +313,13 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUDStars)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.Button buttonClear;
         public System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.DateTimePicker dateTimePicker;
         public System.Windows.Forms.CheckedListBox checkedListBoxReg;
@@ -320,5 +341,8 @@
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label labelName;
         public System.Windows.Forms.TextBox textBoxName;
+        public System.Windows.Forms.Button buttonSave;
+        public System.Windows.Forms.Button buttonClear;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
