@@ -45,6 +45,7 @@
             this.labelName = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.buttonUpdate = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResults)).BeginInit();
             this.groupBoxFilters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -103,7 +104,6 @@
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(137, 20);
             this.textBoxEmail.TabIndex = 31;
-            
             // 
             // comboBoxDocType
             // 
@@ -202,11 +202,22 @@
             this.buttonUpdate.UseVisualStyleBackColor = true;
             this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(428, 370);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(108, 23);
+            this.buttonDelete.TabIndex = 11;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
             // FilterGuest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(663, 402);
+            this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.dataGridViewResults);
             this.Controls.Add(this.buttonSearch);
@@ -240,5 +251,6 @@
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }

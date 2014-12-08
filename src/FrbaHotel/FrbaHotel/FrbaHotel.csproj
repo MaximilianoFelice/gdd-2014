@@ -62,6 +62,12 @@
       <DependentUpon>FilterGuest.cs</DependentUpon>
     </Compile>
     <Compile Include="ABM de Cliente\tests\CreateGuestQuery_Test.cs" />
+    <Compile Include="ABM de Cliente\UpdateGuest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Cliente\UpdateGuest.Designer.cs">
+      <DependentUpon>UpdateGuest.cs</DependentUpon>
+    </Compile>
     <Compile Include="ABM de Habitacion\CreateRoom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ABM de Cliente\FilterGuest.resx">
       <DependentUpon>FilterGuest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Cliente\UpdateGuest.resx">
+      <DependentUpon>UpdateGuest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM de Habitacion\CreateRoom.resx">
       <DependentUpon>CreateRoom.cs</DependentUpon>

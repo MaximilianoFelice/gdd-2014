@@ -68,6 +68,8 @@ namespace HotelModel.Home
 
  
         }
+
+       
         public Boolean validateNullString(String aString){
            
             if(String.IsNullOrEmpty(aString)){
