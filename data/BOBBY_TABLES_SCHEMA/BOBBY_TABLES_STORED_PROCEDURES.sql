@@ -125,8 +125,29 @@ CREATE PROCEDURE [BOBBY_TABLES].SP_UPDATE_PERSON
 @Dept VARCHAR(5),
 @Nationality VARCHAR(50),
 @State INTEGER,
+@IdPersonToUpdate INTEGER,
 @IdPersonUpdated INTEGER OUTPUT
 AS
+
+	UPDATE [BOBBY_TABLES].PERSONS 
+	SET
+		name = @Name,
+		lastname = @Lastname,
+		doc_type = @DocType,
+		doc_number = @DocNumber,
+		mail = @Mail,
+		phone = @Phone,
+		birthdate = @BirthDate,
+		street = @Street,
+		street_num = @StreetNum,
+		dir_floor = @Floor,
+		dir_dpt = @Dept,
+		nationality = @Nationality,
+		stat = @State
+	WHERE id_person = @IdPersonToUpdate
+	
+	SET @IdPersonUpdated = @IdPersonToUpdate
+
 GO
 
 
@@ -161,7 +182,7 @@ CREATE PROCEDURE [BOBBY_TABLES].SP_DELETE_PERSON
 @IdPersonDeleted INTEGER OUTPUT
 AS
 	
-	UPDATE PERSONS SET stat = 0 WHERE id_person = @IdPersonToDelete
+	UPDATE [BOBBY_TABLES].PERSONS SET stat = 0 WHERE id_person = @IdPersonToDelete
 	
 GO
 
