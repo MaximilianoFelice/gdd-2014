@@ -90,19 +90,13 @@ namespace HotelModel.Home
         }
 
 
-        public Boolean deleteRoom(Int32 idHotel,Int32 roomNum,Int32 floor, String location,String type,String descrip)
+        public Boolean deleteRoom(Int32 id_room)
         {
 
             SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_DELETE_ROOM")
-                                   .WithParam("@IdHotel").As(SqlDbType.Int).Value(idHotel)
-                                   .WithParam("@RoomNum").As(SqlDbType.Int).Value(roomNum)
-                                   .WithParam("@Floor").As(SqlDbType.Int).Value(floor)
-                                   .WithParam("@TypeDesc").As(SqlDbType.VarChar).Value(type)
-                                   .WithParam("@LocationDesc").As(SqlDbType.VarChar).Value(location)
-                                   .WithParam("@Descr").As(SqlDbType.VarChar).Value(descrip)
+                                   .WithParam("@IdRoom").As(SqlDbType.Int).Value(id_room)
                                    .WithParam("@Deleted").As(SqlDbType.Bit).AsOutput()
-                                   .Execute();
-                                
+                                   .Execute();             
 
             return (Boolean)results["@Deleted"];
         }

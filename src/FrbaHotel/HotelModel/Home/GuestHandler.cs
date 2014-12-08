@@ -145,7 +145,7 @@ namespace HotelModel.Home
         }
 
 
-        public int deletePerson(Int32 id_guest)
+        public Boolean deletePerson(Int32 id_guest)
         {
 
             SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_DELETE_PERSON")
@@ -153,7 +153,7 @@ namespace HotelModel.Home
                                      .WithParam("@Deleted").As(SqlDbType.Bit).AsOutput()
                                      .Execute();
 
-            return (Int32)results["@Deleted"];
+            return (Boolean)results["@Deleted"];
         }
 
 

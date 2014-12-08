@@ -47,6 +47,7 @@
             this.labelLocation = new System.Windows.Forms.Label();
             this.labelDescription = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.buttonDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResults)).BeginInit();
             this.groupBoxFilters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -217,11 +218,22 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(428, 370);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(108, 23);
+            this.buttonDelete.TabIndex = 16;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
             // FilterRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(669, 402);
+            this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.dataGridViewResults);
             this.Controls.Add(this.buttonSearch);
@@ -257,5 +269,6 @@
         public System.Windows.Forms.Label labelLocation;
         public System.Windows.Forms.Label labelDescription;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }

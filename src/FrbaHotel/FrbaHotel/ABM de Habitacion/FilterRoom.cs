@@ -49,7 +49,9 @@ namespace FrbaHotel.ABM_de_Habitacion
         {
             this.assignFilters();
             DataTable results = rh.filteredSearch(idHotel, roomNum,floor, location, type, descrip); //falta asignar el id del hotel
-            dataGridViewResults.DataSource = results; 
+            BindingSource bs = new BindingSource();
+            bs.DataSource = results;
+            dataGridViewResults.DataSource = bs; 
         }
 
         private void assignFilters() {
@@ -137,6 +139,13 @@ namespace FrbaHotel.ABM_de_Habitacion
             this.Hide();
 
 
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            Int32 id_room = (Int32)this.dataGridViewResults.CurrentRow.Cells[0].Value;
+            if (rh.deleteRoom(id_room)) MessageBox.Show("Room Deleted");
+            else MessageBox.Show("Unable to delete");
         }
 
         
