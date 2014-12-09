@@ -58,7 +58,7 @@ namespace FrbaHotel.ABM_de_Hotel
                     Int32 id_regimen = (Int32)ids_regimen.Rows[0].ItemArray[0];
 
                     Boolean addedRegimenToHotel = hh.addRegimenToHotel(id_hotel, id_regimen);
-
+                    //faltaria ver que pasa con los que estaban asignados y fueron desahabilitados
                     if (!addedRegimenToHotel)
                     {
                         MessageBox.Show("Unable to add regimen to Hotel:" + checkItem.ToString());

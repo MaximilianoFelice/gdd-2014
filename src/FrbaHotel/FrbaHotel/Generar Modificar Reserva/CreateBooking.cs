@@ -7,15 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace FrbaHotel.Cancelar_Reserva
+namespace FrbaHotel.Generar_Modificar_Reserva
 {
-    public partial class DeleteBooking : Form
+    public partial class CreateBooking : Form
     {
-        public DeleteBooking()
+        public CreateBooking()
         {
             InitializeComponent();
         }
 
-        
+       
     }
 }
