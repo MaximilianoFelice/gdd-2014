@@ -53,7 +53,7 @@ namespace HotelModel.Home
                                  .WithParam("@Country").As(SqlDbType.VarChar).Value(country)
                                  .WithParam("@Stars").As(SqlDbType.Int).Value(stars)
                                  .WithParam("@CreationDate").As(SqlDbType.DateTime).Value(creationDate)
-                                 .WithParam("@Inserted").As(SqlDbType.Bit).AsOutput()
+                                 .WithParam("@Updated").As(SqlDbType.Bit).AsOutput()
                                  .Execute();
             return (Boolean)results["@Updated"];
 

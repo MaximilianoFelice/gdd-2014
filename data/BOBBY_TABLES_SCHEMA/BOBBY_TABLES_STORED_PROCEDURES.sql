@@ -214,6 +214,44 @@ AS
 GO
 
 
+--=======================================
+--UPDATE HOTEL
+--=======================================
+CREATE PROCEDURE SP_UPDATE_HOTEL
+@Id INTEGER,
+@Name VARCHAR(50),
+@Mail VARCHAR(50),
+@Phone DECIMAL(20,0),
+@City VARCHAR(255),
+@Country VARCHAR(255),
+@Street VARCHAR(255),
+@StreetNum INTEGER,
+@Stars INTEGER,
+@CreationDate DATETIME,
+@Updated BIT = 0x0 OUTPUT
+AS
+
+	UPDATE [BOBBY_TABLES].HOTELS
+	SET
+		name = @Name,
+		mail = @Mail,
+		phone = @Phone,
+		city = @City,
+		country = @Country,
+		street = @Street,
+		street_num = @StreetNum,
+		stars = @Stars,
+		creation_date = @CreationDate
+	WHERE id_hotel = @Id
+	
+	IF @@ERROR = 0
+	BEGIN
+		SET @Updated = 0x1
+	END
+
+GO
+
+
 
 --=======================================
 --STATISTICS TOP 5 HOTELS WITH CANCELLED BOOKINGS
