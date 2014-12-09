@@ -134,6 +134,12 @@ namespace FrbaHotel
             frm.Show();
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Generar_Modificar_Reserva.CreateBooking frm = new FrbaHotel.Generar_Modificar_Reserva.CreateBooking();
+            frm.Show();
+        }
+
        
 
    

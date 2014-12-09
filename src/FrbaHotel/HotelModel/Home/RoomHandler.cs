@@ -26,6 +26,18 @@ namespace HotelModel.Home
             return (DataTable)results["ReturnedValues"];
         }
 
+        public DataSet getRoomTypeIdFromDescr(String descr){
+            SqlResults results = new SqlQuery("SELECT id_roomtype FROM [BOBBY_TABLES].ROOM_TYPE WHERE descr =" + descr).Execute();
+            return (DataSet)results["ReturnedValues"];
+        }
+
+        public DataSet getRoomTypesForHotel(Int32 id_hotel) {
+            SqlResults results = new SqlQuery("SELECT DISTICT rt.descr FROM [BOBBY_TABLES].ROOM_TYPE rt"
+                                                + "JOIN [BOBBY_TABLES].ROOMS r ON r.id_roomtype= rt.id_roomtype"
+                                                + "AND r.id_hotel = " + id_hotel).Execute();
+            return (DataSet)results["ReturnedValues"];
+        }
+
         public Boolean roomExists(Int32 roomNum, Int32 idHotel) {
 
             SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_ROOM_EXISTS")
