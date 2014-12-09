@@ -133,6 +133,22 @@ namespace HotelModel.Home
         
         }
 
+       public static void validateEmptyComboBox(ComboBox combo, ErrorProvider errorP, Button button) {
+           if (combo.SelectedItem == null)
+           {
+               errorP.SetError(combo, "Select an option");
+               button.Enabled = false;
+
+           }
+           else
+           {
+               errorP.SetError(combo, "");
+               button.Enabled = true;
+               
+
+           }
+       }
+
        public static void allowOnlyChars(object sender, KeyPressEventArgs e)
        {
            if (char.IsLetter(e.KeyChar))
@@ -156,6 +172,8 @@ namespace HotelModel.Home
                e.Handled = e.KeyChar != (char)Keys.Back;
            }
        }
+
+
     }
 }
 

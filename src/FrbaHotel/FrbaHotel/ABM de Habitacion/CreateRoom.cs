@@ -66,6 +66,9 @@ namespace FrbaHotel.ABM_de_Habitacion
             roomNum=Int32.Parse(textBoxNumber.Text);
             floor=Int32.Parse(textBoxFloor.Text);
             descrip=textBoxDescr.Text;
+            type = comboBoxType.Text;
+            location = comboBoxLoc.Text;
+
         }
 
 
@@ -93,36 +96,12 @@ namespace FrbaHotel.ABM_de_Habitacion
 
         private void comboBoxType_Validating(object sender, CancelEventArgs e)
         {
-            if (comboBoxType.SelectedItem == null)
-            {
-                errorProvider.SetError(comboBoxType, "Select a room type");
-                buttonSave.Enabled = false;
-
-            }
-            else
-            {
-                errorProvider.SetError(comboBoxType, "");
-                buttonSave.Enabled = true;
-                type = comboBoxType.Text;
-
-            }
+            FormHandler.validateEmptyComboBox(comboBoxType, errorProvider, buttonSave);
         }
 
         private void comboBoxLoc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxLoc.SelectedItem == null)
-            {
-                errorProvider.SetError(comboBoxLoc, "Select a room location");
-                buttonSave.Enabled = false;
-
-            }
-            else
-            {
-                errorProvider.SetError(comboBoxLoc, "");
-                buttonSave.Enabled = true;
-                location = comboBoxLoc.Text;
-
-            }
+            FormHandler.validateEmptyComboBox(comboBoxLoc, errorProvider, buttonSave);
         }
 
         private void textBoxDescr_Validating(object sender, CancelEventArgs e)
