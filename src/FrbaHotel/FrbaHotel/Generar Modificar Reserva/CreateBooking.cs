@@ -100,12 +100,15 @@ namespace FrbaHotel.Generar_Modificar_Reserva
             Boolean available = bh.checkAvailability(id_hotel, id_regimen, checkin, checkout, extraGuests, id_roomtype);
             if (available)
             {
-                Generar_Modificar_Reserva.BookingConfirmation frm = new BookingConfirmation();
+                Generar_Modificar_Reserva.BookingConfirmation frm = new BookingConfirmation(this);
                 frm.textBoxHotel.Text = comboBoxHotel.Text;
                 frm.textBoxRegimen.Text = comboBoxRegimen.Text;
                 frm.textBoxRoomType.Text = comboBoxRoomType.Text;
                 frm.textBoxExtraGuests.Text = Convert.ToString(extraGuests);
+                frm.textBoxCheckIn.Text = Convert.ToString(checkin);
+                frm.textBoxCheckout.Text = Convert.ToString(checkout);
                 frm.setTotalPrice(id_hotel, id_regimen, checkin, checkout, extraGuests, id_roomtype);
+                frm.setValues(id_hotel, id_regimen, checkin, checkout, extraGuests, id_roomtype);
                 frm.Show();
                 this.Hide();
 

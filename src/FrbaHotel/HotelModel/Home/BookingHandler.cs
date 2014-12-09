@@ -35,20 +35,18 @@ namespace HotelModel.Home
                                 .Execute();
             return (Int32)results["Price"];
     }
-        public Boolean insertBooking(String hotelName, String regimenType, String docType, Decimal docNumber,
-                                    Int32 extraGuests, DateTime checkIn, DateTime checkOut)
-        { 
+        public Boolean insertBooking(Int32 id_hotel, Int32 id_regimen, DateTime checkin, DateTime checkout, Int32 extraGuests, Int32 id_roomtype)
+        {
             SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_INSERT_BOOKING")
-                                   .WithParam("@Hotel").As(SqlDbType.VarChar).Value(hotelName)
-                                   .WithParam("@Regimen").As(SqlDbType.VarChar).Value(regimenType)
-                                   .WithParam("@DocTypeHolder").As(SqlDbType.VarChar).Value(docType)
-                                   .WithParam("@DocNumberHolder").As(SqlDbType.Decimal).Value(docNumber)
-                                   .WithParam("@ExtraGuests").As(SqlDbType.Int).Value(extraGuests)
-                                   .WithParam("@CheckInDate").As(SqlDbType.DateTime).Value(checkIn)
-                                   .WithParam("@CheckOutDate").As(SqlDbType.DateTime).Value(checkOut)
-                                   .WithParam("@Status").As(SqlDbType.Bit).AsOutput()
-                                   .Execute();
-            return (Boolean)results["Status"];
+                                .WithParam("@IdHotel").As(SqlDbType.Int).Value(id_hotel)
+                                .WithParam("@IdRegimen").As(SqlDbType.Int).Value(id_regimen)
+                                .WithParam("@CheckIn").As(SqlDbType.DateTime).Value(checkin)
+                                .WithParam("@CheckOut").As(SqlDbType.DateTime).Value(checkout)
+                                .WithParam("@ExtraGuests").As(SqlDbType.Int).Value(extraGuests)
+                                .WithParam("@IdRoomType").As(SqlDbType.Int).Value(id_roomtype)
+                                .WithParam("@Inserted").As(SqlDbType.Bit).AsOutput()
+                                .Execute();
+            return (Boolean)results["Inserted"];
       
         }
 
