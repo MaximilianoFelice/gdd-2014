@@ -273,6 +273,29 @@ GO
 
 
 --=======================================
+--INSERT HOTEL_MANTEINANCE
+--=======================================
+CREATE PROCEDURE [BOBBY_TABLES].SP_HOTEL_MANTEINANCE
+@IdHotel INTEGER,
+@Start DATETIME,
+@End DATETIME,
+@Descr VARCHAR(255),
+@Manteined BIT = 0x0 OUTPUT
+AS
+
+	INSERT INTO BOBBY_TABLES.[MANT_HISTORY] (id_hotel, mant_start, mant_end, descr)
+	VALUES (@IdHotel, @Start, @End, @Descr)
+	
+	IF @@ERROR = 0
+	BEGIN
+		SET @Manteined = 0x1
+	END
+
+GO
+	
+	
+
+--=======================================
 --STATISTICS TOP 5 HOTELS WITH CANCELLED BOOKINGS
 --=======================================
 CREATE PROCEDURE [BOBBY_TABLES].SP_STATISTICS_CANCEL_BOOKINGS 
