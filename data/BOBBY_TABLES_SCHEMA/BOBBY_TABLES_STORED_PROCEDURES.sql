@@ -64,7 +64,7 @@ GO
 --=======================================
 --INSERT PERSON
 --=======================================
-CREATE PROCEDURE SP_INSERT_PERSON
+CREATE PROCEDURE [BOBBY_TABLES].SP_INSERT_PERSON
 @Name VARCHAR(50),
 @Lastname VARCHAR(50),
 @DocType VARCHAR(10),
@@ -190,7 +190,7 @@ GO
 --=======================================
 --INSERT HOTEL
 --=======================================
-CREATE PROCEDURE SP_INSERT_HOTEL
+CREATE PROCEDURE [BOBBY_TABLES].SP_INSERT_HOTEL
 @Name VARCHAR(50),
 @Mail VARCHAR(50),
 @Phone DECIMAL(20,0),
@@ -217,7 +217,7 @@ GO
 --=======================================
 --UPDATE HOTEL
 --=======================================
-CREATE PROCEDURE SP_UPDATE_HOTEL
+CREATE PROCEDURE [BOBBY_TABLES].SP_UPDATE_HOTEL
 @Id INTEGER,
 @Name VARCHAR(50),
 @Mail VARCHAR(50),
@@ -251,6 +251,25 @@ AS
 
 GO
 
+
+--=======================================
+--INSERT REGIMEN_HOTEL
+--=======================================
+CREATE PROCEDURE [BOBBY_TABLES].SP_INSERT_REGIMENS_HOTEL
+@IdHotel INTEGER,
+@IdRegimen INTEGER,
+@Inserted BIT = 0x0 OUTPUT
+AS
+
+	INSERT INTO [BOBBY_TABLES].REGIMEN_HOTEL (id_hotel, id_regimen)
+	VALUES (@IdHotel, @IdRegimen)
+	
+	IF @@ERROR = 0
+	BEGIN
+		SET @Inserted = 0x1
+	END
+
+GO
 
 
 --=======================================
