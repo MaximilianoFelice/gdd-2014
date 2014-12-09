@@ -15,5 +15,7 @@ namespace FrbaHotel.Cancelar_Reserva
         {
             InitializeComponent();
         }
+
+        
     }
 }
