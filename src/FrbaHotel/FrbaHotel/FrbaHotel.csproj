@@ -151,6 +151,12 @@
     <Compile Include="Generar Modificar Reserva\BookingConfirmation.Designer.cs">
       <DependentUpon>BookingConfirmation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generar Modificar Reserva\BookingHolder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\BookingHolder.Designer.cs">
+      <DependentUpon>BookingHolder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Generar Modificar Reserva\CreateBooking.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Generar Modificar Reserva\BookingConfirmation.resx">
       <DependentUpon>BookingConfirmation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Modificar Reserva\BookingHolder.resx">
+      <DependentUpon>BookingHolder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generar Modificar Reserva\CreateBooking.resx">
       <DependentUpon>CreateBooking.cs</DependentUpon>
