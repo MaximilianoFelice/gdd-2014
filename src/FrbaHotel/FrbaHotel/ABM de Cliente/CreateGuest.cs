@@ -30,6 +30,7 @@ namespace FrbaHotel.ABM_de_Cliente
         Int32 state { get; set; }
         ValidationsHandler vh = new ValidationsHandler();
         GuestHandler gh = new GuestHandler();
+        public Int32 inserted;
        
 
 
@@ -37,6 +38,7 @@ namespace FrbaHotel.ABM_de_Cliente
         {
             InitializeComponent();
             dtPickerBirhtDate.MaxDate = DateTime.Now;
+            buttonSave.Enabled = false;
 
         }
 
@@ -53,11 +55,12 @@ namespace FrbaHotel.ABM_de_Cliente
                 {
                     if (!this.guestsExists())
                     {
-                        Int32 inserted = gh.insertPerson(name, lastname, docType,
+                       inserted = gh.insertPerson(name, lastname, docType,
                                                docNumber, mail, phone, birthDate, street,
                                                streetNum, floor, dept, nationality, state);
 
-                        MessageBox.Show("Guest added");
+                        if (inserted > 0) MessageBox.Show("Guest added");
+                        else MessageBox.Show("Unable to add guest");
                     }
                     else { 
                         MessageBox.Show("Guest already exists");
@@ -97,6 +100,7 @@ namespace FrbaHotel.ABM_de_Cliente
         private void setParams() {
             name = textBoxName.Text;
             lastname = textBoxLastname.Text;
+            docType = comboBoxDocType.Text;
             docNumber = Decimal.Parse(textBoxDocNumber.Text);
             phone=Decimal.Parse(textBoxPhone.Text);
             mail=textBoxEmail.Text;
@@ -126,34 +130,18 @@ namespace FrbaHotel.ABM_de_Cliente
         private void textBoxLastname_Validated(object sender, EventArgs e)
         {
             this.validateEmptyTextBoxOnHandler(textBoxLastname);
-
         }
         
 
 
         private void comboBoxDocType_Validating(object sender, CancelEventArgs e)
         {
-            
-            if (comboBoxDocType.SelectedItem == null)
-            {
-                errorProvider.SetError(comboBoxDocType, "Please enter the document type of the customer.");
-                buttonSave.Enabled = false;
-              
-            }
-            else
-            {
-                errorProvider.SetError(comboBoxDocType, "");
-                buttonSave.Enabled = true;
-                docType = comboBoxDocType.Text;
-                
-            }
-
+            this.validateEmptyComboBoxOnHandler(comboBoxDocType);
         }
 
 
         private void textBoxDocNumber_Validating(object sender, CancelEventArgs e)
         {
-
             this.validateEmptyTextBoxOnHandler(textBoxDocNumber);
             this.validateDecTextBoxOnHandler(textBoxDocNumber);
             
@@ -162,6 +150,7 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void textBoxPhone_Validating(object sender, CancelEventArgs e)
         {
+            this.validateEmptyTextBoxOnHandler(textBoxPhone);
             this.validateDecTextBoxOnHandler(textBoxPhone);
           
         }
@@ -183,14 +172,14 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void textBoxStreetNum_Validating(object sender, CancelEventArgs e)
         {
-
+            this.validateEmptyTextBoxOnHandler(textBoxStreetNum);
             this.validateIntTextBoxOnHandler(textBoxStreetNum);
         }
 
         private void textBoxFloor_Validating(object sender, CancelEventArgs e)
         {
+            this.validateEmptyTextBoxOnHandler(textBoxFloor);
             this.validateIntTextBoxOnHandler(textBoxFloor);
-            
         }
 
         public void validateEmptyTextBoxOnHandler(TextBox txtb)
@@ -205,6 +194,10 @@ namespace FrbaHotel.ABM_de_Cliente
         public void validateDecTextBoxOnHandler(TextBox txtb) {
             FormHandler.validateDecimalTextBox(txtb, errorProvider, buttonSave);
         }
+
+        public void validateEmptyComboBoxOnHandler(ComboBox combo) {
+            FormHandler.validateEmptyComboBox(combo, errorProvider, buttonSave);
+        }
        
  
            //allows only numbers and . in docnumber field
@@ -216,28 +209,23 @@ namespace FrbaHotel.ABM_de_Cliente
         private void textBoxStreet_KeyPress(object sender, KeyPressEventArgs e)
            {
                FormHandler.allowOnlyChars(sender, e);
-
            }
 
            private void textBoxFloor_KeyPress(object sender, KeyPressEventArgs e)
            {
                FormHandler.allowOnlyNumbers(sender, e);
-
            }
 
            private void textBoxStreetNum_KeyPress(object sender, KeyPressEventArgs e)
            {
-               FormHandler.allowOnlyChars(sender, e);
-
+               FormHandler.allowOnlyNumbers(sender, e);
            }
 
           
 
            private void textBoxNationality_KeyPress(object sender, KeyPressEventArgs e)
            {
-
                FormHandler.allowOnlyChars(sender, e);
-
            }
 
            private void textBoxLastname_KeyPress(object sender, KeyPressEventArgs e)
@@ -260,31 +248,6 @@ namespace FrbaHotel.ABM_de_Cliente
                FormHandler.allowOnlyNumbers(sender, e);
 
            }
-
-          
-
-          
-
-          
-
-
-         
-         
-
-          
-          
-
-           
-
-
-           
-        
-
-           
-
-      
-
-       
 
     }
 }

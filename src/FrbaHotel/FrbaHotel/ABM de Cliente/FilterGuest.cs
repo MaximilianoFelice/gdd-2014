@@ -53,7 +53,10 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void textBoxDocNumber_Validating(object sender, CancelEventArgs e)
         {
-            FormHandler.validateDecimalTextBox(textBoxDocNumber,errorProvider, buttonSearch);
+            if (!String.IsNullOrEmpty(textBoxDocNumber.Text))
+            {
+                FormHandler.validateDecimalTextBox(textBoxDocNumber, errorProvider, buttonSearch);
+            }
         }
 
         private void buttonUpdate_Click(object sender, EventArgs e)
@@ -93,9 +96,6 @@ namespace FrbaHotel.ABM_de_Cliente
             frm.ShowDialog();
             this.Hide();
 
-
-
-        
         }
 
         private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
