@@ -51,7 +51,7 @@ namespace HotelModel.Home
                                     .WithParam("@EmailExist").As(SqlDbType.Bit).AsOutput()
                                     .Execute();
 
-                return (Boolean)results["EmailExists"];
+                return (Boolean)results["EmailExist"];
             }
             else return false;
         }
@@ -130,17 +130,15 @@ namespace HotelModel.Home
         public DataTable filteredSearch(String name, String lastname, String docType, Decimal? docNumber, String mail) {
 
 
-                                    SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_FILTER_PERSONS")
-                                                             .WithParam("@Name").As(SqlDbType.VarChar).Value(name)
-                                                             .WithParam("@Lastname").As(SqlDbType.VarChar).Value(lastname)
-                                                             .WithParam("@DocType").As(SqlDbType.VarChar).Value(docType)
-                                                             .WithParam("@DocNumber").As(SqlDbType.Decimal).Value(docNumber)
-                                                             .WithParam("@Mail").As(SqlDbType.VarChar).Value(mail)
-                                                             .WithParam("@ReturnedValues").AsDataTable().AsOutput()
-                                                             .Execute();
+            SqlResults results = new SqlFunction("[BOBBY_TABLES].SP_FILTER_PERSONS")
+                               .WithParam("@Name").As(SqlDbType.VarChar).Value(name)
+                               .WithParam("@Lastname").As(SqlDbType.VarChar).Value(lastname)
+                               .WithParam("@DocType").As(SqlDbType.VarChar).Value(docType)
+                               .WithParam("@DocNumber").As(SqlDbType.Decimal).Value(docNumber)
+                               .WithParam("@Mail").As(SqlDbType.VarChar).Value(mail)
+                               .Execute();
 
-
-            return (DataTable) results["@ReturnedValues"];
+            return (DataTable) results["ReturnedValues"];
         
         }
 
