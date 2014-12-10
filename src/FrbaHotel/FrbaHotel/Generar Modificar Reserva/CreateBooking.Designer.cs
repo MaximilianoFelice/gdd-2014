@@ -28,27 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBoxHotel = new System.Windows.Forms.GroupBox();
-            this.comboBoxHotel = new System.Windows.Forms.ComboBox();
-            this.labelHotel = new System.Windows.Forms.Label();
-            this.comboBoxRegimen = new System.Windows.Forms.ComboBox();
             this.labelRegimen = new System.Windows.Forms.Label();
+            this.comboBoxRegimen = new System.Windows.Forms.ComboBox();
+            this.labelHotel = new System.Windows.Forms.Label();
+            this.comboBoxHotel = new System.Windows.Forms.ComboBox();
             this.groupBoxArrival = new System.Windows.Forms.GroupBox();
-            this.labelStart = new System.Windows.Forms.Label();
-            this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
-            this.labelEnd = new System.Windows.Forms.Label();
             this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
+            this.labelEnd = new System.Windows.Forms.Label();
+            this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
+            this.labelStart = new System.Windows.Forms.Label();
             this.groupBoxRoom = new System.Windows.Forms.GroupBox();
-            this.labelGuests = new System.Windows.Forms.Label();
-            this.numericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.labelRoom = new System.Windows.Forms.Label();
             this.comboBoxRoomType = new System.Windows.Forms.ComboBox();
+            this.labelRoom = new System.Windows.Forms.Label();
+            this.numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.labelGuests = new System.Windows.Forms.Label();
             this.buttonClear = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonAvailability = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBoxHotel.SuspendLayout();
             this.groupBoxArrival.SuspendLayout();
             this.groupBoxRoom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxHotel
@@ -64,13 +67,22 @@
             this.groupBoxHotel.TabStop = false;
             this.groupBoxHotel.Text = "Hotel Information";
             // 
-            // comboBoxHotel
+            // labelRegimen
             // 
-            this.comboBoxHotel.FormattingEnabled = true;
-            this.comboBoxHotel.Location = new System.Drawing.Point(151, 20);
-            this.comboBoxHotel.Name = "comboBoxHotel";
-            this.comboBoxHotel.Size = new System.Drawing.Size(197, 21);
-            this.comboBoxHotel.TabIndex = 0;
+            this.labelRegimen.AutoSize = true;
+            this.labelRegimen.Location = new System.Drawing.Point(22, 60);
+            this.labelRegimen.Name = "labelRegimen";
+            this.labelRegimen.Size = new System.Drawing.Size(49, 13);
+            this.labelRegimen.TabIndex = 3;
+            this.labelRegimen.Text = "Regimen";
+            // 
+            // comboBoxRegimen
+            // 
+            this.comboBoxRegimen.FormattingEnabled = true;
+            this.comboBoxRegimen.Location = new System.Drawing.Point(151, 57);
+            this.comboBoxRegimen.Name = "comboBoxRegimen";
+            this.comboBoxRegimen.Size = new System.Drawing.Size(197, 21);
+            this.comboBoxRegimen.TabIndex = 2;
             // 
             // labelHotel
             // 
@@ -81,22 +93,15 @@
             this.labelHotel.TabIndex = 1;
             this.labelHotel.Text = "Hotel";
             // 
-            // comboBoxRegimen
+            // comboBoxHotel
             // 
-            this.comboBoxRegimen.FormattingEnabled = true;
-            this.comboBoxRegimen.Location = new System.Drawing.Point(151, 57);
-            this.comboBoxRegimen.Name = "comboBoxRegimen";
-            this.comboBoxRegimen.Size = new System.Drawing.Size(197, 21);
-            this.comboBoxRegimen.TabIndex = 2;
-            // 
-            // labelRegimen
-            // 
-            this.labelRegimen.AutoSize = true;
-            this.labelRegimen.Location = new System.Drawing.Point(22, 60);
-            this.labelRegimen.Name = "labelRegimen";
-            this.labelRegimen.Size = new System.Drawing.Size(49, 13);
-            this.labelRegimen.TabIndex = 3;
-            this.labelRegimen.Text = "Regimen";
+            this.comboBoxHotel.FormattingEnabled = true;
+            this.comboBoxHotel.Location = new System.Drawing.Point(151, 20);
+            this.comboBoxHotel.Name = "comboBoxHotel";
+            this.comboBoxHotel.Size = new System.Drawing.Size(197, 21);
+            this.comboBoxHotel.TabIndex = 0;
+            this.comboBoxHotel.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxHotel_Validating);
+            this.comboBoxHotel.SelectedValueChanged += new System.EventHandler(this.comboBoxHotel_SelectedValueChanged);
             // 
             // groupBoxArrival
             // 
@@ -111,22 +116,13 @@
             this.groupBoxArrival.TabStop = false;
             this.groupBoxArrival.Text = "Arrival information";
             // 
-            // labelStart
+            // dateTimePickerEnd
             // 
-            this.labelStart.AutoSize = true;
-            this.labelStart.Location = new System.Drawing.Point(25, 31);
-            this.labelStart.Name = "labelStart";
-            this.labelStart.Size = new System.Drawing.Size(76, 13);
-            this.labelStart.TabIndex = 0;
-            this.labelStart.Text = "Check-In Date";
-            // 
-            // dateTimePickerStart
-            // 
-            this.dateTimePickerStart.Location = new System.Drawing.Point(151, 31);
-            this.dateTimePickerStart.Name = "dateTimePickerStart";
-            this.dateTimePickerStart.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerStart.TabIndex = 1;
-            this.dateTimePickerStart.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.dateTimePickerEnd.Location = new System.Drawing.Point(151, 68);
+            this.dateTimePickerEnd.Name = "dateTimePickerEnd";
+            this.dateTimePickerEnd.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerEnd.TabIndex = 3;
+            this.dateTimePickerEnd.Validating += new System.ComponentModel.CancelEventHandler(this.dateTimePickerEnd_Validating);
             // 
             // labelEnd
             // 
@@ -137,12 +133,21 @@
             this.labelEnd.TabIndex = 2;
             this.labelEnd.Text = "Check-out Date";
             // 
-            // dateTimePickerEnd
+            // dateTimePickerStart
             // 
-            this.dateTimePickerEnd.Location = new System.Drawing.Point(151, 68);
-            this.dateTimePickerEnd.Name = "dateTimePickerEnd";
-            this.dateTimePickerEnd.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerEnd.TabIndex = 3;
+            this.dateTimePickerStart.Location = new System.Drawing.Point(151, 31);
+            this.dateTimePickerStart.Name = "dateTimePickerStart";
+            this.dateTimePickerStart.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerStart.TabIndex = 1;
+            // 
+            // labelStart
+            // 
+            this.labelStart.AutoSize = true;
+            this.labelStart.Location = new System.Drawing.Point(25, 31);
+            this.labelStart.Name = "labelStart";
+            this.labelStart.Size = new System.Drawing.Size(76, 13);
+            this.labelStart.TabIndex = 0;
+            this.labelStart.Text = "Check-In Date";
             // 
             // groupBoxRoom
             // 
@@ -157,21 +162,14 @@
             this.groupBoxRoom.TabStop = false;
             this.groupBoxRoom.Text = "Guests and Room Information";
             // 
-            // labelGuests
+            // comboBoxRoomType
             // 
-            this.labelGuests.AutoSize = true;
-            this.labelGuests.Location = new System.Drawing.Point(25, 35);
-            this.labelGuests.Name = "labelGuests";
-            this.labelGuests.Size = new System.Drawing.Size(67, 13);
-            this.labelGuests.TabIndex = 0;
-            this.labelGuests.Text = "Extra Guests";
-            // 
-            // numericUpDown
-            // 
-            this.numericUpDown.Location = new System.Drawing.Point(151, 35);
-            this.numericUpDown.Name = "numericUpDown";
-            this.numericUpDown.Size = new System.Drawing.Size(200, 20);
-            this.numericUpDown.TabIndex = 1;
+            this.comboBoxRoomType.FormattingEnabled = true;
+            this.comboBoxRoomType.Location = new System.Drawing.Point(151, 68);
+            this.comboBoxRoomType.Name = "comboBoxRoomType";
+            this.comboBoxRoomType.Size = new System.Drawing.Size(200, 21);
+            this.comboBoxRoomType.TabIndex = 3;
+            this.comboBoxRoomType.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxRoomType_Validating);
             // 
             // labelRoom
             // 
@@ -182,13 +180,21 @@
             this.labelRoom.TabIndex = 2;
             this.labelRoom.Text = "Room Type";
             // 
-            // comboBoxRoomType
+            // numericUpDown
             // 
-            this.comboBoxRoomType.FormattingEnabled = true;
-            this.comboBoxRoomType.Location = new System.Drawing.Point(151, 68);
-            this.comboBoxRoomType.Name = "comboBoxRoomType";
-            this.comboBoxRoomType.Size = new System.Drawing.Size(200, 21);
-            this.comboBoxRoomType.TabIndex = 3;
+            this.numericUpDown.Location = new System.Drawing.Point(151, 35);
+            this.numericUpDown.Name = "numericUpDown";
+            this.numericUpDown.Size = new System.Drawing.Size(200, 20);
+            this.numericUpDown.TabIndex = 1;
+            // 
+            // labelGuests
+            // 
+            this.labelGuests.AutoSize = true;
+            this.labelGuests.Location = new System.Drawing.Point(25, 35);
+            this.labelGuests.Name = "labelGuests";
+            this.labelGuests.Size = new System.Drawing.Size(67, 13);
+            this.labelGuests.TabIndex = 0;
+            this.labelGuests.Text = "Extra Guests";
             // 
             // buttonClear
             // 
@@ -198,22 +204,28 @@
             this.buttonClear.TabIndex = 3;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
-            // button1
+            // buttonAvailability
             // 
-            this.button1.Location = new System.Drawing.Point(280, 333);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Check Availability";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonAvailability.Location = new System.Drawing.Point(280, 333);
+            this.buttonAvailability.Name = "buttonAvailability";
+            this.buttonAvailability.Size = new System.Drawing.Size(116, 23);
+            this.buttonAvailability.TabIndex = 4;
+            this.buttonAvailability.Text = "Check Availability";
+            this.buttonAvailability.UseVisualStyleBackColor = true;
+            this.buttonAvailability.Click += new System.EventHandler(this.buttonAvailability_Click);
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // CreateBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(418, 362);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonAvailability);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.groupBoxRoom);
             this.Controls.Add(this.groupBoxArrival);
@@ -227,6 +239,7 @@
             this.groupBoxRoom.ResumeLayout(false);
             this.groupBoxRoom.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -249,6 +262,7 @@
         private System.Windows.Forms.Label labelGuests;
         private System.Windows.Forms.ComboBox comboBoxRoomType;
         private System.Windows.Forms.Button buttonClear;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonAvailability;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

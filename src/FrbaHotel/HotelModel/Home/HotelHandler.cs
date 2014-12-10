@@ -11,10 +11,10 @@ namespace HotelModel.Home
     {
         
 
-        public DataTable getHotels()
+        public DataSet getHotels()
         {
-            SqlResults results = new SqlQuery("SELECT name FROM BOBBY_TABLES.HOTELS WHERE stat=401").Execute();
-            return (DataTable)results["ReturnedValues"];
+            SqlResults results = new SqlQuery("SELECT name FROM BOBBY_TABLES.HOTELS where stat= 401 AND name IS NOT NULL").Execute();
+            return (DataSet)results["ReturnedValues"];
         
         }
 
@@ -74,6 +74,14 @@ namespace HotelModel.Home
         public DataSet getIdHotel(String name, String mail, String city) {
             SqlResults results = new SqlQuery("SELECT id_hotel FROM BOBBY_TABLES.HOTELS" 
                                               +"where name="+ name+" AND mail="+mail+" AND city="+city)
+                                              .Execute();
+            return (DataSet)results["ReturnedValues"];
+        }
+
+        public DataSet getIdHotelByName(String name)
+        {
+            SqlResults results = new SqlQuery("SELECT id_hotel FROM BOBBY_TABLES.HOTELS"
+                                              + "where name=" + name)
                                               .Execute();
             return (DataSet)results["ReturnedValues"];
         }
