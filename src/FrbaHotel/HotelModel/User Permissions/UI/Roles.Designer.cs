@@ -35,6 +35,7 @@
             this.cmdRemoveFeature = new System.Windows.Forms.Button();
             this.cmdExit = new System.Windows.Forms.Button();
             this.cmdAddFeature = new System.Windows.Forms.Button();
+            this.cmdAddRole = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblChooseRole
@@ -51,7 +52,7 @@
             this.cboActiveRole.FormattingEnabled = true;
             this.cboActiveRole.Location = new System.Drawing.Point(92, 21);
             this.cboActiveRole.Name = "cboActiveRole";
-            this.cboActiveRole.Size = new System.Drawing.Size(216, 21);
+            this.cboActiveRole.Size = new System.Drawing.Size(180, 21);
             this.cboActiveRole.TabIndex = 1;
             this.cboActiveRole.SelectedIndexChanged += new System.EventHandler(this.cboActiveRole_SelectedIndexChanged);
             // 
@@ -100,11 +101,22 @@
             this.cmdAddFeature.Text = "Add";
             this.cmdAddFeature.UseVisualStyleBackColor = true;
             // 
+            // cmdAddRole
+            // 
+            this.cmdAddRole.Location = new System.Drawing.Point(278, 12);
+            this.cmdAddRole.Name = "cmdAddRole";
+            this.cmdAddRole.Size = new System.Drawing.Size(39, 38);
+            this.cmdAddRole.TabIndex = 8;
+            this.cmdAddRole.Text = "button1";
+            this.cmdAddRole.UseVisualStyleBackColor = true;
+            this.cmdAddRole.Click += new System.EventHandler(this.cmdAddRole_Click);
+            // 
             // frmRoles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(338, 568);
+            this.Controls.Add(this.cmdAddRole);
             this.Controls.Add(this.cmdAddFeature);
             this.Controls.Add(this.cmdExit);
             this.Controls.Add(this.cmdRemoveFeature);
@@ -114,7 +126,6 @@
             this.Controls.Add(this.lblChooseRole);
             this.Name = "frmRoles";
             this.Text = "Role Manager";
-            this.Load += new System.EventHandler(this.frmRoles_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,5 +140,6 @@
         private System.Windows.Forms.Button cmdRemoveFeature;
         private System.Windows.Forms.Button cmdExit;
         private System.Windows.Forms.Button cmdAddFeature;
+        private System.Windows.Forms.Button cmdAddRole;
     }
 }
