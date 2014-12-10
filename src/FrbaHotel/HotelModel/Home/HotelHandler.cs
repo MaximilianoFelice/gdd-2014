@@ -87,12 +87,11 @@ namespace HotelModel.Home
         }
 
         public DataTable filteredSearch(String name, Int32? stars, String city, String country) {
-            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_FILTER_HOTELS")
+            SqlResults results = new SqlFunction("[BOBBY_TABLES].SP_FILTER_HOTELS")
                                 .WithParam("@Name").As(SqlDbType.VarChar).Value(name)
                                 .WithParam("@Stars").As(SqlDbType.Int).Value(stars)
                                 .WithParam("@City").As(SqlDbType.VarChar).Value(city)
                                 .WithParam("@Country").As(SqlDbType.VarChar).Value(country)
-                                .WithParam("@ReturnedValues").AsDataTable().AsOutput()
                                 .Execute();
 
 
