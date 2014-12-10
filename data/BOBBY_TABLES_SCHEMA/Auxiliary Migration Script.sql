@@ -146,6 +146,10 @@ FROM #Joined_Master
 GROUP BY Reserva_Codigo, Factura_Nro, id_extra, Item_Factura_Monto, Item_Factura_Cantidad
 HAVING Factura_Nro IS NOT NULL;
 
+------------- MAILS ----------
+SELECT COUNT( Cliente_Apellido ) FROM gd_esquema.Maestra GROUP BY Cliente_Mail HAVING COUNT( Cliente_Apellido ) > 1;
+
+
 /* Integrity Check */ --(STAY_EXTRA HAD 207341 ROWS, BILL_ITEMS HAD 296944 ROWS.)
 SELECT DISTINCT Factura_Nro, Item_Factura_Monto, Item_Factura_Cantidad FROM #Joined_Master		-- SHOULD HAVE 89603 ROWS... OK!
 WHERE id_extra IS NULL AND Factura_Nro IS NOT NULL;
