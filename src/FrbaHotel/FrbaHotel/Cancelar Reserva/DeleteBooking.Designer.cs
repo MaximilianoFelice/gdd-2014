@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxCode = new System.Windows.Forms.TextBox();
             this.textBoxDescr = new System.Windows.Forms.TextBox();
+            this.textBoxCode = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
@@ -54,14 +54,22 @@
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Enter the information to Delete";
             // 
-            // label1
+            // textBoxDescr
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Reservation Code";
+            this.textBoxDescr.Location = new System.Drawing.Point(170, 66);
+            this.textBoxDescr.Name = "textBoxDescr";
+            this.textBoxDescr.Size = new System.Drawing.Size(169, 20);
+            this.textBoxDescr.TabIndex = 3;
+            this.textBoxDescr.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxDescr_Validating);
+            // 
+            // textBoxCode
+            // 
+            this.textBoxCode.Location = new System.Drawing.Point(170, 33);
+            this.textBoxCode.Name = "textBoxCode";
+            this.textBoxCode.Size = new System.Drawing.Size(169, 20);
+            this.textBoxCode.TabIndex = 2;
+            this.textBoxCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCode_KeyPress);
+            this.textBoxCode.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxCode_Validating);
             // 
             // label2
             // 
@@ -72,19 +80,14 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Description ";
             // 
-            // textBoxCode
+            // label1
             // 
-            this.textBoxCode.Location = new System.Drawing.Point(170, 33);
-            this.textBoxCode.Name = "textBoxCode";
-            this.textBoxCode.Size = new System.Drawing.Size(169, 20);
-            this.textBoxCode.TabIndex = 2;
-            // 
-            // textBoxDescr
-            // 
-            this.textBoxDescr.Location = new System.Drawing.Point(170, 66);
-            this.textBoxDescr.Name = "textBoxDescr";
-            this.textBoxDescr.Size = new System.Drawing.Size(169, 20);
-            this.textBoxDescr.TabIndex = 3;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(24, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Reservation Code";
             // 
             // errorProvider
             // 
@@ -98,6 +101,7 @@
             this.buttonClear.TabIndex = 1;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // buttonDelete
             // 
@@ -107,6 +111,7 @@
             this.buttonDelete.TabIndex = 2;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // DeleteBooking
             // 
