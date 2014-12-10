@@ -140,6 +140,18 @@ namespace FrbaHotel
             frm.Show();
         }
 
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Registrar_Consumible.CreateExtra frm = new FrbaHotel.Registrar_Consumible.CreateExtra();
+            frm.Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            ABM_de_Habitacion.CreateRoom frm = new FrbaHotel.ABM_de_Habitacion.CreateRoom();
+            frm.Show();
+        }
+
        
 
    

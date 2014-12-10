@@ -28,191 +28,147 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.labelQuantity = new System.Windows.Forms.Label();
-            this.textBoxQuantity = new System.Windows.Forms.TextBox();
-            this.labelPrice = new System.Windows.Forms.Label();
-            this.textBoxPrice = new System.Windows.Forms.TextBox();
-            this.labelDescription = new System.Windows.Forms.Label();
-            this.textBoxDescription = new System.Windows.Forms.TextBox();
-            this.labelIdExtra = new System.Windows.Forms.Label();
-            this.textBoxIdExtra = new System.Windows.Forms.TextBox();
-            this.labelFloor = new System.Windows.Forms.Label();
-            this.textBoxRoomFloor = new System.Windows.Forms.TextBox();
-            this.textBoxRoomNumber = new System.Windows.Forms.TextBox();
-            this.labelNumber = new System.Windows.Forms.Label();
             this.buttonclear = new System.Windows.Forms.Button();
-            this.buttonSave = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.dataGridViewExtras = new System.Windows.Forms.DataGridView();
+            this.buttonBill = new System.Windows.Forms.Button();
+            this.buttonRemove = new System.Windows.Forms.Button();
+            this.labelExtra = new System.Windows.Forms.Label();
+            this.comboBoxExtra = new System.Windows.Forms.ComboBox();
+            this.labelQuantity = new System.Windows.Forms.Label();
+            this.numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.groupBox = new System.Windows.Forms.GroupBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExtras)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
+            this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // buttonclear
             // 
-            this.groupBox1.Controls.Add(this.labelQuantity);
-            this.groupBox1.Controls.Add(this.textBoxQuantity);
-            this.groupBox1.Controls.Add(this.labelPrice);
-            this.groupBox1.Controls.Add(this.textBoxPrice);
-            this.groupBox1.Controls.Add(this.labelDescription);
-            this.groupBox1.Controls.Add(this.textBoxDescription);
-            this.groupBox1.Controls.Add(this.labelIdExtra);
-            this.groupBox1.Controls.Add(this.textBoxIdExtra);
-            this.groupBox1.Controls.Add(this.labelFloor);
-            this.groupBox1.Controls.Add(this.textBoxRoomFloor);
-            this.groupBox1.Controls.Add(this.textBoxRoomNumber);
-            this.groupBox1.Controls.Add(this.labelNumber);
-            this.groupBox1.Location = new System.Drawing.Point(13, 13);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(234, 200);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Please enter the room and extra information";
+            this.buttonclear.Location = new System.Drawing.Point(12, 380);
+            this.buttonclear.Name = "buttonclear";
+            this.buttonclear.Size = new System.Drawing.Size(105, 23);
+            this.buttonclear.TabIndex = 1;
+            this.buttonclear.Text = "Clear";
+            this.buttonclear.UseVisualStyleBackColor = true;
+            this.buttonclear.Click += new System.EventHandler(this.buttonclear_Click);
+            // 
+            // dataGridViewExtras
+            // 
+            this.dataGridViewExtras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewExtras.Location = new System.Drawing.Point(12, 147);
+            this.dataGridViewExtras.Name = "dataGridViewExtras";
+            this.dataGridViewExtras.Size = new System.Drawing.Size(496, 227);
+            this.dataGridViewExtras.TabIndex = 3;
+            // 
+            // buttonBill
+            // 
+            this.buttonBill.Location = new System.Drawing.Point(403, 380);
+            this.buttonBill.Name = "buttonBill";
+            this.buttonBill.Size = new System.Drawing.Size(105, 23);
+            this.buttonBill.TabIndex = 5;
+            this.buttonBill.Text = "Bill";
+            this.buttonBill.UseVisualStyleBackColor = true;
+            this.buttonBill.Click += new System.EventHandler(this.buttonBill_Click);
+            // 
+            // buttonRemove
+            // 
+            this.buttonRemove.Location = new System.Drawing.Point(12, 118);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(105, 23);
+            this.buttonRemove.TabIndex = 6;
+            this.buttonRemove.Text = "Remove Item -";
+            this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
+            // 
+            // labelExtra
+            // 
+            this.labelExtra.AutoSize = true;
+            this.labelExtra.Location = new System.Drawing.Point(111, 36);
+            this.labelExtra.Name = "labelExtra";
+            this.labelExtra.Size = new System.Drawing.Size(36, 13);
+            this.labelExtra.TabIndex = 7;
+            this.labelExtra.Text = "Extras";
+            // 
+            // comboBoxExtra
+            // 
+            this.comboBoxExtra.FormattingEnabled = true;
+            this.comboBoxExtra.Location = new System.Drawing.Point(195, 33);
+            this.comboBoxExtra.Name = "comboBoxExtra";
+            this.comboBoxExtra.Size = new System.Drawing.Size(195, 21);
+            this.comboBoxExtra.TabIndex = 8;
             // 
             // labelQuantity
             // 
             this.labelQuantity.AutoSize = true;
-            this.labelQuantity.Location = new System.Drawing.Point(15, 159);
+            this.labelQuantity.Location = new System.Drawing.Point(111, 68);
             this.labelQuantity.Name = "labelQuantity";
             this.labelQuantity.Size = new System.Drawing.Size(46, 13);
-            this.labelQuantity.TabIndex = 11;
+            this.labelQuantity.TabIndex = 9;
             this.labelQuantity.Text = "Quantity";
             // 
-            // textBoxQuantity
+            // numericUpDown
             // 
-            this.textBoxQuantity.Location = new System.Drawing.Point(123, 156);
-            this.textBoxQuantity.Name = "textBoxQuantity";
-            this.textBoxQuantity.Size = new System.Drawing.Size(100, 20);
-            this.textBoxQuantity.TabIndex = 10;
+            this.numericUpDown.Location = new System.Drawing.Point(195, 66);
+            this.numericUpDown.Name = "numericUpDown";
+            this.numericUpDown.Size = new System.Drawing.Size(195, 20);
+            this.numericUpDown.TabIndex = 10;
             // 
-            // labelPrice
+            // buttonAdd
             // 
-            this.labelPrice.AutoSize = true;
-            this.labelPrice.Location = new System.Drawing.Point(15, 133);
-            this.labelPrice.Name = "labelPrice";
-            this.labelPrice.Size = new System.Drawing.Size(31, 13);
-            this.labelPrice.TabIndex = 9;
-            this.labelPrice.Text = "Price";
+            this.buttonAdd.Location = new System.Drawing.Point(403, 118);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(105, 23);
+            this.buttonAdd.TabIndex = 11;
+            this.buttonAdd.Text = "Add Item +";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // textBoxPrice
+            // groupBox
             // 
-            this.textBoxPrice.Location = new System.Drawing.Point(123, 130);
-            this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(100, 20);
-            this.textBoxPrice.TabIndex = 8;
-            // 
-            // labelDescription
-            // 
-            this.labelDescription.AutoSize = true;
-            this.labelDescription.Location = new System.Drawing.Point(15, 107);
-            this.labelDescription.Name = "labelDescription";
-            this.labelDescription.Size = new System.Drawing.Size(87, 13);
-            this.labelDescription.TabIndex = 7;
-            this.labelDescription.Text = "Extra Description";
-            // 
-            // textBoxDescription
-            // 
-            this.textBoxDescription.Location = new System.Drawing.Point(123, 104);
-            this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.Size = new System.Drawing.Size(100, 20);
-            this.textBoxDescription.TabIndex = 6;
-            // 
-            // labelIdExtra
-            // 
-            this.labelIdExtra.AutoSize = true;
-            this.labelIdExtra.Location = new System.Drawing.Point(15, 81);
-            this.labelIdExtra.Name = "labelIdExtra";
-            this.labelIdExtra.Size = new System.Drawing.Size(43, 13);
-            this.labelIdExtra.TabIndex = 5;
-            this.labelIdExtra.Text = "Extra Id";
-            // 
-            // textBoxIdExtra
-            // 
-            this.textBoxIdExtra.Location = new System.Drawing.Point(123, 78);
-            this.textBoxIdExtra.Name = "textBoxIdExtra";
-            this.textBoxIdExtra.Size = new System.Drawing.Size(100, 20);
-            this.textBoxIdExtra.TabIndex = 4;
-            // 
-            // labelFloor
-            // 
-            this.labelFloor.AutoSize = true;
-            this.labelFloor.Location = new System.Drawing.Point(15, 55);
-            this.labelFloor.Name = "labelFloor";
-            this.labelFloor.Size = new System.Drawing.Size(61, 13);
-            this.labelFloor.TabIndex = 3;
-            this.labelFloor.Text = "Room Floor";
-            // 
-            // textBoxRoomFloor
-            // 
-            this.textBoxRoomFloor.Location = new System.Drawing.Point(123, 52);
-            this.textBoxRoomFloor.Name = "textBoxRoomFloor";
-            this.textBoxRoomFloor.Size = new System.Drawing.Size(100, 20);
-            this.textBoxRoomFloor.TabIndex = 2;
-            // 
-            // textBoxRoomNumber
-            // 
-            this.textBoxRoomNumber.Location = new System.Drawing.Point(123, 26);
-            this.textBoxRoomNumber.Name = "textBoxRoomNumber";
-            this.textBoxRoomNumber.Size = new System.Drawing.Size(100, 20);
-            this.textBoxRoomNumber.TabIndex = 1;
-            // 
-            // labelNumber
-            // 
-            this.labelNumber.AutoSize = true;
-            this.labelNumber.Location = new System.Drawing.Point(15, 29);
-            this.labelNumber.Name = "labelNumber";
-            this.labelNumber.Size = new System.Drawing.Size(78, 13);
-            this.labelNumber.TabIndex = 0;
-            this.labelNumber.Text = "Room Number ";
-            // 
-            // buttonclear
-            // 
-            this.buttonclear.Location = new System.Drawing.Point(12, 385);
-            this.buttonclear.Name = "buttonclear";
-            this.buttonclear.Size = new System.Drawing.Size(75, 23);
-            this.buttonclear.TabIndex = 1;
-            this.buttonclear.Text = "Clear";
-            this.buttonclear.UseVisualStyleBackColor = true;
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.Location = new System.Drawing.Point(521, 385);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(75, 23);
-            this.buttonSave.TabIndex = 2;
-            this.buttonSave.Text = "Save";
-            this.buttonSave.UseVisualStyleBackColor = true;
+            this.groupBox.Controls.Add(this.comboBoxExtra);
+            this.groupBox.Controls.Add(this.labelExtra);
+            this.groupBox.Controls.Add(this.labelQuantity);
+            this.groupBox.Controls.Add(this.numericUpDown);
+            this.groupBox.Location = new System.Drawing.Point(12, 12);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Size = new System.Drawing.Size(496, 100);
+            this.groupBox.TabIndex = 12;
+            this.groupBox.TabStop = false;
+            this.groupBox.Text = "Please enter all the extras consume during the stay ";
             // 
             // CreateExtra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(608, 420);
-            this.Controls.Add(this.buttonSave);
+            this.ClientSize = new System.Drawing.Size(521, 417);
+            this.Controls.Add(this.groupBox);
+            this.Controls.Add(this.buttonAdd);
+            this.Controls.Add(this.buttonRemove);
+            this.Controls.Add(this.buttonBill);
+            this.Controls.Add(this.dataGridViewExtras);
             this.Controls.Add(this.buttonclear);
-            this.Controls.Add(this.groupBox1);
             this.Name = "CreateExtra";
             this.Text = "Register Extra";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExtras)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
+            this.groupBox.ResumeLayout(false);
+            this.groupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label labelNumber;
-        private System.Windows.Forms.Label labelPrice;
-        private System.Windows.Forms.TextBox textBoxPrice;
-        private System.Windows.Forms.Label labelDescription;
-        private System.Windows.Forms.TextBox textBoxDescription;
-        private System.Windows.Forms.Label labelIdExtra;
-        private System.Windows.Forms.TextBox textBoxIdExtra;
-        private System.Windows.Forms.Label labelFloor;
-        private System.Windows.Forms.TextBox textBoxRoomFloor;
-        private System.Windows.Forms.TextBox textBoxRoomNumber;
-        private System.Windows.Forms.Label labelQuantity;
-        private System.Windows.Forms.TextBox textBoxQuantity;
         private System.Windows.Forms.Button buttonclear;
-        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.DataGridView dataGridViewExtras;
+        private System.Windows.Forms.Button buttonBill;
+        private System.Windows.Forms.Button buttonRemove;
+        private System.Windows.Forms.Label labelExtra;
+        private System.Windows.Forms.ComboBox comboBoxExtra;
+        private System.Windows.Forms.Label labelQuantity;
+        private System.Windows.Forms.NumericUpDown numericUpDown;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.GroupBox groupBox;
     }
 }

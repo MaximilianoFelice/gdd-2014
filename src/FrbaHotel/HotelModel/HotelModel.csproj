@@ -64,13 +64,16 @@
     <Compile Include="DB Conn DSL\tests\StoredProcedureConnection_tests.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="ConnectionManager.cs" />
+    <Compile Include="Home\BillHandler.cs" />
     <Compile Include="Home\BookingHandler.cs" />
+    <Compile Include="Home\ExtraHandler.cs" />
     <Compile Include="Home\GuestHandler.cs" />
     <Compile Include="Home\HotelHandler.cs" />
     <Compile Include="Home\FormHandler.cs" />
     <Compile Include="Home\RegimenHandler.cs" />
     <Compile Include="Home\RoomHandler.cs" />
     <Compile Include="Home\StatisticsHandler.cs" />
+    <Compile Include="Home\StayHandler.cs" />
     <Compile Include="Home\ValidationsHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
