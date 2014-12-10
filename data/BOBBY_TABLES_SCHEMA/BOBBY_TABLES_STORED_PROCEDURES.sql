@@ -126,7 +126,7 @@ CREATE PROCEDURE [BOBBY_TABLES].SP_UPDATE_PERSON
 @Nationality VARCHAR(50),
 @State INTEGER,
 @IdPersonToUpdate INTEGER,
-@IdPersonUpdated INTEGER OUTPUT
+@Updated BIT = 0x0 OUTPUT
 AS
 
 	UPDATE [BOBBY_TABLES].PERSONS 
@@ -146,7 +146,10 @@ AS
 		stat = @State
 	WHERE id_person = @IdPersonToUpdate
 	
-	SET @IdPersonUpdated = @IdPersonToUpdate
+	IF @@ERROR = 0
+	BEGIN
+		SET @Updated = 0x1
+	END
 
 GO
 
@@ -154,22 +157,27 @@ GO
 --=======================================
 --FILTER PERSON
 --=======================================
-CREATE PROCEDURE [BOBBY_TABLES].SP_FILTER_PERSONS
-@Name VARCHAR(50) = NULL,
+CREATE FUNCTION [BOBBY_TABLES].SP_FILTER_PERSONS
+(@Name VARCHAR(50) = NULL,
 @Lastname VARCHAR(50) = NULL,
 @DocType VARCHAR(10) = NULL,
 @DocNumber DECIMAL(10,0) = NULL,
-@Mail VARCHAR(50) = NULL
+@Mail VARCHAR(50) = NULL)
+RETURNS TABLE
 AS
-
-	SELECT * FROM [BOBBY_TABLES].PERSONS 
-	WHERE
-		((@Name IS NULL)  OR (name LIKE '%' + @Name + '%')) AND
-        ((@Lastname IS NULL) OR (lastname LIKE '%' + @Lastname+ '%')) AND
-        ((@DocNumber IS NULL) OR (doc_number = @DocNumber )) AND
-        ((@Mail IS NULL) OR (mail LIKE '%' + @Mail + '%')) AND
-        ((@DocType IS NULL) OR (doc_type = @DocType)) 
-    ORDER BY lastname, name
+	BEGIN
+		
+		RETURN
+		(SELECT * FROM [BOBBY_TABLES].PERSONS 
+		WHERE
+			((@Name IS NULL)  OR (name LIKE '%' + @Name + '%')) AND
+			((@Lastname IS NULL) OR (lastname LIKE '%' + @Lastname+ '%')) AND
+			((@DocNumber IS NULL) OR (doc_number = @DocNumber )) AND
+			((@Mail IS NULL) OR (mail LIKE '%' + @Mail + '%')) AND
+			((@DocType IS NULL) OR (doc_type = @DocType)) 
+		ORDER BY lastname, name)
+    
+    END
     
 GO
 
@@ -179,10 +187,15 @@ GO
 --=======================================
 CREATE PROCEDURE [BOBBY_TABLES].SP_DELETE_PERSON
 @IdPersonToDelete INTEGER,
-@IdPersonDeleted INTEGER OUTPUT
+@Deleted BIT = 0x0 OUTPUT
 AS
 	
 	UPDATE [BOBBY_TABLES].PERSONS SET stat = 0 WHERE id_person = @IdPersonToDelete
+	
+	IF @@ERROR = 0
+	BEGIN
+		SET @Deleted = 0x1
+	END
 	
 GO
 
