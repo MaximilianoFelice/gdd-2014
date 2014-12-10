@@ -93,6 +93,27 @@ GO
 --=======================================
 --EMAIL_EXISTS
 --=======================================
+CREATE PROCEDURE [BOBBY_TABLES].SP_EMAIL_EXISTS_UPDATE
+@Id INTEGER,
+@Email VARCHAR(50),
+@EmailExist BIT = 0x0 OUTPUT
+AS 
+
+	DECLARE @SearchedMail VARCHAR(50)
+
+	SELECT @SearchedMail = mail FROM [BOBBY_TABLES].PERSONS WHERE id_person = @Id 
+	
+	IF @SearchedMail <> @Email
+	BEGIN
+		SET @EmailExist = 0x1
+	END
+	
+GO
+
+
+--=======================================
+--EMAIL_EXISTS
+--=======================================
 CREATE PROCEDURE [BOBBY_TABLES].SP_EMAIL_EXISTS
 @Email VARCHAR(50),
 @EmailExist BIT = 0x0 OUTPUT
