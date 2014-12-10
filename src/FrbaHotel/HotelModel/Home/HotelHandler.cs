@@ -85,6 +85,12 @@ namespace HotelModel.Home
                                               .Execute();
             return (DataSet)results["ReturnedValues"];
         }
+        
+        public DataSet getHotelNameById(Int32 id_hotel){
+            SqlResults results = new SqlQuery("SELECT name FROM BOBBY_TABLES.HOTELS where id_hotel = "+id_hotel)
+                                 .Execute();
+            return (DataSet)results ["ReturnedValues"];
+        }
 
         public DataTable filteredSearch(String name, Int32? stars, String city, String country) {
             SqlResults results = new SqlFunction("[BOBBY_TABLES].SP_FILTER_HOTELS")

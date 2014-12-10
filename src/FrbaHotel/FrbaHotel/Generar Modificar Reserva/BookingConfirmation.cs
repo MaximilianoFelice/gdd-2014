@@ -20,7 +20,8 @@ namespace FrbaHotel.Generar_Modificar_Reserva
         DateTime checkout;
         Int32 extraGuests;
         Int32 id_roomtype;
-
+        public Boolean updating = false;
+       
 
         public BookingConfirmation(CreateBooking frmBack)
         {
@@ -56,21 +57,28 @@ namespace FrbaHotel.Generar_Modificar_Reserva
             Int32 bookingCode = bh.insertBooking(id_hotel, id_regimen, checkin, checkout, extraGuests, id_roomtype);
             if (bookingCode > 0)
             {
-
-                BookingHolder frm = new BookingHolder();
-                var result = frm.ShowDialog();
-                if (result == DialogResult.OK && frm.id_guest != 0)
+                if (updating)
                 {
-                   Boolean inserted = this.addGuestToBooking(bookingCode, frm.id_guest);
-                   if (inserted)
-                   {
-                       MessageBox.Show("Booking registered with code:" + Convert.ToString(bookingCode));
-                   }
-                   else {
-                       MessageBox.Show("Unable to set the booking holder.");
-                   }
+                    MessageBox.Show("Booking updated with code" + Convert.ToString(bookingCode));
                 }
+                else
+                {
 
+                    BookingHolder frm = new BookingHolder();
+                    var result = frm.ShowDialog();
+                    if (result == DialogResult.OK && frm.id_guest != 0)
+                    {
+                        Boolean inserted = this.addGuestToBooking(bookingCode, frm.id_guest);
+                        if (inserted)
+                        {
+                            MessageBox.Show("Booking registered with code:" + Convert.ToString(bookingCode));
+                        }
+                        else
+                        {
+                            MessageBox.Show("Unable to set the booking holder.");
+                        }
+                    }
+                }
               
             }else{
                 MessageBox.Show("Unable to register booking");
@@ -81,6 +89,10 @@ namespace FrbaHotel.Generar_Modificar_Reserva
 
         public Boolean addGuestToBooking(Int32 id_booking, Int32 id_guest) {
             return bh.insertHolderToBooking(id_booking, id_guest);
+        }
+
+        public void setUpdating() {
+            updating = true;
         }
 
     }

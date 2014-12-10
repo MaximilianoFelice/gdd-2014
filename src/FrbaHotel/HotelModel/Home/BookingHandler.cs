@@ -76,7 +76,18 @@ namespace HotelModel.Home
             return (Boolean)results["@Deleted"];
         }
 
+        public DataSet getBookingInformation(Int32 id_booking) {
+            SqlResults results = new SqlQuery(" SELECT * from BOBBY_TABLES.BOOKINGS where id_booking = "+id_booking)
+                                .Execute();
+            return (DataSet)results["ReturnedValues"];
+        }
+        
+        public DataSet getHolderBooking(Int32 id_booking){
+            SqlResults results = new SqlQuery("SELECT * from BOBBY_TABLES.GUEST_BOOKINGS where id_booking = " + id_booking)
+                                .Execute();
+            return (DataSet)results["ReturnedValues"];
 
+        }
 
     }
 }

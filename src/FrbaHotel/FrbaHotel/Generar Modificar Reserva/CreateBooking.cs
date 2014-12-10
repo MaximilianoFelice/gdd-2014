@@ -22,6 +22,8 @@ namespace FrbaHotel.Generar_Modificar_Reserva
         DateTime checkout;
         Int32 extraGuests;
         Int32 id_roomtype;
+        Boolean updating = false;
+        Int32 holder;
 
         public CreateBooking()
         {
@@ -109,6 +111,9 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                 frm.textBoxCheckout.Text = Convert.ToString(checkout);
                 frm.setTotalPrice(id_hotel, id_regimen, checkin, checkout, extraGuests, id_roomtype);
                 frm.setValues(id_hotel, id_regimen, checkin, checkout, extraGuests, id_roomtype);
+                if (updating) {
+                    frm.setUpdating();
+                }
                 frm.Show();
                 this.Hide();
 
@@ -129,7 +134,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
         private void assignIdHotel() {
             String name = comboBoxHotel.Text;
             DataTable dt =  hh.getIdHotelByName(name).Tables[0];
-            id_hotel = Convert.ToInt32(dt.Rows[0].ToString());
+            id_hotel = Convert.ToInt32(dt.Rows[0][0].ToString());
         }
         private void assignIdRegimen() {
             if (comboBoxRegimen.SelectedItem == null)
@@ -142,7 +147,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
             else {
                 String descr = comboBoxRegimen.Text;
                 DataTable dt = rh.getRegimenIdFromDescr(descr).Tables[0];
-                id_regimen = Convert.ToInt32(dt.Rows[0].ToString());
+                id_regimen = Convert.ToInt32(dt.Rows[0][0].ToString());
             }
         }
 
@@ -154,12 +159,49 @@ namespace FrbaHotel.Generar_Modificar_Reserva
         private void assignIdRoomType() {
             String descr = comboBoxRoomType.Text;
             DataTable dt = roh.getRoomTypeIdFromDescr(descr).Tables[0];
-            id_roomtype = Convert.ToInt32(dt.Rows[0].ToString());
+            id_roomtype = Convert.ToInt32(dt.Rows[0][0].ToString());
 
         }
 
-     
+        public void setParamsForUpdate(Int32 id_booking){
+            DataTable bookingInfo = bh.getBookingInformation(id_booking).Tables[0];
+            //idbook, idreg,idhot, reg_price, guests, start, nights, stat
+            DataTable bookingGuest = bh.getHolderBooking(id_booking).Tables[0];
+            //idbook, idperson, stat
+            this.setComboBoxHotel(bookingInfo);
+            this.setComboBoxRegimen(bookingInfo);
+            this.setDates(bookingInfo);
+            this.setGuests(bookingInfo);
+            this.setRoomType(bookingInfo);
+            updating = true;
+            holder = Convert.ToInt32(bookingGuest.Rows[0][0]);
+            
+        }
 
-       
+        private void setComboBoxHotel(DataTable dt){
+            id_hotel = Convert.ToInt32(dt.Rows[0][2]);
+            DataTable hotelName = hh.getHotelNameById(id_hotel).Tables[0];
+            comboBoxHotel.SelectedIndex = this.comboBoxHotel.FindStringExact(hotelName.Rows[0][0].ToString());
+        }
+
+        private void setComboBoxRegimen(DataTable dt) {
+            id_regimen = Convert.ToInt32(dt.Rows[0][1]);
+            DataTable regName = rh.getRegimensDescrFromId(id_regimen).Tables[0];
+            comboBoxRegimen.SelectedIndex = this.comboBoxRegimen.FindStringExact(regName.Rows[0][0].ToString());
+        }
+
+        private void setDates(DataTable dt) {
+            dateTimePickerStart.Value = Convert.ToDateTime(dt.Rows[0][5]);
+            Int32 nights = Convert.ToInt32(dt.Rows[0][6]);
+            dateTimePickerEnd.Value = dateTimePickerStart.Value.AddDays(nights);
+        }
+
+        private void setGuests(DataTable dt) {
+            numericUpDown.Value = Convert.ToInt32(dt.Rows[0][4]);
+        }
+
+        private void setRoomType(DataTable dt) {
+            //missing field roomtype in booking in db
+        }
     }
 }
