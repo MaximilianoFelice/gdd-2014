@@ -31,5 +31,13 @@ namespace HotelModel.Home
             SqlResults results = new SqlQuery("SELECT * FROM BOBBY_TABLES.REGIMENS r JOIN BOBBY_TABLES.REGIMEN_HOTEL rh ON r.id_regimen = rh.id_regimen WHERE rh.id_hotel =" + id_hotel).Execute();
             return (DataSet)results["ReturnedValues"];
         }
+
+        public DataSet getRegimensDescrFromId(Int32 id_regimen) {
+            SqlResults results = new SqlQuery("SELECT descr FROM BOBBY_TABLES.REGIMENS WHERE id_regimen = " + id_regimen)
+                                .Execute();
+            return (DataSet)results["ReturnedValues"];
+        }
+
+        
     }
 }

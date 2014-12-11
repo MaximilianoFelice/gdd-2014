@@ -9,11 +9,18 @@ using System.Windows.Forms;
 
 namespace FrbaHotel.Registrar_Estadia
 {
-    public partial class RegisterStay : Form
+    public partial class CheckIn : Form
     {
-        public RegisterStay()
+        Int32 id_booking;
+
+        public CheckIn()
         {
             InitializeComponent();
+        }
+
+        public void setIdBooking(Int32 id)
+        {
+            id_booking = id;
         }
     }
 }

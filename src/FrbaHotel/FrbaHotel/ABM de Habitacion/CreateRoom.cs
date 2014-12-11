@@ -29,10 +29,14 @@ namespace FrbaHotel.ABM_de_Habitacion
         }
 
         private void loadRoomType() {
-            comboBoxType.DataSource = rh.getRoomTypes();
+            comboBoxType.DataSource = rh.getRoomTypes().Tables[0];
+            comboBoxType.DisplayMember = "descr";
+            comboBoxType.ValueMember = "id_roomtype";
         }
         private void loadRoomLocation() {
-            comboBoxLoc.DataSource = rh.getRoomLocations();
+            comboBoxLoc.DataSource = rh.getRoomLocations().Tables[0];
+            comboBoxLoc.DisplayMember = "descr";
+            comboBoxLoc.ValueMember = "id_location";
         }
 
 

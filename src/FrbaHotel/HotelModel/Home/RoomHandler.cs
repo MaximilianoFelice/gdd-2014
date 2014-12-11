@@ -12,18 +12,18 @@ namespace HotelModel.Home
     public class RoomHandler
     {
 
-        public DataTable getRoomTypes() {
-            SqlResults results = new SqlQuery("SELECT descr FROM [BOBBY_TABLES].ROOM_TYPE;").Execute();
+        public DataSet getRoomTypes() {
+            SqlResults results = new SqlQuery("SELECT * FROM [BOBBY_TABLES].ROOM_TYPE;").Execute();
 
-            return (DataTable) results["ReturnedValues"];
+            return (DataSet) results["ReturnedValues"];
         
         }
 
 
-        public DataTable getRoomLocations() {
-            SqlResults results = new SqlQuery("SELECT descr FROM [BOBBY_TABLES].ROOM_LOCATION;").Execute();
+        public DataSet getRoomLocations() {
+            SqlResults results = new SqlQuery("SELECT * FROM [BOBBY_TABLES].ROOM_LOCATION;").Execute();
 
-            return (DataTable)results["ReturnedValues"];
+            return (DataSet)results["ReturnedValues"];
         }
 
         public DataSet getRoomTypeIdFromDescr(String descr){

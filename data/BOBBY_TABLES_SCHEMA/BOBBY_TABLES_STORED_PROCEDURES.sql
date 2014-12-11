@@ -91,6 +91,27 @@ GO
 
 
 --=======================================
+--EMAIL_EXISTS_UPDATE
+--=======================================
+CREATE PROCEDURE [BOBBY_TABLES].SP_EMAIL_EXISTS_UPDATE
+@Id INTEGER,
+@Email VARCHAR(50),
+@EmailExist BIT = 0x0 OUTPUT
+AS 
+
+	DECLARE @SearchedMail VARCHAR(50)
+
+	SELECT @SearchedMail = mail FROM [BOBBY_TABLES].PERSONS WHERE id_person = @Id 
+	
+	IF @SearchedMail <> @Email
+	BEGIN
+		SET @EmailExist = 0x1
+	END
+	
+GO
+
+
+--=======================================
 --EMAIL_EXISTS
 --=======================================
 CREATE PROCEDURE [BOBBY_TABLES].SP_EMAIL_EXISTS
@@ -306,6 +327,31 @@ AS
 
 GO
 
+--=======================================
+--FILTER HOTELS
+--=======================================
+CREATE FUNCTION [BOBBY_TABLES].SP_FILTER_HOTELS
+(@Name VARCHAR(50) = NULL,
+@Stars INTEGER = NULL,
+@City VARCHAR(255) = NULL,
+@Country VARCHAR(255) = NULL)
+RETURNS TABLE
+AS
+	BEGIN
+		
+		RETURN
+		(SELECT * FROM [BOBBY_TABLES].HOTELS 
+		WHERE
+			((@Name IS NULL)  OR (name LIKE '%' + @Name + '%')) AND
+			((@Stars IS NULL) OR (stars = @Stars)) AND
+			((@City IS NULL) OR (city LIKE '%' + @City + '%')) AND
+			((@Country IS NULL) OR (country LIKE '%' + @Country + '%'))
+		ORDER BY lastname, name)
+    
+    END
+    
+GO
+
 
 --=======================================
 --ROOM_EXISTS
@@ -324,6 +370,7 @@ AS
 	END
 	
 GO
+
 	
 	
 
