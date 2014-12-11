@@ -28,6 +28,7 @@ namespace FrbaHotel.ABM_de_Hotel
         {
             InitializeComponent();
             this.loadRegimens();
+            this.loadComboBoxCountries();
             dateTimePicker.MaxDate = DateTime.Now;
         }
 
@@ -37,6 +38,10 @@ namespace FrbaHotel.ABM_de_Hotel
             for (int i = 0; i < dt.Rows.Count; i++)
                 checkedListBoxReg.Items.Add(Convert.ToString(dt.Rows[i].ItemArray[1]));
         
+        }
+
+        private void loadComboBoxCountries() {
+            FormHandler.loadCountriesToCombo(comboBoxCountry, hh);
         }
 
         private void textBoxName_Validating(object sender, CancelEventArgs e)

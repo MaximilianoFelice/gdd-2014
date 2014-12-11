@@ -174,9 +174,15 @@ namespace HotelModel.Home
        }
 
       public static void loadDocTypesToCombo(ComboBox combo, GuestHandler gh) {
-            combo.DataSource = gh.getDocTypes();
+            combo.DataSource = gh.getDocTypes().Tables[0];
             combo.DisplayMember = "doc_type";
             combo.ValueMember = "doc_type";
+      }
+
+      public static void loadCountriesToCombo(ComboBox combo, HotelHandler hh) {
+          combo.DataSource = hh.getCountries().Tables[0];
+          combo.DisplayMember = "country";
+          combo.ValueMember = "country";
       }
 
 

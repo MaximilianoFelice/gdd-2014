@@ -9,8 +9,11 @@ namespace HotelModel.Home
 {
     public class HotelHandler
     {
-        
 
+        public DataSet getCountries() {
+            SqlResults results = new SqlQuery("SELECT * FROM BOBBY_TABLES.COUNTRIES").Execute();
+            return (DataSet)results["ReturnedValues"];
+        }
         public DataSet getHotels()
         {
             SqlResults results = new SqlQuery("SELECT name FROM BOBBY_TABLES.HOTELS where stat= 401 AND name IS NOT NULL").Execute();
