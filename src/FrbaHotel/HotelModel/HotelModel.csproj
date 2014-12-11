@@ -121,6 +121,7 @@
       <DependentUpon>Integration_Form_Test.cs</DependentUpon>
     </Compile>
     <Compile Include="User Permissions\tests\Roles_tests.cs" />
+    <Compile Include="User Permissions\ToolStripExtension.cs" />
     <Compile Include="User Permissions\UFR\Feature.cs" />
     <Compile Include="User Permissions\UFR\Role.cs" />
     <Compile Include="User Permissions\UI\AddNew.cs">

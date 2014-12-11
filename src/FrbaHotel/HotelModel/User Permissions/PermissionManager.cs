@@ -20,6 +20,10 @@ namespace HotelModel.User_Permissions
 
         private static HashSet<Control> _ManagedAccessibleObjects = null;
 
+        private static HashSet<ToolStripItem> _ManagedVisibleToolStripItems = null;
+
+        private static HashSet<ToolStripItem> _ManagedAccessibleToolStripItems = null;
+
         #region Accessors
 
         public static HashSet<Control> ManagedVisibleObjects
@@ -49,6 +53,33 @@ namespace HotelModel.User_Permissions
             }
         }
 
+        public static HashSet<ToolStripItem> ManagedVisibleToolStripItems
+        {
+            get
+            {
+                if (_ManagedVisibleToolStripItems == null || _ManagedAccessibleToolStripItems == null) {getManagedObjects(); return _ManagedVisibleToolStripItems;}
+                else return _ManagedVisibleToolStripItems;
+            }
+        }
+
+        public static HashSet<ToolStripItem> ManagedAccessibleToolStripMenuItems
+        {
+            get
+            {
+                if (_ManagedVisibleToolStripItems == null || _ManagedAccessibleToolStripItems == null) { getManagedObjects(); return _ManagedAccessibleToolStripItems; }
+                else return _ManagedAccessibleToolStripItems;
+            }
+        }
+
+        public static HashSet<ToolStripItem> ManagedToolStripMenuItems
+        {
+            get
+            {
+                if (_ManagedVisibleToolStripItems == null || _ManagedAccessibleToolStripItems == null) { getManagedObjects(); return _ManagedVisibleToolStripItems.IUnionWith(_ManagedAccessibleToolStripItems); }
+                else return _ManagedVisibleToolStripItems.IUnionWith(_ManagedAccessibleToolStripItems);
+            }
+        }
+
     #endregion
 
         public static void addVisibleControl(Control ctrl) { 
@@ -65,6 +96,24 @@ namespace HotelModel.User_Permissions
             /* TODO: Hook to change accessibility event */
             ctrl.EnabledChanged += new EventHandler(ControlEvents.AccessibilityChanged);
             _ManagedAccessibleObjects.Add(ctrl); 
+        }
+
+        public static void addVisibleToolStripItem(ToolStripItem tools)
+        {
+            /* Sets default Not Visible permission */
+            tools.Visible = false;
+            /* Hook to change visibility event */
+            tools.VisibleChanged += new EventHandler(ToolStripEvents.VisibilityChanged);
+            _ManagedVisibleToolStripItems.Add(tools);
+        }
+
+        public static void addAccessibleToolStripItem(ToolStripItem tools)
+        {
+            /* Sets default Not Accessible permission */
+            tools.Enabled = false;
+            /* TODO: Hook to change accessibility event */
+            tools.EnabledChanged += new EventHandler(ToolStripEvents.AccessibilityChanged);
+            _ManagedAccessibleToolStripItems.Add(tools);
         }
 
         private static Control _BaseControl;
@@ -105,11 +154,17 @@ namespace HotelModel.User_Permissions
             getManagedObjects();
         }
 
+        // TODO: Check return: Has no sense, should be void. Never used, anyway...
         private static HashSet<Control> getManagedObjects()
         {
             _ManagedVisibleObjects = new HashSet<Control>();
 
             _ManagedAccessibleObjects = new HashSet<Control>();
+
+            _ManagedVisibleToolStripItems = new HashSet<ToolStripItem>();
+
+            _ManagedAccessibleToolStripItems = new HashSet<ToolStripItem>();
+
 
             IEnumerable<System.Type> CurrentTypes = from c in Assembly.GetExecutingAssembly().GetTypes()
                                                       where c.IsClass && c.Namespace == typeof(PermissionManager).Namespace + ".HandledControls"
@@ -131,8 +186,14 @@ namespace HotelModel.User_Permissions
         }
 
         /* Reset control permissions */
-        public static void ResetVisibilityPermissions() { foreach (Control c in _ManagedVisibleObjects) c.Visible = false; }
-        public static void ResetAccessPermissions() { foreach (Control c in _ManagedAccessibleObjects) c.Enabled = false; }
+        public static void ResetVisibilityPermissions() 
+        {   foreach (Control c in _ManagedVisibleObjects) c.Visible = false;
+            foreach (ToolStripItem ts in _ManagedVisibleToolStripItems) ts.Visible = false;
+        }
+        public static void ResetAccessPermissions() 
+        {   foreach (Control c in _ManagedAccessibleObjects) c.Enabled = false;
+            foreach (ToolStripItem ts in _ManagedAccessibleToolStripItems) ts.Visible = false;
+        }
 
         public static void ResetPermissions() { ResetVisibilityPermissions(); ResetAccessPermissions(); }
 
@@ -143,6 +204,13 @@ namespace HotelModel.User_Permissions
             _ManagedAccessibleObjects.Remove(ctrl);
             _ManagedVisibleObjects.Remove(ctrl);
             Feature.getFeatures.IMap(x => x.Unmanage(ctrl));
+        }
+
+        public static void Unmanage(ToolStripItem tools)
+        {
+            _ManagedAccessibleToolStripItems.Remove(tools);
+            _ManagedVisibleToolStripItems.Remove(tools);
+            Feature.getFeatures.IMap(x => x.Unmanage(tools));
         }
 
     }

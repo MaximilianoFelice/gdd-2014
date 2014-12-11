@@ -23,13 +23,11 @@ namespace FrbaHotel
 
             PermissionManager.StartPoint(this);
 
-            setPermissions();
+            Form login = new HotelModel.User_Permissions.UI.frmLogin();
+            login.Owner = this;
+            login.ShowDialog();
 
-            Form login = new frmLogin();
-            login.MdiParent = this;
-            this.Enabled = false;
-            login.Show();
-            this.Enabled = true;
+            setPermissions();
         }
 
 
@@ -179,8 +177,9 @@ namespace FrbaHotel
         }
 
         private void setPermissions() 
-        { 
-            adminToolStripMenuItem
+        {
+            adminToolStripMenuItem.HandleAccess(new String[] {"Admin"});
+            adminToolStripMenuItem.HandleVisibility(new String[] {"Admin"});
         }
     }
 }

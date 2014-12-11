@@ -69,6 +69,10 @@ namespace HotelModel.User_Permissions
 
         public static Boolean HasVisibility(Control control) { return Active_Role.HasVisibility(control); }
 
+        public static Boolean HasAccess(ToolStripItem tools) { return Active_Role.HasAccess(tools); }
+
+        public static Boolean HasVisibility(ToolStripItem tools) { return Active_Role.HasVisibility(tools); }
+
         public static void RefreshPermissions() { Active_Role.Activate(); }
     }
 }

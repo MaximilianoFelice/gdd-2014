@@ -19,4 +19,18 @@ namespace HotelModel.User_Permissions
             if (!ActiveUser.HasAccess((Control)sender)) ((Control)sender).Enabled = false;
         }
     }
+
+    public static class ToolStripEvents
+    {
+        public static void VisibilityChanged(object sender, EventArgs e)
+        {
+            if (!ActiveUser.HasVisibility((ToolStripItem)sender)) ((ToolStripItem)sender).Visible = false;
+        }
+
+
+        public static void AccessibilityChanged(object sender, EventArgs e)
+        {
+            if (!ActiveUser.HasAccess((ToolStripItem)sender)) ((ToolStripItem)sender).Enabled = false;
+        }
+    }
 }

@@ -18,6 +18,7 @@ namespace HotelModel.User_Permissions.UI
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
+            // TODO: Use permision manager login method
             Boolean ret = User.ValidateLogin("MaximilianoFelice", "53acbedaad48d8d482fe1a9bf8cd8b8e329ff8033c5c1dc81dcccdff38dd197f");
             ActiveUser.LoadUser("MaximilianoFelice", User.GetRoles("MaximilianoFelice"));
             ActiveUser.ActivateRole("admin");
