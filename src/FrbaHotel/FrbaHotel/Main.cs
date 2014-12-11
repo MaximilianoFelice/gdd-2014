@@ -152,6 +152,13 @@ namespace FrbaHotel
             frm.Show();
         }
 
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Registrar_Estadia.Stay frm = new FrbaHotel.Registrar_Estadia.Stay();
+            frm.Show();
+
+        }
+
        
 
    

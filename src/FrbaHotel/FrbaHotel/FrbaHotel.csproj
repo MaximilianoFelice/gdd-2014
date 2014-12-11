@@ -278,6 +278,15 @@
     <EmbeddedResource Include="Registrar Consumible\EnterExtraStay.resx">
       <DependentUpon>EnterExtraStay.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Registrar Estadia\CheckIn.resx">
+      <DependentUpon>CheckIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registrar Estadia\CheckOut.resx">
+      <DependentUpon>CheckOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registrar Estadia\Stay.resx">
+      <DependentUpon>Stay.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -309,11 +318,23 @@
     <Compile Include="Registrar Consumible\EnterExtraStay.Designer.cs">
       <DependentUpon>EnterExtraStay.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registrar Estadia\RegisterStay.cs">
+    <Compile Include="Registrar Estadia\CheckIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registrar Estadia\RegisterStay.Designer.cs">
-      <DependentUpon>RegisterStay.cs</DependentUpon>
+    <Compile Include="Registrar Estadia\CheckIn.Designer.cs">
+      <DependentUpon>CheckIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registrar Estadia\CheckOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrar Estadia\CheckOut.Designer.cs">
+      <DependentUpon>CheckOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registrar Estadia\Stay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrar Estadia\Stay.Designer.cs">
+      <DependentUpon>Stay.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
