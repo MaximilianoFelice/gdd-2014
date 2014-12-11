@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox = new System.Windows.Forms.GroupBox();
-            this.textBoxCountry = new System.Windows.Forms.TextBox();
             this.textBoxCity = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.comboBoxStars = new System.Windows.Forms.ComboBox();
@@ -42,13 +41,14 @@
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonManteinance = new System.Windows.Forms.Button();
+            this.comboBoxCountry = new System.Windows.Forms.ComboBox();
             this.groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox
             // 
-            this.groupBox.Controls.Add(this.textBoxCountry);
+            this.groupBox.Controls.Add(this.comboBoxCountry);
             this.groupBox.Controls.Add(this.textBoxCity);
             this.groupBox.Controls.Add(this.textBoxName);
             this.groupBox.Controls.Add(this.comboBoxStars);
@@ -62,14 +62,6 @@
             this.groupBox.TabIndex = 0;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Search Filters";
-            // 
-            // textBoxCountry
-            // 
-            this.textBoxCountry.Location = new System.Drawing.Point(358, 51);
-            this.textBoxCountry.Name = "textBoxCountry";
-            this.textBoxCountry.Size = new System.Drawing.Size(155, 20);
-            this.textBoxCountry.TabIndex = 7;
-            this.textBoxCountry.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCountry_KeyPress);
             // 
             // textBoxCity
             // 
@@ -185,6 +177,14 @@
             this.buttonManteinance.UseVisualStyleBackColor = true;
             this.buttonManteinance.Click += new System.EventHandler(this.buttonManteinance_Click);
             // 
+            // comboBoxCountry
+            // 
+            this.comboBoxCountry.FormattingEnabled = true;
+            this.comboBoxCountry.Location = new System.Drawing.Point(358, 51);
+            this.comboBoxCountry.Name = "comboBoxCountry";
+            this.comboBoxCountry.Size = new System.Drawing.Size(155, 21);
+            this.comboBoxCountry.TabIndex = 7;
+            // 
             // FilterHotel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -213,7 +213,6 @@
         private System.Windows.Forms.Label labelCountry;
         private System.Windows.Forms.Label labelCity;
         private System.Windows.Forms.Label labelStars;
-        private System.Windows.Forms.TextBox textBoxCountry;
         private System.Windows.Forms.TextBox textBoxCity;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Button buttonClear;
@@ -221,5 +220,6 @@
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonManteinance;
+        private System.Windows.Forms.ComboBox comboBoxCountry;
     }
 }

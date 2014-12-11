@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox = new System.Windows.Forms.GroupBox();
+            this.comboBoxCountry = new System.Windows.Forms.ComboBox();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.checkedListBoxReg = new System.Windows.Forms.CheckedListBox();
             this.numericUDStars = new System.Windows.Forms.NumericUpDown();
@@ -52,7 +53,6 @@
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.comboBoxCountry = new System.Windows.Forms.ComboBox();
             this.groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUDStars)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -86,6 +86,15 @@
             this.groupBox.TabIndex = 0;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Please enter the hotel information";
+            // 
+            // comboBoxCountry
+            // 
+            this.comboBoxCountry.FormattingEnabled = true;
+            this.comboBoxCountry.Location = new System.Drawing.Point(440, 32);
+            this.comboBoxCountry.Name = "comboBoxCountry";
+            this.comboBoxCountry.Size = new System.Drawing.Size(195, 21);
+            this.comboBoxCountry.TabIndex = 20;
+            this.comboBoxCountry.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxCountry_Validating);
             // 
             // dateTimePicker
             // 
@@ -290,14 +299,6 @@
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
-            // 
-            // comboBoxCountry
-            // 
-            this.comboBoxCountry.FormattingEnabled = true;
-            this.comboBoxCountry.Location = new System.Drawing.Point(440, 32);
-            this.comboBoxCountry.Name = "comboBoxCountry";
-            this.comboBoxCountry.Size = new System.Drawing.Size(195, 21);
-            this.comboBoxCountry.TabIndex = 20;
             // 
             // CreateHotel
             // 

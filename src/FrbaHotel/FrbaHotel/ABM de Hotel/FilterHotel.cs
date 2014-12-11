@@ -21,8 +21,12 @@ namespace FrbaHotel.ABM_de_Hotel
         public FilterHotel()
         {
             InitializeComponent();
+            this.loadComboBoxCountries();
         }
 
+        private void loadComboBoxCountries() {
+            FormHandler.loadCountriesToCombo(comboBoxCountry, hh);
+        }
         private void buttonClear_Click(object sender, EventArgs e)
         {
             FormHandler.groupBoxCleaner(groupBox);
@@ -38,11 +42,7 @@ namespace FrbaHotel.ABM_de_Hotel
             FormHandler.allowOnlyChars(sender, e);
         }
 
-        private void textBoxCountry_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            FormHandler.allowOnlyChars(sender, e);
-        }
-
+    
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             this.assignFilters();
@@ -55,7 +55,7 @@ namespace FrbaHotel.ABM_de_Hotel
         private void assignFilters() {
             name=textBoxName.Text;
             city=textBoxCity.Text;
-            country=textBoxCountry.Text;
+            country=comboBoxCountry.SelectedText;
             stars = Convert.ToInt32(comboBoxStars.Text);
         
         }
@@ -70,7 +70,7 @@ namespace FrbaHotel.ABM_de_Hotel
             frm.textBoxStreet.Text=this.dataGridView.CurrentRow.Cells[4].Value.ToString();
             frm.textBoxStreetNum.Text=this.dataGridView.CurrentRow.Cells[5].Value.ToString();
             frm.textBoxCity.Text=this.dataGridView.CurrentRow.Cells[6].Value.ToString();
-            frm.textBoxCountry.Text=this.dataGridView.CurrentRow.Cells[7].Value.ToString();
+            //frm.textBoxCountry.Text=this.dataGridView.CurrentRow.Cells[7].Value.ToString();
             frm.numericUDStars.Value= (Decimal)this.dataGridView.CurrentRow.Cells[8].Value;
             //add regimens to checklist
             frm.dateTimePicker.Value = (DateTime)this.dataGridView.CurrentRow.Cells[9].Value ;

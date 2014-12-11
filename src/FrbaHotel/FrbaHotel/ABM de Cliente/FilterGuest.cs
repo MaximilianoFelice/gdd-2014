@@ -86,7 +86,7 @@ namespace FrbaHotel.ABM_de_Cliente
             frm.textBoxStreetNum.Text = this.dataGridViewResults.CurrentRow.Cells[9].Value.ToString();
             frm.textBoxFloor.Text = this.dataGridViewResults.CurrentRow.Cells[10].Value.ToString();
             frm.textBoxDept.Text = this.dataGridViewResults.CurrentRow.Cells[11].Value.ToString();
-            frm.textBoxNationality.Text = this.dataGridViewResults.CurrentRow.Cells[12].Value.ToString();
+            frm.comboBoxNationality.Text = this.dataGridViewResults.CurrentRow.Cells[12].Value.ToString();
 
             
 
