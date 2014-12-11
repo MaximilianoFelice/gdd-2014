@@ -28,6 +28,7 @@ namespace FrbaHotel.ABM_de_Cliente
         Int32 state { get; set; }
         ValidationsHandler vh = new ValidationsHandler();
         GuestHandler gh = new GuestHandler();
+        HotelHandler hh = new HotelHandler();
        
 
 
@@ -36,6 +37,7 @@ namespace FrbaHotel.ABM_de_Cliente
             InitializeComponent();
             dtPickerBirhtDate.MaxDate = DateTime.Now;
             this.loadComboBoxDocType();
+            this.loadComboBoxCountries();
 
         }
 
@@ -43,7 +45,9 @@ namespace FrbaHotel.ABM_de_Cliente
         {
             FormHandler.loadDocTypesToCombo(comboBoxDocType, this.gh);
         }
-
+        private void loadComboBoxCountries() {
+            FormHandler.loadCountriesToCombo(comboBoxNationality, hh);
+        }
         private void buttonSave_Click(object sender, EventArgs e)
         {
             if (this.ValidateChildren())
@@ -94,11 +98,12 @@ namespace FrbaHotel.ABM_de_Cliente
             id_guest = Int32.Parse(textBoxId.Text);
             name = textBoxName.Text;
             lastname = textBoxLastname.Text;
+            docType = comboBoxDocType.Text;
             docNumber = Decimal.Parse(textBoxDocNumber.Text);
             phone=Decimal.Parse(textBoxPhone.Text);
             mail=textBoxEmail.Text;
             birthDate=dtPickerBirhtDate.Value;
-            nationality = textBoxNationality.Text;
+            nationality =comboBoxNationality.Text;
             street = textBoxStreet.Text;
             streetNum=Int32.Parse(textBoxStreetNum.Text);
             floor=Int32.Parse(textBoxFloor.Text);
@@ -113,79 +118,17 @@ namespace FrbaHotel.ABM_de_Cliente
         private Boolean guestsExists() {
             return gh.PersonExistance(name, lastname, docType,docNumber, birthDate);
         }
-        private void textBoxName_Validating(object sender, CancelEventArgs e)
-        {
-            this.validateEmptyTextBoxOnHandler(textBoxName);
-        }
-       
-        
-
-        private void textBoxLastname_Validated(object sender, EventArgs e)
-        {
-            this.validateEmptyTextBoxOnHandler(textBoxLastname);
-
-        }
-        
-
-
-        private void comboBoxDocType_Validating(object sender, CancelEventArgs e)
-        {
-            
-            if (comboBoxDocType.SelectedItem == null)
-            {
-                errorProvider.SetError(comboBoxDocType, "Please enter the document type of the customer.");
-                buttonSave.Enabled = false;
-              
-            }
-            else
-            {
-                errorProvider.SetError(comboBoxDocType, "");
-                buttonSave.Enabled = true;
-                docType = comboBoxDocType.Text;
-                
-            }
-
-        }
-
-
-        private void textBoxDocNumber_Validating(object sender, CancelEventArgs e)
-        {
-
-            this.validateEmptyTextBoxOnHandler(textBoxDocNumber);
-            this.validateDecTextBoxOnHandler(textBoxDocNumber);
-            
-        } 
-        
-
-        private void textBoxPhone_Validating(object sender, CancelEventArgs e)
-        {
-            this.validateDecTextBoxOnHandler(textBoxPhone);
-          
-        }
-
-        private void textBoxEmail_Validating(object sender, CancelEventArgs e)
-        {
-            if (!String.IsNullOrEmpty(textBoxEmail.Text)) {
-                if (!(textBoxEmail.Text.Contains('.') || textBoxEmail.Text.Contains('@')) || textBoxEmail.Text.Contains(" ")) {
-                    errorProvider.SetError(textBoxEmail, "Mail has invalid type, has spaces or does not contain '.' or '@'");
-                    buttonSave.Enabled = false;
-                } else {
-                    errorProvider.SetError(textBoxEmail, "");
-                    buttonSave.Enabled = true;
-                }
-            }
-
-        }
 
 
         private void textBoxStreetNum_Validating(object sender, CancelEventArgs e)
         {
-
+            this.validateEmptyTextBoxOnHandler(textBoxStreetNum);
             this.validateIntTextBoxOnHandler(textBoxStreetNum);
         }
 
         private void textBoxFloor_Validating(object sender, CancelEventArgs e)
         {
+            this.validateEmptyTextBoxOnHandler(textBoxFloor);
             this.validateIntTextBoxOnHandler(textBoxFloor);
             
         }
@@ -202,13 +145,16 @@ namespace FrbaHotel.ABM_de_Cliente
         public void validateDecTextBoxOnHandler(TextBox txtb) {
             FormHandler.validateDecimalTextBox(txtb, errorProvider, buttonSave);
         }
+
+        public void validateEmptyComboBox(ComboBox combo) {
+            FormHandler.validateEmptyComboBox(combo, errorProvider, buttonSave);
+        }
        
  
-           //allows only numbers and . in docnumber field
-           private void textBoxDocNumber_KeyPress(object sender, KeyPressEventArgs e)
-           {
+        private void textBoxDocNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
                FormHandler.allowOnlyNumbers(sender, e);
-           }
+        }
         
         private void textBoxStreet_KeyPress(object sender, KeyPressEventArgs e)
            {
@@ -229,14 +175,6 @@ namespace FrbaHotel.ABM_de_Cliente
            }
 
           
-
-           private void textBoxNationality_KeyPress(object sender, KeyPressEventArgs e)
-           {
-
-               FormHandler.allowOnlyChars(sender, e);
-
-           }
-
            private void textBoxLastname_KeyPress(object sender, KeyPressEventArgs e)
            {
                FormHandler.allowOnlyChars(sender, e);
@@ -258,30 +196,63 @@ namespace FrbaHotel.ABM_de_Cliente
 
            }
 
-          
+           private void textBoxName_Validating_1(object sender, CancelEventArgs e)
+           {
+               this.validateEmptyTextBoxOnHandler(textBoxName);
+           }
 
-          
+           private void textBoxLastname_Validating(object sender, CancelEventArgs e)
+           {
+               this.validateEmptyTextBoxOnHandler(textBoxLastname);
+           }
 
-          
+           private void comboBoxDocType_Validating_1(object sender, CancelEventArgs e)
+           {
+               this.validateEmptyComboBox(comboBoxDocType);
+           }
+
+           private void textBoxDocNumber_Validating_1(object sender, CancelEventArgs e)
+           {
+               this.validateEmptyTextBoxOnHandler(textBoxDocNumber);
+               this.validateDecTextBoxOnHandler(textBoxDocNumber);
+           }
+
+           private void textBoxPhone_Validating_1(object sender, CancelEventArgs e)
+           {
+               this.validateEmptyTextBoxOnHandler(textBoxPhone);
+               this.validateDecTextBoxOnHandler(textBoxPhone);
+           }
+
+           private void textBoxEmail_Validating_1(object sender, CancelEventArgs e)
+           {
+               this.validateEmptyTextBoxOnHandler(textBoxEmail); 
+               if (!String.IsNullOrEmpty(textBoxEmail.Text)) {
+                if (!(textBoxEmail.Text.Contains('.') || textBoxEmail.Text.Contains('@')) || textBoxEmail.Text.Contains(" ")) {
+                    errorProvider.SetError(textBoxEmail, "Mail has invalid type, has spaces or does not contain '.' or '@'");
+                    buttonSave.Enabled = false;
+                } else {
+                    errorProvider.SetError(textBoxEmail, "");
+                    buttonSave.Enabled = true;
+                }
+               }
+           }
+
+           private void comboBoxNationality_Validating(object sender, CancelEventArgs e)
+           {
+               this.validateEmptyComboBox(comboBoxNationality);
+           }
+
+           private void textBoxStreet_Validating(object sender, CancelEventArgs e)
+           {
+               this.validateEmptyTextBoxOnHandler(textBoxStreet);
+           }
+
+           private void textBoxDept_Validating(object sender, CancelEventArgs e)
+           {
+               this.validateEmptyTextBoxOnHandler(textBoxDept);
+           }
 
 
-         
-         
-
-          
-          
-
-           
-
-
-           
-        
-
-           
-
-      
-
-       
 
     }
 }

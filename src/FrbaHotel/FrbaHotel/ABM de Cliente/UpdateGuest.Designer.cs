@@ -33,6 +33,7 @@
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.groupBoxGuest = new System.Windows.Forms.GroupBox();
+            this.comboBoxNationality = new System.Windows.Forms.ComboBox();
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.labelId = new System.Windows.Forms.Label();
             this.checkBoxEnabled = new System.Windows.Forms.CheckBox();
@@ -47,7 +48,6 @@
             this.textBoxStreetNum = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dtPickerBirhtDate = new System.Windows.Forms.DateTimePicker();
-            this.textBoxNationality = new System.Windows.Forms.TextBox();
             this.textBoxPhone = new System.Windows.Forms.TextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.comboBoxDocType = new System.Windows.Forms.ComboBox();
@@ -96,13 +96,13 @@
             // 
             // groupBoxGuest
             // 
+            this.groupBoxGuest.Controls.Add(this.comboBoxNationality);
             this.groupBoxGuest.Controls.Add(this.textBoxId);
             this.groupBoxGuest.Controls.Add(this.labelId);
             this.groupBoxGuest.Controls.Add(this.checkBoxEnabled);
             this.groupBoxGuest.Controls.Add(this.labelEnabled);
             this.groupBoxGuest.Controls.Add(this.groupBox2);
             this.groupBoxGuest.Controls.Add(this.dtPickerBirhtDate);
-            this.groupBoxGuest.Controls.Add(this.textBoxNationality);
             this.groupBoxGuest.Controls.Add(this.textBoxPhone);
             this.groupBoxGuest.Controls.Add(this.textBoxEmail);
             this.groupBoxGuest.Controls.Add(this.comboBoxDocType);
@@ -123,6 +123,15 @@
             this.groupBoxGuest.TabIndex = 6;
             this.groupBoxGuest.TabStop = false;
             this.groupBoxGuest.Text = "Please insert the new guest information";
+            // 
+            // comboBoxNationality
+            // 
+            this.comboBoxNationality.FormattingEnabled = true;
+            this.comboBoxNationality.Location = new System.Drawing.Point(449, 54);
+            this.comboBoxNationality.Name = "comboBoxNationality";
+            this.comboBoxNationality.Size = new System.Drawing.Size(137, 21);
+            this.comboBoxNationality.TabIndex = 48;
+            this.comboBoxNationality.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxNationality_Validating);
             // 
             // textBoxId
             // 
@@ -191,6 +200,7 @@
             this.textBoxStreet.Name = "textBoxStreet";
             this.textBoxStreet.Size = new System.Drawing.Size(137, 20);
             this.textBoxStreet.TabIndex = 38;
+            this.textBoxStreet.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxStreet_Validating);
             // 
             // textBoxDept
             // 
@@ -198,6 +208,7 @@
             this.textBoxDept.Name = "textBoxDept";
             this.textBoxDept.Size = new System.Drawing.Size(137, 20);
             this.textBoxDept.TabIndex = 41;
+            this.textBoxDept.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxDept_Validating);
             // 
             // label2
             // 
@@ -223,6 +234,7 @@
             this.textBoxFloor.Name = "textBoxFloor";
             this.textBoxFloor.Size = new System.Drawing.Size(137, 20);
             this.textBoxFloor.TabIndex = 40;
+            this.textBoxFloor.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxFloor_Validating);
             // 
             // textBoxStreetNum
             // 
@@ -230,6 +242,7 @@
             this.textBoxStreetNum.Name = "textBoxStreetNum";
             this.textBoxStreetNum.Size = new System.Drawing.Size(137, 20);
             this.textBoxStreetNum.TabIndex = 39;
+            this.textBoxStreetNum.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxStreetNum_Validating);
             // 
             // label3
             // 
@@ -247,19 +260,13 @@
             this.dtPickerBirhtDate.Size = new System.Drawing.Size(137, 20);
             this.dtPickerBirhtDate.TabIndex = 42;
             // 
-            // textBoxNationality
-            // 
-            this.textBoxNationality.Location = new System.Drawing.Point(449, 54);
-            this.textBoxNationality.Name = "textBoxNationality";
-            this.textBoxNationality.Size = new System.Drawing.Size(137, 20);
-            this.textBoxNationality.TabIndex = 20;
-            // 
             // textBoxPhone
             // 
             this.textBoxPhone.Location = new System.Drawing.Point(143, 153);
             this.textBoxPhone.Name = "textBoxPhone";
             this.textBoxPhone.Size = new System.Drawing.Size(137, 20);
             this.textBoxPhone.TabIndex = 32;
+            this.textBoxPhone.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPhone_Validating_1);
             // 
             // textBoxEmail
             // 
@@ -267,6 +274,7 @@
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(137, 20);
             this.textBoxEmail.TabIndex = 31;
+            this.textBoxEmail.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxEmail_Validating_1);
             // 
             // comboBoxDocType
             // 
@@ -275,6 +283,7 @@
             this.comboBoxDocType.Name = "comboBoxDocType";
             this.comboBoxDocType.Size = new System.Drawing.Size(137, 21);
             this.comboBoxDocType.TabIndex = 30;
+            this.comboBoxDocType.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxDocType_Validating_1);
             // 
             // textBoxDocNumber
             // 
@@ -282,6 +291,7 @@
             this.textBoxDocNumber.Name = "textBoxDocNumber";
             this.textBoxDocNumber.Size = new System.Drawing.Size(137, 20);
             this.textBoxDocNumber.TabIndex = 29;
+            this.textBoxDocNumber.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxDocNumber_Validating_1);
             // 
             // textBoxLastname
             // 
@@ -289,6 +299,7 @@
             this.textBoxLastname.Name = "textBoxLastname";
             this.textBoxLastname.Size = new System.Drawing.Size(137, 20);
             this.textBoxLastname.TabIndex = 28;
+            this.textBoxLastname.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxLastname_Validating);
             // 
             // textBoxName
             // 
@@ -296,6 +307,7 @@
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(137, 20);
             this.textBoxName.TabIndex = 27;
+            this.textBoxName.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxName_Validating_1);
             // 
             // labelNationality
             // 
@@ -412,7 +424,6 @@
         public System.Windows.Forms.TextBox textBoxStreetNum;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.DateTimePicker dtPickerBirhtDate;
-        public System.Windows.Forms.TextBox textBoxNationality;
         public System.Windows.Forms.TextBox textBoxPhone;
         public System.Windows.Forms.TextBox textBoxEmail;
         public System.Windows.Forms.ComboBox comboBoxDocType;
@@ -430,5 +441,6 @@
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.Label labelId;
         public System.Windows.Forms.TextBox textBoxId;
+        public System.Windows.Forms.ComboBox comboBoxNationality;
     }
 }

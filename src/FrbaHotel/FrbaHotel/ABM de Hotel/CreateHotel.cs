@@ -124,9 +124,6 @@ namespace FrbaHotel.ABM_de_Hotel
             }
            
 
-
-
-
         private void assignParams() {
             name=textBoxName.Text;
             mail=textBoxMail.Text;
@@ -134,7 +131,7 @@ namespace FrbaHotel.ABM_de_Hotel
             street=textBoxStreet.Text;
             streetNum=Int32.Parse(textBoxStreetNum.Text);
             city=textBoxCity.Text;
-            //country=textBoxCountry.Text;
+            country= comboBoxCountry.SelectedText;
             stars= (Int32)numericUDStars.Value;
             creationDate=dateTimePicker.Value;
 
@@ -165,10 +162,12 @@ namespace FrbaHotel.ABM_de_Hotel
             FormHandler.allowOnlyChars(sender, e);
         }
 
-        private void textBoxCountry_KeyPress(object sender, KeyPressEventArgs e)
+        private void comboBoxCountry_Validating(object sender, CancelEventArgs e)
         {
-            FormHandler.allowOnlyChars( sender, e);
+            FormHandler.validateEmptyComboBox(comboBoxCountry, errorProvider, buttonSave);
         }
+
+        
 
  
     }

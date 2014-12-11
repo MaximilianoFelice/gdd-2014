@@ -34,7 +34,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.checkedListBoxReg = new System.Windows.Forms.CheckedListBox();
-            this.textBoxCountry = new System.Windows.Forms.TextBox();
             this.numericUDStars = new System.Windows.Forms.NumericUpDown();
             this.textBoxCity = new System.Windows.Forms.TextBox();
             this.textBoxStreetNum = new System.Windows.Forms.TextBox();
@@ -53,6 +52,7 @@
             this.labelName = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.comboBoxCountry = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUDStars)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -80,9 +80,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboBoxCountry);
             this.groupBox1.Controls.Add(this.dateTimePicker);
             this.groupBox1.Controls.Add(this.checkedListBoxReg);
-            this.groupBox1.Controls.Add(this.textBoxCountry);
             this.groupBox1.Controls.Add(this.numericUDStars);
             this.groupBox1.Controls.Add(this.textBoxCity);
             this.groupBox1.Controls.Add(this.textBoxStreetNum);
@@ -121,15 +121,6 @@
             this.checkedListBoxReg.Name = "checkedListBoxReg";
             this.checkedListBoxReg.Size = new System.Drawing.Size(195, 94);
             this.checkedListBoxReg.TabIndex = 18;
-            // 
-            // textBoxCountry
-            // 
-            this.textBoxCountry.Location = new System.Drawing.Point(440, 38);
-            this.textBoxCountry.Name = "textBoxCountry";
-            this.textBoxCountry.Size = new System.Drawing.Size(195, 20);
-            this.textBoxCountry.TabIndex = 17;
-            this.textBoxCountry.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCountry_KeyPress);
-            this.textBoxCountry.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxCountry_Validating);
             // 
             // numericUDStars
             // 
@@ -300,6 +291,15 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // comboBoxCountry
+            // 
+            this.comboBoxCountry.FormattingEnabled = true;
+            this.comboBoxCountry.Location = new System.Drawing.Point(440, 35);
+            this.comboBoxCountry.Name = "comboBoxCountry";
+            this.comboBoxCountry.Size = new System.Drawing.Size(195, 21);
+            this.comboBoxCountry.TabIndex = 20;
+            this.comboBoxCountry.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxCountry_Validating);
+            // 
             // UpdateHotel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -323,7 +323,6 @@
         public System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.DateTimePicker dateTimePicker;
         public System.Windows.Forms.CheckedListBox checkedListBoxReg;
-        public System.Windows.Forms.TextBox textBoxCountry;
         public System.Windows.Forms.NumericUpDown numericUDStars;
         public System.Windows.Forms.TextBox textBoxCity;
         public System.Windows.Forms.TextBox textBoxStreetNum;
@@ -344,5 +343,6 @@
         public System.Windows.Forms.Button buttonSave;
         public System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.ComboBox comboBoxCountry;
     }
 }

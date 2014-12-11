@@ -28,6 +28,7 @@ namespace FrbaHotel.ABM_de_Hotel
         {
             InitializeComponent();
             this.loadRegimens();
+            this.loadComboBoxCountries();
             dateTimePicker.MaxDate = DateTime.Now;
         }
 
@@ -37,6 +38,10 @@ namespace FrbaHotel.ABM_de_Hotel
             for (int i = 0; i < dt.Rows.Count; i++)
                 checkedListBoxReg.Items.Add(Convert.ToString(dt.Rows[i].ItemArray[1]));
 
+        }
+
+        private void loadComboBoxCountries() {
+            FormHandler.loadCountriesToCombo(comboBoxCountry, hh);
         }
 
 
@@ -83,7 +88,7 @@ namespace FrbaHotel.ABM_de_Hotel
             street = textBoxStreet.Text;
             streetNum = Int32.Parse(textBoxStreetNum.Text);
             city = textBoxCity.Text;
-            country = textBoxCountry.Text;
+            country = comboBoxCountry.SelectedText;
             stars = (Int32)numericUDStars.Value;
             creationDate = dateTimePicker.Value;
 
@@ -129,10 +134,7 @@ namespace FrbaHotel.ABM_de_Hotel
             this.validateEmptyTextBoxOnHandler(textBoxCity);
         }
 
-        private void textBoxCountry_Validating(object sender, CancelEventArgs e)
-        {
-            this.validateEmptyTextBoxOnHandler(textBoxCountry);
-        }
+        
         private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {
             this.allowOnlyChars(sender, e);
@@ -157,10 +159,6 @@ namespace FrbaHotel.ABM_de_Hotel
         {
             this.allowOnlyChars(sender, e);
         }
-        private void textBoxCountry_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            this.allowOnlyChars(sender, e);
-        }
 
         private void validateEmptyTextBoxOnHandler(TextBox textb) {
             FormHandler.validateEmptyTextBox(textb,errorProvider,buttonSave);
@@ -172,6 +170,11 @@ namespace FrbaHotel.ABM_de_Hotel
 
         private void allowOnlyNumbers(object sender, KeyPressEventArgs e) {
             FormHandler.allowOnlyNumbers(sender, e);
+        }
+
+        private void comboBoxCountry_Validating(object sender, CancelEventArgs e)
+        {
+            FormHandler.validateEmptyComboBox(comboBoxCountry,errorProvider, buttonSave);
         }
     }
 }

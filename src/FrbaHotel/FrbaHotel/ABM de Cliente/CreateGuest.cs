@@ -29,6 +29,7 @@ namespace FrbaHotel.ABM_de_Cliente
         String nationality { get; set; }
         Int32 state { get; set; }
         ValidationsHandler vh = new ValidationsHandler();
+        HotelHandler hh = new HotelHandler();
         GuestHandler gh = new GuestHandler();
         public Int32 inserted;
        
@@ -40,11 +41,15 @@ namespace FrbaHotel.ABM_de_Cliente
             dtPickerBirhtDate.MaxDate = DateTime.Now;
             buttonSave.Enabled = false;
             this.loadComboBoxDocType();
+            this.loadComboBoxNationality();
 
         }
 
         private void loadComboBoxDocType() {
             FormHandler.loadDocTypesToCombo(comboBoxDocType, this.gh);
+        }
+        private void loadComboBoxNationality() {
+            FormHandler.loadCountriesToCombo(comboBoxNationality, hh);
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -108,7 +113,7 @@ namespace FrbaHotel.ABM_de_Cliente
             phone=Decimal.Parse(textBoxPhone.Text);
             mail=textBoxEmail.Text;
             birthDate=dtPickerBirhtDate.Value;
-            nationality = textBoxNationality.Text;
+            nationality = comboBoxNationality.Text;
             street = textBoxStreet.Text;
             streetNum=Int32.Parse(textBoxStreetNum.Text);
             floor=Int32.Parse(textBoxFloor.Text);
@@ -170,13 +175,6 @@ namespace FrbaHotel.ABM_de_Cliente
                 }
             }
 
-        }
-
-
-        private void textBoxStreetNum_Validating(object sender, CancelEventArgs e)
-        {
-            this.validateEmptyTextBoxOnHandler(textBoxStreetNum);
-            this.validateIntTextBoxOnHandler(textBoxStreetNum);
         }
 
         private void textBoxFloor_Validating(object sender, CancelEventArgs e)
@@ -250,6 +248,33 @@ namespace FrbaHotel.ABM_de_Cliente
            {
                FormHandler.allowOnlyNumbers(sender, e);
 
+           }
+
+           private void textBoxDocNumber_Validating(object sender, CancelEventArgs e)
+           {
+               this.validateEmptyTextBoxOnHandler(textBoxDocNumber);
+               this.validateDecTextBoxOnHandler(textBoxDocNumber);
+           }
+
+           private void comboBoxNationality_Validating(object sender, CancelEventArgs e)
+           {
+               this.validateEmptyComboBoxOnHandler(comboBoxNationality);
+           }
+
+           private void textBoxStreet_Validating(object sender, CancelEventArgs e)
+           {
+               this.validateEmptyTextBoxOnHandler(textBoxStreet);
+           }
+
+           private void textBoxStreetNum_Validating_1(object sender, CancelEventArgs e)
+           {
+               this.validateEmptyTextBoxOnHandler(textBoxStreetNum);
+               this.validateIntTextBoxOnHandler(textBoxStreetNum);
+           }
+
+           private void textBoxDept_Validating(object sender, CancelEventArgs e)
+           {
+               this.validateEmptyTextBoxOnHandler(textBoxDept);
            }
 
            

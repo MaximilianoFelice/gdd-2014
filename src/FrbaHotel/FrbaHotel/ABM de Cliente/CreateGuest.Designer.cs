@@ -42,7 +42,6 @@
             this.textBoxStreetNum = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dtPickerBirhtDate = new System.Windows.Forms.DateTimePicker();
-            this.textBoxNationality = new System.Windows.Forms.TextBox();
             this.textBoxPhone = new System.Windows.Forms.TextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.comboBoxDocType = new System.Windows.Forms.ComboBox();
@@ -61,6 +60,7 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.labelText = new System.Windows.Forms.Label();
+            this.comboBoxNationality = new System.Windows.Forms.ComboBox();
             this.groupBoxGuest.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -68,11 +68,11 @@
             // 
             // groupBoxGuest
             // 
+            this.groupBoxGuest.Controls.Add(this.comboBoxNationality);
             this.groupBoxGuest.Controls.Add(this.checkBoxEnabled);
             this.groupBoxGuest.Controls.Add(this.labelEnabled);
             this.groupBoxGuest.Controls.Add(this.groupBox2);
             this.groupBoxGuest.Controls.Add(this.dtPickerBirhtDate);
-            this.groupBoxGuest.Controls.Add(this.textBoxNationality);
             this.groupBoxGuest.Controls.Add(this.textBoxPhone);
             this.groupBoxGuest.Controls.Add(this.textBoxEmail);
             this.groupBoxGuest.Controls.Add(this.comboBoxDocType);
@@ -145,6 +145,7 @@
             this.textBoxStreet.Size = new System.Drawing.Size(137, 20);
             this.textBoxStreet.TabIndex = 38;
             this.textBoxStreet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStreet_KeyPress);
+            this.textBoxStreet.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxStreet_Validating);
             // 
             // textBoxDept
             // 
@@ -152,6 +153,7 @@
             this.textBoxDept.Name = "textBoxDept";
             this.textBoxDept.Size = new System.Drawing.Size(137, 20);
             this.textBoxDept.TabIndex = 41;
+            this.textBoxDept.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxDept_Validating);
             // 
             // label2
             // 
@@ -187,6 +189,7 @@
             this.textBoxStreetNum.Size = new System.Drawing.Size(137, 20);
             this.textBoxStreetNum.TabIndex = 39;
             this.textBoxStreetNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStreetNum_KeyPress);
+            this.textBoxStreetNum.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxStreetNum_Validating_1);
             // 
             // label3
             // 
@@ -203,14 +206,6 @@
             this.dtPickerBirhtDate.Name = "dtPickerBirhtDate";
             this.dtPickerBirhtDate.Size = new System.Drawing.Size(137, 20);
             this.dtPickerBirhtDate.TabIndex = 42;
-            // 
-            // textBoxNationality
-            // 
-            this.textBoxNationality.Location = new System.Drawing.Point(449, 54);
-            this.textBoxNationality.Name = "textBoxNationality";
-            this.textBoxNationality.Size = new System.Drawing.Size(137, 20);
-            this.textBoxNationality.TabIndex = 20;
-            this.textBoxNationality.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNationality_KeyPress);
             // 
             // textBoxPhone
             // 
@@ -245,6 +240,7 @@
             this.textBoxDocNumber.Size = new System.Drawing.Size(137, 20);
             this.textBoxDocNumber.TabIndex = 29;
             this.textBoxDocNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDocNumber_KeyPress_1);
+            this.textBoxDocNumber.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxDocNumber_Validating);
             // 
             // textBoxLastname
             // 
@@ -269,9 +265,9 @@
             this.labelNationality.AutoSize = true;
             this.labelNationality.Location = new System.Drawing.Point(333, 57);
             this.labelNationality.Name = "labelNationality";
-            this.labelNationality.Size = new System.Drawing.Size(56, 13);
+            this.labelNationality.Size = new System.Drawing.Size(41, 13);
             this.labelNationality.TabIndex = 26;
-            this.labelNationality.Text = "Nationality";
+            this.labelNationality.Text = "Born In";
             // 
             // labelBirthDate
             // 
@@ -367,6 +363,15 @@
             this.labelText.Size = new System.Drawing.Size(0, 13);
             this.labelText.TabIndex = 5;
             // 
+            // comboBoxNationality
+            // 
+            this.comboBoxNationality.FormattingEnabled = true;
+            this.comboBoxNationality.Location = new System.Drawing.Point(449, 54);
+            this.comboBoxNationality.Name = "comboBoxNationality";
+            this.comboBoxNationality.Size = new System.Drawing.Size(137, 21);
+            this.comboBoxNationality.TabIndex = 46;
+            this.comboBoxNationality.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxNationality_Validating);
+            // 
             // CreateGuest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -399,7 +404,6 @@
         public System.Windows.Forms.TextBox textBoxFloor;
         public System.Windows.Forms.TextBox textBoxStreetNum;
         public System.Windows.Forms.TextBox textBoxStreet;
-        public System.Windows.Forms.TextBox textBoxNationality;
         public System.Windows.Forms.TextBox textBoxPhone;
         public System.Windows.Forms.TextBox textBoxEmail;
         public System.Windows.Forms.ComboBox comboBoxDocType;
@@ -422,5 +426,6 @@
         public System.Windows.Forms.Button buttonClear;
         public System.Windows.Forms.Button buttonSave;
         public System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.ComboBox comboBoxNationality;
     }
 }
