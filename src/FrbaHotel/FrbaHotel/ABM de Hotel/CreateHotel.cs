@@ -78,10 +78,7 @@ namespace FrbaHotel.ABM_de_Hotel
             validateEmptyTextBoxOnHandler(textBoxCity);
         }
 
-        private void textBoxCountry_Validating(object sender, CancelEventArgs e)
-        {
-            validateEmptyTextBoxOnHandler(textBoxCountry);
-        }
+        
 
         public void validateEmptyTextBoxOnHandler(TextBox txtb) {
             FormHandler.validateEmptyTextBox(txtb, errorProvider, buttonSave);
@@ -137,7 +134,7 @@ namespace FrbaHotel.ABM_de_Hotel
             street=textBoxStreet.Text;
             streetNum=Int32.Parse(textBoxStreetNum.Text);
             city=textBoxCity.Text;
-            country=textBoxCountry.Text;
+            //country=textBoxCountry.Text;
             stars= (Int32)numericUDStars.Value;
             creationDate=dateTimePicker.Value;
 
