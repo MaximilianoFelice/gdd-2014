@@ -476,7 +476,30 @@ AS
 GO
 
 	
+--=======================================
+--BOOKING PRICE
+--=======================================
+CREATE PROCEDURE [BOBBY_TABLES].SP_BOOKING_PRICE
+@IdHotel INTEGER,
+@IdRegimen INTEGER,
+@CheckIn DATETIME,
+@CheckOut DATETIME,
+@ExtraGuests INTEGER,
+@IdRoomType INTEGER,
+@Price INTEGER OUTPUT
+AS
+
+	DECLARE @BasePrice FLOAT;
+	DECLARE @Recharge INTEGER;
+	DECLARE @Stars INTEGER;
+	DECLARE @Perc DECIMAL(6,3);
 	
+	SELECT @BasePrice =	r.price, @Recharge = h.recharge_by_star, @Stars = h.stars, @Perc = rt.perc
+	FROM REGIMENS r, HOTELS h, ROOM_TYPE rt WHERE r.id_regimen = @IdRegimen AND h.id_hotel = @IdHotel
+	
+	SET @Price = DATEDIFF(DAY, @CheckIn, @CheckOut) * (@BasePrice + @Perc + (@Stars * @Recharge))
+	
+GO	
 
 --=======================================
 --STATISTICS TOP 5 HOTELS WITH CANCELLED BOOKINGS
