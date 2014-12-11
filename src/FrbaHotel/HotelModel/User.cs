@@ -25,6 +25,11 @@ namespace HotelModel
             return (Boolean) results["@RESULT"];
         }
 
-
+        public static DataSet GetRoles(String user)
+        {
+            return (DataSet)new SqlStoredProcedure("[BOBBY_TABLES].GetUserRoles")
+                                                .WithParam("@username").As(SqlDbType.VarChar).Value(user.ToString())
+                                                .Execute()["ReturnedValues"];
+        }
     }
 }

@@ -33,9 +33,9 @@ namespace HotelModel.User_Permissions
         {
             User = Username;
 
-            for (int i = 0; Roles.Tables[0].Rows.Count < i; i++)
+            for (int i = 0; Roles.Tables[0].Rows.Count > i; i++)
             {
-                User_Roles.Add( Role.getRoles[Roles.Tables[0].Rows[i].ToString()] );
+                User_Roles.Add( Role.getRoles[(String)Roles.Tables[0].Rows[i]["name"]] );
             }
         }
 

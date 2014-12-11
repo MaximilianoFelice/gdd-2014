@@ -10,16 +10,26 @@ using ExtensionMethods;
 using HotelModel.User_Permissions.UI;
 using System.Data.SqlClient;
 using HotelModel.DB_Conn_DSL;
+using HotelModel.User_Permissions;
 
 namespace FrbaHotel
 {
     public partial class Main : Form
     {
-        private int childFormNumber = 0;
 
         public Main()
         {
             InitializeComponent();
+
+            PermissionManager.StartPoint(this);
+
+            setPermissions();
+
+            Form login = new frmLogin();
+            login.MdiParent = this;
+            this.Enabled = false;
+            login.Show();
+            this.Enabled = true;
         }
 
 
@@ -166,6 +176,11 @@ namespace FrbaHotel
         _features_adapter.Fill(_features);
         
             LoadNewFormAsChild(new RehabForm(_features_adapter, _features, "inactive", "descr", "id_feature"));
+        }
+
+        private void setPermissions() 
+        { 
+            adminToolStripMenuItem
         }
     }
 }
