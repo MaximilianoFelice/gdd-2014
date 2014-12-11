@@ -371,6 +371,60 @@ AS
 	
 GO
 
+
+--=======================================
+--INSERT ROOM
+--=======================================
+CREATE PROCEDURE [BOBBY_TABLES].SP_INSERT_ROOM
+@IdHotel INTEGER,
+@RoomNum INTEGER,
+@Floor INTEGER,
+@TypeDesc INTEGER,
+@LocationDesc INTEGER,
+@Descr VARCHAR(255),
+@Inserted BIT = 0x0 OUTPUT
+AS
+
+	INSERT INTO [BOBBY_TABLES].ROOMS (id_hotel, number, room_floor, id_roomtype, id_location, descr)
+	VALUES (@IdHotel, @RoomNum, @Floor, @TypeDesc, @LocationDesc, @Descr)
+	
+	IF @@ERROR = 0
+	BEGIN
+		SET @Inserted = 0x1
+	END
+
+GO
+
+
+--=======================================
+--UPDATE ROOM
+--=======================================
+CREATE PROCEDURE [BOBBY_TABLES].SP_UPDATE_ROOM
+@IdHotel INTEGER,
+@RoomNum INTEGER,
+@Floor INTEGER,
+@TypeDesc INTEGER,
+@LocationDesc INTEGER,
+@Descr VARCHAR(255),
+@Inserted BIT = 0x0 OUTPUT
+AS
+
+	UPDATE [BOBBY_TABLES].ROOMS
+	SET
+		id_hotel = @IdHotel,
+		number = @RoomNum,
+		room_floor = @Floor,
+		id_roomtype = @TypeDesc,
+		id_location = @LocationDesc,
+		descr = @Descr
+	
+	IF @@ERROR = 0
+	BEGIN
+		SET @Inserted = 0x1
+	END
+
+GO
+
 	
 	
 
