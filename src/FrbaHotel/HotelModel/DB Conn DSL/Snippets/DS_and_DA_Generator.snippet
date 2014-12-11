@@ -25,7 +25,7 @@
         DataSet _$varName$;
         SqlDataAdapter _$varName$_adapter;
         _$varName$_adapter = (SqlDataAdapter) new SqlQuery("$sqlCommand$").AsDataAdapter().Execute()["ReturnedValues"];
-        _$varName$; = new DataSet();
+        _$varName$ = new DataSet();
         _$varName$_adapter.Fill(_$varName$);
         ]]>
       </Code>
