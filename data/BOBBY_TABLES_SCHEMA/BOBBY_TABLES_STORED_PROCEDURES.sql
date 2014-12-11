@@ -603,6 +603,11 @@ EXEC [BOBBY_TABLES].validateUserPass @User = 'MaximilianoFelice', @Pass = '53acb
 
 EXEC [BOBBY_TABLES].validateUserPass @User = 'MaximilianoFelice', @Pass = '5dd197f';
 
+				INSERT INTO #Roles
+					EXEC [BOBBY_TABLES].GetUserRoles 'MaximilianoFelice';
+				SELECT * FROM #Roles;
+				DROP TABLE #Roles;
+
 SELECT * FROM BOBBY_TABLES.ACTIVE_USERS;
 
 UPDATE BOBBY_TABLES.USERS
@@ -614,4 +619,6 @@ SELECT * FROM BOBBY_TABLES.PERSONS;
 
 
 DROP PROCEDURE [BOBBY_TABLES].validateUserPass
+
+EXEC BOBBY_TABLES.GetUserRoles 'Guest';
 */

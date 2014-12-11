@@ -150,11 +150,16 @@ namespace HotelModel.User_Permissions
             {
                 /* Loading Active User */
                 ActiveUser.LoadUser(Username, (DataSet)results["ReturnedValues"]); // Returned Values containing user roles
-
-                ChooseRole chooseR = new ChooseRole((DataSet)results["ReturnedValues"]);
-                chooseR.Owner = caller;
-                chooseR.ShowDialog();
-
+                if (((DataSet)results["ReturnedValues"]).Tables[0].Rows.Count == 1)
+                {
+                    ActiveUser.ActivateRole((String)((DataSet)results["ReturnedValues"]).Tables[0].Rows[0]["name"]);
+                }
+                else
+                {
+                    ChooseRole chooseR = new ChooseRole((DataSet)results["ReturnedValues"]);
+                    chooseR.Owner = caller;
+                    chooseR.ShowDialog();
+                }
                 return true;
             }
             

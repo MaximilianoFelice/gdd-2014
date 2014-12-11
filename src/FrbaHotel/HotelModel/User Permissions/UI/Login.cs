@@ -37,7 +37,12 @@ namespace HotelModel.User_Permissions.UI
         private void cmdAdminTrap_Click(object sender, EventArgs e)
         {
             Boolean ret = PermissionManager.Login("MaximilianoFelice", "maximilianofelice", this);
-            if (ret) ActiveUser.ActivateRole("admin");
+            this.Close();
+        }
+
+        private void cmdLoginAsGuest_Click(object sender, EventArgs e)
+        {
+            Boolean ret = PermissionManager.Login("Guest", "guest", this);
             this.Close();
         }
     }

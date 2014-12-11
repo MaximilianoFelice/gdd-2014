@@ -104,6 +104,7 @@
             this.cmdLoginAsGuest.TabIndex = 4;
             this.cmdLoginAsGuest.Text = "Login As Guest";
             this.cmdLoginAsGuest.UseVisualStyleBackColor = true;
+            this.cmdLoginAsGuest.Click += new System.EventHandler(this.cmdLoginAsGuest_Click);
             // 
             // cmdAdminTrap
             // 
