@@ -220,6 +220,7 @@
             this.Controls.Add(this.groupBoxFilters);
             this.Name = "FilterGuest";
             this.Text = "FilterGuest";
+            this.Load += new System.EventHandler(this.FilterGuest_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResults)).EndInit();
             this.groupBoxFilters.ResumeLayout(false);
             this.groupBoxFilters.PerformLayout();

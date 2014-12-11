@@ -277,6 +277,11 @@ namespace FrbaHotel.ABM_de_Cliente
                this.validateEmptyTextBoxOnHandler(textBoxDept);
            }
 
+           private void dtPickerBirhtDate_ValueChanged(object sender, EventArgs e)
+           {
+
+           }
+
            
 
            

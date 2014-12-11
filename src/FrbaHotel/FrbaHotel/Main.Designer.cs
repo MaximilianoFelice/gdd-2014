@@ -83,6 +83,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.findGuestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -140,7 +141,8 @@
             // peopleToolStripMenuItem
             // 
             this.peopleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newGuestToolStripMenuItem});
+            this.newGuestToolStripMenuItem,
+            this.findGuestToolStripMenuItem});
             this.peopleToolStripMenuItem.Name = "peopleToolStripMenuItem";
             this.peopleToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.peopleToolStripMenuItem.Text = "&People";
@@ -500,6 +502,13 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // findGuestToolStripMenuItem
+            // 
+            this.findGuestToolStripMenuItem.Name = "findGuestToolStripMenuItem";
+            this.findGuestToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.findGuestToolStripMenuItem.Text = "Find Guest";
+            this.findGuestToolStripMenuItem.Click += new System.EventHandler(this.findGuestToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -579,6 +588,7 @@
         private System.Windows.Forms.ToolStripMenuItem cancelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkInToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkOutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem findGuestToolStripMenuItem;
     }
 }
 

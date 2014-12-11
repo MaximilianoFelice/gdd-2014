@@ -127,6 +127,11 @@ namespace FrbaHotel.ABM_de_Cliente
 
         }
 
+        private void FilterGuest_Load(object sender, EventArgs e)
+        {
+
+        }
+
         
     }
 }

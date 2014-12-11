@@ -211,5 +211,10 @@ namespace FrbaHotel
         {
             LoadNewFormAsChild(new DeleteBooking());
         }
+
+        private void findGuestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadNewFormAsChild(new FilterGuest());
+        }
     }
 }

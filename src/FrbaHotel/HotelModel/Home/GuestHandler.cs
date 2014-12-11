@@ -55,7 +55,7 @@ namespace HotelModel.Home
                                     .WithParam("@EmailExist").As(SqlDbType.Bit).AsOutput()
                                     .Execute();
 
-                return (Boolean)results["EmailExist"];
+                return (Boolean)results["@EmailExist"];
             }
             else return false;
         }
@@ -69,7 +69,7 @@ namespace HotelModel.Home
                                     .WithParam("@EmailExist").As(SqlDbType.Bit).AsOutput()
                                     .Execute();
 
-                return (Boolean)results["EmailExists"];
+                return (Boolean)results["@EmailExist"];
             }
             else return false;
         

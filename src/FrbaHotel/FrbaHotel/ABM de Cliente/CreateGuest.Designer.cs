@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBoxGuest = new System.Windows.Forms.GroupBox();
+            this.comboBoxNationality = new System.Windows.Forms.ComboBox();
             this.checkBoxEnabled = new System.Windows.Forms.CheckBox();
             this.labelEnabled = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -60,7 +61,6 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.labelText = new System.Windows.Forms.Label();
-            this.comboBoxNationality = new System.Windows.Forms.ComboBox();
             this.groupBoxGuest.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -94,13 +94,22 @@
             this.groupBoxGuest.TabStop = false;
             this.groupBoxGuest.Text = "Please insert the new guest information";
             // 
+            // comboBoxNationality
+            // 
+            this.comboBoxNationality.FormattingEnabled = true;
+            this.comboBoxNationality.Location = new System.Drawing.Point(449, 54);
+            this.comboBoxNationality.Name = "comboBoxNationality";
+            this.comboBoxNationality.Size = new System.Drawing.Size(137, 21);
+            this.comboBoxNationality.TabIndex = 8;
+            this.comboBoxNationality.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxNationality_Validating);
+            // 
             // checkBoxEnabled
             // 
             this.checkBoxEnabled.AutoSize = true;
             this.checkBoxEnabled.Location = new System.Drawing.Point(143, 185);
             this.checkBoxEnabled.Name = "checkBoxEnabled";
             this.checkBoxEnabled.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxEnabled.TabIndex = 45;
+            this.checkBoxEnabled.TabIndex = 6;
             this.checkBoxEnabled.UseVisualStyleBackColor = true;
             // 
             // labelEnabled
@@ -143,7 +152,7 @@
             this.textBoxStreet.Location = new System.Drawing.Point(125, 24);
             this.textBoxStreet.Name = "textBoxStreet";
             this.textBoxStreet.Size = new System.Drawing.Size(137, 20);
-            this.textBoxStreet.TabIndex = 38;
+            this.textBoxStreet.TabIndex = 9;
             this.textBoxStreet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStreet_KeyPress);
             this.textBoxStreet.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxStreet_Validating);
             // 
@@ -152,7 +161,7 @@
             this.textBoxDept.Location = new System.Drawing.Point(125, 102);
             this.textBoxDept.Name = "textBoxDept";
             this.textBoxDept.Size = new System.Drawing.Size(137, 20);
-            this.textBoxDept.TabIndex = 41;
+            this.textBoxDept.TabIndex = 12;
             this.textBoxDept.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxDept_Validating);
             // 
             // label2
@@ -178,7 +187,7 @@
             this.textBoxFloor.Location = new System.Drawing.Point(125, 76);
             this.textBoxFloor.Name = "textBoxFloor";
             this.textBoxFloor.Size = new System.Drawing.Size(137, 20);
-            this.textBoxFloor.TabIndex = 40;
+            this.textBoxFloor.TabIndex = 11;
             this.textBoxFloor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxFloor_KeyPress);
             this.textBoxFloor.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxFloor_Validating);
             // 
@@ -187,7 +196,7 @@
             this.textBoxStreetNum.Location = new System.Drawing.Point(125, 50);
             this.textBoxStreetNum.Name = "textBoxStreetNum";
             this.textBoxStreetNum.Size = new System.Drawing.Size(137, 20);
-            this.textBoxStreetNum.TabIndex = 39;
+            this.textBoxStreetNum.TabIndex = 10;
             this.textBoxStreetNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStreetNum_KeyPress);
             this.textBoxStreetNum.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxStreetNum_Validating_1);
             // 
@@ -205,14 +214,15 @@
             this.dtPickerBirhtDate.Location = new System.Drawing.Point(143, 158);
             this.dtPickerBirhtDate.Name = "dtPickerBirhtDate";
             this.dtPickerBirhtDate.Size = new System.Drawing.Size(137, 20);
-            this.dtPickerBirhtDate.TabIndex = 42;
+            this.dtPickerBirhtDate.TabIndex = 5;
+            this.dtPickerBirhtDate.ValueChanged += new System.EventHandler(this.dtPickerBirhtDate_ValueChanged);
             // 
             // textBoxPhone
             // 
             this.textBoxPhone.Location = new System.Drawing.Point(143, 133);
             this.textBoxPhone.Name = "textBoxPhone";
             this.textBoxPhone.Size = new System.Drawing.Size(137, 20);
-            this.textBoxPhone.TabIndex = 32;
+            this.textBoxPhone.TabIndex = 5;
             this.textBoxPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPhone_KeyPress_1);
             this.textBoxPhone.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPhone_Validating_1);
             // 
@@ -221,7 +231,7 @@
             this.textBoxEmail.Location = new System.Drawing.Point(449, 28);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(137, 20);
-            this.textBoxEmail.TabIndex = 31;
+            this.textBoxEmail.TabIndex = 7;
             this.textBoxEmail.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxEmail_Validating);
             // 
             // comboBoxDocType
@@ -230,7 +240,7 @@
             this.comboBoxDocType.Location = new System.Drawing.Point(143, 80);
             this.comboBoxDocType.Name = "comboBoxDocType";
             this.comboBoxDocType.Size = new System.Drawing.Size(137, 21);
-            this.comboBoxDocType.TabIndex = 30;
+            this.comboBoxDocType.TabIndex = 3;
             this.comboBoxDocType.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxDocType_Validating);
             // 
             // textBoxDocNumber
@@ -238,7 +248,7 @@
             this.textBoxDocNumber.Location = new System.Drawing.Point(143, 107);
             this.textBoxDocNumber.Name = "textBoxDocNumber";
             this.textBoxDocNumber.Size = new System.Drawing.Size(137, 20);
-            this.textBoxDocNumber.TabIndex = 29;
+            this.textBoxDocNumber.TabIndex = 4;
             this.textBoxDocNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDocNumber_KeyPress_1);
             this.textBoxDocNumber.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxDocNumber_Validating);
             // 
@@ -247,7 +257,7 @@
             this.textBoxLastname.Location = new System.Drawing.Point(143, 54);
             this.textBoxLastname.Name = "textBoxLastname";
             this.textBoxLastname.Size = new System.Drawing.Size(137, 20);
-            this.textBoxLastname.TabIndex = 28;
+            this.textBoxLastname.TabIndex = 2;
             this.textBoxLastname.Validated += new System.EventHandler(this.textBoxLastname_Validated);
             this.textBoxLastname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxLastname_KeyPress);
             // 
@@ -256,7 +266,7 @@
             this.textBoxName.Location = new System.Drawing.Point(143, 28);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(137, 20);
-            this.textBoxName.TabIndex = 27;
+            this.textBoxName.TabIndex = 1;
             this.textBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxName_KeyPress);
             this.textBoxName.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxName_Validating);
             // 
@@ -337,7 +347,7 @@
             this.buttonClear.Location = new System.Drawing.Point(12, 266);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(75, 23);
-            this.buttonClear.TabIndex = 4;
+            this.buttonClear.TabIndex = 14;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = true;
             // 
@@ -346,7 +356,7 @@
             this.buttonSave.Location = new System.Drawing.Point(550, 266);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
-            this.buttonSave.TabIndex = 3;
+            this.buttonSave.TabIndex = 13;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -362,15 +372,6 @@
             this.labelText.Name = "labelText";
             this.labelText.Size = new System.Drawing.Size(0, 13);
             this.labelText.TabIndex = 5;
-            // 
-            // comboBoxNationality
-            // 
-            this.comboBoxNationality.FormattingEnabled = true;
-            this.comboBoxNationality.Location = new System.Drawing.Point(449, 54);
-            this.comboBoxNationality.Name = "comboBoxNationality";
-            this.comboBoxNationality.Size = new System.Drawing.Size(137, 21);
-            this.comboBoxNationality.TabIndex = 46;
-            this.comboBoxNationality.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxNationality_Validating);
             // 
             // CreateGuest
             // 
