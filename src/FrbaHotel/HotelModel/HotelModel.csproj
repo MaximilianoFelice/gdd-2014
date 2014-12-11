@@ -118,6 +118,12 @@
     <Compile Include="User Permissions\UI\AddNew.Designer.cs">
       <DependentUpon>AddNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="User Permissions\UI\RehabForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Permissions\UI\RehabForm.Designer.cs">
+      <DependentUpon>RehabForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="User Permissions\UI\Roles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,12 +149,16 @@
     <EmbeddedResource Include="User Permissions\UI\AddNew.resx">
       <DependentUpon>AddNew.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="User Permissions\UI\RehabForm.resx">
+      <DependentUpon>RehabForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User Permissions\UI\Roles.resx">
       <DependentUpon>Roles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="DB Conn DSL\Snippets\Adapter_DataSet_Accessor.snippet" />
+    <None Include="DB Conn DSL\Snippets\DS_and_DA_Generator.snippet" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
