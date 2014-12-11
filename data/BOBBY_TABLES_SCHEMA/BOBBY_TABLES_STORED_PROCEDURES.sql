@@ -211,7 +211,7 @@ CREATE PROCEDURE [BOBBY_TABLES].SP_DELETE_PERSON
 @Deleted BIT = 0x0 OUTPUT
 AS
 	
-	UPDATE [BOBBY_TABLES].PERSONS SET stat = 0 WHERE id_person = @IdPersonToDelete
+	UPDATE [BOBBY_TABLES].PERSONS SET stat = 303 WHERE id_person = @IdPersonToDelete
 	
 	IF @@ERROR = 0
 	BEGIN
@@ -400,13 +400,14 @@ GO
 --UPDATE ROOM
 --=======================================
 CREATE PROCEDURE [BOBBY_TABLES].SP_UPDATE_ROOM
+@IdRoom INTEGER,
 @IdHotel INTEGER,
 @RoomNum INTEGER,
 @Floor INTEGER,
 @TypeDesc INTEGER,
 @LocationDesc INTEGER,
 @Descr VARCHAR(255),
-@Inserted BIT = 0x0 OUTPUT
+@Updated BIT = 0x0 OUTPUT
 AS
 
 	UPDATE [BOBBY_TABLES].ROOMS
@@ -417,12 +418,31 @@ AS
 		id_roomtype = @TypeDesc,
 		id_location = @LocationDesc,
 		descr = @Descr
+	WHERE id_room = @IdRoom
 	
 	IF @@ERROR = 0
 	BEGIN
-		SET @Inserted = 0x1
+		SET @Updated = 0x1
 	END
 
+GO
+
+
+--=======================================
+--DELETE ROOM
+--=======================================
+CREATE PROCEDURE [BOBBY_TABLES].SP_DELETE_PERSON
+@IdRoom INTEGER,
+@Deleted BIT = 0x0 OUTPUT
+AS
+	
+	UPDATE [BOBBY_TABLES].ROOMS SET stat = 603 WHERE id_room = @IdRoom
+	
+	IF @@ERROR = 0
+	BEGIN
+		SET @Deleted = 0x1
+	END
+	
 GO
 
 	
