@@ -36,6 +36,7 @@
             this.cmdExit = new System.Windows.Forms.Button();
             this.cmdAddFeature = new System.Windows.Forms.Button();
             this.cmdAddRole = new System.Windows.Forms.Button();
+            this.cmdDeleteRole = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblChooseRole
@@ -61,7 +62,7 @@
             this.clbFeatures.FormattingEnabled = true;
             this.clbFeatures.Location = new System.Drawing.Point(27, 91);
             this.clbFeatures.Name = "clbFeatures";
-            this.clbFeatures.Size = new System.Drawing.Size(290, 424);
+            this.clbFeatures.Size = new System.Drawing.Size(335, 424);
             this.clbFeatures.TabIndex = 2;
             // 
             // lblChooseFeatures
@@ -82,15 +83,17 @@
             this.cmdRemoveFeature.TabIndex = 5;
             this.cmdRemoveFeature.Text = "Remove";
             this.cmdRemoveFeature.UseVisualStyleBackColor = true;
+            this.cmdRemoveFeature.Click += new System.EventHandler(this.cmdRemoveFeature_Click);
             // 
             // cmdExit
             // 
-            this.cmdExit.Location = new System.Drawing.Point(255, 521);
+            this.cmdExit.Location = new System.Drawing.Point(309, 521);
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(53, 30);
             this.cmdExit.TabIndex = 6;
             this.cmdExit.Text = "Exit";
             this.cmdExit.UseVisualStyleBackColor = true;
+            this.cmdExit.Click += new System.EventHandler(this.cmdExit_Click);
             // 
             // cmdAddFeature
             // 
@@ -100,6 +103,7 @@
             this.cmdAddFeature.TabIndex = 7;
             this.cmdAddFeature.Text = "Add";
             this.cmdAddFeature.UseVisualStyleBackColor = true;
+            this.cmdAddFeature.Click += new System.EventHandler(this.cmdAddFeature_Click);
             // 
             // cmdAddRole
             // 
@@ -107,15 +111,26 @@
             this.cmdAddRole.Name = "cmdAddRole";
             this.cmdAddRole.Size = new System.Drawing.Size(39, 38);
             this.cmdAddRole.TabIndex = 8;
-            this.cmdAddRole.Text = "button1";
+            this.cmdAddRole.Text = "Add";
             this.cmdAddRole.UseVisualStyleBackColor = true;
             this.cmdAddRole.Click += new System.EventHandler(this.cmdAddRole_Click);
+            // 
+            // cmdDeleteRole
+            // 
+            this.cmdDeleteRole.Location = new System.Drawing.Point(323, 12);
+            this.cmdDeleteRole.Name = "cmdDeleteRole";
+            this.cmdDeleteRole.Size = new System.Drawing.Size(39, 38);
+            this.cmdDeleteRole.TabIndex = 9;
+            this.cmdDeleteRole.Text = "Del";
+            this.cmdDeleteRole.UseVisualStyleBackColor = true;
+            this.cmdDeleteRole.Click += new System.EventHandler(this.cmdDeleteRole_Click);
             // 
             // frmRoles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(338, 568);
+            this.ClientSize = new System.Drawing.Size(390, 568);
+            this.Controls.Add(this.cmdDeleteRole);
             this.Controls.Add(this.cmdAddRole);
             this.Controls.Add(this.cmdAddFeature);
             this.Controls.Add(this.cmdExit);
@@ -141,5 +156,6 @@
         private System.Windows.Forms.Button cmdExit;
         private System.Windows.Forms.Button cmdAddFeature;
         private System.Windows.Forms.Button cmdAddRole;
+        private System.Windows.Forms.Button cmdDeleteRole;
     }
 }

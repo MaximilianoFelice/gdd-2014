@@ -30,7 +30,7 @@ AS
 	
 GO
 
-
+/*
 ----- PRUEBAS
 EXEC [BOBBY_TABLES].validateUserPass @User = 'MaximilianoFelice', @Pass = '53acbedaad48d8d482fe1a9bf8cd8b8e329ff8033c5c1dc81dcccdff38dd197f';
 
@@ -45,7 +45,7 @@ SELECT * FROM BOBBY_TABLES.PERSONS;
 
 
 DROP PROCEDURE [BOBBY_TABLES].validateUserPass
-
+*/
 
 /* Creating Procedure to get features by roles */
 GO

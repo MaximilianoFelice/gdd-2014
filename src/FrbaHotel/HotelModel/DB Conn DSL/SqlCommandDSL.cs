@@ -32,6 +32,14 @@ namespace HotelModel.DB_Conn_DSL
             return RetValues;
         }
 
+        public object ExecuteScalar()
+        {
+            this.Build();
+            ConnectionManager.OpenConnection();
+
+            return StoredCommand.ExecuteScalar();
+        }
+
 
         /* Private methods for internal use */
         virtual public SqlResults AnalyzeResults()
