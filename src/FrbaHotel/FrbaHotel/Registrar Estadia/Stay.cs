@@ -53,7 +53,7 @@ namespace FrbaHotel.Registrar_Estadia
                 }
                 else
                 {
-                    CheckOut frm = new CheckOut();
+                    CheckOut frm = new CheckOut(this);
                     frm.setIdBooking(id_booking);
                     frm.Show();
                     this.Hide();

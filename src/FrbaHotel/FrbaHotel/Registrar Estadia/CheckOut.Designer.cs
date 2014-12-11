@@ -180,27 +180,27 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(297, 124);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 13);
+            this.label4.Size = new System.Drawing.Size(74, 13);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Room Type";
+            this.label4.Text = "Id Room Type";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(297, 63);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Regimen";
+            this.label3.Text = "Id Regimen";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(297, 31);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Hotel";
+            this.label2.Text = "Id Hotel";
             // 
             // label1
             // 
@@ -219,6 +219,7 @@
             this.buttonExtras.TabIndex = 2;
             this.buttonExtras.Text = "Register Extras";
             this.buttonExtras.UseVisualStyleBackColor = true;
+            this.buttonExtras.Click += new System.EventHandler(this.buttonExtras_Click);
             // 
             // buttonBack
             // 
@@ -228,6 +229,7 @@
             this.buttonBack.TabIndex = 16;
             this.buttonBack.Text = "Back";
             this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // CheckOut
             // 

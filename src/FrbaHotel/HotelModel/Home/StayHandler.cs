@@ -53,6 +53,13 @@ namespace HotelModel.Home
             return (Int32)results["@Extra"];
         }
 
-
+        public Boolean setCheckOutGuests(Int32 id_booking)
+        {
+            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_CHECKED_OUT_GUESTS")
+                                .WithParam("IdBooking").As(SqlDbType.Int).Value(id_booking)
+                                .WithParam("@Seted").As(SqlDbType.Bit).AsOutput()
+                                .Execute();
+            return (Boolean)results["@Seted"];
+        }
     }
 }
