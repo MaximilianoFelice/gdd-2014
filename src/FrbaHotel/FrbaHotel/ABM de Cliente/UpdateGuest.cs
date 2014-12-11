@@ -28,7 +28,6 @@ namespace FrbaHotel.ABM_de_Cliente
         Int32 state { get; set; }
         ValidationsHandler vh = new ValidationsHandler();
         GuestHandler gh = new GuestHandler();
-        HotelHandler hh = new HotelHandler();
        
 
 
@@ -46,7 +45,7 @@ namespace FrbaHotel.ABM_de_Cliente
             FormHandler.loadDocTypesToCombo(comboBoxDocType, this.gh);
         }
         private void loadComboBoxCountries() {
-            FormHandler.loadCountriesToCombo(comboBoxNationality, hh);
+            FormHandler.loadCountriesToCombo(comboBoxNationality);
         }
         private void buttonSave_Click(object sender, EventArgs e)
         {

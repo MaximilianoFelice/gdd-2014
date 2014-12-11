@@ -192,6 +192,7 @@ GO
 --=======================================
 --INSERT HOTEL
 --=======================================
+GO
 CREATE PROCEDURE [BOBBY_TABLES].SP_INSERT_HOTEL
 @Name VARCHAR(50),
 @Mail VARCHAR(50),
@@ -201,12 +202,11 @@ CREATE PROCEDURE [BOBBY_TABLES].SP_INSERT_HOTEL
 @Street VARCHAR(255),
 @StreetNum INTEGER,
 @Stars INTEGER,
-@CreationDate DATETIME,
 @Inserted BIT = 0x0 OUTPUT
 AS
 
-	INSERT INTO [BOBBY_TABLES].HOTELS (name, mail, phone, city, country, street, street_num, stars, creation_date)
-	VALUES (@Name, @Mail, @Phone, @City, @Country, @Street, @StreetNum, @Stars, @CreationDate)
+	INSERT INTO [BOBBY_TABLES].HOTELS (name, mail, phone, city, country, street, street_num, stars, stat)
+	VALUES (@Name, @Mail, @Phone, @City, @Country, @Street, @StreetNum, @Stars, 401)
 	
 	IF @@ERROR = 0
 	BEGIN
@@ -621,4 +621,11 @@ SELECT * FROM BOBBY_TABLES.PERSONS;
 DROP PROCEDURE [BOBBY_TABLES].validateUserPass
 
 EXEC BOBBY_TABLES.GetUserRoles 'Guest';
+
+
+SELECT * FROM BOBBY_TABLES.PERSONS WHERE lastname = 'Tango';
+
+SELECT * FROM BOBBY_TABLES.HOTELS;
+
+
 */

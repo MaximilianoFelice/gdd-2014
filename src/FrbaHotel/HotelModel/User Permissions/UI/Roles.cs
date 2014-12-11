@@ -214,6 +214,11 @@ namespace HotelModel.User_Permissions.UI
         {
             this.Close();
         }
+
+        private void frmRoles_Load(object sender, EventArgs e)
+        {
+
+        }
         
     }
 }

@@ -12,7 +12,6 @@ namespace FrbaHotel.Generar_Modificar_Reserva
 {
     public partial class CreateBooking : Form
     {
-        HotelHandler hh = new HotelHandler();
         RegimenHandler rh = new RegimenHandler();
         RoomHandler roh = new RoomHandler();
         BookingHandler bh = new BookingHandler();
@@ -34,7 +33,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
         }
 
         private void loadHotels() {
-            comboBoxHotel.DataSource = hh.getHotels().Tables[0];
+            comboBoxHotel.DataSource = HotelHandler.hotels.Tables[0];
             
         }
 
@@ -132,9 +131,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
         }
 
         private void assignIdHotel() {
-            String name = comboBoxHotel.Text;
-            DataTable dt =  hh.getIdHotelByName(name).Tables[0];
-            id_hotel = Convert.ToInt32(dt.Rows[0][0].ToString());
+            id_hotel = (int) HotelHandler.hotels.Tables[0].Select("name = " + comboBoxHotel.Text)[0]["id_hotel"];
         }
         private void assignIdRegimen() {
             if (comboBoxRegimen.SelectedItem == null)
@@ -180,8 +177,8 @@ namespace FrbaHotel.Generar_Modificar_Reserva
 
         private void setComboBoxHotel(DataTable dt){
             id_hotel = Convert.ToInt32(dt.Rows[0][2]);
-            DataTable hotelName = hh.getHotelNameById(id_hotel).Tables[0];
-            comboBoxHotel.SelectedIndex = this.comboBoxHotel.FindStringExact(hotelName.Rows[0][0].ToString());
+            String hotelName = (String) HotelHandler.hotels.Tables[0].Select("id_hotel = " + id_hotel).First()["name"];
+            comboBoxHotel.SelectedIndex = this.comboBoxHotel.FindStringExact(hotelName);
         }
 
         private void setComboBoxRegimen(DataTable dt) {

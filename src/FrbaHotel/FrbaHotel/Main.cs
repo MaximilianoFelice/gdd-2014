@@ -19,6 +19,7 @@ using FrbaHotel.Listado_Estadistico;
 using FrbaHotel.Generar_Modificar_Reserva;
 using FrbaHotel.ABM_de_Hotel;
 using FrbaHotel.Cancelar_Reserva;
+using HotelModel.Home;
 
 namespace FrbaHotel
 {
@@ -189,7 +190,7 @@ namespace FrbaHotel
 
         private void addHotelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LoadNewFormAsChild(new CreateHotel());
+            LoadNewFormAsChild(new HotelModifier(HotelHandler.newHotel()));
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -215,6 +216,16 @@ namespace FrbaHotel
         private void findGuestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoadNewFormAsChild(new FilterGuest());
+        }
+
+        private void deleteHotelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void modifyHotelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadNewFormAsChild(new FilterHotel());
         }
     }
 }

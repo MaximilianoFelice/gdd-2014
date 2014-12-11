@@ -12,7 +12,6 @@ namespace FrbaHotel.ABM_de_Hotel
 {
     public partial class FilterHotel : Form
     {
-        HotelHandler hh = new HotelHandler();
         String name;
         String city;
         String country;
@@ -25,7 +24,7 @@ namespace FrbaHotel.ABM_de_Hotel
         }
 
         private void loadComboBoxCountries() {
-            FormHandler.loadCountriesToCombo(comboBoxCountry, hh);
+            FormHandler.loadCountriesToCombo(comboBoxCountry);
         }
         private void buttonClear_Click(object sender, EventArgs e)
         {
@@ -46,7 +45,7 @@ namespace FrbaHotel.ABM_de_Hotel
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             this.assignFilters();
-            DataTable results = hh.filteredSearch(name, stars, city, country);
+            DataTable results = HotelHandler.filteredSearch(name, stars, city, country);
             BindingSource bs = new BindingSource();
             bs.DataSource = results;
             dataGridView.DataSource = bs; 
@@ -62,7 +61,9 @@ namespace FrbaHotel.ABM_de_Hotel
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            ABM_de_Hotel.UpdateHotel frm = new UpdateHotel();
+            // TODO
+            /*
+            Form frm = new HotelModifier(HotelHandler.updateHotel());
 
             frm.textBoxName.Text = this.dataGridView.CurrentRow.Cells[1].Value.ToString();
             frm.textBoxMail.Text = this.dataGridView.CurrentRow.Cells[2].Value.ToString();
@@ -77,6 +78,7 @@ namespace FrbaHotel.ABM_de_Hotel
 
             frm.ShowDialog();
             this.Hide();
+             * */
         }
 
         private void buttonManteinance_Click(object sender, EventArgs e)

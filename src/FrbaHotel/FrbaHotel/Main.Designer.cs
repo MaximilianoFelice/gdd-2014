@@ -36,6 +36,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peopleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newGuestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.findGuestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.staysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,7 +84,6 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.findGuestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -154,6 +154,13 @@
             this.newGuestToolStripMenuItem.Text = "New Guest";
             this.newGuestToolStripMenuItem.Click += new System.EventHandler(this.newGuestToolStripMenuItem_Click);
             // 
+            // findGuestToolStripMenuItem
+            // 
+            this.findGuestToolStripMenuItem.Name = "findGuestToolStripMenuItem";
+            this.findGuestToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.findGuestToolStripMenuItem.Text = "Find Guest";
+            this.findGuestToolStripMenuItem.Click += new System.EventHandler(this.findGuestToolStripMenuItem_Click);
+            // 
             // bookingsToolStripMenuItem
             // 
             this.bookingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -169,7 +176,7 @@
             this.checkInToolStripMenuItem,
             this.checkOutToolStripMenuItem});
             this.staysToolStripMenuItem.Name = "staysToolStripMenuItem";
-            this.staysToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.staysToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.staysToolStripMenuItem.Text = "Stayings";
             this.staysToolStripMenuItem.Click += new System.EventHandler(this.staysToolStripMenuItem_Click);
             // 
@@ -191,7 +198,7 @@
             this.createOrModifyToolStripMenuItem,
             this.cancelToolStripMenuItem});
             this.bookingsToolStripMenuItem1.Name = "bookingsToolStripMenuItem1";
-            this.bookingsToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.bookingsToolStripMenuItem1.Size = new System.Drawing.Size(123, 22);
             this.bookingsToolStripMenuItem1.Text = "Bookings";
             // 
             // createOrModifyToolStripMenuItem
@@ -322,21 +329,23 @@
             // addHotelToolStripMenuItem
             // 
             this.addHotelToolStripMenuItem.Name = "addHotelToolStripMenuItem";
-            this.addHotelToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.addHotelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addHotelToolStripMenuItem.Text = "Add Hotel";
             this.addHotelToolStripMenuItem.Click += new System.EventHandler(this.addHotelToolStripMenuItem_Click);
             // 
             // deleteHotelToolStripMenuItem
             // 
             this.deleteHotelToolStripMenuItem.Name = "deleteHotelToolStripMenuItem";
-            this.deleteHotelToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.deleteHotelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.deleteHotelToolStripMenuItem.Text = "Delete Hotel";
+            this.deleteHotelToolStripMenuItem.Click += new System.EventHandler(this.deleteHotelToolStripMenuItem_Click);
             // 
             // modifyHotelToolStripMenuItem
             // 
             this.modifyHotelToolStripMenuItem.Name = "modifyHotelToolStripMenuItem";
-            this.modifyHotelToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.modifyHotelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.modifyHotelToolStripMenuItem.Text = "Modify Hotel";
+            this.modifyHotelToolStripMenuItem.Click += new System.EventHandler(this.modifyHotelToolStripMenuItem_Click);
             // 
             // roomsToolStripMenuItem
             // 
@@ -483,8 +492,8 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-            this.aboutToolStripMenuItem.Text = "&About ... ...";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Text = "&About";
             // 
             // statusStrip
             // 
@@ -501,13 +510,6 @@
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
-            // 
-            // findGuestToolStripMenuItem
-            // 
-            this.findGuestToolStripMenuItem.Name = "findGuestToolStripMenuItem";
-            this.findGuestToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.findGuestToolStripMenuItem.Text = "Find Guest";
-            this.findGuestToolStripMenuItem.Click += new System.EventHandler(this.findGuestToolStripMenuItem_Click);
             // 
             // Main
             // 

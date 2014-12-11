@@ -141,6 +141,7 @@
             this.Controls.Add(this.lblChooseRole);
             this.Name = "frmRoles";
             this.Text = "Role Manager";
+            this.Load += new System.EventHandler(this.frmRoles_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

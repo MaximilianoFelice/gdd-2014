@@ -179,8 +179,8 @@ namespace HotelModel.Home
             combo.ValueMember = "doc_type";
       }
 
-      public static void loadCountriesToCombo(ComboBox combo, HotelHandler hh) {
-          combo.DataSource = hh.getCountries().Tables[0];
+      public static void loadCountriesToCombo(ComboBox combo) {
+          combo.DataSource = CountryModel.country.Tables[0];
           combo.DisplayMember = "country";
           combo.ValueMember = "country";
       }

@@ -16,7 +16,6 @@ namespace FrbaHotel.ABM_de_Hotel
         DateTime start;
         DateTime end;
         String descr;
-        HotelHandler hh = new HotelHandler();
 
         public Manteinance()
         {
@@ -35,7 +34,7 @@ namespace FrbaHotel.ABM_de_Hotel
         private void buttonSave_Click(object sender, EventArgs e)
         {
             this.assignParams();
-            if (hh.hotelForManteinance(id_hotel, start, end, descr)) MessageBox.Show("Hotel set in Manteinance");
+            if (HotelHandler.hotelForManteinance(id_hotel, start, end, descr)) MessageBox.Show("Hotel set in Manteinance");
             else MessageBox.Show("Unable to set in manteinance");
         }
 
