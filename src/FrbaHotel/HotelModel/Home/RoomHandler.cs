@@ -43,9 +43,10 @@ namespace HotelModel.Home
             SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_ROOM_EXISTS")
                                     .WithParam("@RoomNum").As(SqlDbType.Int).Value(roomNum)
                                     .WithParam("@IdHotel").As(SqlDbType.Int).Value(idHotel)
+                                    .WithParam("@RoomExists").As(SqlDbType.Bit).AsOutput()
                                     .Execute();
 
-            return (Boolean)results["EmailExists"];
+            return (Boolean)results["@RoomExists"];
         
         }
 

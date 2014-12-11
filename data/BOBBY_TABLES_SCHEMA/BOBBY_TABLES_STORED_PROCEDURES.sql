@@ -305,6 +305,25 @@ AS
 	END
 
 GO
+
+
+--=======================================
+--ROOM_EXISTS
+--=======================================
+CREATE PROCEDURE [BOBBY_TABLES].SP_ROOM_EXISTS
+@RoomNum INTEGER,
+@IdHotel INTEGER,
+@RoomExists BIT = 0x0 OUTPUT
+AS 
+
+	SELECT id_room FROM [BOBBY_TABLES].ROOMS WHERE number = @RoomNum AND id_hotel = @IdHotel 
+	
+	IF @@ROWCOUNT > 0
+	BEGIN
+		SET @RoomExists = 0x1
+	END
+	
+GO
 	
 	
 
