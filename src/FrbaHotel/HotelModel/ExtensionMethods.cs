@@ -51,4 +51,31 @@ namespace ExtensionMethods
             return tuple;
         }
     }
+
+    public static class ImmutableCollection_Ext
+    {
+        public static HashSet<T> IUnionWith<T>(this HashSet<T> aHashSet, HashSet<T> anotherHashSet)
+        {
+            HashSet<T> newHashSet = new HashSet<T>(aHashSet);
+
+            newHashSet.UnionWith(anotherHashSet);
+
+            return newHashSet;
+
+        }
+
+        public static IEnumerable<F> IMap<T,F>(this IEnumerable<T> IEnum, Func<T, F> lambda)
+        {
+            List<F> newEnum = new List<F>();
+
+            foreach(T elem in IEnum) newEnum.Add(lambda.Invoke(elem));
+
+            return newEnum.AsEnumerable();
+        }
+
+        public static void IMap<T>(this IEnumerable<T> IEnum, Action<T> lambda)
+        {
+            foreach (T elem in IEnum) lambda.Invoke(elem);
+        }
+    }
 }

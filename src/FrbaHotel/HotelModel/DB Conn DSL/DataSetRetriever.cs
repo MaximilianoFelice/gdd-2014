@@ -21,8 +21,7 @@ namespace HotelModel.DB_Conn_DSL
 
             ConnectionManager.CloseConnection();
 
-            if (RowsAdded <= 0) return null;
-            else return ResultantDataSet;
+            return ResultantDataSet;
 
         }
     }

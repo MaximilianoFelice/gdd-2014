@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 using System.Data;
 
 
-namespace FrbaHotel
+namespace HotelModel
 {
     public static class User
     {

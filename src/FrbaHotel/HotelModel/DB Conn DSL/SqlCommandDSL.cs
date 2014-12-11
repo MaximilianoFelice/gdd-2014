@@ -32,6 +32,14 @@ namespace HotelModel.DB_Conn_DSL
             return RetValues;
         }
 
+        public object ExecuteScalar()
+        {
+            this.Build();
+            ConnectionManager.OpenConnection();
+
+            return StoredCommand.ExecuteScalar();
+        }
+
 
         /* Private methods for internal use */
         virtual public SqlResults AnalyzeResults()
@@ -62,6 +70,13 @@ namespace HotelModel.DB_Conn_DSL
         public static T AsDataTable<T>(this T aCommand) where T : SqlCommandDSL
         {
             aCommand.OutputMode = new DataTableRetriever();
+
+            return aCommand;
+        }
+
+        public static T AsDataAdapter<T>(this T aCommand) where T : SqlCommandDSL
+        {
+            aCommand.OutputMode = new DataAdapterRetriever();
 
             return aCommand;
         }
