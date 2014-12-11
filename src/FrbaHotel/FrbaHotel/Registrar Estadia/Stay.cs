@@ -13,6 +13,7 @@ namespace FrbaHotel.Registrar_Estadia
     public partial class Stay : Form
     {
         Int32 id_booking;
+        BookingHandler bh = new BookingHandler();
 
         public Stay()
         {
@@ -40,19 +41,26 @@ namespace FrbaHotel.Registrar_Estadia
 
         private void buttonEnter_Click(object sender, EventArgs e)
         {
-            this.id_booking = Convert.ToInt32(textBoxCode.Text);
-            if (comboBox.SelectedValue == "Check-In")
+            if (bh.bookingExists(id_booking))
             {
-                CheckIn frm = new CheckIn();
-                frm.setIdBooking(id_booking);
-                frm.Show();
-                this.Hide();
+                this.id_booking = Convert.ToInt32(textBoxCode.Text);
+                if (comboBox.SelectedValue.ToString() == "Check-In")
+                {
+                    CheckIn frm = new CheckIn();
+                    frm.setIdBooking(id_booking);
+                    frm.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    CheckOut frm = new CheckOut();
+                    frm.setIdBooking(id_booking);
+                    frm.Show();
+                    this.Hide();
+                }
             }
-            else {
-                CheckOut frm = new CheckOut();
-                frm.setIdBooking(id_booking);
-                frm.Show();
-                this.Hide();
+            else { 
+                MessageBox.Show("Booking Number does not exists");
             }
         }
 

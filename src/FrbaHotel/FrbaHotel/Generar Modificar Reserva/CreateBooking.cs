@@ -166,7 +166,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
         public void setParamsForUpdate(Int32 id_booking){
             DataTable bookingInfo = bh.getBookingInformation(id_booking).Tables[0];
             //idbook, idreg,idhot, reg_price, guests, start, nights, stat
-            DataTable bookingGuest = bh.getHolderBooking(id_booking).Tables[0];
+            DataTable bookingGuest = bh.getHolderBooking().Tables[0];
             //idbook, idperson, stat
             this.setComboBoxHotel(bookingInfo);
             this.setComboBoxRegimen(bookingInfo);

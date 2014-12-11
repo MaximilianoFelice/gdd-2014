@@ -152,6 +152,14 @@ namespace HotelModel.Home
             return (Boolean)results["@Deleted"];
         }
 
+        public DataTable getGuestInformation(Int32 id) {
+            SqlResults results = new SqlFunction("[BOBBY_TABLES].FUNCT_GET_INFO")
+                                .WithParam("@IdPerson").As(SqlDbType.Int).Value(id)
+                                .Execute();
+            return (DataTable)results["ReturnedValues"];
+
+        }
+
 
     }
 }

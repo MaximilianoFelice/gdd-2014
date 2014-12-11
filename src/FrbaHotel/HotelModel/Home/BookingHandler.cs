@@ -51,7 +51,7 @@ namespace HotelModel.Home
         }
 
         public Boolean insertHolderToBooking(Int32 id_booking, Int32 id_guest) {
-            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES]. SP_INSERT_GUEST_BOOKING")
+            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES]. SP_INSERT_HOLDER_BOOKING")
                                 .WithParam("@IdBooking").As(SqlDbType.Int).Value(id_booking)
                                 .WithParam("@IdGuest").As(SqlDbType.Int).Value(id_guest)
                                 .WithParam("@Inserted").As(SqlDbType.Bit).AsOutput()
@@ -82,12 +82,21 @@ namespace HotelModel.Home
             return (DataSet)results["ReturnedValues"];
         }
         
-        public DataSet getHolderBooking(Int32 id_booking){
-            SqlResults results = new SqlQuery("SELECT * from BOBBY_TABLES.GUEST_BOOKINGS where id_booking = " + id_booking)
+        public DataSet getHolderBooking(){
+            SqlResults results = new SqlQuery("SELECT * from BOBBY_TABLES.GUEST_BOOKINGS")
                                 .Execute();
             return (DataSet)results["ReturnedValues"];
 
         }
 
+        public Boolean insertGuestToBooking(Int32 id_booking, Int32 id_guest)
+        {
+            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_INSERT_GUEST_BOOKING")
+                                    .WithParam("@IdBooking").As(SqlDbType.Int).Value(id_booking)
+                                    .WithParam("@IdGuest").As(SqlDbType.Int).Value(id_guest)
+                                    .WithParam("@Inserted").As(SqlDbType.Bit).AsOutput()
+                                    .Execute();
+            return (Boolean)results["@Inserted"];
+        }
     }
 }

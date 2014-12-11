@@ -12,6 +12,8 @@ namespace FrbaHotel.Registrar_Consumible
 {
     public partial class EnterExtraStay : Form
     {
+        BookingHandler bh = new BookingHandler();
+
         public EnterExtraStay()
         {
             InitializeComponent();
@@ -35,8 +37,14 @@ namespace FrbaHotel.Registrar_Consumible
 
         private void buttonEnter_Click(object sender, EventArgs e)
         {
-            Registrar_Consumible.CreateExtra frm = new Registrar_Consumible.CreateExtra();
-            frm.setIdBooking(Convert.ToInt32(textBoxCode.Text));
+            if (bh.bookingExists(Convert.ToInt32(textBoxCode.Text)))
+            {
+                Registrar_Consumible.CreateExtra frm = new Registrar_Consumible.CreateExtra();
+                frm.setIdBooking(Convert.ToInt32(textBoxCode.Text));
+            }
+            else {
+                MessageBox.Show("Booking Number does not exists");
+            }
         }
 
      
