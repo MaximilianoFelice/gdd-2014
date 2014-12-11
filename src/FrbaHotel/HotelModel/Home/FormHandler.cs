@@ -173,6 +173,12 @@ namespace HotelModel.Home
            }
        }
 
+      public static void loadDocTypesToCombo(ComboBox combo, GuestHandler gh) {
+            combo.DataSource = gh.getDocTypes();
+            combo.DisplayMember = "doc_type";
+            combo.ValueMember = "doc_type";
+      }
+
 
     }
 }

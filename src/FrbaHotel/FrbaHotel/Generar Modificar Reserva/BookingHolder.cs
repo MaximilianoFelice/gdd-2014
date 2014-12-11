@@ -21,6 +21,12 @@ namespace FrbaHotel.Generar_Modificar_Reserva
         public BookingHolder()
         {
             InitializeComponent();
+            this.loadComboBoxDocType();
+        }
+
+        private void loadComboBoxDocType()
+        {
+            FormHandler.loadDocTypesToCombo(comboBoxDocType, this.gh);
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)

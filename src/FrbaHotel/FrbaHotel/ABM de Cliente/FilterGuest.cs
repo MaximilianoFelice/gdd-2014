@@ -24,6 +24,12 @@ namespace FrbaHotel.ABM_de_Cliente
         public FilterGuest()
         {
             InitializeComponent();
+            this.loadComboBoxDocType();
+        }
+
+        private void loadComboBoxDocType()
+        {
+            FormHandler.loadDocTypesToCombo(comboBoxDocType, this.gh);
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)

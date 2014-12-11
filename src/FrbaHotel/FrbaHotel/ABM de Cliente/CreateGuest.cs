@@ -39,10 +39,13 @@ namespace FrbaHotel.ABM_de_Cliente
             InitializeComponent();
             dtPickerBirhtDate.MaxDate = DateTime.Now;
             buttonSave.Enabled = false;
+            this.loadComboBoxDocType();
 
         }
 
-
+        private void loadComboBoxDocType() {
+            FormHandler.loadDocTypesToCombo(comboBoxDocType, this.gh);
+        }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
@@ -140,23 +143,23 @@ namespace FrbaHotel.ABM_de_Cliente
         }
 
 
-        private void textBoxDocNumber_Validating(object sender, CancelEventArgs e)
+
+        private void textBoxDocNumber_Validating1(object sender, CancelEventArgs e)
         {
             this.validateEmptyTextBoxOnHandler(textBoxDocNumber);
             this.validateDecTextBoxOnHandler(textBoxDocNumber);
-            
-        } 
-        
+        }
 
-        private void textBoxPhone_Validating(object sender, CancelEventArgs e)
+        private void textBoxPhone_Validating_1(object sender, CancelEventArgs e)
         {
             this.validateEmptyTextBoxOnHandler(textBoxPhone);
             this.validateDecTextBoxOnHandler(textBoxPhone);
-          
         }
+        
 
         private void textBoxEmail_Validating(object sender, CancelEventArgs e)
         {
+            this.validateEmptyTextBoxOnHandler(textBoxEmail);
             if (!String.IsNullOrEmpty(textBoxEmail.Text)) {
                 if (!(textBoxEmail.Text.Contains('.') || textBoxEmail.Text.Contains('@')) || textBoxEmail.Text.Contains(" ")) {
                     errorProvider.SetError(textBoxEmail, "Mail has invalid type, has spaces or does not contain '.' or '@'");
@@ -248,6 +251,10 @@ namespace FrbaHotel.ABM_de_Cliente
                FormHandler.allowOnlyNumbers(sender, e);
 
            }
+
+           
+
+           
 
     }
 }

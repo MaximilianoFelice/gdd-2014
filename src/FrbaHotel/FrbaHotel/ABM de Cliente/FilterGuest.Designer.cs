@@ -108,11 +108,6 @@
             // comboBoxDocType
             // 
             this.comboBoxDocType.FormattingEnabled = true;
-            this.comboBoxDocType.Items.AddRange(new object[] {
-            "ID - Identity Document",
-            "Passport",
-            "IC-Identity Card",
-            "Driving License"});
             this.comboBoxDocType.Location = new System.Drawing.Point(143, 80);
             this.comboBoxDocType.Name = "comboBoxDocType";
             this.comboBoxDocType.Size = new System.Drawing.Size(137, 21);

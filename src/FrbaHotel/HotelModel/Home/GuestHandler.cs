@@ -11,7 +11,11 @@ namespace HotelModel.Home
 {
     public class GuestHandler
     {
-      
+
+        public DataSet getDocTypes() {
+            SqlResults results = new SqlQuery("SELECT * FROM [BOBBY_TABLES].DOC_TYPE").Execute();
+            return (DataSet)results["ReturnedValues"];
+        }
         public bool PersonExistance(String name, String lastname, String docType, Decimal docNumber,  DateTime birthDate)
         {
 

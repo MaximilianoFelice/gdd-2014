@@ -33,6 +33,8 @@
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.groupBoxGuest = new System.Windows.Forms.GroupBox();
+            this.textBoxId = new System.Windows.Forms.TextBox();
+            this.labelId = new System.Windows.Forms.Label();
             this.checkBoxEnabled = new System.Windows.Forms.CheckBox();
             this.labelEnabled = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -61,8 +63,6 @@
             this.labelLastname = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.labelId = new System.Windows.Forms.Label();
-            this.textBoxId = new System.Windows.Forms.TextBox();
             this.groupBoxGuest.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -123,6 +123,23 @@
             this.groupBoxGuest.TabIndex = 6;
             this.groupBoxGuest.TabStop = false;
             this.groupBoxGuest.Text = "Please insert the new guest information";
+            // 
+            // textBoxId
+            // 
+            this.textBoxId.Location = new System.Drawing.Point(143, 22);
+            this.textBoxId.Name = "textBoxId";
+            this.textBoxId.ReadOnly = true;
+            this.textBoxId.Size = new System.Drawing.Size(137, 20);
+            this.textBoxId.TabIndex = 47;
+            // 
+            // labelId
+            // 
+            this.labelId.AutoSize = true;
+            this.labelId.Location = new System.Drawing.Point(21, 28);
+            this.labelId.Name = "labelId";
+            this.labelId.Size = new System.Drawing.Size(47, 13);
+            this.labelId.TabIndex = 46;
+            this.labelId.Text = "Guest Id";
             // 
             // checkBoxEnabled
             // 
@@ -254,11 +271,6 @@
             // comboBoxDocType
             // 
             this.comboBoxDocType.FormattingEnabled = true;
-            this.comboBoxDocType.Items.AddRange(new object[] {
-            "ID - Identity Document",
-            "Passport",
-            "IC-Identity Card",
-            "Driving License"});
             this.comboBoxDocType.Location = new System.Drawing.Point(143, 100);
             this.comboBoxDocType.Name = "comboBoxDocType";
             this.comboBoxDocType.Size = new System.Drawing.Size(137, 21);
@@ -360,23 +372,6 @@
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            // 
-            // labelId
-            // 
-            this.labelId.AutoSize = true;
-            this.labelId.Location = new System.Drawing.Point(21, 28);
-            this.labelId.Name = "labelId";
-            this.labelId.Size = new System.Drawing.Size(47, 13);
-            this.labelId.TabIndex = 46;
-            this.labelId.Text = "Guest Id";
-            // 
-            // textBoxId
-            // 
-            this.textBoxId.Location = new System.Drawing.Point(143, 22);
-            this.textBoxId.Name = "textBoxId";
-            this.textBoxId.ReadOnly = true;
-            this.textBoxId.Size = new System.Drawing.Size(137, 20);
-            this.textBoxId.TabIndex = 47;
             // 
             // UpdateGuest
             // 
