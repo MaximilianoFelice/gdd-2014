@@ -38,6 +38,8 @@
             this.newGuestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.staysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.createOrModifyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cancelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,8 +83,6 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.checkInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -158,8 +158,8 @@
             this.staysToolStripMenuItem,
             this.bookingsToolStripMenuItem1});
             this.bookingsToolStripMenuItem.Name = "bookingsToolStripMenuItem";
-            this.bookingsToolStripMenuItem.Size = new System.Drawing.Size(129, 20);
-            this.bookingsToolStripMenuItem.Text = "&Bookings and Guests";
+            this.bookingsToolStripMenuItem.Size = new System.Drawing.Size(138, 20);
+            this.bookingsToolStripMenuItem.Text = "&Bookings and Stayings";
             // 
             // staysToolStripMenuItem
             // 
@@ -170,6 +170,18 @@
             this.staysToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.staysToolStripMenuItem.Text = "Stayings";
             this.staysToolStripMenuItem.Click += new System.EventHandler(this.staysToolStripMenuItem_Click);
+            // 
+            // checkInToolStripMenuItem
+            // 
+            this.checkInToolStripMenuItem.Name = "checkInToolStripMenuItem";
+            this.checkInToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.checkInToolStripMenuItem.Text = "Check-In";
+            // 
+            // checkOutToolStripMenuItem
+            // 
+            this.checkOutToolStripMenuItem.Name = "checkOutToolStripMenuItem";
+            this.checkOutToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.checkOutToolStripMenuItem.Text = "Check-Out";
             // 
             // bookingsToolStripMenuItem1
             // 
@@ -206,13 +218,13 @@
             // extrasToolStripMenuItem
             // 
             this.extrasToolStripMenuItem.Name = "extrasToolStripMenuItem";
-            this.extrasToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.extrasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.extrasToolStripMenuItem.Text = "Extras";
             // 
             // mantenianceToolStripMenuItem
             // 
             this.mantenianceToolStripMenuItem.Name = "mantenianceToolStripMenuItem";
-            this.mantenianceToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.mantenianceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.mantenianceToolStripMenuItem.Text = "Manteniance";
             this.mantenianceToolStripMenuItem.Click += new System.EventHandler(this.mantenianceToolStripMenuItem_Click);
             // 
@@ -488,18 +500,6 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // checkInToolStripMenuItem
-            // 
-            this.checkInToolStripMenuItem.Name = "checkInToolStripMenuItem";
-            this.checkInToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.checkInToolStripMenuItem.Text = "Check-In";
-            // 
-            // checkOutToolStripMenuItem
-            // 
-            this.checkOutToolStripMenuItem.Name = "checkOutToolStripMenuItem";
-            this.checkOutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.checkOutToolStripMenuItem.Text = "Check-Out";
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -511,7 +511,7 @@
             this.MainMenuStrip = this.menuStrip;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Main";
+            this.Text = "Hotels Central Administration System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Main_Load);
             this.menuStrip.ResumeLayout(false);

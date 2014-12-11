@@ -143,6 +143,14 @@ namespace FrbaHotel
             bookingsToolStripMenuItem.HandleVisibility(new String[] { "Admin", "Receptionist", "Guest" });
             staysToolStripMenuItem.HandleAccess(new String[] { "Admin", "Receptionist" });
             staysToolStripMenuItem.HandleVisibility(new String[] { "Admin", "Receptionist" });
+            peopleToolStripMenuItem.HandleAccess(new String[] { "Admin", "Receptionist" });
+            peopleToolStripMenuItem.HandleVisibility(new String[] { "Admin", "Receptionist" });
+            hotelsToolStripMenuItem.HandleAccess(new String[] { "Admin", "Receptionist" });
+            hotelsToolStripMenuItem.HandleVisibility(new String[] { "Admin", "Receptionist" });
+            servicesToolStripMenuItem.HandleAccess(new String[] { "Admin", "Receptionist" });
+            servicesToolStripMenuItem.HandleVisibility(new String[] { "Admin", "Receptionist" });
+            cancelToolStripMenuItem.HandleAccess(new String[] { "Admin", "Receptionist" });
+            cancelToolStripMenuItem.HandleVisibility(new String[] { "Admin", "Receptionist" });
         }
 
         private void staysToolStripMenuItem_Click(object sender, EventArgs e)
