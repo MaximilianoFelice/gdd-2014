@@ -86,17 +86,15 @@ namespace HotelModel.Home
 
         public DataTable filteredSearch(Int32 idHotel,Int32? roomNum,Int32? floor, String location,String type,String descrip)
         {
-        
-            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_FILTER_ROOM")
+
+            SqlResults results = new SqlFunction("[BOBBY_TABLES].SP_FILTER_ROOMS")
                                 .WithParam("@IdHotel").As(SqlDbType.Int).Value(idHotel)
                                 .WithParam("@RoomNum").As(SqlDbType.Int).Value(roomNum)
                                 .WithParam("@Floor").As(SqlDbType.Int).Value(floor)
                                 .WithParam("@TypeDesc").As(SqlDbType.VarChar).Value(type)
                                 .WithParam("@LocationDesc").As(SqlDbType.VarChar).Value(location)
                                 .WithParam("@Descr").As(SqlDbType.VarChar).Value(descrip)
-                                .WithParam("@ReturnedValues").AsDataTable().AsOutput()
                                 .Execute();
-
 
             return (DataTable)results["@ReturnedValues"];
 
