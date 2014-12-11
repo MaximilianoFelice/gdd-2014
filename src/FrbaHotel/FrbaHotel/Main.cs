@@ -11,6 +11,14 @@ using HotelModel.User_Permissions.UI;
 using System.Data.SqlClient;
 using HotelModel.DB_Conn_DSL;
 using HotelModel.User_Permissions;
+using FrbaHotel.Registrar_Estadia;
+using FrbaHotel.ABM_de_Cliente;
+using FrbaHotel.ABM_de_Habitacion;
+using FrbaHotel.Registrar_Consumible;
+using FrbaHotel.Listado_Estadistico;
+using FrbaHotel.Generar_Modificar_Reserva;
+using FrbaHotel.ABM_de_Hotel;
+using FrbaHotel.Cancelar_Reserva;
 
 namespace FrbaHotel
 {
@@ -75,57 +83,6 @@ namespace FrbaHotel
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ABM_de_Cliente.CreateGuest frm = new ABM_de_Cliente.CreateGuest();
-            frm.Show();
-
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Listado_Estadistico.Statistics frm = new FrbaHotel.Listado_Estadistico.Statistics();
-            frm.Show();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            ABM_de_Hotel.CreateHotel frm = new FrbaHotel.ABM_de_Hotel.CreateHotel();
-            frm.Show();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            ABM_de_Hotel.Manteinance frm = new FrbaHotel.ABM_de_Hotel.Manteinance();
-            frm.Show();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            Generar_Modificar_Reserva.CreateBooking frm = new FrbaHotel.Generar_Modificar_Reserva.CreateBooking();
-            frm.Show();
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            Registrar_Consumible.CreateExtra frm = new FrbaHotel.Registrar_Consumible.CreateExtra();
-            frm.Show();
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            ABM_de_Habitacion.CreateRoom frm = new FrbaHotel.ABM_de_Habitacion.CreateRoom();
-            frm.Show();
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            Registrar_Estadia.Stay frm = new FrbaHotel.Registrar_Estadia.Stay();
-            frm.Show();
-
-        }
-
         private void LoadNewFormAsChild(Form child)
         {
             child.MdiParent = this;
@@ -180,6 +137,71 @@ namespace FrbaHotel
         {
             adminToolStripMenuItem.HandleAccess(new String[] {"Admin"});
             adminToolStripMenuItem.HandleVisibility(new String[] {"Admin"});
+            newGuestToolStripMenuItem.HandleAccess(new String[] {"Admin", "Recepcionista"});
+            newGuestToolStripMenuItem.HandleVisibility(new String[] {"Admin", "Recepcionista"});
+            bookingsToolStripMenuItem.HandleAccess(new String[] {"Admin", "Recepcionista", "Guest"});
+            bookingsToolStripMenuItem.HandleVisibility(new String[] { "Admin", "Recepcionista", "Guest" });
+            staysToolStripMenuItem.HandleAccess(new String[] { "Admin", "Recepcionista" });
+            staysToolStripMenuItem.HandleVisibility(new String[] { "Admin", "Recepcionista" });
+        }
+
+        private void staysToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadNewFormAsChild(new Stay());
+        }
+
+        private void newGuestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadNewFormAsChild(new CreateGuest());
+        }
+
+        private void extrasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            LoadNewFormAsChild(new CreateExtra());
+        }
+
+        private void statisticsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadNewFormAsChild(new Statistics());
+        }
+
+        private void mantenianceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadNewFormAsChild(new Manteinance());
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form login = new HotelModel.User_Permissions.UI.frmLogin();
+            login.Owner = this;
+            login.ShowDialog();
+
+            setPermissions();
+        }
+
+        private void addHotelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadNewFormAsChild(new CreateHotel());
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadNewFormAsChild(new CreateRoom());
+        }
+
+        private void manageRegimensToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createOrModifyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadNewFormAsChild(new CreateBooking());
+        }
+
+        private void cancelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadNewFormAsChild(new DeleteBooking());
         }
     }
 }

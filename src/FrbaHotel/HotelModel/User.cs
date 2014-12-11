@@ -13,18 +13,6 @@ namespace HotelModel
 {
     public static class User
     {
-
-        public static Boolean ValidateLogin(String user, String password)
-        {
-            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].validateUserPass")
-                                                .WithParam("@User").As(SqlDbType.VarChar).Value(user.ToString())
-                                                .WithParam("@Pass").As(SqlDbType.VarChar).Value(password.ToString())
-                                                .WithParam("@RESULT").As(SqlDbType.Bit).AsOutput()
-                                                .Execute();
-
-            return (Boolean) results["@RESULT"];
-        }
-
         public static DataSet GetRoles(String user)
         {
             return (DataSet)new SqlStoredProcedure("[BOBBY_TABLES].GetUserRoles")

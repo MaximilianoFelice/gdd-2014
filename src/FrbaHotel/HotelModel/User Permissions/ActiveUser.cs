@@ -32,6 +32,10 @@ namespace HotelModel.User_Permissions
         public static void LoadUser(String Username, DataSet Roles)
         {
             User = Username;
+            if (Roles.Tables.Count <= 0) {
+                MessageBox.Show("This user has no current active roles");
+                return;
+            }
 
             for (int i = 0; Roles.Tables[0].Rows.Count > i; i++)
             {

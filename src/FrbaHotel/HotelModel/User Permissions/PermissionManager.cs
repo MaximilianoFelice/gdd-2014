@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Reflection;
 using ExtensionMethods;
 using HotelModel.User_Permissions.UFR;
+using HotelModel.User_Permissions.UI;
 
 namespace HotelModel.User_Permissions
 {
@@ -122,21 +123,53 @@ namespace HotelModel.User_Permissions
             get { return _BaseControl; }
         }
 
-        public static void Login(String Username, String Password)
+        public static Boolean Login(String Username, string Password, Form caller)
         {
             /* Validating login */
             // TODO: Convert password to SHA_256
+            string pass = GetSHA256(Password);
+
+            /*Sending info to DB */
             SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].validateUserPass")
                                     .WithParam("@User").As(SqlDbType.VarChar).Value(Username.ToString())
-                                    .WithParam("@Pass").As(SqlDbType.VarChar).Value(Password.ToString())
+                                    .WithParam("@Pass").As(SqlDbType.VarChar).Value(pass)
+                                    .WithParam("@Login_Attempts").As(SqlDbType.Int).AsOutput()
                                     .WithParam("@RESULT").As(SqlDbType.Bit).AsOutput()
                                     .Execute();
 
-            if (!(Boolean)results["@RESULT"]) throw new NotImplementedException(); // TODO: Create new exception here
+            if (!(Boolean)results["@RESULT"])
+            {
+                int att = (int)results["@Login_Attempts"];
+                if (att > 0) MessageBox.Show("Login Failed, you have only " + (3-att) + " attempts left.");
+                else if (att == 0) MessageBox.Show("Login Failed, you have no attepmts left");
+                else MessageBox.Show("Login Failed, username not found or might be inactive.");
 
-            /* Loading Active User */
-            ActiveUser.LoadUser(Username, (DataSet) results["ReturnedValues"]); // Returned Values containing user roles
+                return false;
+            }
+            else
+            {
+                /* Loading Active User */
+                ActiveUser.LoadUser(Username, (DataSet)results["ReturnedValues"]); // Returned Values containing user roles
+
+                ChooseRole chooseR = new ChooseRole((DataSet)results["ReturnedValues"]);
+                chooseR.Owner = caller;
+                chooseR.ShowDialog();
+
+                return true;
+            }
             
+        }
+
+        static string GetSHA256(string password)
+        {
+            SHA256Managed crypt = new SHA256Managed();
+            string hash = String.Empty;
+            byte[] crypto = crypt.ComputeHash(Encoding.ASCII.GetBytes(password), 0, Encoding.ASCII.GetByteCount(password));
+            foreach (byte bit in crypto)
+            {
+                hash += bit.ToString("x2");
+            }
+            return hash;
         }
 
         public static void LoadPermissions()

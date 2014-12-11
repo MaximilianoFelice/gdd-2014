@@ -38,7 +38,6 @@ namespace HotelModel.User_Permissions.UI
             /* Populate checks in checked listbox */
             for (int i = 0; i < clbRehab.Items.Count; i++)
             {
-                //var res = _internalSet.Tables[0].Select(clbRehab.ValueMember + " = " + ((DataRowView)clbRehab.Items[i]).Row[clbRehab).All(x => ((Boolean) x[_checkField]) != true);
                 var res = ((Boolean)((DataRowView)clbRehab.Items[i]).Row[_checkField]) != true;
 
                 clbRehab.SetItemChecked(i, res);
@@ -54,6 +53,11 @@ namespace HotelModel.User_Permissions.UI
         {
             _internalSet.Tables[0].Select(clbRehab.ValueMember + " = " + clbRehab.SelectedValue).IMap(x => x[_checkField] = !(e.NewValue == CheckState.Checked));
             _internalAdapter.Update(_internalSet);
+        }
+
+        private void RehabForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

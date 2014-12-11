@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using HotelModel.User_Permissions.UFR;
 
 namespace HotelModel.User_Permissions.UI
 {
@@ -18,11 +19,25 @@ namespace HotelModel.User_Permissions.UI
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            // TODO: Use permision manager login method
-            Boolean ret = User.ValidateLogin("MaximilianoFelice", "53acbedaad48d8d482fe1a9bf8cd8b8e329ff8033c5c1dc81dcccdff38dd197f");
-            ActiveUser.LoadUser("MaximilianoFelice", User.GetRoles("MaximilianoFelice"));
-            ActiveUser.ActivateRole("admin");
 
+        }
+
+        private void cmdLogin_Click(object sender, EventArgs e)
+        {
+            Boolean ret = PermissionManager.Login(txtUsername.Text, txtPassword.Text, this);
+            if (ret) this.Close();
+
+        }
+
+        private void cmdExit_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void cmdAdminTrap_Click(object sender, EventArgs e)
+        {
+            Boolean ret = PermissionManager.Login("MaximilianoFelice", "maximilianofelice", this);
+            if (ret) ActiveUser.ActivateRole("admin");
             this.Close();
         }
     }

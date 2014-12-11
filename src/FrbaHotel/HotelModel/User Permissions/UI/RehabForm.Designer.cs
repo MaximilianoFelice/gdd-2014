@@ -72,6 +72,7 @@
             this.Controls.Add(this.clbRehab);
             this.Name = "RehabForm";
             this.Text = "RehabForm";
+            this.Load += new System.EventHandler(this.RehabForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
