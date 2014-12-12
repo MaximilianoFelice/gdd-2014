@@ -16,8 +16,8 @@ namespace FrbaHotel.ABM_de_Habitacion
         ValidationsHandler vh = new ValidationsHandler();
         Int32 roomNum;
         Int32 floor;
-        String location;
-        String type;
+        Int32 location;
+        Int32 type;
         String descrip;
 
 
@@ -51,8 +51,8 @@ namespace FrbaHotel.ABM_de_Habitacion
         private void buttonSave_Click(object sender, EventArgs e)
         {
             this.assignParams();
-            if (!rh.roomExists(roomNum, 45)) { // donde va 45 debe ir el id del hotel del administrador, no se como encontrarlo 
-                Boolean inserted = rh.insertRoom(45, roomNum, floor, location, type, descrip);
+            if (!rh.roomExists(roomNum, 1)) { // donde va 45 debe ir el id del hotel del administrador, no se como encontrarlo 
+                Boolean inserted = rh.insertRoom(1, roomNum, floor, location, type, descrip);
 
                 if(inserted){
                     MessageBox.Show("Room Inserted");
@@ -70,8 +70,8 @@ namespace FrbaHotel.ABM_de_Habitacion
             roomNum=Int32.Parse(textBoxNumber.Text);
             floor=Int32.Parse(textBoxFloor.Text);
             descrip=textBoxDescr.Text;
-            type = comboBoxType.Text;
-            location = comboBoxLoc.Text;
+            type = (Int32)comboBoxType.SelectedValue;
+            location = (Int32)comboBoxLoc.SelectedValue;
 
         }
 
