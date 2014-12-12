@@ -106,22 +106,22 @@ namespace HotelModel.Home
 
             return (Boolean)results["@Updated"];
         }
-        
 
 
-        public DataTable filteredSearch(Int32 idHotel,Int32? roomNum,Int32? floor, String location,String type,String descrip)
+
+        public DataSet filteredSearch(Int32 idHotel, Int32? roomNum, Int32? floor, Int32 location, Int32 type, String descrip)
         {
 
             SqlResults results = new SqlFunction("[BOBBY_TABLES].SP_FILTER_ROOMS")
                                 .WithParam("@IdHotel").As(SqlDbType.Int).Value(idHotel)
                                 .WithParam("@RoomNum").As(SqlDbType.Int).Value(roomNum)
                                 .WithParam("@Floor").As(SqlDbType.Int).Value(floor)
-                                .WithParam("@TypeDesc").As(SqlDbType.VarChar).Value(type)
-                                .WithParam("@LocationDesc").As(SqlDbType.VarChar).Value(location)
+                                .WithParam("@TypeDesc").As(SqlDbType.Int).Value(type)
+                                .WithParam("@LocationDesc").As(SqlDbType.Int).Value(location)
                                 .WithParam("@Descr").As(SqlDbType.VarChar).Value(descrip)
                                 .Execute();
 
-            return (DataTable)results["@ReturnedValues"];
+            return (DataSet)results["ReturnedValues"];
 
         }
 

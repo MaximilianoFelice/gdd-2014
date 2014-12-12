@@ -17,8 +17,8 @@ namespace FrbaHotel.ABM_de_Habitacion
         Int32 idHotel;
         Int32? roomNum;
         Int32? floor;
-        String location;
-        String type;
+        Int32 location;
+        Int32 type;
         String descrip;
         String state;
 
@@ -31,12 +31,16 @@ namespace FrbaHotel.ABM_de_Habitacion
 
         private void loadRoomType()
         {
-            comboBoxType.DataSource = rh.getRoomTypes();
+            comboBoxType.DataSource = rh.getRoomTypes().Tables[0];
+            comboBoxType.DisplayMember = "descr";
+            comboBoxType.ValueMember = "id_roomtype";
         }
 
         private void loadRoomLocation()
         {
-            comboBoxLoc.DataSource = rh.getRoomLocations();
+            comboBoxLoc.DataSource = rh.getRoomLocations().Tables[0];
+            comboBoxLoc.DisplayMember = "descr";
+            comboBoxLoc.ValueMember = "id_location";
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
@@ -48,15 +52,15 @@ namespace FrbaHotel.ABM_de_Habitacion
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             this.assignFilters();
-            DataTable results = rh.filteredSearch(idHotel, roomNum,floor, location, type, descrip); //falta asignar el id del hotel
+            DataSet results = rh.filteredSearch(idHotel, roomNum,floor, location, type, descrip); //falta asignar el id del hotel
             BindingSource bs = new BindingSource();
-            bs.DataSource = results;
+            bs.DataSource = results.Tables[0];
             dataGridViewResults.DataSource = bs; 
         }
 
         private void assignFilters() {
-            type=comboBoxType.Text;
-            location=comboBoxLoc.Text;
+            type=(Int32)comboBoxType.SelectedValue;
+            location=(Int32)comboBoxLoc.SelectedValue;
             descrip = textBoxDescr.Text;
             state = textBoxState.Text; // debera encontrar por sp a traves de la descripcion en la tabla de estado el id correspondiente a ese estado
             
