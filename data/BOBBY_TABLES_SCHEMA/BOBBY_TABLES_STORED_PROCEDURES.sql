@@ -336,14 +336,14 @@ GO
 CREATE PROCEDURE [BOBBY_TABLES].SP_ROOM_EXISTS
 @RoomNum INTEGER,
 @IdHotel INTEGER,
-@RoomExists BIT = 0x0 OUTPUT
+@RoomExists BIT = 'FALSE' OUTPUT
 AS 
 
 	SELECT id_room FROM [BOBBY_TABLES].ROOMS WHERE number = @RoomNum AND id_hotel = @IdHotel 
 	
 	IF @@ROWCOUNT > 0
 	BEGIN
-		SET @RoomExists = 0x1
+		SET @RoomExists = 'TRUE'
 	END
 	
 GO
@@ -362,8 +362,8 @@ CREATE PROCEDURE [BOBBY_TABLES].SP_INSERT_ROOM
 @Inserted BIT = 0x0 OUTPUT
 AS
 
-	INSERT INTO [BOBBY_TABLES].ROOMS (id_hotel, number, room_floor, id_roomtype, id_location, descr)
-	VALUES (@IdHotel, @RoomNum, @Floor, @TypeDesc, @LocationDesc, @Descr)
+	INSERT INTO [BOBBY_TABLES].ROOMS (id_hotel, number, room_floor, id_roomtype, id_location, descr, stat)
+	VALUES (@IdHotel, @RoomNum, @Floor, @TypeDesc, @LocationDesc, @Descr, 601)
 	
 	IF @@ERROR = 0
 	BEGIN
