@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox = new System.Windows.Forms.GroupBox();
+            this.comboBoxCountry = new System.Windows.Forms.ComboBox();
             this.textBoxCity = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.comboBoxStars = new System.Windows.Forms.ComboBox();
@@ -41,7 +42,7 @@
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonManteinance = new System.Windows.Forms.Button();
-            this.comboBoxCountry = new System.Windows.Forms.ComboBox();
+            this.cmdDelete = new System.Windows.Forms.Button();
             this.groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -62,6 +63,14 @@
             this.groupBox.TabIndex = 0;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Search Filters";
+            // 
+            // comboBoxCountry
+            // 
+            this.comboBoxCountry.FormattingEnabled = true;
+            this.comboBoxCountry.Location = new System.Drawing.Point(358, 51);
+            this.comboBoxCountry.Name = "comboBoxCountry";
+            this.comboBoxCountry.Size = new System.Drawing.Size(155, 21);
+            this.comboBoxCountry.TabIndex = 7;
             // 
             // textBoxCity
             // 
@@ -177,19 +186,22 @@
             this.buttonManteinance.UseVisualStyleBackColor = true;
             this.buttonManteinance.Click += new System.EventHandler(this.buttonManteinance_Click);
             // 
-            // comboBoxCountry
+            // cmdDelete
             // 
-            this.comboBoxCountry.FormattingEnabled = true;
-            this.comboBoxCountry.Location = new System.Drawing.Point(358, 51);
-            this.comboBoxCountry.Name = "comboBoxCountry";
-            this.comboBoxCountry.Size = new System.Drawing.Size(155, 21);
-            this.comboBoxCountry.TabIndex = 7;
+            this.cmdDelete.Location = new System.Drawing.Point(13, 306);
+            this.cmdDelete.Name = "cmdDelete";
+            this.cmdDelete.Size = new System.Drawing.Size(75, 23);
+            this.cmdDelete.TabIndex = 6;
+            this.cmdDelete.Text = "Delete";
+            this.cmdDelete.UseVisualStyleBackColor = true;
+            this.cmdDelete.Click += new System.EventHandler(this.cmdDelete_Click);
             // 
             // FilterHotel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(573, 338);
+            this.Controls.Add(this.cmdDelete);
             this.Controls.Add(this.buttonManteinance);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.dataGridView);
@@ -198,6 +210,7 @@
             this.Controls.Add(this.groupBox);
             this.Name = "FilterHotel";
             this.Text = "FilterHotel";
+            this.Load += new System.EventHandler(this.FilterHotel_Load);
             this.groupBox.ResumeLayout(false);
             this.groupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
@@ -221,5 +234,6 @@
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonManteinance;
         private System.Windows.Forms.ComboBox comboBoxCountry;
+        private System.Windows.Forms.Button cmdDelete;
     }
 }

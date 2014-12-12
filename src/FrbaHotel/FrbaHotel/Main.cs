@@ -37,8 +37,14 @@ namespace FrbaHotel
             login.ShowDialog();
 
             setPermissions();
+
+            setUpActions();
         }
 
+        private void setUpActions()
+        {
+            HotelHandler.CheckHotelStates();
+        }
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -172,11 +178,6 @@ namespace FrbaHotel
         private void statisticsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoadNewFormAsChild(new Statistics());
-        }
-
-        private void mantenianceToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LoadNewFormAsChild(new Manteinance());
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
