@@ -426,19 +426,17 @@ GO
 --=======================================
 --FILTER ROOMS
 --=======================================
-CREATE FUNCTION [BOBBY_TABLES].SP_FILTER_ROOMS
+CREATE PROCEDURE [BOBBY_TABLES].SP_FILTER_ROOMS
 (@IdHotel INTEGER = NULL,
 @RoomNum INTEGER = NULL,
 @Floor INTEGER = NULL,
 @TypeDesc INTEGER = NULL,
 @LocationDesc INTEGER = NULL,
 @Descr VARCHAR(255) = NULL)
-RETURNS TABLE
 AS
 	BEGIN
 		
-		RETURN
-		(SELECT * FROM [BOBBY_TABLES].ROOMS 
+		SELECT id_hotel, number, room_floor, id_roomtype, id_location, descr FROM [BOBBY_TABLES].ROOMS 
 		WHERE
 			((@IdHotel IS NULL)  OR (id_hotel = @IdHotel)) AND
 			((@RoomNum IS NULL) OR (number = @RoomNum)) AND
@@ -446,7 +444,6 @@ AS
 			((@TypeDesc IS NULL) OR (id_roomtype = @TypeDesc)) AND
 			((@LocationDesc IS NULL) OR (id_location = @LocationDesc)) AND
 			((@Descr IS NULL) OR (descr LIKE '%' + @Descr + '%'))
-		ORDER BY lastname, name)
     
     END
     
