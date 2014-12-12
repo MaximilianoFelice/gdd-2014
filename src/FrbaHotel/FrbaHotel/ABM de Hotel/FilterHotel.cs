@@ -16,6 +16,8 @@ namespace FrbaHotel.ABM_de_Hotel
         String city;
         String country;
         Int32? stars;
+        BindingSource bs;
+
 
         public FilterHotel()
         {
@@ -33,7 +35,6 @@ namespace FrbaHotel.ABM_de_Hotel
 
         private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            FormHandler.allowOnlyChars(sender, e);
         }
 
         private void textBoxCity_KeyPress(object sender, KeyPressEventArgs e)
@@ -45,9 +46,9 @@ namespace FrbaHotel.ABM_de_Hotel
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             this.assignFilters();
-            DataTable results = HotelHandler.filteredSearch(name, stars, city, country);
-            BindingSource bs = new BindingSource();
-            bs.DataSource = results;
+            DataSet results = HotelHandler.filteredSearch(name, stars, city, country);
+            bs = new BindingSource();
+            bs.DataSource = results.Tables[0];
             dataGridView.DataSource = bs; 
         }
 
@@ -55,30 +56,18 @@ namespace FrbaHotel.ABM_de_Hotel
             name=textBoxName.Text;
             city=textBoxCity.Text;
             country=comboBoxCountry.SelectedText;
-            stars = Convert.ToInt32(comboBoxStars.Text);
+            if (comboBoxStars.Text != "") stars = Convert.ToInt32(comboBoxStars.Text);
+            else stars = null;
         
         }
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            // TODO
-            /*
-            Form frm = new HotelModifier(HotelHandler.updateHotel());
 
-            frm.textBoxName.Text = this.dataGridView.CurrentRow.Cells[1].Value.ToString();
-            frm.textBoxMail.Text = this.dataGridView.CurrentRow.Cells[2].Value.ToString();
-            frm.textBoxPhone.Text=this.dataGridView.CurrentRow.Cells[3].Value.ToString();
-            frm.textBoxStreet.Text=this.dataGridView.CurrentRow.Cells[4].Value.ToString();
-            frm.textBoxStreetNum.Text=this.dataGridView.CurrentRow.Cells[5].Value.ToString();
-            frm.textBoxCity.Text=this.dataGridView.CurrentRow.Cells[6].Value.ToString();
-            //frm.textBoxCountry.Text=this.dataGridView.CurrentRow.Cells[7].Value.ToString();
-            frm.numericUDStars.Value= (Decimal)this.dataGridView.CurrentRow.Cells[8].Value;
-            //add regimens to checklist
-            frm.dateTimePicker.Value = (DateTime)this.dataGridView.CurrentRow.Cells[9].Value ;
-
-            frm.ShowDialog();
-            this.Hide();
-             * */
+            var index = dataGridView.CurrentRow.Index;
+            Form toUpdate = new HotelModifier(new HotelHandler( (dataGridView.Rows[index].DataBoundItem as DataRowView).Row) ) ;
+            toUpdate.MdiParent = this.MdiParent;
+            toUpdate.Show();
         }
 
         private void buttonManteinance_Click(object sender, EventArgs e)
@@ -90,5 +79,6 @@ namespace FrbaHotel.ABM_de_Hotel
             frm.ShowDialog();
             this.Hide();
         }
+
     }
 }

@@ -295,31 +295,6 @@ AS
 
 GO
 
---=======================================
---FILTER HOTELS
---=======================================
-CREATE FUNCTION [BOBBY_TABLES].SP_FILTER_HOTELS
-(@Name VARCHAR(50) = NULL,
-@Stars INTEGER = NULL,
-@City VARCHAR(255) = NULL,
-@Country VARCHAR(255) = NULL)
-RETURNS TABLE
-AS
-	BEGIN
-		
-		RETURN
-		(SELECT * FROM [BOBBY_TABLES].HOTELS 
-		WHERE
-			((@Name IS NULL)  OR (name LIKE '%' + @Name + '%')) AND
-			((@Stars IS NULL) OR (stars = @Stars)) AND
-			((@City IS NULL) OR (city LIKE '%' + @City + '%')) AND
-			((@Country IS NULL) OR (country LIKE '%' + @Country + '%'))
-		ORDER BY lastname, name)
-    
-    END
-    
-GO
-
 
 --=======================================
 --ROOM_EXISTS
@@ -626,6 +601,8 @@ EXEC BOBBY_TABLES.GetUserRoles 'Guest';
 SELECT * FROM BOBBY_TABLES.PERSONS WHERE lastname = 'Tango';
 
 SELECT * FROM BOBBY_TABLES.HOTELS;
+SELECT * FROM BOBBY_TABLES.REGIMEN_HOTEL;
 
+DELETE FROM BOBBY_TABLES.HOTELS WHERE name = 'HotelTest';
 
 */

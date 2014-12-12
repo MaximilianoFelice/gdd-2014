@@ -225,7 +225,7 @@ namespace FrbaHotel
 
         private void modifyHotelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LoadNewFormAsChild(new FilterHotel());
+            LoadNewFormAsChild( new FilterHotel() );
         }
     }
 }

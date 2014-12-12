@@ -35,6 +35,16 @@ namespace FrbaHotel.ABM_de_Hotel
             checkedListBoxReg.DataSource = RegimenModel.regimen.Tables[0];
             checkedListBoxReg.DisplayMember = "descr";
             checkedListBoxReg.ValueMember = "id_regimen";
+
+            /* Loading what handler says */
+            textBoxName.Text = (String) handler["name"];
+            textBoxMail.Text = (handler["mail"] == DBNull.Value)? "" : (String) handler["mail"];
+            textBoxPhone.Text = (handler["phone"] == DBNull.Value) ? "" : (String)handler["phone"];
+            textBoxStreet.Text = (handler["street"] == DBNull.Value) ? "" : (String)handler["street"];
+            textBoxStreetNum.Text = (handler["street_num"] == DBNull.Value) ? "" : ((int)handler["street_num"]).ToString();
+            textBoxCity.Text = (handler["city"] == DBNull.Value) ? "" : (String)handler["city"];
+            comboBoxCountry.SelectedValue = (handler["country"] == DBNull.Value) ? "" : (String)handler["country"];
+            numericUDStars.Value = (handler["stars"] == DBNull.Value) ? 0 : (int)handler["stars"];
         }
 
         public void CheckRegimens()
