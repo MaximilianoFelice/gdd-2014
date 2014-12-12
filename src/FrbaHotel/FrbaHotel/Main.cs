@@ -174,11 +174,6 @@ namespace FrbaHotel
             LoadNewFormAsChild(new Statistics());
         }
 
-        private void mantenianceToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LoadNewFormAsChild(new Manteinance());
-        }
-
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form login = new HotelModel.User_Permissions.UI.frmLogin();

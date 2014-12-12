@@ -71,6 +71,8 @@ namespace FrbaHotel.ABM_de_Hotel
             handler["stars"] = numericUDStars.Value;
 
             handler.Update();
+
+            this.Close();
         }
 
         private void checkedListBoxReg_ItemCheck(object sender, ItemCheckEventArgs e)

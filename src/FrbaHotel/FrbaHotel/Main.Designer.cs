@@ -46,7 +46,6 @@
             this.cancelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hotelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.extrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mantenianceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.servicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.extrasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,7 +58,6 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.hotelsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.addHotelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteHotelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyHotelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -176,7 +174,7 @@
             this.checkInToolStripMenuItem,
             this.checkOutToolStripMenuItem});
             this.staysToolStripMenuItem.Name = "staysToolStripMenuItem";
-            this.staysToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.staysToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.staysToolStripMenuItem.Text = "Stayings";
             this.staysToolStripMenuItem.Click += new System.EventHandler(this.staysToolStripMenuItem_Click);
             // 
@@ -198,7 +196,7 @@
             this.createOrModifyToolStripMenuItem,
             this.cancelToolStripMenuItem});
             this.bookingsToolStripMenuItem1.Name = "bookingsToolStripMenuItem1";
-            this.bookingsToolStripMenuItem1.Size = new System.Drawing.Size(123, 22);
+            this.bookingsToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.bookingsToolStripMenuItem1.Text = "Bookings";
             // 
             // createOrModifyToolStripMenuItem
@@ -218,8 +216,7 @@
             // hotelsToolStripMenuItem
             // 
             this.hotelsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.extrasToolStripMenuItem,
-            this.mantenianceToolStripMenuItem});
+            this.extrasToolStripMenuItem});
             this.hotelsToolStripMenuItem.Name = "hotelsToolStripMenuItem";
             this.hotelsToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.hotelsToolStripMenuItem.Text = "&Hotels";
@@ -229,13 +226,6 @@
             this.extrasToolStripMenuItem.Name = "extrasToolStripMenuItem";
             this.extrasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.extrasToolStripMenuItem.Text = "Extras";
-            // 
-            // mantenianceToolStripMenuItem
-            // 
-            this.mantenianceToolStripMenuItem.Name = "mantenianceToolStripMenuItem";
-            this.mantenianceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.mantenianceToolStripMenuItem.Text = "Manteniance";
-            this.mantenianceToolStripMenuItem.Click += new System.EventHandler(this.mantenianceToolStripMenuItem_Click);
             // 
             // servicesToolStripMenuItem
             // 
@@ -248,7 +238,7 @@
             // extrasToolStripMenuItem1
             // 
             this.extrasToolStripMenuItem1.Name = "extrasToolStripMenuItem1";
-            this.extrasToolStripMenuItem1.Size = new System.Drawing.Size(104, 22);
+            this.extrasToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.extrasToolStripMenuItem1.Text = "Extras";
             this.extrasToolStripMenuItem1.Click += new System.EventHandler(this.extrasToolStripMenuItem1_Click);
             // 
@@ -320,7 +310,6 @@
             // 
             this.hotelsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addHotelToolStripMenuItem,
-            this.deleteHotelToolStripMenuItem,
             this.modifyHotelToolStripMenuItem});
             this.hotelsToolStripMenuItem1.Name = "hotelsToolStripMenuItem1";
             this.hotelsToolStripMenuItem1.Size = new System.Drawing.Size(172, 22);
@@ -329,21 +318,14 @@
             // addHotelToolStripMenuItem
             // 
             this.addHotelToolStripMenuItem.Name = "addHotelToolStripMenuItem";
-            this.addHotelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addHotelToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.addHotelToolStripMenuItem.Text = "Add Hotel";
             this.addHotelToolStripMenuItem.Click += new System.EventHandler(this.addHotelToolStripMenuItem_Click);
-            // 
-            // deleteHotelToolStripMenuItem
-            // 
-            this.deleteHotelToolStripMenuItem.Name = "deleteHotelToolStripMenuItem";
-            this.deleteHotelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.deleteHotelToolStripMenuItem.Text = "Delete Hotel";
-            this.deleteHotelToolStripMenuItem.Click += new System.EventHandler(this.deleteHotelToolStripMenuItem_Click);
             // 
             // modifyHotelToolStripMenuItem
             // 
             this.modifyHotelToolStripMenuItem.Name = "modifyHotelToolStripMenuItem";
-            this.modifyHotelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.modifyHotelToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.modifyHotelToolStripMenuItem.Text = "Modify Hotel";
             this.modifyHotelToolStripMenuItem.Click += new System.EventHandler(this.modifyHotelToolStripMenuItem_Click);
             // 
@@ -424,13 +406,13 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
             // 
             // statisticsToolStripMenuItem
             // 
             this.statisticsToolStripMenuItem.Name = "statisticsToolStripMenuItem";
-            this.statisticsToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.statisticsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.statisticsToolStripMenuItem.Text = "Statistics";
             this.statisticsToolStripMenuItem.Click += new System.EventHandler(this.statisticsToolStripMenuItem_Click);
             // 
@@ -568,7 +550,6 @@
         private System.Windows.Forms.ToolStripMenuItem newGuestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bookingsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem extrasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mantenianceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem servicesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem extrasToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem statisticsToolStripMenuItem;
@@ -578,7 +559,6 @@
         private System.Windows.Forms.ToolStripMenuItem newUserToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hotelsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem addHotelToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteHotelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modifyHotelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem roomsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
