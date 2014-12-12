@@ -13,7 +13,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
     public partial class CreateBooking : Form
     {
         RegimenHandler rh = new RegimenHandler();
-        RoomHandler roh = new RoomHandler();
+        RoomHandler roh;
         BookingHandler bh = new BookingHandler();
         Int32 id_hotel;
         Int32 id_regimen;

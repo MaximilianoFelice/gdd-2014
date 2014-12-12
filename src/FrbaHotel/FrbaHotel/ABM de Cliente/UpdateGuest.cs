@@ -57,9 +57,9 @@ namespace FrbaHotel.ABM_de_Cliente
             handler["street_num"] = textBoxStreetNum.Text;
             handler["dir_floor"] = textBoxFloor.Text;
             handler["dir_dpt"] = textBoxDept.Text;
-           
 
             handler.Update();
+            this.Close();
         }     
             
 
@@ -209,6 +209,7 @@ namespace FrbaHotel.ABM_de_Cliente
             this.validateEmptyTextBoxOnHandler(textBoxDept);
         }
 
+       
 
 
     }

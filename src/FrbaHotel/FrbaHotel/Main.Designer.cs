@@ -174,7 +174,7 @@
             this.checkInToolStripMenuItem,
             this.checkOutToolStripMenuItem});
             this.staysToolStripMenuItem.Name = "staysToolStripMenuItem";
-            this.staysToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.staysToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.staysToolStripMenuItem.Text = "Stayings";
             this.staysToolStripMenuItem.Click += new System.EventHandler(this.staysToolStripMenuItem_Click);
             // 
@@ -196,7 +196,7 @@
             this.createOrModifyToolStripMenuItem,
             this.cancelToolStripMenuItem});
             this.bookingsToolStripMenuItem1.Name = "bookingsToolStripMenuItem1";
-            this.bookingsToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.bookingsToolStripMenuItem1.Size = new System.Drawing.Size(123, 22);
             this.bookingsToolStripMenuItem1.Text = "Bookings";
             // 
             // createOrModifyToolStripMenuItem
@@ -224,7 +224,7 @@
             // extrasToolStripMenuItem
             // 
             this.extrasToolStripMenuItem.Name = "extrasToolStripMenuItem";
-            this.extrasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.extrasToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.extrasToolStripMenuItem.Text = "Extras";
             // 
             // servicesToolStripMenuItem
@@ -238,7 +238,7 @@
             // extrasToolStripMenuItem1
             // 
             this.extrasToolStripMenuItem1.Name = "extrasToolStripMenuItem1";
-            this.extrasToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.extrasToolStripMenuItem1.Size = new System.Drawing.Size(104, 22);
             this.extrasToolStripMenuItem1.Text = "Extras";
             this.extrasToolStripMenuItem1.Click += new System.EventHandler(this.extrasToolStripMenuItem1_Click);
             // 
@@ -342,21 +342,22 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addToolStripMenuItem.Text = "Add Room";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // deleteRoomToolStripMenuItem
             // 
             this.deleteRoomToolStripMenuItem.Name = "deleteRoomToolStripMenuItem";
-            this.deleteRoomToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.deleteRoomToolStripMenuItem.Text = "Delete Room";
+            this.deleteRoomToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.deleteRoomToolStripMenuItem.Text = "Room Manteinance";
             // 
             // modifyRoomToolStripMenuItem
             // 
             this.modifyRoomToolStripMenuItem.Name = "modifyRoomToolStripMenuItem";
-            this.modifyRoomToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.modifyRoomToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.modifyRoomToolStripMenuItem.Text = "Modify Room";
+            this.modifyRoomToolStripMenuItem.Click += new System.EventHandler(this.modifyRoomToolStripMenuItem_Click);
             // 
             // manageRegimensToolStripMenuItem
             // 
@@ -406,13 +407,13 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
             // 
             // statisticsToolStripMenuItem
             // 
             this.statisticsToolStripMenuItem.Name = "statisticsToolStripMenuItem";
-            this.statisticsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.statisticsToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.statisticsToolStripMenuItem.Text = "Statistics";
             this.statisticsToolStripMenuItem.Click += new System.EventHandler(this.statisticsToolStripMenuItem_Click);
             // 

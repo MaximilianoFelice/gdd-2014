@@ -7,38 +7,35 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using HotelModel.Home;
+using HotelModel.Model;
 
 namespace FrbaHotel.ABM_de_Habitacion
 {
     public partial class UpdateRoom : Form
     {
-        RoomHandler rh = new RoomHandler();
-        ValidationsHandler vh = new ValidationsHandler();
-        Int32 roomNum;
-        Int32 floor;
-        String location;
-        String type;
-        String descrip;
+        RoomHandler handler;
+        
 
 
-        public UpdateRoom()
+        public UpdateRoom(RoomHandler roomToModify)
         {
             InitializeComponent();
-            this.loadRoomType();
-            this.loadRoomLocation();
+            handler = roomToModify;
+            this.bindControls();
         }
 
-        private void loadRoomType()
-        {
-            comboBoxType.DataSource = rh.getRoomTypes();
+        private void bindControls() {
+            RoomTypeModel.BindTo(comboBoxType);
+            RoomLocationModel.BindTo(comboBoxLoc);
+
+            textBoxNumber.Text = (handler["number"] == DBNull.Value) ? "" : ((int)handler["number"]).ToString();
+            textBoxFloor.Text = (handler["room_floor"] == DBNull.Value) ? "" : ((int)handler["floor"]).ToString();
+            comboBoxType.SelectedValue = (handler["id_roomtype"]==DBNull.Value) ? 0 : (int)handler["id_roomtype"];
+            comboBoxLoc.SelectedValue = (handler["id_location"] == DBNull.Value) ? 0 : (int)handler["id_location"];
+            textBoxDescr.Text = (handler["descr"] == DBNull.Value) ? "" : (String)handler["descr"];
+            
         }
-        private void loadRoomLocation()
-        {
-            comboBoxLoc.DataSource = rh.getRoomLocations();
-        }
-
-
-
+        
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
@@ -48,31 +45,19 @@ namespace FrbaHotel.ABM_de_Habitacion
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-                this.assignParams();
-             // donde va 45 debe ir el id del hotel del administrador, no se como encontrarlo 
-                Boolean updated = rh.updateRoom(45, roomNum, floor, location, type, descrip);
+                handler["number"] = textBoxNumber.Text;
+                handler["floor"] = textBoxFloor.Text;
+                handler["id_roomtype"] = comboBoxType.SelectedText;
+                handler["id_location"] = comboBoxLoc.SelectedText;
+                handler["descr"] = textBoxDescr.Text;
+               
+                handler.Update();
 
-                if (updated)
-                {
-                    MessageBox.Show("Room Updated");
-                }
-                else
-                {
-                    MessageBox.Show("Unable to update room");
-                }
-
+                this.Close();
             
         }
 
-        private void assignParams() { 
-            descrip = textBoxDescr.Text;
-            floor = Int32.Parse(textBoxFloor.Text);
-            roomNum = Int32.Parse(textBoxNumber.Text);
-        }
-
-
-
-
+        
         private void textBoxNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             FormHandler.allowOnlyNumbers(sender, e);
@@ -97,37 +82,10 @@ namespace FrbaHotel.ABM_de_Habitacion
 
         private void comboBoxType_Validating(object sender, CancelEventArgs e)
         {
-            if (comboBoxType.SelectedItem == null)
-            {
-                errorProvider.SetError(comboBoxType, "Select a room type");
-                buttonSave.Enabled = false;
-
-            }
-            else
-            {
-                errorProvider.SetError(comboBoxType, "");
-                buttonSave.Enabled = true;
-                type = comboBoxType.Text;
-
-            }
+            FormHandler.validateEmptyComboBox(comboBoxType, errorProvider, buttonSave);
         }
 
-        private void comboBoxLoc_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxLoc.SelectedItem == null)
-            {
-                errorProvider.SetError(comboBoxLoc, "Select a room location");
-                buttonSave.Enabled = false;
-
-            }
-            else
-            {
-                errorProvider.SetError(comboBoxLoc, "");
-                buttonSave.Enabled = true;
-                location = comboBoxLoc.Text;
-
-            }
-        }
+        
 
         private void textBoxDescr_Validating(object sender, CancelEventArgs e)
         {
@@ -147,6 +105,11 @@ namespace FrbaHotel.ABM_de_Habitacion
         public void validateDecTextBoxOnHandler(TextBox txtb)
         {
             FormHandler.validateDecimalTextBox(txtb, errorProvider, buttonSave);
+        }
+
+        private void comboBoxLoc_Validating(object sender, CancelEventArgs e)
+        {
+            FormHandler.validateEmptyComboBox(comboBoxLoc, errorProvider, buttonSave);
         }
 
     }

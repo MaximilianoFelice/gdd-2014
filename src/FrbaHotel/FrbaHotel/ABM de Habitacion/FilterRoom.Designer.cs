@@ -152,7 +152,7 @@
             this.textBoxFloor.Size = new System.Drawing.Size(141, 20);
             this.textBoxFloor.TabIndex = 18;
             this.textBoxFloor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxFloor_KeyPress_1);
-            this.textBoxFloor.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxFloor_Validating);
+            
             // 
             // textBoxNumber
             // 
@@ -161,7 +161,7 @@
             this.textBoxNumber.Size = new System.Drawing.Size(141, 20);
             this.textBoxNumber.TabIndex = 16;
             this.textBoxNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumber_KeyPress);
-            this.textBoxNumber.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxNumber_Validating);
+            
             // 
             // labelTpye
             // 

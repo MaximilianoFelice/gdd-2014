@@ -199,7 +199,7 @@ namespace FrbaHotel
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LoadNewFormAsChild(new CreateRoom());
+            LoadNewFormAsChild(new UpdateRoom(RoomHandler.newRoom()));
         }
 
         private void manageRegimensToolStripMenuItem_Click(object sender, EventArgs e)
@@ -230,6 +230,11 @@ namespace FrbaHotel
         private void modifyHotelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoadNewFormAsChild( new FilterHotel() );
+        }
+
+        private void modifyRoomToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadNewFormAsChild(new FilterRoom());
         }
     }
 }

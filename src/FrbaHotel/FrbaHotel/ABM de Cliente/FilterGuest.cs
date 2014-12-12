@@ -13,7 +13,6 @@ namespace FrbaHotel.ABM_de_Cliente
     public partial class FilterGuest : Form
     {
 
-        ValidationsHandler vh = new ValidationsHandler();
         String name { get; set; }
         String lastname { get; set; }
         String mail { get; set; }
@@ -93,9 +92,8 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            //Int32 id_guest = (Int32)this.dataGridViewResults.CurrentRow.Cells[0].Value;
-            //if (gh.deletePerson(id_guest)) MessageBox.Show("Guest Deleted");
-            //else MessageBox.Show("Unable to deleted");
+            var index = dataGridViewResults.CurrentRow.Index;
+            GuestHandler.deleteGuest((dataGridViewResults.Rows[index].DataBoundItem as DataRowView).Row);
 
         }
 

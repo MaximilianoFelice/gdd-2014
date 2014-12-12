@@ -32,8 +32,6 @@
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.groupBoxData = new System.Windows.Forms.GroupBox();
-            this.textBoxState = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.comboBoxLoc = new System.Windows.Forms.ComboBox();
             this.labelDescription = new System.Windows.Forms.Label();
@@ -69,8 +67,6 @@
             // 
             // groupBoxData
             // 
-            this.groupBoxData.Controls.Add(this.textBoxState);
-            this.groupBoxData.Controls.Add(this.label1);
             this.groupBoxData.Controls.Add(this.comboBoxType);
             this.groupBoxData.Controls.Add(this.comboBoxLoc);
             this.groupBoxData.Controls.Add(this.labelDescription);
@@ -88,22 +84,6 @@
             this.groupBoxData.TabStop = false;
             this.groupBoxData.Text = "Please enter the room information";
             // 
-            // textBoxState
-            // 
-            this.textBoxState.Location = new System.Drawing.Point(106, 161);
-            this.textBoxState.Name = "textBoxState";
-            this.textBoxState.Size = new System.Drawing.Size(141, 20);
-            this.textBoxState.TabIndex = 14;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 161);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "State";
-            // 
             // comboBoxType
             // 
             this.comboBoxType.FormattingEnabled = true;
@@ -119,6 +99,7 @@
             this.comboBoxLoc.Name = "comboBoxLoc";
             this.comboBoxLoc.Size = new System.Drawing.Size(141, 21);
             this.comboBoxLoc.TabIndex = 11;
+            this.comboBoxLoc.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxLoc_Validating);
             // 
             // labelDescription
             // 
@@ -209,7 +190,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
         public System.Windows.Forms.ComboBox comboBoxType;
         public System.Windows.Forms.ComboBox comboBoxLoc;
         public System.Windows.Forms.Label labelDescription;
@@ -220,7 +200,6 @@
         public System.Windows.Forms.Label labelFloor;
         public System.Windows.Forms.TextBox textBoxNumber;
         public System.Windows.Forms.Label labelNumber;
-        public System.Windows.Forms.TextBox textBoxState;
         public System.Windows.Forms.Button buttonClear;
         public System.Windows.Forms.Button buttonSave;
         public System.Windows.Forms.GroupBox groupBoxData;

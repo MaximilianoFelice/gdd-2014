@@ -34,8 +34,6 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.groupBoxGuest = new System.Windows.Forms.GroupBox();
             this.comboBoxNationality = new System.Windows.Forms.ComboBox();
-            this.checkBoxEnabled = new System.Windows.Forms.CheckBox();
-            this.labelEnabled = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxStreet = new System.Windows.Forms.TextBox();
@@ -95,8 +93,6 @@
             // groupBoxGuest
             // 
             this.groupBoxGuest.Controls.Add(this.comboBoxNationality);
-            this.groupBoxGuest.Controls.Add(this.checkBoxEnabled);
-            this.groupBoxGuest.Controls.Add(this.labelEnabled);
             this.groupBoxGuest.Controls.Add(this.groupBox2);
             this.groupBoxGuest.Controls.Add(this.dtPickerBirhtDate);
             this.groupBoxGuest.Controls.Add(this.textBoxPhone);
@@ -128,24 +124,6 @@
             this.comboBoxNationality.Size = new System.Drawing.Size(137, 21);
             this.comboBoxNationality.TabIndex = 48;
             this.comboBoxNationality.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxNationality_Validating);
-            // 
-            // checkBoxEnabled
-            // 
-            this.checkBoxEnabled.AutoSize = true;
-            this.checkBoxEnabled.Location = new System.Drawing.Point(143, 205);
-            this.checkBoxEnabled.Name = "checkBoxEnabled";
-            this.checkBoxEnabled.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxEnabled.TabIndex = 45;
-            this.checkBoxEnabled.UseVisualStyleBackColor = true;
-            // 
-            // labelEnabled
-            // 
-            this.labelEnabled.AutoSize = true;
-            this.labelEnabled.Location = new System.Drawing.Point(21, 206);
-            this.labelEnabled.Name = "labelEnabled";
-            this.labelEnabled.Size = new System.Drawing.Size(46, 13);
-            this.labelEnabled.TabIndex = 44;
-            this.labelEnabled.Text = "Enabled";
             // 
             // groupBox2
             // 
@@ -234,14 +212,14 @@
             // 
             // dtPickerBirhtDate
             // 
-            this.dtPickerBirhtDate.Location = new System.Drawing.Point(143, 179);
+            this.dtPickerBirhtDate.Location = new System.Drawing.Point(143, 166);
             this.dtPickerBirhtDate.Name = "dtPickerBirhtDate";
             this.dtPickerBirhtDate.Size = new System.Drawing.Size(137, 20);
             this.dtPickerBirhtDate.TabIndex = 42;
             // 
             // textBoxPhone
             // 
-            this.textBoxPhone.Location = new System.Drawing.Point(143, 153);
+            this.textBoxPhone.Location = new System.Drawing.Point(143, 140);
             this.textBoxPhone.Name = "textBoxPhone";
             this.textBoxPhone.Size = new System.Drawing.Size(137, 20);
             this.textBoxPhone.TabIndex = 32;
@@ -258,7 +236,7 @@
             // comboBoxDocType
             // 
             this.comboBoxDocType.FormattingEnabled = true;
-            this.comboBoxDocType.Location = new System.Drawing.Point(143, 100);
+            this.comboBoxDocType.Location = new System.Drawing.Point(143, 83);
             this.comboBoxDocType.Name = "comboBoxDocType";
             this.comboBoxDocType.Size = new System.Drawing.Size(137, 21);
             this.comboBoxDocType.TabIndex = 30;
@@ -266,7 +244,7 @@
             // 
             // textBoxDocNumber
             // 
-            this.textBoxDocNumber.Location = new System.Drawing.Point(143, 127);
+            this.textBoxDocNumber.Location = new System.Drawing.Point(143, 110);
             this.textBoxDocNumber.Name = "textBoxDocNumber";
             this.textBoxDocNumber.Size = new System.Drawing.Size(137, 20);
             this.textBoxDocNumber.TabIndex = 29;
@@ -274,7 +252,7 @@
             // 
             // textBoxLastname
             // 
-            this.textBoxLastname.Location = new System.Drawing.Point(143, 57);
+            this.textBoxLastname.Location = new System.Drawing.Point(143, 54);
             this.textBoxLastname.Name = "textBoxLastname";
             this.textBoxLastname.Size = new System.Drawing.Size(137, 20);
             this.textBoxLastname.TabIndex = 28;
@@ -300,7 +278,7 @@
             // labelBirthDate
             // 
             this.labelBirthDate.AutoSize = true;
-            this.labelBirthDate.Location = new System.Drawing.Point(20, 185);
+            this.labelBirthDate.Location = new System.Drawing.Point(21, 172);
             this.labelBirthDate.Name = "labelBirthDate";
             this.labelBirthDate.Size = new System.Drawing.Size(54, 13);
             this.labelBirthDate.TabIndex = 24;
@@ -309,7 +287,7 @@
             // labelPhone
             // 
             this.labelPhone.AutoSize = true;
-            this.labelPhone.Location = new System.Drawing.Point(21, 156);
+            this.labelPhone.Location = new System.Drawing.Point(21, 140);
             this.labelPhone.Name = "labelPhone";
             this.labelPhone.Size = new System.Drawing.Size(78, 13);
             this.labelPhone.TabIndex = 23;
@@ -327,7 +305,7 @@
             // labelDocNumber
             // 
             this.labelDocNumber.AutoSize = true;
-            this.labelDocNumber.Location = new System.Drawing.Point(20, 130);
+            this.labelDocNumber.Location = new System.Drawing.Point(20, 114);
             this.labelDocNumber.Name = "labelDocNumber";
             this.labelDocNumber.Size = new System.Drawing.Size(96, 13);
             this.labelDocNumber.TabIndex = 21;
@@ -336,7 +314,7 @@
             // labelDocType
             // 
             this.labelDocType.AutoSize = true;
-            this.labelDocType.Location = new System.Drawing.Point(20, 100);
+            this.labelDocType.Location = new System.Drawing.Point(20, 91);
             this.labelDocType.Name = "labelDocType";
             this.labelDocType.Size = new System.Drawing.Size(83, 13);
             this.labelDocType.TabIndex = 19;
@@ -391,8 +369,6 @@
         public System.Windows.Forms.Button buttonClear;
         public System.Windows.Forms.Button buttonSave;
         public System.Windows.Forms.GroupBox groupBoxGuest;
-        public System.Windows.Forms.CheckBox checkBoxEnabled;
-        public System.Windows.Forms.Label labelEnabled;
         public System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox textBoxStreet;

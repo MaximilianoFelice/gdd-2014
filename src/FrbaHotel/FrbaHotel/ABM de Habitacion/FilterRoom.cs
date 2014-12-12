@@ -7,40 +7,33 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using HotelModel.Home;
+using HotelModel.Model;
 
 namespace FrbaHotel.ABM_de_Habitacion
 {
     public partial class FilterRoom : Form
     {
-        RoomHandler rh = new RoomHandler();
-        ValidationsHandler vh = new ValidationsHandler();
+        BindingSource bs;
         Int32 idHotel;
         Int32? roomNum;
         Int32? floor;
-        Int32 location;
-        Int32 type;
+        String location;
+        String type;
         String descrip;
         String state;
+        Int32 id_hotel;
 
         public FilterRoom()
         {
             InitializeComponent();
-            this.loadRoomType();
-            this.loadRoomLocation();
+            this.BindControls();
+            
         }
 
-        private void loadRoomType()
+        private void BindControls()
         {
-            comboBoxType.DataSource = rh.getRoomTypes().Tables[0];
-            comboBoxType.DisplayMember = "descr";
-            comboBoxType.ValueMember = "id_roomtype";
-        }
-
-        private void loadRoomLocation()
-        {
-            comboBoxLoc.DataSource = rh.getRoomLocations().Tables[0];
-            comboBoxLoc.DisplayMember = "descr";
-            comboBoxLoc.ValueMember = "id_location";
+            RoomTypeModel.BindTo(comboBoxType);
+            RoomLocationModel.BindTo(comboBoxLoc);
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
@@ -52,18 +45,20 @@ namespace FrbaHotel.ABM_de_Habitacion
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             this.assignFilters();
-            DataSet results = rh.filteredSearch(idHotel, roomNum,floor, location, type, descrip); //falta asignar el id del hotel
-            BindingSource bs = new BindingSource();
+            DataSet results = RoomHandler.filteredSearch(roomNum,floor,location, type, descrip);
+            bs = new BindingSource();
             bs.DataSource = results.Tables[0];
-            dataGridViewResults.DataSource = bs; 
+            dataGridViewResults.DataSource = bs;  
         }
 
         private void assignFilters() {
-            type=(Int32)comboBoxType.SelectedValue;
-            location=(Int32)comboBoxLoc.SelectedValue;
-            descrip = textBoxDescr.Text;
-            state = textBoxState.Text; // debera encontrar por sp a traves de la descripcion en la tabla de estado el id correspondiente a ese estado
-            
+            if (textBoxNumber.Text != "") roomNum = Convert.ToInt32(textBoxNumber.Text);
+            else roomNum = null;
+            if(textBoxFloor.Text !="" ) floor= Convert.ToInt32(textBoxFloor.Text);
+            else roomNum = null;
+            type = comboBoxType.SelectedText;
+            location=comboBoxLoc.SelectedText;
+            descrip = textBoxDescr.Text; 
         
         }
 
@@ -79,77 +74,21 @@ namespace FrbaHotel.ABM_de_Habitacion
             FormHandler.allowOnlyNumbers(sender, e);
         }
 
-        private void textBoxNumber_Validating(object sender, CancelEventArgs e)
-        {
-            if (!vh.validateNullString(textBoxNumber.Text))
-            {
-                try
-                {
-                    roomNum = Int32.Parse(textBoxNumber.Text);
-                    errorProvider.SetError(textBoxNumber, "");
-                    buttonSearch.Enabled = true;
 
-                }
-                catch (FormatException)
-                {
-                    errorProvider.SetError(textBoxNumber, "Invalid type");
-                    buttonSearch.Enabled = false;
-                }
-            }
-            else {
-                roomNum = null;
-                buttonSearch.Enabled = true;
-            }
-
-        }
-
-        private void textBoxFloor_Validating(object sender, CancelEventArgs e)
-        {
-            if (!vh.validateNullString(textBoxFloor.Text))
-            {
-                try
-                {
-                    floor = Int32.Parse(textBoxFloor.Text);
-                    errorProvider.SetError(textBoxFloor, "");
-                    buttonSearch.Enabled = true;
-
-                }
-                catch (FormatException)
-                {
-                    errorProvider.SetError(textBoxFloor, "Invalid type");
-                    buttonSearch.Enabled = false;
-                }
-            }
-            else
-            {
-                floor = null;
-                buttonSearch.Enabled = true;
-            }
-        }
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            ABM_de_Habitacion.UpdateRoom frm = new UpdateRoom();
-            
-            frm.textBoxNumber.Text = this.dataGridViewResults.CurrentRow.Cells[1].Value.ToString();
-            frm.textBoxFloor.Text = this.dataGridViewResults.CurrentRow.Cells[2].Value.ToString();
-
-            frm.comboBoxType.Text = this.dataGridViewResults.CurrentRow.Cells[3].Value.ToString();
-            frm.comboBoxLoc.Text = this.dataGridViewResults.CurrentRow.Cells[4].Value.ToString();
-            frm.textBoxDescr.Text = this.dataGridViewResults.CurrentRow.Cells[5].Value.ToString();
-            frm.textBoxState.Text = this.dataGridViewResults.CurrentRow.Cells[6].Value.ToString();
-     
-            frm.ShowDialog();
-            this.Hide();
-
-
+            var index = dataGridViewResults.CurrentRow.Index;
+            Form toUpdate = new UpdateRoom(new RoomHandler((dataGridViewResults.Rows[index].DataBoundItem as DataRowView).Row));
+            toUpdate.MdiParent = this.MdiParent;
+            toUpdate.Show();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            Int32 id_room = (Int32)this.dataGridViewResults.CurrentRow.Cells[0].Value;
-            if (rh.deleteRoom(id_room)) MessageBox.Show("Room Deleted");
-            else MessageBox.Show("Unable to delete");
+            var index = dataGridViewResults.CurrentRow.Index;
+            RoomHandler.deleteRoom((dataGridViewResults.Rows[index].DataBoundItem as DataRowView).Row); 
+           
         }
 
         
