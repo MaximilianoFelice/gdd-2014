@@ -65,7 +65,7 @@ namespace FrbaHotel.ABM_de_Cliente
                     {
                        inserted = gh.insertPerson(name, lastname, docType,
                                                docNumber, mail, phone, birthDate, street,
-                                               streetNum, floor, dept, nationality, state);
+                                               streetNum, floor, dept, nationality);
 
                         if (inserted > 0) MessageBox.Show("Guest added");
                         else MessageBox.Show("Unable to add guest");
@@ -204,7 +204,7 @@ namespace FrbaHotel.ABM_de_Cliente
            //allows only numbers and . in docnumber field
            private void textBoxDocNumber_KeyPress(object sender, KeyPressEventArgs e)
            {
-               FormHandler.allowOnlyNumbers(sender, e);
+               FormHandler.allowOnlyCharsAndSpace(sender, e);
            }
         
         private void textBoxStreet_KeyPress(object sender, KeyPressEventArgs e)
