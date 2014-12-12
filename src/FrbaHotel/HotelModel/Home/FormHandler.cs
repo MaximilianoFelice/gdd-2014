@@ -161,6 +161,17 @@ namespace HotelModel.Home
            }
        }
 
+       public static void allowOnlyCharsAndSpace(Object sender, KeyPressEventArgs e) {
+           if (char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar))
+           {
+
+           }
+           else
+           {
+               e.Handled = e.KeyChar != (char)Keys.Back;
+           }
+       }
+
       public static void allowOnlyNumbers(object sender, KeyPressEventArgs e)
        {
            if (char.IsNumber(e.KeyChar))
