@@ -46,7 +46,13 @@ namespace FrbaHotel.ABM_de_Cliente
             name=textBoxName.Text;
             lastname=textBoxLastname.Text;
             docType=comboBoxDocType.Text;
-            docNumber = Decimal.Parse(textBoxDocNumber.Text);
+            if (!String.IsNullOrEmpty(textBoxDocNumber.Text))
+            {
+                docNumber = Decimal.Parse(textBoxDocNumber.Text);
+            }
+            else {
+                docNumber = -1;
+            }
             mail=textBoxEmail.Text;
         }
 

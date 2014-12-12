@@ -45,13 +45,12 @@ CREATE PROCEDURE [BOBBY_TABLES].SP_INSERT_PERSON
 @Floor INTEGER,
 @Dept VARCHAR(5),
 @Nationality VARCHAR(50),
-@State INTEGER,
 @IdInserted INTEGER OUTPUT
 AS
 
 	INSERT INTO [BOBBY_TABLES].PERSONS (name, lastname, doc_type, doc_number, mail, phone, birthdate, street, street_num, dir_floor,
 	dir_dpt, nationality, stat) 
-	VALUES (@Name, @Lastname, @DocType, @DocNumber, @Mail, @Phone, @BirthDate, @Street, @StreetNum, @Floor, @Dept, @Nationality, @State)
+	VALUES (@Name, @Lastname, @DocType, @DocNumber, @Mail, @Phone, @BirthDate, @Street, @StreetNum, @Floor, @Dept, @Nationality, 301)
 	
 	SET @IdInserted = @@IDENTITY
 
@@ -146,28 +145,46 @@ GO
 --=======================================
 --FILTER PERSON
 --=======================================
+
+
 CREATE FUNCTION [BOBBY_TABLES].SP_FILTER_PERSONS
 (@Name VARCHAR(50) = NULL,
 @Lastname VARCHAR(50) = NULL,
 @DocType VARCHAR(10) = NULL,
 @DocNumber DECIMAL(10,0) = NULL,
 @Mail VARCHAR(50) = NULL)
-RETURNS TABLE
+RETURNS TABLE 
 AS
-	BEGIN
-		
-		RETURN
-		(SELECT * FROM [BOBBY_TABLES].PERSONS 
-		WHERE
+BEGIN
+   RETURN(SELECT * FROM [BOBBY_TABLES].PERSONS 
+			WHERE
 			((@Name IS NULL)  OR (name LIKE '%' + @Name + '%')) AND
 			((@Lastname IS NULL) OR (lastname LIKE '%' + @Lastname+ '%')) AND
-			((@DocNumber IS NULL) OR (doc_number = @DocNumber )) AND
 			((@Mail IS NULL) OR (mail LIKE '%' + @Mail + '%')) AND
-			((@DocType IS NULL) OR (doc_type = @DocType)) 
-		ORDER BY lastname, name)
-    
-    END
-    
+			( doc_number = @DocNumber ) AND
+			((@DocType IS NULL) OR (doc_type = @DocType)))
+
+END
+
+GO
+
+CREATE FUNCTION [BOBBY_TABLES].SP_FILTER_PERSONS_NULLDOC
+(@Name VARCHAR(50) = NULL,
+@Lastname VARCHAR(50) = NULL,
+@DocType VARCHAR(10) = NULL,
+@Mail VARCHAR(50) = NULL)
+RETURNS TABLE 
+AS
+BEGIN
+   RETURN(SELECT * FROM [BOBBY_TABLES].PERSONS 
+			WHERE
+			((@Name IS NULL)  OR (name LIKE '%' + @Name + '%')) AND
+			((@Lastname IS NULL) OR (lastname LIKE '%' + @Lastname+ '%')) AND
+			((@Mail IS NULL) OR (mail LIKE '%' + @Mail + '%')) AND
+			((@DocType IS NULL) OR (doc_type = @DocType)))
+
+END
+
 GO
 
 
@@ -186,6 +203,23 @@ AS
 		SET @Deleted = 0x1
 	END
 	
+GO
+
+
+--=======================================
+--GET INFO
+--=======================================
+CREATE FUNCTION [BOBBY_TABLES].FUNCT_GET_INFO
+(@IdPerson INTEGER)
+RETURNS TABLE
+AS
+	BEGIN
+		
+		RETURN (SELECT name, lastname, doc_type, doc_number, mail FROM [BOBBY_TABLES].PERSONS 
+		WHERE id_person = @Id)
+    
+    END
+    
 GO
 
 

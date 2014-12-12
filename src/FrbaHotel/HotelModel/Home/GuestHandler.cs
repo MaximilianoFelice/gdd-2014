@@ -11,6 +11,10 @@ namespace HotelModel.Home
 {
     public class GuestHandler
     {
+        public DataSet getPersons() {
+            SqlResults results = new SqlQuery("SELECT * FROM [BOBBY_TABLES].PERSONS").Execute();
+            return (DataSet)results["ReturnedValues"];
+        }
 
         public DataSet getDocTypes() {
             SqlResults results = new SqlQuery("SELECT * FROM [BOBBY_TABLES].DOC_TYPE").Execute();
@@ -18,18 +22,19 @@ namespace HotelModel.Home
         }
         public bool PersonExistance(String name, String lastname, String docType, Decimal docNumber,  DateTime birthDate)
         {
+            DataTable dt = this.getPersons().Tables[0];
+            Boolean returnValue = false; ;
+            foreach (DataRow row in dt.Rows)
+            {
+                if (row["name"].ToString() == name && row["lastname"].ToString() == lastname &&
+                    row["doc_type"].ToString() == docType && (Decimal)row["doc_number"]== docNumber &&
+                    (DateTime)row["birthdate"] == birthDate )
+                {
+                    returnValue = true;
+                }
 
-
-            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_PERSON_EXISTS")
-                                        .WithParam("@Name").As(SqlDbType.VarChar).Value(name)
-                                        .WithParam("@Lastname").As(SqlDbType.VarChar).Value(lastname)
-                                        .WithParam("@DocType").As(SqlDbType.VarChar).Value(docType)
-                                        .WithParam("@DocNumber").As(SqlDbType.Decimal).Value(docNumber)
-                                        .WithParam("@BirthDate").As(SqlDbType.DateTime).Value(birthDate)
-                                        .WithParam("@GuestExist").As(SqlDbType.Int).AsOutput()
-                                        .Execute();
-
-            return (bool)results["@GuestExist"];
+            }
+            return returnValue;
 
         }
 
@@ -47,17 +52,20 @@ namespace HotelModel.Home
 
         }
 
-        public Boolean emailExists(String anEmail) {
-            if (!String.IsNullOrEmpty(anEmail))
+        public Boolean emailExists(String anEmail)
+        {
+            DataTable dt = this.getPersons().Tables[0];
+            Boolean returnValue = false; ;
+            foreach (DataRow row in dt.Rows)
             {
-                SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_EMAIL_EXISTS")
-                                    .WithParam("@Email").As(SqlDbType.VarChar).Value(anEmail)
-                                    .WithParam("@EmailExist").As(SqlDbType.Bit).AsOutput()
-                                    .Execute();
-
-                return (Boolean)results["@EmailExist"];
+                if (row["mail"].ToString() == anEmail)
+                {
+                    returnValue = true;
+                }
+                
             }
-            else return false;
+            return returnValue;
+
         }
 
         public Boolean emailExistsForUpdate(Int32 id_guest, String mail){
@@ -76,7 +84,7 @@ namespace HotelModel.Home
         }
 
         public Int32 insertPerson(String name, String lastname, String docType, Decimal docNumber, String mail, Decimal phone, DateTime birthDate,
-                                String street, Int32 streetNum, Int32 floor, String dept, String nationality, Int32 state)
+                                String street, Int32 streetNum, Int32 floor, String dept, String nationality)
         {
             SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_INSERT_PERSON")
                                         .WithParam("@Name").As(SqlDbType.VarChar).Value(name)
@@ -91,7 +99,6 @@ namespace HotelModel.Home
                                         .WithParam("@Floor").As(SqlDbType.Int).Value(floor)
                                         .WithParam("@Dept").As(SqlDbType.VarChar).Value(dept)
                                         .WithParam("@Nationality").As(SqlDbType.VarChar).Value(nationality)
-                                        .WithParam("@State").As(SqlDbType.Int).Value(state)
                                         .WithParam("@IdInserted").As(SqlDbType.Int).AsOutput()
                                         .Execute();
 
@@ -129,19 +136,34 @@ namespace HotelModel.Home
         }
 
 
+        /*public DataTable filters(String name, String lastname, String docType, Decimal? docNumber, String mail) {
+            SqlResults results = new SqlQuery()
+        }*/
         public DataTable filteredSearch(String name, String lastname, String docType, Decimal? docNumber, String mail) {
 
+            if (docNumber == -1)
+            {
+                SqlResults results = new SqlFunction("[BOBBY_TABLES].SP_FILTER_PERSONS_NULLDOC")
+                                   .WithParam("@Name").As(SqlDbType.VarChar).Value(name)
+                                   .WithParam("@Lastname").As(SqlDbType.VarChar).Value(lastname)
+                                   .WithParam("@DocType").As(SqlDbType.VarChar).Value(docType)
+                                   .WithParam("@Mail").As(SqlDbType.VarChar).Value(mail)
+                                   .Execute();
 
-            SqlResults results = new SqlFunction("[BOBBY_TABLES].SP_FILTER_PERSONS")
-                               .WithParam("@Name").As(SqlDbType.VarChar).Value(name)
-                               .WithParam("@Lastname").As(SqlDbType.VarChar).Value(lastname)
-                               .WithParam("@DocType").As(SqlDbType.VarChar).Value(docType)
-                               .WithParam("@DocNumber").As(SqlDbType.Decimal).Value(docNumber)
-                               .WithParam("@Mail").As(SqlDbType.VarChar).Value(mail)
-                               .Execute();
+                return (DataTable)results["ReturnedValues"];
+            }
+            else {
+                SqlResults results = new SqlFunction("[BOBBY_TABLES].SP_FILTER_PERSONS")
+                                   .WithParam("@Name").As(SqlDbType.VarChar).Value(name)
+                                   .WithParam("@Lastname").As(SqlDbType.VarChar).Value(lastname)
+                                   .WithParam("@DocType").As(SqlDbType.VarChar).Value(docType)
+                                   .WithParam("@DocNumber").As(SqlDbType.Decimal).Value(docNumber)
+                                   .WithParam("@Mail").As(SqlDbType.VarChar).Value(mail)
+                                   .Execute();
 
-            return (DataTable) results["ReturnedValues"];
-        
+                return (DataTable)results["ReturnedValues"];
+            }
+
         }
 
 
