@@ -134,11 +134,11 @@
     <Compile Include="User Permissions\UI\AddNew.Designer.cs">
       <DependentUpon>AddNew.cs</DependentUpon>
     </Compile>
-    <Compile Include="User Permissions\UI\ChooseRole.cs">
+    <Compile Include="User Permissions\UI\ChooseOption.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User Permissions\UI\ChooseRole.Designer.cs">
-      <DependentUpon>ChooseRole.cs</DependentUpon>
+    <Compile Include="User Permissions\UI\ChooseOption.Designer.cs">
+      <DependentUpon>ChooseOption.cs</DependentUpon>
     </Compile>
     <Compile Include="User Permissions\UI\Login.cs">
       <SubType>Form</SubType>
@@ -177,8 +177,8 @@
     <EmbeddedResource Include="User Permissions\UI\AddNew.resx">
       <DependentUpon>AddNew.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Permissions\UI\ChooseRole.resx">
-      <DependentUpon>ChooseRole.cs</DependentUpon>
+    <EmbeddedResource Include="User Permissions\UI\ChooseOption.resx">
+      <DependentUpon>ChooseOption.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User Permissions\UI\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

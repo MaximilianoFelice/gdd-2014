@@ -37,8 +37,15 @@ namespace FrbaHotel
             login.ShowDialog();
 
             setPermissions();
+
+            setUpActions();
         }
 
+        private void setUpActions()
+        {
+            HotelHandler.CheckHotelStates();
+            if (ActiveUser.User != "Guest") ActiveUser.ChooseHotel();
+        }
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -174,11 +181,6 @@ namespace FrbaHotel
             LoadNewFormAsChild(new Statistics());
         }
 
-        private void mantenianceToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LoadNewFormAsChild(new Manteinance());
-        }
-
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form login = new HotelModel.User_Permissions.UI.frmLogin();
@@ -186,6 +188,8 @@ namespace FrbaHotel
             login.ShowDialog();
 
             setPermissions();
+
+            setUpActions();
         }
 
         private void addHotelToolStripMenuItem_Click(object sender, EventArgs e)

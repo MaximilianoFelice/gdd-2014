@@ -12,6 +12,14 @@ namespace HotelModel.Home
     public class RoomHandler
     {
 
+        public DataSet getRooms()
+        {
+            SqlResults results = new SqlQuery("SELECT * FROM [BOBBY_TABLES].ROOMS;").Execute();
+
+            return (DataSet)results["ReturnedValues"];
+
+        }
+
         public DataSet getRoomTypes() {
             SqlResults results = new SqlQuery("SELECT * FROM [BOBBY_TABLES].ROOM_TYPE;").Execute();
 
@@ -38,7 +46,7 @@ namespace HotelModel.Home
             return (DataSet)results["ReturnedValues"];
         }
 
-        public Boolean roomExists(Int32 roomNum, Int32 idHotel) {
+        /*public Boolean roomExists(Int32 roomNum, Int32 idHotel) {
 
             SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_ROOM_EXISTS")
                                     .WithParam("@RoomNum").As(SqlDbType.Int).Value(roomNum)
@@ -48,16 +56,33 @@ namespace HotelModel.Home
 
             return (Boolean)results["@RoomExists"];
         
+        }*/
+
+        public bool roomExists(Int32 roomNum, Int32 idHotel)
+        {
+            DataTable dt = this.getRooms().Tables[0];
+            Boolean returnValue = false; ;
+            foreach (DataRow row in dt.Rows)
+            {
+                if ((Int32)row["number"] == roomNum && (Int32)row["id_hotel"] == idHotel)
+                {
+                    returnValue = true;
+                }
+
+            }
+            return returnValue;
+
         }
 
-        public Boolean insertRoom(Int32 idHotel,Int32 roomNum,Int32 floor, String location,String type,String descrip){
+        public Boolean insertRoom(Int32 idHotel, Int32 roomNum, Int32 floor, Int32 location, Int32 type, String descrip)
+        {
         
          SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_INSERT_ROOM")
                                 .WithParam("@IdHotel").As(SqlDbType.Int).Value(idHotel)
                                 .WithParam("@RoomNum").As(SqlDbType.Int).Value(roomNum)
                                 .WithParam("@Floor").As(SqlDbType.Int).Value(floor)
-                                .WithParam("@TypeDesc").As(SqlDbType.VarChar).Value(type)
-                                .WithParam("@LocationDesc").As(SqlDbType.VarChar).Value(location)
+                                .WithParam("@TypeDesc").As(SqlDbType.Int).Value(type)
+                                .WithParam("@LocationDesc").As(SqlDbType.Int).Value(location)
                                 .WithParam("@Descr").As(SqlDbType.VarChar).Value(descrip)
                                 .WithParam("@Inserted").As(SqlDbType.Bit).AsOutput()
                                 .Execute();
@@ -81,22 +106,22 @@ namespace HotelModel.Home
 
             return (Boolean)results["@Updated"];
         }
-        
 
 
-        public DataTable filteredSearch(Int32 idHotel,Int32? roomNum,Int32? floor, String location,String type,String descrip)
+
+        public DataSet filteredSearch(Int32 idHotel, Int32? roomNum, Int32? floor, Int32 location, Int32 type, String descrip)
         {
 
             SqlResults results = new SqlFunction("[BOBBY_TABLES].SP_FILTER_ROOMS")
                                 .WithParam("@IdHotel").As(SqlDbType.Int).Value(idHotel)
                                 .WithParam("@RoomNum").As(SqlDbType.Int).Value(roomNum)
                                 .WithParam("@Floor").As(SqlDbType.Int).Value(floor)
-                                .WithParam("@TypeDesc").As(SqlDbType.VarChar).Value(type)
-                                .WithParam("@LocationDesc").As(SqlDbType.VarChar).Value(location)
+                                .WithParam("@TypeDesc").As(SqlDbType.Int).Value(type)
+                                .WithParam("@LocationDesc").As(SqlDbType.Int).Value(location)
                                 .WithParam("@Descr").As(SqlDbType.VarChar).Value(descrip)
                                 .Execute();
 
-            return (DataTable)results["@ReturnedValues"];
+            return (DataSet)results["ReturnedValues"];
 
         }
 

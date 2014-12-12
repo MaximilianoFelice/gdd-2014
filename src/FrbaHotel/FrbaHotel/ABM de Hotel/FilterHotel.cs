@@ -73,12 +73,22 @@ namespace FrbaHotel.ABM_de_Hotel
 
         private void buttonManteinance_Click(object sender, EventArgs e)
         {
-            ABM_de_Hotel.Manteinance frm = new Manteinance();
-
-            frm.textBoxName.Text= this.dataGridView.CurrentRow.Cells[1].Value.ToString();
-
+            var index = dataGridView.CurrentRow.Index;
+            ABM_de_Hotel.Manteinance frm = new Manteinance(new HotelHandler((dataGridView.Rows[index].DataBoundItem as DataRowView).Row) );
+            frm.Owner = this.MdiParent;
             frm.ShowDialog();
-            this.Hide();
+        }
+
+        private void cmdDelete_Click(object sender, EventArgs e)
+        {
+            var index = dataGridView.CurrentRow.Index;
+            HotelHandler.deleteHotel((dataGridView.Rows[index].DataBoundItem as DataRowView).Row);
+
+        }
+
+        private void FilterHotel_Load(object sender, EventArgs e)
+        {
+
         }
 
     }

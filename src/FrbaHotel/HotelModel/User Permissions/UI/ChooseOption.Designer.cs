@@ -1,6 +1,6 @@
 ﻿namespace HotelModel.User_Permissions.UI
 {
-    partial class ChooseRole
+    partial class ChooseOption
     {
         /// <summary>
         /// Required designer variable.
@@ -48,7 +48,6 @@
             this.Controls.Add(this.lstRoles);
             this.Name = "ChooseRole";
             this.Text = "ChooseRole";
-            this.Load += new System.EventHandler(this.ChooseRole_Load);
             this.ResumeLayout(false);
 
         }

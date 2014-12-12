@@ -336,14 +336,14 @@ GO
 CREATE PROCEDURE [BOBBY_TABLES].SP_ROOM_EXISTS
 @RoomNum INTEGER,
 @IdHotel INTEGER,
-@RoomExists BIT = 0x0 OUTPUT
+@RoomExists BIT = 'FALSE' OUTPUT
 AS 
 
 	SELECT id_room FROM [BOBBY_TABLES].ROOMS WHERE number = @RoomNum AND id_hotel = @IdHotel 
 	
 	IF @@ROWCOUNT > 0
 	BEGIN
-		SET @RoomExists = 0x1
+		SET @RoomExists = 'TRUE'
 	END
 	
 GO
@@ -362,8 +362,8 @@ CREATE PROCEDURE [BOBBY_TABLES].SP_INSERT_ROOM
 @Inserted BIT = 0x0 OUTPUT
 AS
 
-	INSERT INTO [BOBBY_TABLES].ROOMS (id_hotel, number, room_floor, id_roomtype, id_location, descr)
-	VALUES (@IdHotel, @RoomNum, @Floor, @TypeDesc, @LocationDesc, @Descr)
+	INSERT INTO [BOBBY_TABLES].ROOMS (id_hotel, number, room_floor, id_roomtype, id_location, descr, stat)
+	VALUES (@IdHotel, @RoomNum, @Floor, @TypeDesc, @LocationDesc, @Descr, 601)
 	
 	IF @@ERROR = 0
 	BEGIN
@@ -426,19 +426,17 @@ GO
 --=======================================
 --FILTER ROOMS
 --=======================================
-CREATE FUNCTION [BOBBY_TABLES].SP_FILTER_ROOMS
+CREATE PROCEDURE [BOBBY_TABLES].SP_FILTER_ROOMS
 (@IdHotel INTEGER = NULL,
 @RoomNum INTEGER = NULL,
 @Floor INTEGER = NULL,
 @TypeDesc INTEGER = NULL,
 @LocationDesc INTEGER = NULL,
 @Descr VARCHAR(255) = NULL)
-RETURNS TABLE
 AS
 	BEGIN
 		
-		RETURN
-		(SELECT * FROM [BOBBY_TABLES].ROOMS 
+		SELECT id_hotel, number, room_floor, id_roomtype, id_location, descr FROM [BOBBY_TABLES].ROOMS 
 		WHERE
 			((@IdHotel IS NULL)  OR (id_hotel = @IdHotel)) AND
 			((@RoomNum IS NULL) OR (number = @RoomNum)) AND
@@ -446,7 +444,6 @@ AS
 			((@TypeDesc IS NULL) OR (id_roomtype = @TypeDesc)) AND
 			((@LocationDesc IS NULL) OR (id_location = @LocationDesc)) AND
 			((@Descr IS NULL) OR (descr LIKE '%' + @Descr + '%'))
-		ORDER BY lastname, name)
     
     END
     
@@ -636,6 +633,7 @@ SELECT * FROM BOBBY_TABLES.PERSONS WHERE lastname = 'Tango';
 
 SELECT * FROM BOBBY_TABLES.HOTELS;
 SELECT * FROM BOBBY_TABLES.REGIMEN_HOTEL;
+SELECT * FROM BOBBY_TABLES.USER_HOTELS;
 
 DELETE FROM BOBBY_TABLES.HOTELS WHERE name = 'HotelTest';
 

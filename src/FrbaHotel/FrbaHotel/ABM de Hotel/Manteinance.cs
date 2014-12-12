@@ -12,14 +12,17 @@ namespace FrbaHotel.ABM_de_Hotel
 {
     public partial class Manteinance : Form
     {
-        Int32 id_hotel;
         DateTime start;
         DateTime end;
         String descr;
 
-        public Manteinance()
+        HotelHandler _internalHotel;
+
+        public Manteinance(HotelHandler Hotel)
         {
             InitializeComponent();
+            _internalHotel = Hotel;
+
             dateTimePickerStart.MinDate = DateTime.Today;
             dateTimePickerEnd.MinDate = DateTime.Today.AddDays(1);
         }
@@ -34,12 +37,12 @@ namespace FrbaHotel.ABM_de_Hotel
         private void buttonSave_Click(object sender, EventArgs e)
         {
             this.assignParams();
-            if (HotelHandler.hotelForManteinance(id_hotel, start, end, descr)) MessageBox.Show("Hotel set in Manteinance");
+            if (_internalHotel.setForManteinance(start, end, descr)) MessageBox.Show("Hotel set in Manteinance");
             else MessageBox.Show("Unable to set in manteinance");
+            this.Close();
         }
 
         private void assignParams() {
-            id_hotel = Int32.Parse(textBoxId.Text);
             start= dateTimePickerStart.Value;
             end=dateTimePickerEnd.Value;
             descr=textBoxDescr.Text;
