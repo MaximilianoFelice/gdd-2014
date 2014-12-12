@@ -190,6 +190,23 @@ GO
 
 
 --=======================================
+--GET INFO
+--=======================================
+CREATE FUNCTION [BOBBY_TABLES].FUNCT_GET_INFO
+(@IdPerson INTEGER)
+RETURNS TABLE
+AS
+	BEGIN
+		
+		RETURN (SELECT name, lastname, doc_type, doc_number, mail FROM [BOBBY_TABLES].PERSONS 
+		WHERE id_person = @Id)
+    
+    END
+    
+GO
+
+
+--=======================================
 --INSERT HOTEL
 --=======================================
 CREATE PROCEDURE [BOBBY_TABLES].SP_INSERT_HOTEL
