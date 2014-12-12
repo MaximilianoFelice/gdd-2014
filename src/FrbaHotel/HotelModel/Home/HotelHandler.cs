@@ -35,16 +35,11 @@ namespace HotelModel.Home
             hotels_adapter.Update(new DataRow[] {aRow});
         }
 
-
-        public static Boolean addRegimenToHotel(Int32 idHotel, Int32 idRegimen) {
-            SqlResults results = new SqlStoredProcedure("[BOBBY_TABLES].SP_INSERT_REGIMENS_HOTEL")
-                                .WithParam("@IdHotel").As(SqlDbType.Int).Value(idHotel)
-                                .WithParam("@IdRegimen").As(SqlDbType.Int).Value(idRegimen)
-                                .WithParam("@Inserted").As(SqlDbType.Bit).AsOutput()
+        public static void CheckHotelStates()
+        {
+            new SqlStoredProcedure("[BOBBY_TABLES].CheckMantenienceStatus")
+                                .WithParam("@date").As(SqlDbType.DateTime).Value(DateTime.Today)
                                 .Execute();
-            return (Boolean)results["Inserted"];
-
-        
         }
 
         public static DataSet filteredSearch(String name, int? stars, String city, String country)

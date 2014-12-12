@@ -37,8 +37,14 @@ namespace FrbaHotel
             login.ShowDialog();
 
             setPermissions();
+
+            setUpActions();
         }
 
+        private void setUpActions()
+        {
+            HotelHandler.CheckHotelStates();
+        }
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
