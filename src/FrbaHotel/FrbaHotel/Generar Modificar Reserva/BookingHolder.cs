@@ -12,7 +12,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
 {
     public partial class BookingHolder : Form
     {
-        GuestHandler gh = new GuestHandler();
+        //GuestHandler gh = new GuestHandler();
         String mail { get; set; }
         String docType { get; set; }
         Decimal? docNumber { get; set; }
@@ -26,16 +26,16 @@ namespace FrbaHotel.Generar_Modificar_Reserva
 
         private void loadComboBoxDocType()
         {
-            FormHandler.loadDocTypesToCombo(comboBoxDocType, this.gh);
+            //FormHandler.loadDocTypesToCombo(comboBoxDocType, this.gh);
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            this.assignFilters();
+           /* this.assignFilters();
            DataTable results = gh.filteredSearch(null, null,docType, docNumber, mail);
            BindingSource bs = new BindingSource();
            bs.DataSource = results; 
-           dataGridViewResults.DataSource = bs;
+           dataGridViewResults.DataSource = bs;*/
         }
 
         private void assignFilters()
@@ -75,14 +75,15 @@ namespace FrbaHotel.Generar_Modificar_Reserva
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            ABM_de_Cliente.CreateGuest frm = new FrbaHotel.ABM_de_Cliente.CreateGuest();
+            //ABM_de_Cliente.CreateGuest frm = new FrbaHotel.ABM_de_Cliente.CreateGuest();
+            ABM_de_Cliente.UpdateGuest frm = new FrbaHotel.ABM_de_Cliente.UpdateGuest(GuestHandler.newGuest());
             var result = frm.ShowDialog();
-            if (result == DialogResult.OK && frm.inserted != 0)
+            /*if (result == DialogResult.OK && frm.inserted != 0)
             {
                this.id_guest = frm.inserted;
                DialogResult = DialogResult.OK;
                this.Close();
-            }
+            }*/
         }
      
     }

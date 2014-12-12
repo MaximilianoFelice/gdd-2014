@@ -13,13 +13,14 @@ namespace FrbaHotel.ABM_de_Cliente
     public partial class FilterGuest : Form
     {
 
-        GuestHandler gh = new GuestHandler();
         ValidationsHandler vh = new ValidationsHandler();
         String name { get; set; }
         String lastname { get; set; }
         String mail { get; set; }
         String docType { get; set; }
         Decimal? docNumber { get; set; }
+        BindingSource bs;
+
 
         public FilterGuest()
         {
@@ -29,31 +30,27 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void loadComboBoxDocType()
         {
-            FormHandler.loadDocTypesToCombo(comboBoxDocType, this.gh);
+            FormHandler.loadDocTypesToCombo(comboBoxDocType);
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
            this.assignFilters();
-           DataTable results = gh.filteredSearch(name, lastname,docType, docNumber, mail);
-           BindingSource bs = new BindingSource();
-           bs.DataSource = results; 
-           dataGridViewResults.DataSource = bs;
+           DataSet results = GuestHandler.filteredSearch(name, lastname, docType, docNumber, mail);
+           bs = new BindingSource();
+           bs.DataSource = results.Tables[0];
+           dataGridViewResults.DataSource = bs; 
         }
 
 
         private void assignFilters() { 
             name=textBoxName.Text;
-            lastname=textBoxLastname.Text;
-            docType=comboBoxDocType.Text;
-            if (!String.IsNullOrEmpty(textBoxDocNumber.Text))
-            {
-                docNumber = Decimal.Parse(textBoxDocNumber.Text);
-            }
-            else {
-                docNumber = -1;
-            }
+            lastname = textBoxLastname.Text;
+            docType=comboBoxDocType.SelectedText;
+            if (textBoxDocNumber.Text != "") docNumber = Convert.ToInt32(textBoxDocNumber.Text);
+            else docNumber = null; 
             mail=textBoxEmail.Text;
+            
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
@@ -73,41 +70,10 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-      
-            ABM_de_Cliente.UpdateGuest frm = new UpdateGuest();
-
-            frm.textBoxId.Text = this.dataGridViewResults.CurrentRow.Cells[0].Value.ToString();
-            frm.textBoxName.Text = this.dataGridViewResults.CurrentRow.Cells[1].Value.ToString();
-            frm.textBoxLastname.Text = this.dataGridViewResults.CurrentRow.Cells[2].Value.ToString();
-
-            frm.comboBoxDocType.Text = this.dataGridViewResults.CurrentRow.Cells[3].Value.ToString();
-
-            frm.textBoxDocNumber.Text = this.dataGridViewResults.CurrentRow.Cells[4].Value.ToString();
-            frm.textBoxEmail.Text = this.dataGridViewResults.CurrentRow.Cells[5].Value.ToString();
-            frm.textBoxPhone.Text = this.dataGridViewResults.CurrentRow.Cells[6].Value.ToString();
-
-            // falta pasar la fecha frm.dtPickerBirhtDate.
-
-            frm.textBoxStreet.Text = this.dataGridViewResults.CurrentRow.Cells[8].Value.ToString();
-            frm.textBoxStreetNum.Text = this.dataGridViewResults.CurrentRow.Cells[9].Value.ToString();
-            frm.textBoxFloor.Text = this.dataGridViewResults.CurrentRow.Cells[10].Value.ToString();
-            frm.textBoxDept.Text = this.dataGridViewResults.CurrentRow.Cells[11].Value.ToString();
-            frm.comboBoxNationality.Text = this.dataGridViewResults.CurrentRow.Cells[12].Value.ToString();
-
-            
-
-            if (this.dataGridViewResults.CurrentRow.Cells[12].Value.ToString() == Convert.ToString(1))
-            {
-                frm.checkBoxEnabled.Enabled = true;
-            }
-            else {
-                frm.checkBoxEnabled.Enabled = false;
-            }
-
-            
-            frm.ShowDialog();
-            this.Hide();
-
+            var index = dataGridViewResults.CurrentRow.Index;
+            Form toUpdate = new UpdateGuest( new GuestHandler((dataGridViewResults.Rows[index].DataBoundItem as DataRowView).Row));
+            toUpdate.MdiParent = this.MdiParent;
+            toUpdate.Show(); 
         }
 
         private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
@@ -127,9 +93,9 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            Int32 id_guest = (Int32)this.dataGridViewResults.CurrentRow.Cells[0].Value;
-            if (gh.deletePerson(id_guest)) MessageBox.Show("Guest Deleted");
-            else MessageBox.Show("Unable to deleted");
+            //Int32 id_guest = (Int32)this.dataGridViewResults.CurrentRow.Cells[0].Value;
+            //if (gh.deletePerson(id_guest)) MessageBox.Show("Guest Deleted");
+            //else MessageBox.Show("Unable to deleted");
 
         }
 

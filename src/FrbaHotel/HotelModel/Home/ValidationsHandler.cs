@@ -56,19 +56,9 @@ namespace HotelModel.Home
             return noErrors;
         }
 
-        public Boolean validateEmailExistance(String aString) {
-            GuestHandler gh = new GuestHandler();
-            if (gh.emailExists(aString))
-            {
-               return noErrors = false;
-            }
-            else {
-                return noErrors = true;
-            }
-
+       
  
-        }
-
+       
        
         public Boolean validateNullString(String aString){
            

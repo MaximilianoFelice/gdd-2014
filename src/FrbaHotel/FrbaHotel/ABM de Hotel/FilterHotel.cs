@@ -31,6 +31,7 @@ namespace FrbaHotel.ABM_de_Hotel
         private void buttonClear_Click(object sender, EventArgs e)
         {
             FormHandler.groupBoxCleaner(groupBox);
+            FormHandler.clearDataGridView(dataGridView);
         }
 
         private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)

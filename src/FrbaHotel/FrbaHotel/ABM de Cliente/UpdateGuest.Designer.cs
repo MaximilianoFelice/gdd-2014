@@ -34,8 +34,6 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.groupBoxGuest = new System.Windows.Forms.GroupBox();
             this.comboBoxNationality = new System.Windows.Forms.ComboBox();
-            this.textBoxId = new System.Windows.Forms.TextBox();
-            this.labelId = new System.Windows.Forms.Label();
             this.checkBoxEnabled = new System.Windows.Forms.CheckBox();
             this.labelEnabled = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -97,8 +95,6 @@
             // groupBoxGuest
             // 
             this.groupBoxGuest.Controls.Add(this.comboBoxNationality);
-            this.groupBoxGuest.Controls.Add(this.textBoxId);
-            this.groupBoxGuest.Controls.Add(this.labelId);
             this.groupBoxGuest.Controls.Add(this.checkBoxEnabled);
             this.groupBoxGuest.Controls.Add(this.labelEnabled);
             this.groupBoxGuest.Controls.Add(this.groupBox2);
@@ -132,23 +128,6 @@
             this.comboBoxNationality.Size = new System.Drawing.Size(137, 21);
             this.comboBoxNationality.TabIndex = 48;
             this.comboBoxNationality.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxNationality_Validating);
-            // 
-            // textBoxId
-            // 
-            this.textBoxId.Location = new System.Drawing.Point(143, 22);
-            this.textBoxId.Name = "textBoxId";
-            this.textBoxId.ReadOnly = true;
-            this.textBoxId.Size = new System.Drawing.Size(137, 20);
-            this.textBoxId.TabIndex = 47;
-            // 
-            // labelId
-            // 
-            this.labelId.AutoSize = true;
-            this.labelId.Location = new System.Drawing.Point(21, 28);
-            this.labelId.Name = "labelId";
-            this.labelId.Size = new System.Drawing.Size(47, 13);
-            this.labelId.TabIndex = 46;
-            this.labelId.Text = "Guest Id";
             // 
             // checkBoxEnabled
             // 
@@ -295,7 +274,7 @@
             // 
             // textBoxLastname
             // 
-            this.textBoxLastname.Location = new System.Drawing.Point(143, 74);
+            this.textBoxLastname.Location = new System.Drawing.Point(143, 57);
             this.textBoxLastname.Name = "textBoxLastname";
             this.textBoxLastname.Size = new System.Drawing.Size(137, 20);
             this.textBoxLastname.TabIndex = 28;
@@ -303,7 +282,7 @@
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(143, 48);
+            this.textBoxName.Location = new System.Drawing.Point(143, 28);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(137, 20);
             this.textBoxName.TabIndex = 27;
@@ -357,7 +336,7 @@
             // labelDocType
             // 
             this.labelDocType.AutoSize = true;
-            this.labelDocType.Location = new System.Drawing.Point(21, 103);
+            this.labelDocType.Location = new System.Drawing.Point(20, 100);
             this.labelDocType.Name = "labelDocType";
             this.labelDocType.Size = new System.Drawing.Size(83, 13);
             this.labelDocType.TabIndex = 19;
@@ -366,7 +345,7 @@
             // labelLastname
             // 
             this.labelLastname.AutoSize = true;
-            this.labelLastname.Location = new System.Drawing.Point(21, 77);
+            this.labelLastname.Location = new System.Drawing.Point(20, 57);
             this.labelLastname.Name = "labelLastname";
             this.labelLastname.Size = new System.Drawing.Size(53, 13);
             this.labelLastname.TabIndex = 18;
@@ -375,7 +354,7 @@
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(20, 51);
+            this.labelName.Location = new System.Drawing.Point(21, 31);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(35, 13);
             this.labelName.TabIndex = 17;
@@ -439,8 +418,6 @@
         public System.Windows.Forms.Label labelLastname;
         public System.Windows.Forms.Label labelName;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.Windows.Forms.Label labelId;
-        public System.Windows.Forms.TextBox textBoxId;
         public System.Windows.Forms.ComboBox comboBoxNationality;
     }
 }

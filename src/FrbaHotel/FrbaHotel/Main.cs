@@ -161,7 +161,7 @@ namespace FrbaHotel
 
         private void newGuestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LoadNewFormAsChild(new CreateGuest());
+            LoadNewFormAsChild(new UpdateGuest(GuestHandler.newGuest()));
         }
 
         private void extrasToolStripMenuItem1_Click(object sender, EventArgs e)

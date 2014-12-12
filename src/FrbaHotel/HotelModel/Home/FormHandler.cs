@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data;
+using HotelModel.Model;
 
 
 namespace HotelModel.Home
@@ -184,10 +185,10 @@ namespace HotelModel.Home
            }
        }
 
-      public static void loadDocTypesToCombo(ComboBox combo, GuestHandler gh) {
-            combo.DataSource = gh.getDocTypes().Tables[0];
-            combo.DisplayMember = "doc_type";
-            combo.ValueMember = "doc_type";
+      public static void loadDocTypesToCombo(ComboBox combo) {
+          combo.DataSource = DocTypeModel.doctype.Tables[0];
+          combo.DisplayMember = "doc_type";
+          combo.ValueMember = "doc_type";
       }
 
       public static void loadCountriesToCombo(ComboBox combo) {

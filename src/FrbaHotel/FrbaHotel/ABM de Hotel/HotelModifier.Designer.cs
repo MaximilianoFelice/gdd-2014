@@ -82,7 +82,7 @@
             this.groupBox.TabIndex = 0;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Please enter the hotel information";
-            this.groupBox.Enter += new System.EventHandler(this.groupBox_Enter);
+            
             // 
             // comboBoxCountry
             // 

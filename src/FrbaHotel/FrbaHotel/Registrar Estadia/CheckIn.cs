@@ -21,7 +21,7 @@ namespace FrbaHotel.Registrar_Estadia
         Int32 roomType;
         Int32 extraGuests;
         BookingHandler bh = new BookingHandler();
-        GuestHandler gh = new GuestHandler();
+        //GuestHandler gh = new GuestHandler();
         StayHandler sh = new StayHandler();
      
         public CheckIn()
@@ -78,13 +78,13 @@ namespace FrbaHotel.Registrar_Estadia
         }
 
         private void addHolderToDataGrid() {
-            DataTable dt = gh.getGuestInformation(id_holder);
+            /*DataTable dt = gh.getGuestInformation(id_holder);
             String name = dt.Rows[0][0].ToString();
             String lastname = dt.Rows[0][1].ToString();
             String docType = dt.Rows[0][2].ToString();
             Decimal docNumber = (Decimal)dt.Rows[0][3];
             String mail = dt.Rows[0][4].ToString();
-            addRowToDataGrid(id_holder, name + lastname, docType, docNumber, mail);
+            addRowToDataGrid(id_holder, name + lastname, docType, docNumber, mail);*/
         }
 
         public void addRowToDataGrid(Int32 id, String completeName, String docType, Decimal docNumber, String mail) {
