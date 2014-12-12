@@ -10,11 +10,33 @@ using System.Data;
 using HotelModel.User_Permissions.UFR;
 using System.Windows.Forms;
 using HotelModel.User_Permissions.Exceptions;
+using HotelModel.User_Permissions.UI;
 
 namespace HotelModel.User_Permissions
 {
     public static class ActiveUser
     {
+        public static int Active_Hotel;
+
+        public static int ChooseHotel()
+        {
+            Action<object> callback = delegate(object row) { Active_Hotel = (int) row; };
+            DataSet hotels_for_user = (DataSet) new SqlQuery("SELECT h.id_hotel, h.name FROM BOBBY_TABLES.USER_HOTELS AS uh "+
+                                                                "INNER JOIN BOBBY_TABLES.USERS AS u ON (u.id_user = uh.id_user) "+
+                                                                "INNER JOIN BOBBY_TABLES.HOTELS AS h ON (h.id_hotel = uh.id_hotel) "+
+                                                                "WHERE u.username = '" + User + "';").Execute()["ReturnedValues"];
+
+            if (hotels_for_user.Tables[0].Rows.Count == 1) { Active_Hotel = (int) hotels_for_user.Tables[0].Rows[0]["id_hotel"]; }
+            else if (hotels_for_user.Tables[0].Rows.Count == 0) { MessageBox.Show("This user has no active hotel to work with."); Active_Hotel = -1; }
+            else
+            {
+                Form chooseHotel = new ChooseOption(hotels_for_user.Tables[0], "id_hotel", "name", callback);
+                chooseHotel.ShowDialog();
+            }
+
+            return Active_Hotel;
+        }
+
         public static String User;
 
         public static List<Role> User_Roles = new List<Role>();

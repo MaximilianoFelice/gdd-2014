@@ -44,6 +44,7 @@ namespace FrbaHotel
         private void setUpActions()
         {
             HotelHandler.CheckHotelStates();
+            if (ActiveUser.User != "Guest") ActiveUser.ChooseHotel();
         }
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
@@ -187,6 +188,8 @@ namespace FrbaHotel
             login.ShowDialog();
 
             setPermissions();
+
+            setUpActions();
         }
 
         private void addHotelToolStripMenuItem_Click(object sender, EventArgs e)

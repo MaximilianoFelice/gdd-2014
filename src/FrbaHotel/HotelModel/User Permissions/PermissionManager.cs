@@ -156,7 +156,8 @@ namespace HotelModel.User_Permissions
                 }
                 else
                 {
-                    ChooseRole chooseR = new ChooseRole((DataSet)results["ReturnedValues"]);
+                    Action<object> callback = delegate(object row) { ActiveUser.ActivateRole((String) row); };
+                    ChooseOption chooseR = new ChooseOption(((DataSet)results["ReturnedValues"]).Tables[0], "name", "name", callback);
                     chooseR.Owner = caller;
                     chooseR.ShowDialog();
                 }
